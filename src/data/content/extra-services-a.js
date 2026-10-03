@@ -1,0 +1,100 @@
+// In-depth sections for service pages (blocks: ["h2"|"p"|"ul"|"table", ...]). Verify with the partners before launch.
+
+export const extraA = {
+  "business-valuation": [
+    ["h2", "Valuation methods explained"],
+    ["p", "No single method suits every business. A valuer usually applies more than one and explains why the final figure sits where it does. The common approaches are below."],
+    ["table", { head: ["Method", "How it works", "Usually suits"], rows: [["Discounted cash flow (DCF)", "Projects future cash flows and discounts them to today's value at a rate reflecting risk", "Businesses with reliable projections, such as growing companies with some operating history"], ["Market approach (comparables)", "Compares the business with similar listed companies or recent transactions", "Businesses with comparable peers or deals to refer to"], ["Net asset value (NAV)", "Adds up the fair value of assets and subtracts liabilities", "Asset-heavy or holding companies, and businesses being wound up"], ["Cost of recent funding", "Uses the price at which investors recently bought shares", "Early-stage startups with little financial history"]] }],
+    ["h2", "Valuation for different purposes"],
+    ["p", "The purpose decides who must sign the report, which method is acceptable and how long the report stays valid."],
+    ["ul", ["Fund raising: investors and founders need a defensible starting point for negotiation.", "ESOPs: the fair value of shares is needed at grant, and often at exercise and for accounting.", "FEMA: issue or transfer of shares between residents and non-residents must follow pricing guidelines supported by a valuation certificate.", "Mergers, demergers and buy-outs: the exchange ratio or price needs an independent report.", "Tax and accounting: some transactions need a fair value for tax computation or financial reporting."]],
+    ["h2", "What drives the value of a business"],
+    ["ul", ["Revenue growth and the quality of that revenue, such as recurring contracts versus one-off sales", "Margins and how they compare with peers", "Dependence on a few customers, suppliers or key people", "Capital needs and debt", "Market size, competition and the strength of the business model", "Quality of the books: clean, audited accounts support a higher level of confidence"]],
+    ["h2", "How to prepare for a valuation"],
+    ["p", "The faster you provide complete data, the faster the report is ready. Prepare three years of financial statements, a realistic projection with the assumptions behind it, a capitalisation table, key contracts and a short description of the business model and competitors. Projections should be ones you would be comfortable defending to an investor: a valuer will test them against history and the market."],
+  ],
+
+  "director-kyc": [
+    ["h2", "Why director KYC exists"],
+    ["p", "A Director Identification Number (DIN) is a unique number allotted to a person who is, or wants to become, a director. The Ministry of Corporate Affairs (MCA) asks every DIN holder to confirm identity and contact details through KYC so that its records are accurate. If the KYC is not completed on time, the DIN is deactivated and the person cannot sign MCA forms or be appointed as a director until it is restored."],
+    ["h2", "How KYC is filed, step by step"],
+    ["ul", ["Log in to the MCA portal with the director's credentials.", "Open the director KYC form and check the details shown against your PAN, Aadhaar and address proof.", "Enter or confirm the mobile number and email address. Each director needs a separate pair; they cannot be shared with another director.", "Verify both with the one-time passwords sent to them.", "Attach documents where the form asks for them and sign with a digital signature, where required.", "Pay any fee due, submit, and download the acknowledgement."]],
+    ["p", "A simpler web-based version of the form is generally available for directors who have already completed KYC in an earlier period. We check which route applies to you before filing."],
+    ["h2", "If your DIN has been deactivated"],
+    ["ul", ["File the KYC form with the late fee of ₹5,000.", "Wait for the form to be processed; the DIN is then reactivated.", "Check the DIN status on the portal before signing any forms or board resolutions.", "If the company has pending filings that need your signature, complete the KYC first, then the filings."]],
+    ["h2", "Special situations"],
+    ["ul", ["Director of many companies: one KYC covers the person's DIN, not each company.", "Director living abroad: OTP verification works on an Indian mobile number and email, so keep them active; if you only have a foreign number, tell us before the due date.", "Resigned or inactive directors: a person who still holds a DIN may need to file KYC even after leaving all boards.", "Disqualified directors: KYC is separate from disqualification. Completing it does not remove a disqualification."]],
+    ["h2", "Keep contact details current"],
+    ["p", "The MCA sends one-time passwords and notices to the mobile number and email on record. If you change either, update them through the proper form, so that you do not miss a verification message at the last moment."],
+  ],
+
+  "llp-annual-filing": [
+    ["h2", "What each form contains"],
+    ["p", "Form 11 is the annual return. It lists the partners and designated partners at the end of the year, the total contribution received, and details of any changes. Form 8 is the statement of account and solvency. It reports the LLP's assets, liabilities, income and expenditure, and carries a declaration by the designated partners that the LLP can pay its debts. Both forms are signed by designated partners with digital signatures, and Form 8 is also certified by an auditor where audit applies."],
+    ["h2", "Accounts and audit"],
+    ["p", "Every LLP must maintain proper books of account on a cash or accrual basis. Audit is required when turnover exceeds ₹40 lakh or the contribution exceeds ₹25 lakh. If audit does not apply, the designated partners still sign the statement of account. A tax audit under the Income-tax Act may be needed separately and has its own due date."],
+    ["h2", "Changes during the year"],
+    ["ul", ["Change of partners or designated partners: reported on the prescribed change form within 30 days.", "Change in the LLP agreement: filed with the Registrar within 30 days.", "Change of registered office, name or contribution: each has its own filing and time limit.", "Missing a change filing carries a separate additional fee for every day of delay."]],
+    ["h2", "Inactive LLPs"],
+    ["p", "An LLP with no business must still file Form 11 and Form 8 every year. If the partners do not plan to continue, closing the LLP formally (by striking off) stops the annual filing obligation and the growing fees. Closure needs the LLP to be free of liabilities and to have filed or cleared pending returns, so it is best handled before the backlog grows."],
+    ["h2", "Catching up on missed years"],
+    ["p", "The additional fee is ₹100 per day for each form, with no upper limit, so the cost of delay can exceed the original cost of compliance. Relief schemes have been announced from time to time to reduce the fee for old defaults, but they are time-bound. We prepare an estimate of the total cost for each missed year and, where a scheme is open, apply it."],
+  ],
+
+  "udyam-registration": [
+    ["h2", "How enterprises are classified"],
+    ["p", "Classification as micro, small or medium depends on investment in plant and machinery or equipment and on annual turnover. Both limits must be met for each category. The limits have been revised by the government, so we check the current notification before classifying you. Investment and turnover are now picked up automatically from your income tax and GST data, which is why accurate returns matter."],
+    ["h2", "Registration step by step"],
+    ["ul", ["Keep the proprietor's or authorised signatory's Aadhaar and the business PAN ready. GSTIN is needed where it applies.", "Open the Udyam portal and verify Aadhaar with an OTP.", "Validate the PAN and enter the business name, type, address, bank details and date of commencement.", "Choose activities and the NIC codes that match what the business actually does.", "Submit and download the Udyam Registration Certificate with its number."]],
+    ["h2", "Benefits in practice"],
+    ["ul", ["Credit: lenders treat MSME borrowers as priority-sector customers and some schemes offer collateral-free loans, subject to the lender's own policy.", "Payment protection: the MSME Development Act sets time limits for buyers to pay micro and small suppliers, and delayed payments attract interest.", "Tax timing: under Section 43B(h) of the Income-tax Act, amounts payable to micro and small enterprises are deductible only when paid within the permitted time. This makes your Udyam status relevant to your buyers too.", "Government support: eligibility for subsidies, schemes and tender preferences meant for MSMEs."]],
+    ["h2", "Keeping the registration up to date"],
+    ["p", "The registration does not expire, but the details should reflect reality. Update the portal if you change your address, add or drop activities, open a new unit or if your turnover moves you into another category. Registering the same business more than once is not permitted: if you have an old Udyog Aadhaar, move it to the Udyam portal instead of creating a new entry."],
+  ],
+
+  "trademark-registration": [
+    ["h2", "What can and cannot be registered"],
+    ["p", "A trademark must be distinctive: it should identify your goods or services and set them apart from others. Invented or arbitrary names, such as a coined word, are the easiest to register. Names that only describe the product, such as the common name of the goods, a quality or a place, are difficult. Marks that are identical or very similar to an existing mark for similar goods, or that are misleading or against public order, can be refused."],
+    ["h2", "Choosing the class"],
+    ["p", "Trademarks are registered in classes under the international Nice classification. Classes 1 to 34 cover goods and classes 35 to 45 cover services. You protect your mark only in the classes you apply in, so choose the ones that match what you sell today and plan to sell soon. Each class is charged separately by the government."],
+    ["h2", "Stages of an application"],
+    ["table", { head: ["Stage", "What happens"], rows: [["Filing", "Application is filed with the Trade Marks Registry and an application number is issued"], ["Formalities check", "The Registry checks that the application is complete"], ["Examination", "An examiner searches for conflicts and may raise objections in an examination report"], ["Reply and hearing", "We reply to objections in writing and attend a hearing if one is called"], ["Publication", "The accepted mark is published in the Trade Marks Journal"], ["Opposition window", "Third parties get a period to oppose; if opposed, both sides present evidence"], ["Registration", "If there is no opposition, or you succeed, the certificate is issued"]] }],
+    ["h2", "™, ® and keeping your rights"],
+    ["p", "You can use ™ as soon as you start using the mark. The ® symbol may be used only after registration. A registered trademark lasts 10 years from the date of application and can be renewed indefinitely for further 10-year periods. Keep using the mark in the form registered, watch the Journal for confusingly similar applications, and act early if someone copies your brand."],
+  ],
+
+  "startup-india-registration": [
+    ["h2", "Eligibility conditions in detail"],
+    ["ul", ["Entity type: a private limited company, a limited liability partnership or a registered partnership firm.", "Age and turnover: the entity must be within the age and turnover limits in the current DPIIT notification. These limits have been extended in the past, so check the latest criteria.", "Originality: it must not be formed by splitting up or reconstructing an existing business.", "Innovation or scalability: it must be working on innovation, development or improvement of products, processes or services, or have a scalable model with potential for jobs or wealth creation."]],
+    ["h2", "What to write in the application"],
+    ["p", "The write-up is the most important part. Explain the problem you solve, who your customers are, how your product or process differs from what exists, and why the model can grow. Specific, factual statements are better than slogans. Add a website or product link and a pitch deck if you have one. A vague description is the most common reason for queries."],
+    ["h2", "Tax benefits and funding: what needs separate approval"],
+    ["p", "Recognition itself is a status, not a tax exemption. An income tax holiday for eligible startups under Section 80-IAC needs a separate certificate from the Inter-Ministerial Board after meeting its conditions. Tax rules on investment into startups, including the earlier angel-tax provisions, have changed in recent Budgets, so confirm the position for your fundraising before relying on any benefit."],
+    ["h2", "After recognition"],
+    ["p", "Recognised startups are still subject to normal compliance: annual ROC filings, audit, GST and income tax. Keep your information on the Startup India portal current, and keep records that show you continue to meet the criteria. If your age or turnover moves outside the limits, your recognition ceases to apply from that point."],
+  ],
+
+  "nri-tax-filing": [
+    ["h2", "Residential status in practice"],
+    ["p", "Your status is decided year by year, by counting days in India. A person who spends 182 days or more in a year is a resident. A person who spends at least 60 days in the year and 365 days or more across the preceding four years is also a resident, but the 60-day test is relaxed for Indian citizens and persons of Indian origin who visit India, and for crew members. Higher-income Indian citizens visiting India have a stricter test, and some citizens with no tax abroad may be treated as deemed residents. Even residents are split into 'resident and ordinarily resident' and 'not ordinarily resident', which changes the tax on foreign income."],
+    ["h2", "Common NRI income cases"],
+    ["ul", ["Rent from property in India: tax is deducted by the tenant at a higher rate for payments to non-residents, and you can file a return to claim any excess back.", "Interest: interest on NRO accounts is taxable in India, while interest on NRE accounts is generally exempt for a non-resident.", "Property sale: capital gains tax applies, and the buyer deducts tax at source on the sale. A lower deduction certificate can reduce the deduction.", "Shares and mutual funds: capital gains tax at the rates for the type of asset and holding period.", "Salary or business income earned for work in India: taxable in India."]],
+    ["h2", "Understanding NRE, NRO and FCNR accounts"],
+    ["p", "NRE accounts hold money from abroad and can be repatriated freely. NRO accounts hold income earned in India, such as rent and dividends, and repatriation of funds is limited, usually to an annual cap with supporting certificates. FCNR accounts are foreign-currency fixed deposits. Keeping the right money in the right account avoids tax and FEMA problems later."],
+    ["h2", "Repatriating money and Form 15CA/15CB"],
+    ["p", "To send sale proceeds or NRO balances abroad, the bank asks for Form 15CA and, in many cases, a CA certificate in Form 15CB showing the tax position. Starting this work before the sale, rather than after, speeds up the transfer."],
+    ["h2", "Common mistakes"],
+    ["ul", ["Assuming no return is needed because tax was deducted at source.", "Counting days incorrectly across the financial year.", "Not claiming the benefit of a tax treaty because the tax residency certificate was not collected in time.", "Mixing NRE and NRO funds.", "Missing the disclosure of Indian assets or income in the return."]],
+  ],
+
+  "section-8-company": [
+    ["h2", "Section 8 company, trust or society?"],
+    ["table", { head: ["", "Section 8 company", "Trust", "Society"], rows: [["Governing law", "Companies Act, 2013", "Trust deed and the Indian Trusts or state law", "Societies Registration Act or state law"], ["Regulator", "Registrar of Companies", "Charity commissioner or sub-registrar, depending on the state", "Registrar of Societies"], ["Compliance", "Highest: audit, annual filings, board and AGM", "Lower", "Moderate"], ["Typical fit", "Larger NGOs, those seeking corporate donors and CSR funds", "Family and small charitable projects", "Membership-based organisations"]] }],
+    ["h2", "Governance after registration"],
+    ["p", "A Section 8 company must hold board meetings and an annual general meeting, keep minutes and statutory registers, get its accounts audited every year and file annual returns with the Registrar. Its income can only be used for its stated objects, and no dividend can be paid to members. Directors can be reimbursed for expenses, and any payment for services must be reasonable and properly recorded."],
+    ["h2", "Tax exemption: 12A and 80G"],
+    ["p", "Registration under Section 12A makes the organisation's income eligible for exemption subject to conditions, such as applying the required part of income to its objects. Registration under Section 80G lets donors claim a deduction. Both are first granted provisionally for a limited period and must then be converted to regular registration within the time allowed, so the application dates need to be tracked."],
+    ["h2", "CSR and foreign funding"],
+    ["p", "Companies spending on corporate social responsibility can fund only eligible registered entities, which must obtain a CSR-1 registration. Receiving funds from abroad needs separate registration or prior permission under the foreign contribution law, with its own reporting. Plan these registrations as part of your set-up if they are part of your funding model."],
+  ],
+};
