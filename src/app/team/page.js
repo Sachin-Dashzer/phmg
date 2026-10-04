@@ -1,4 +1,5 @@
 import { buildMetadata } from "@/lib/seo";
+import Image from "next/image";
 import { team } from "@/data/team";
 import PageHeader from "@/components/ui/PageHeader";
 import CTABand from "@/components/ui/CTABand";
@@ -17,7 +18,7 @@ export default function Team() {
       <PageHeader
         crumbs={[{ name: "Team", href: "/team" }]}
         title="Our Team"
-        intro="Qualified chartered accountants and compliance professionals who work on your file."
+        intro="Partner-led. Expert-driven. Since 2014."
       />
       <section className="container-x section">
         {team.length === 0 ? (
@@ -25,10 +26,16 @@ export default function Team() {
         ) : (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((p) => (
-              <article key={p.slug} className="card p-6">
-                <h2 className="text-xl font-semibold">{p.name}</h2>
-                <p className="text-sm text-brand-muted">{p.role}{p.credentials?.length ? `, ${p.credentials.join(", ")}` : ""}</p>
-                {p.bio && <p className="mt-3">{p.bio}</p>}
+              <article key={p.slug} className="card overflow-hidden">
+                <div className="relative aspect-square bg-brand-mist">
+                  <Image src={p.photo} alt={p.name} fill sizes="(min-width: 1024px) 30vw, 100vw" className="object-cover object-top" />
+                </div>
+                <div className="p-6">
+                  <h2 className="text-xl font-semibold">{p.name}</h2>
+                  <p className="text-sm font-medium text-brand-gold-dark">{p.role}</p>
+                  <p className="text-sm text-brand-muted">{p.credentials.join(", ")} · {p.years} yrs experience</p>
+                  <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">{p.focus.map((f) => <li key={f}>{f}</li>)}</ul>
+                </div>
               </article>
             ))}
           </div>

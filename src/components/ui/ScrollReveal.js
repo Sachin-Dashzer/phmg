@@ -14,7 +14,7 @@ export default function ScrollReveal({ children, className = "", stagger = false
           obs.unobserve(el);
         }
       },
-      { threshold: 0.07, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0, rootMargin: "0px" }
     );
     obs.observe(el);
     return () => obs.disconnect();

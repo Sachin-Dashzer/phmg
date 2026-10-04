@@ -1,6 +1,6 @@
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
-import { firm, hasAddress, phoneHref, waHref } from "@/data/firm";
+import { firm, offices, hasAddress, phoneHref, waHref } from "@/data/firm";
 import { categories } from "@/data/categories";
 import PageHeader from "@/components/ui/PageHeader";
 import LeadForm from "@/components/forms/LeadForm";
@@ -8,7 +8,7 @@ import LeadForm from "@/components/forms/LeadForm";
 export const metadata = buildMetadata({
   title: "Contact PHMG & Associates – Talk to a CA",
   description:
-    "Contact PHMG & Associates for tax, audit, GST and company compliance. Send an enquiry and our chartered accountants will get back to you. Talk to a CA today.",
+    "Contact PHMG & Associates for audit, tax, GST, litigation and advisory. Send an enquiry and our chartered accountants will get back to you. Talk to a CA today.",
   path: "/contact",
 });
 
@@ -16,9 +16,12 @@ export default function Contact() {
   const a = firm.address;
   const rows = [
     firm.phone && { I: Phone, label: "Phone", node: <a href={phoneHref()} className="hover:underline">{firm.phone}</a> },
+    firm.phone2 && { I: Phone, label: "Phone (alternate)", node: <a href={`tel:${firm.phone2.replace(/[^+d]/g, "")}`} className="hover:underline">{firm.phone2}</a> },
     firm.email && { I: Mail, label: "Email", node: <a href={`mailto:${firm.email}`} className="hover:underline">{firm.email}</a> },
+    firm.email2 && { I: Mail, label: "Email", node: <a href={`mailto:${firm.email2}`} className="hover:underline">{firm.email2}</a> },
     firm.whatsapp && { I: MessageCircle, label: "WhatsApp", node: <a href={waHref()} rel="noopener" className="hover:underline">Chat with us</a> },
-    hasAddress() && { I: MapPin, label: "Office", node: [a.street, a.locality, a.city, a.region, a.postalCode].filter(Boolean).join(", ") },
+    hasAddress() && { I: MapPin, label: "Head office", node: [a.street, a.locality, a.city, a.region, a.postalCode].filter(Boolean).join(", ") },
+    ...offices.filter((o) => !o.head).map((o) => ({ I: MapPin, label: `${o.city} branch`, node: o.address })),
     firm.hours && { I: Clock, label: "Hours", node: firm.hours },
   ].filter(Boolean);
 

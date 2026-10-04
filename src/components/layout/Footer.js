@@ -44,8 +44,8 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <Logo light />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
-              Chartered accountants for tax, audit, GST, company registration and compliance.
-              Partner-led, with online service across India.
+              PHMG & Associates, Chartered Accountants since 2014. Assurance, tax, advisory and litigation across Noida, Delhi, Mumbai, Ludhiana and Meerut.
+              RBI Category-I and CAG empanelled. Partner-led delivery.
             </p>
 
             {(hasAddress() || firm.phone || firm.email) && (

@@ -46,12 +46,62 @@ export default async function ServicePage({ params }) {
   return (
     <>
       <JsonLd data={serviceSchema({ name: s.title, description: s.metaDescription, path: serviceUrl(s) })} />
-      <section className="bg-gradient-to-br from-[#EAF4FF] via-white to-[#E6F7F9]">
-        <div className="container-x py-10 md:py-14">
-          <Breadcrumbs items={[{ name: "Services", href: "/services" }, { name: cat.title, href: `/services/${cat.slug}` }, { name: s.title, href: serviceUrl(s) }]} />
-          <h1 className="mt-5 max-w-3xl text-4xl font-extrabold md:text-5xl">{s.h1}</h1>
-          <p className="mt-4 max-w-2xl text-lg">{s.intro}</p>
-          <p className="mt-3 text-sm text-brand-muted">Last reviewed: {s.lastReviewed}</p>
+      <section className="relative overflow-hidden border-b border-sky-100 bg-gradient-to-br from-[#E8F3FF] via-[#F2F8FF] to-[#DCEEFF]">
+        {/* Light blue grid lines, fading out with a radial mask */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_80%_70%_at_50%_40%,black_40%,transparent_100%)]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(56, 152, 236, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(56, 152, 236, 0.08) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
+        />
+
+
+
+        {/* Gentle fade at the bottom, staying in light blue */}
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#EEF6FF] to-transparent" />
+
+        <div className="container-x relative py-10 md:py-14">
+
+
+          <div className="mt-8 grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+            {/* Text */}
+            <div>
+              <Breadcrumbs
+                items={[
+                  { name: "Services", href: "/services" },
+                  { name: cat.title, href: `/services/${cat.slug}` },
+                  { name: s.title, href: serviceUrl(s) },
+                ]}
+              />
+
+              <h1 className="mt-5 max-w-2xl text-balance text-3xl font-extrabold leading-[1.15] tracking-tight text-slate-900 md:text-4xl lg:text-[2.8rem]">
+                {s.h1}
+              </h1>
+
+              <div className="mt-5 h-1 w-14 rounded-full bg-gradient-to-r from-sky-500 to-blue-400" />
+
+              <p className="mt-5 max-w-xl text-pretty text-base leading-relaxed text-slate-600 md:text-base">
+                {s.intro}
+              </p>
+            </div>
+
+            {/* Image (always shown) */}
+            <div className="relative">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white bg-gradient-to-br from-sky-100 to-blue-100 shadow-[0_18px_45px_-20px_rgba(56,152,236,0.45)] ring-1 ring-sky-200/80">
+                {s.heroImage && (
+                  <img
+                    src={s.heroImage}
+                    alt=""
+                    className="h-full w-full object-cover"
+                    loading="eager"
+                  />
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -6,15 +6,15 @@ import CTABand from "@/components/ui/CTABand";
 export const metadata = buildMetadata({
   title: "About PHMG & Associates – Chartered Accountants",
   description:
-    "Learn how PHMG & Associates works: partner-led chartered accountants focused on accuracy, confidentiality and clear communication. Talk to us today.",
+    "PHMG & Associates: RBI Category-I and CAG empanelled chartered accountants since 2014, across Noida, Delhi, Mumbai, Ludhiana and Meerut. Talk to us today.",
   path: "/about",
 });
 
 const values = [
-  { t: "Quality", d: "Every filing is prepared against source documents and reviewed before it goes out." },
+  { t: "Quality", d: "We are committed to excellence in service delivery, professionalism and client satisfaction." },
+  { t: "Good relations", d: "Clients are at the heart of everything we do: we build long-term relationships on trust and mutual respect." },
+  { t: "Innovation", d: "We embrace change and technology to add value, improve processes and stay ahead of industry trends." },
   { t: "Confidentiality", d: "Client information is used only for the engagement and shared through secure channels." },
-  { t: "Independence and objectivity", d: "We give advice based on the law and your facts, including when it is not what you hoped to hear." },
-  { t: "Plain communication", d: "We explain terms and sections in simple English, so you know what is being done and why." },
 ];
 
 export default function About() {
@@ -23,19 +23,19 @@ export default function About() {
       <PageHeader
         crumbs={[{ name: "About", href: "/about" }]}
         title="About PHMG & Associates"
-        intro="We are a firm of chartered accountants that helps individuals, businesses and trusts stay compliant and make sound financial decisions."
+        intro="A decade of trust. A future of growth. Strategic advisors to growing businesses."
       />
       <section className="container-x section grid gap-12 lg:grid-cols-2">
         <div className="prose-phmg">
-          <h2 className="text-3xl font-bold">How we work</h2>
-          <p>Compliance work is only useful when it is accurate and on time. We start by understanding your situation, agree the scope and fee in writing, and then handle the work with a chartered accountant reviewing every important filing.</p>
-          <p>Most of our work can be done online. You share documents through a secure link, and we keep you informed at each step until the filing proof reaches you.</p>
-          <p>We keep our website claims factual and follow the advertising and ethics norms of the Institute of Chartered Accountants of India (ICAI).</p>
+          <h2 className="text-3xl font-bold">Who we are</h2>
+          <p>PHMG and Associates is a multi-location CA firm empanelled with the Reserve Bank of India in Category-I and with the CAG of India, handling bank statutory and concurrent audits, with a specialisation in GST litigation.</p>
+          <p>We serve corporate, banking, government, PSU and private sector clients across India and globally, from offices in Noida (head office), Delhi, Mumbai, Ludhiana and Meerut covering four states. Our work spans manufacturing and infrastructure, healthcare and pharmaceuticals, banking and financial services, IT companies and government entities, FMCG, real estate and textiles, and eco-recycling and chemicals.</p>
+          <p>Our team of 50+ professionals includes chartered accountants, company secretaries, semi-qualified CAs and specialists. Every engagement is owned end-to-end by a partner.</p>
           {firm.icaiFrn && <p>ICAI Firm Registration No.: {firm.icaiFrn}</p>}
           {firm.foundedYear && <p>Established: {firm.foundedYear}</p>}
         </div>
         <div>
-          <h2 className="text-3xl font-bold">Our values</h2>
+          <h2 className="text-3xl font-bold">Our values: navigating success together</h2>
           <dl className="mt-5 space-y-4">
             {values.map((v) => (
               <div key={v.t} className="card p-5"><dt className="font-semibold text-brand-navy">{v.t}</dt><dd className="mt-1 text-brand-muted">{v.d}</dd></div>
