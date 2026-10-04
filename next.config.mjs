@@ -43,16 +43,8 @@ const nextConfig = {
     return [{ source: "/ca-in-:city", destination: "/locations/:city" }];
   },
   async redirects() {
-    return [
-      // one canonical host: phmgindia.com (http -> https is handled by the host/CDN and HSTS)
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.phmgindia.com" }],
-        destination: "https://phmgindia.com/:path*",
-        permanent: true,
-      },
-      ...extraRedirects,
-    ];
+    // no host redirects here: Vercel Domains sends apex -> www
+    return extraRedirects;
   },
 };
 

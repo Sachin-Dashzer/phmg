@@ -7,7 +7,7 @@ export const firm = {
   legalName: "PHMG & Associates",
   tagline: "Chartered Accountants",
   strapline: "Assurance | Tax | Advisory | Litigation",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://phmgindia.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.phmgindia.com",
   domain: "phmgindia.com",
   icaiFrn: "", // TODO: CLIENT TO CONFIRM (not in profile)
   foundedYear: "2014",
