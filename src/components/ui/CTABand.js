@@ -15,7 +15,7 @@ export default function CTABand({
         <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-brand-blue/15 blur-3xl" />
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-gold/30 to-transparent" />
         {/* Decorative grid */}
-        <svg className="absolute inset-0 h-full w-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+        <svg className="absolute inset-0 h-full w-full opacity-3" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="cta-dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
               <circle cx="2" cy="2" r="1.5" fill="white" />

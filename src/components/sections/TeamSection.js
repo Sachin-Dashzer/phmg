@@ -19,11 +19,11 @@ const ledgerLines =
 function TeamCard({ slug, name, role, credentials = [], years, photo }) {
   return (
     <Link
-      href={`/team/${slug}`}
+      href="/team"
       aria-label={`View ${name}'s profile`}
       className="group relative block w-[72%] shrink-0 snap-start  rounded-3xl focus-visible:outline-none sm:w-[calc((100%-2.5rem)/3)]"
     >
-      <div className="relative aspect-[3/4] overflow-hidden  rounded-3xl bg-linear-to-b from-brand-blue/40 via-brand-navy to-brand-navy ring-1 ring-white/10 transition duration-500 group-hover:ring-2 group-hover:ring-brand-gold group-focus-visible:ring-2 group-focus-visible:ring-brand-gold">
+      <div className="relative aspect-3/4 overflow-hidden  rounded-3xl bg-linear-to-b from-brand-blue/40 via-brand-navy to-brand-navy ring-1 ring-white/10 transition duration-500 group-hover:ring-2 group-hover:ring-brand-gold group-focus-visible:ring-2 group-focus-visible:ring-brand-gold">
         {/* Ledger lines behind the portrait */}
         <div aria-hidden="true" className="absolute inset-0" style={{ backgroundImage: ledgerLines }} />
 
@@ -198,11 +198,9 @@ export function SubscribeSection() {
     if (!email) return;
     setStatus("loading");
     try {
-      const res = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+      const body = new FormData();
+      body.set("email", email);
+      const res = await fetch("/api/newsletter", { method: "POST", body });
       if (!res.ok) throw new Error("Failed");
       setStatus("success");
       setEmail("");

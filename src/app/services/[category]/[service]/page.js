@@ -1,17 +1,20 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Check, X, AlertTriangle } from "lucide-react";
+import { Check, AlertTriangle, ArrowRight, FileCheck2, ShieldCheck, CalendarClock } from "lucide-react";
 import { publishedServices, getService, serviceUrl } from "@/data/services";
 import { getCategory } from "@/data/categories";
 import { buildMetadata } from "@/lib/seo";
 import { serviceSchema } from "@/lib/schema";
 import JsonLd from "@/components/seo/JsonLd";
-import Breadcrumbs from "@/components/ui/Breadcrumbs";
-import FAQAccordion from "@/components/ui/FAQAccordion";
+import PageHeader from "@/components/ui/PageHeader";
 import ArticleBody from "@/components/ui/ArticleBody";
 import CTABand from "@/components/ui/CTABand";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import LeadCard from "@/components/forms/LeadCard";
+import { ProcessSteps, FAQSection } from "@/components/sections/SiteSections";
 
 export const dynamicParams = false;
 
@@ -32,8 +35,26 @@ const whyPhmg = [
   "Online service across India, with a single point of contact.",
 ];
 
+// Fallback hero photo per category; services can still set their own heroImage.
+const categoryImage = {
+  "audit-assurance": "/images/stock-audit.png",
+  "income-tax": "/who-we-serve.jpg",
+  gst: "/images/office/office-3.jpeg",
+};
+
 const H2 = ({ id, children }) => (
-  <h2 id={id} className="mt-12 scroll-mt-24 text-2xl font-bold md:text-3xl">{children}</h2>
+  <h2 id={id} className="scroll-mt-28 font-display text-2xl font-bold md:text-3xl">{children}</h2>
+);
+
+const CheckList = ({ items }) => (
+  <ul className="mt-5 space-y-3">
+    {items.map((t) => (
+      <li key={t} className="flex gap-3 text-sm leading-relaxed">
+        <span className="mt-0.5 flex h-14 w-5 shrink-0 items-center justify-center rounded-full bg-brand-gold/15 text-brand-gold-dark"><Check size={13} aria-hidden="true" /></span>
+        {t}
+      </li>
+    ))}
+  </ul>
 );
 
 export default async function ServicePage({ params }) {
@@ -42,157 +63,147 @@ export default async function ServicePage({ params }) {
   if (!s) notFound();
   const cat = getCategory(category);
   const related = (s.related || []).map((slug) => publishedServices.find((x) => x.slug === slug)).filter(Boolean);
+  const image = s.heroImage || categoryImage[cat.slug] || "/images/office/office-1.jpeg";
 
   return (
     <>
       <JsonLd data={serviceSchema({ name: s.title, description: s.metaDescription, path: serviceUrl(s) })} />
-      <section className="relative overflow-hidden border-b border-sky-100 bg-gradient-to-br from-[#E8F3FF] via-[#F2F8FF] to-[#DCEEFF]">
-        {/* Light blue grid lines, fading out with a radial mask */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_80%_70%_at_50%_40%,black_40%,transparent_100%)]"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(56, 152, 236, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(56, 152, 236, 0.08) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-
-
-
-        {/* Gentle fade at the bottom, staying in light blue */}
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#EEF6FF] to-transparent" />
-
-        <div className="container-x relative py-10 md:py-14">
-
-
-          <div className="mt-8 grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-            {/* Text */}
-            <div>
-              <Breadcrumbs
-                items={[
-                  { name: "Services", href: "/services" },
-                  { name: cat.title, href: `/services/${cat.slug}` },
-                  { name: s.title, href: serviceUrl(s) },
-                ]}
-              />
-
-              <h1 className="mt-5 max-w-2xl text-balance text-3xl font-extrabold leading-[1.15] tracking-tight text-slate-900 md:text-4xl lg:text-[2.8rem]">
-                {s.h1}
-              </h1>
-
-              <div className="mt-5 h-1 w-14 rounded-full bg-gradient-to-r from-sky-500 to-blue-400" />
-
-              <p className="mt-5 max-w-xl text-pretty text-base leading-relaxed text-slate-600 md:text-base">
-                {s.intro}
-              </p>
+      <PageHeader
+        crumbs={[
+          { name: "Services", href: "/services" },
+          { name: cat.title, href: `/services/${cat.slug}` },
+          { name: s.title, href: serviceUrl(s) },
+        ]}
+        eyebrow={cat.title}
+        title={s.h1}
+        intro={s.intro}
+        image="/images/office/office-2.jpeg"
+        aside={
+          <div className="relative">
+            <div className="relative aspect-16/11 overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/15">
+              <Image src={image} alt="" fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
             </div>
-
-            {/* Image (always shown) */}
-            <div className="relative">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white bg-gradient-to-br from-sky-100 to-blue-100 shadow-[0_18px_45px_-20px_rgba(56,152,236,0.45)] ring-1 ring-sky-200/80">
-                {s.heroImage && (
-                  <img
-                    src={s.heroImage}
-                    alt=""
-                    className="h-full w-full object-cover"
-                    loading="eager"
-                  />
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="container-x grid gap-10 pb-16 lg:grid-cols-[1fr_22rem]">
-        <article className="min-w-0">
-          <H2 id="what-is">What is {s.title}?</H2>
-          <p className="mt-3 max-w-prose leading-relaxed">{s.definition}</p>
-
-          <H2 id="who">Who needs it</H2>
-          <ul className="mt-3 space-y-2">
-            {s.whoNeedsIt.map((t) => <li key={t} className="flex gap-2"><Check size={18} className="mt-1 shrink-0 text-brand-success" aria-hidden="true" />{t}</li>)}
-          </ul>
-
-          <H2 id="benefits">Benefits</H2>
-          <ul className="mt-3 space-y-2">
-            {s.benefits.map((t) => <li key={t} className="flex gap-2"><Check size={18} className="mt-1 shrink-0 text-brand-success" aria-hidden="true" />{t}</li>)}
-          </ul>
-
-          {s.sections && <ArticleBody blocks={s.sections} />}
-
-          <H2 id="documents">Documents required</H2>
-          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-            {s.documents.map((t) => <li key={t} className="card flex gap-2 p-3 text-sm"><Check size={16} className="mt-0.5 shrink-0 text-brand-blue" aria-hidden="true" />{t}</li>)}
-          </ul>
-
-          <H2 id="process">Our process</H2>
-          <ol className="mt-4 space-y-4">
-            {s.process.map((p, i) => (
-              <li key={p.title} className="card flex gap-4 p-5">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-blue font-bold text-white">{i + 1}</span>
-                <div>
-                  <h3 className="text-lg font-semibold">{p.title}</h3>
-                  <p className="mt-1">{p.text}</p>
-                  <p className="mt-1 text-sm font-medium text-brand-muted">{p.time}</p>
+            <div className="absolute -bottom-6 left-4 right-4 grid grid-cols-3 divide-x divide-brand-line rounded-xl bg-white text-center shadow-xl sm:left-8 sm:right-8">
+              {[[FileCheck2, `${s.documents.length} documents`], [CalendarClock, `${s.process.length} steps`], [ShieldCheck, "Partner review"]].map(([I, t]) => (
+                <div key={t} className="flex flex-col items-center gap-1 px-2 py-3">
+                  <I size={18} className="text-brand-gold" aria-hidden="true" />
+                  <span className="text-xs font-semibold text-brand-navy">{t}</span>
                 </div>
-              </li>
-            ))}
-          </ol>
-
-          <H2 id="due-dates">Due dates and penalties</H2>
-          <div className="mt-4 overflow-x-auto rounded-2xl border border-brand-line">
-            <table className="w-full min-w-[34rem] text-left text-sm">
-              <thead className="bg-brand-mist text-brand-navy">
-                <tr><th scope="col" className="p-3">Item</th><th scope="col" className="p-3">Due date</th><th scope="col" className="p-3">If missed</th></tr>
-              </thead>
-              <tbody>
-                {s.deadlines.map((d) => (
-                  <tr key={d.item} className="border-t border-brand-line align-top">
-                    <th scope="row" className="p-3 font-medium">{d.item}</th><td className="p-3">{d.date}</td><td className="p-3">{d.penalty}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+              ))}
+            </div>
           </div>
-          {s.dueNote && <p className="mt-3 text-sm text-brand-muted">{s.dueNote}</p>}
+        }
+      >
+        <div className="flex flex-wrap gap-3">
+          <Link href="#lead" className="btn btn-gold">Get a free quote <ArrowRight size={16} aria-hidden="true" /></Link>
+          <Link href="#documents" className="btn btn-ghost-light">Documents needed</Link>
+        </div>
+      </PageHeader>
 
-          <H2 id="mistakes">Mistakes to avoid</H2>
-          <ul className="mt-3 space-y-2">
-            {s.mistakes.map((t) => <li key={t} className="flex gap-2"><AlertTriangle size={18} className="mt-1 shrink-0 text-brand-gold" aria-hidden="true" />{t}</li>)}
-          </ul>
+      <div className="bg-white">
+        <div className="container-x grid gap-10 py-16 md:py-20 lg:grid-cols-[1fr_26rem] lg:gap-14">
+          <article className="min-w-0 space-y-16">
+            <section>
+              <div className="section-label section-label-blue mb-4 w-fit">Overview</div>
+              <H2 id="what-is">What is {s.title}?</H2>
+              <div className="divider-gold mt-5" />
+              <p className="mt-5 max-w-prose text-lg leading-relaxed text-brand-ink">{s.definition}</p>
+            </section>
 
-          <H2 id="why">Why PHMG for {s.title.toLowerCase()}</H2>
-          <ul className="mt-3 space-y-2">
-            {whyPhmg.map((t) => <li key={t} className="flex gap-2"><Check size={18} className="mt-1 shrink-0 text-brand-success" aria-hidden="true" />{t}</li>)}
-          </ul>
-          <p className="mt-4">
-            Fees depend on your case. <Link href="/contact" className="font-semibold text-brand-blue-dark underline">Request a quote</Link> and we will share a clear scope and fee.
-          </p>
+            <ScrollReveal stagger className="grid gap-5 md:grid-cols-2">
+              <section className="rounded-2xl border border-brand-line bg-brand-mist p-6">
+                <H2 id="who">Who needs it</H2>
+                <CheckList items={s.whoNeedsIt} />
+              </section>
+              <section className="rounded-2xl border border-brand-line bg-brand-mist p-6">
+                <H2 id="benefits">Benefits</H2>
+                <CheckList items={s.benefits} />
+              </section>
+            </ScrollReveal>
 
-          <H2 id="faq">Frequently asked questions</H2>
-          <div className="mt-4"><FAQAccordion faqs={s.faqs} /></div>
+            {s.sections && <ArticleBody blocks={s.sections} />}
 
-          {related.length > 0 && (
-            <>
-              <H2 id="related">Related services</H2>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                {related.map((r) => <ServiceCard key={r.slug} service={r} />)}
+            <section>
+              <H2 id="documents">Documents required</H2>
+              <ol className="mt-6 grid gap-3 sm:grid-cols-2">
+                {s.documents.map((t, i) => (
+                  <li key={t} className="flex items-start gap-3 rounded-xl border border-brand-line bg-white p-4 text-sm shadow-xs">
+                    <span className="flex h-18 w-7 shrink-0 items-center justify-center rounded-lg bg-brand-navy font-display text-xs font-bold text-brand-gold">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="pt-1">{t}</span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            <section>
+              <H2 id="due-dates">Due dates and penalties</H2>
+              <div className="mt-6 overflow-x-auto rounded-2xl border border-brand-line">
+                <table className="w-full min-w-136 text-left text-sm">
+                  <thead className="bg-brand-navy text-white">
+                    <tr><th scope="col" className="p-4 font-semibold">Item</th><th scope="col" className="p-4 font-semibold">Due date</th><th scope="col" className="p-4 font-semibold">If missed</th></tr>
+                  </thead>
+                  <tbody>
+                    {s.deadlines.map((d) => (
+                      <tr key={d.item} className="border-t border-brand-line align-top even:bg-brand-mist/60">
+                        <th scope="row" className="p-4 font-semibold text-brand-navy">{d.item}</th><td className="p-4">{d.date}</td><td className="p-4 text-brand-danger">{d.penalty}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-            </>
-          )}
+              {s.dueNote && <p className="mt-3 text-sm text-brand-muted">{s.dueNote}</p>}
+            </section>
 
-          <p className="mt-12 rounded-xl bg-brand-mist p-4 text-sm text-brand-muted">
-            This content is for general information and does not constitute professional advice. Laws, rates and due dates change; please confirm the current position for your case before acting.
-          </p>
-        </article>
+            <ScrollReveal stagger className="grid gap-5 md:grid-cols-2">
+              <section className="rounded-2xl border border-amber-200 bg-amber-50 p-6">
+                <H2 id="mistakes">Mistakes to avoid</H2>
+                <ul className="mt-5 space-y-3">
+                  {s.mistakes.map((t) => (
+                    <li key={t} className="flex gap-3 text-sm leading-relaxed"><AlertTriangle size={18} className="mt-0.5 shrink-0 text-amber-600" aria-hidden="true" />{t}</li>
+                  ))}
+                </ul>
+              </section>
+              <section className="relative overflow-hidden rounded-2xl bg-brand-navy p-6 text-white">
+                <div aria-hidden="true" className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand-gold/15 blur-2xl" />
+                <h2 id="why" className="relative scroll-mt-28 font-display text-2xl font-bold text-white md:text-3xl">Why PHMG</h2>
+                <ul className="relative mt-5 space-y-3">
+                  {whyPhmg.map((t) => (
+                    <li key={t} className="flex gap-3 text-sm leading-relaxed text-white/80"><Check size={18} className="mt-0.5 shrink-0 text-brand-gold" aria-hidden="true" />{t}</li>
+                  ))}
+                </ul>
+                <p className="relative mt-5 border-t border-white/15 pt-4 text-sm text-white/70">
+                  Fees depend on your case. <Link href="/contact" className="font-semibold text-brand-gold underline">Request a quote</Link> for a clear scope and fee.
+                </p>
+              </section>
+            </ScrollReveal>
+          </article>
 
-        <div className="lg:pt-12">
-          <div className="lg:sticky lg:top-24">
-            <LeadCard defaultService={cat.title} id="service-lead" title={`Talk to a CA about ${s.title.toLowerCase()}`} />
+          <div id="lead" className="scroll-mt-28">
+            <div className="lg:sticky lg:top-28">
+              <LeadCard defaultService={cat.title} id="service-lead" title={`Talk to a CA about ${s.title.toLowerCase()}`} />
+            </div>
           </div>
         </div>
+      </div>
+
+      <ProcessSteps className="bg-brand-mist" label="Our process" title={`How we handle your ${s.title.toLowerCase()}`} steps={s.process} />
+      <FAQSection faqs={s.faqs} className="bg-white" />
+
+      {related.length > 0 && (
+        <section aria-labelledby="related" className="section bg-brand-mist">
+          <div className="container-x">
+            <SectionHeading id="related" label="Related services" title="You may also need" />
+            <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {related.map((r) => <ServiceCard key={r.slug} service={r} />)}
+            </ScrollReveal>
+          </div>
+        </section>
+      )}
+
+      <div className="bg-white py-8">
+        <p className="container-x text-xs text-brand-muted">
+          This content is for general information and does not constitute professional advice. Laws, rates and due dates change; please confirm the current position for your case before acting.
+        </p>
       </div>
       <CTABand />
     </>

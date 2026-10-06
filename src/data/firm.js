@@ -13,7 +13,7 @@ export const firm = {
   foundedYear: "2014",
   phone: "+91 9718115480",
   phone2: "+91 9654123003",
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919718115480", // TODO: CLIENT TO CONFIRM primary phone is on WhatsApp
   email: "piyushm@phmgindia.com",
   email2: "caankit@phmgindia.com",
   hours: "", // TODO: CLIENT TO CONFIRM
