@@ -10,12 +10,15 @@ export default function Breadcrumbs({ items, light = false }) {
       <JsonLd data={breadcrumbSchema(all)} />
       <ol className="flex flex-wrap items-center gap-1.5">
         {all.map((it, i) => (
+          // Separator trails its own crumb, so a wrap never starts a line with "/".
           <li key={it.href} className="flex items-center gap-1.5">
-            {i > 0 && <span aria-hidden="true" className={light ? "text-brand-gold/70" : ""}>/</span>}
             {i === all.length - 1 ? (
               <span aria-current="page" className={light ? "text-white" : "text-brand-navy"}>{it.name}</span>
             ) : (
-              <Link href={it.href} className={light ? "hover:text-brand-gold" : "hover:text-brand-blue hover:underline"}>{it.name}</Link>
+              <>
+                <Link href={it.href} className={light ? "hover:text-brand-gold" : "hover:text-brand-blue hover:underline"}>{it.name}</Link>
+                <span aria-hidden="true" className={light ? "text-brand-gold/70" : ""}>/</span>
+              </>
             )}
           </li>
         ))}

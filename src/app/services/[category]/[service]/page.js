@@ -137,7 +137,7 @@ export default async function ServicePage({ params }) {
 
             <section>
               <H2 id="due-dates">Due dates and penalties</H2>
-              <div className="mt-6 overflow-x-auto rounded-2xl border border-brand-line">
+              <div tabIndex={0} role="region" aria-label="Due dates, scrolls horizontally" className="mt-6 overflow-x-auto rounded-2xl border border-brand-line">
                 <table className="w-full min-w-136 text-left text-sm">
                   <thead className="bg-brand-navy text-white">
                     <tr><th scope="col" className="p-4 font-semibold">Item</th><th scope="col" className="p-4 font-semibold">Due date</th><th scope="col" className="p-4 font-semibold">If missed</th></tr>

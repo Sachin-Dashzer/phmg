@@ -76,7 +76,9 @@ export default function LeadForm({
   --------------------------------- */
 
   const inputClass = `
-    ${full ? "h-11 text-sm" : "h-9.5 text-[12px]"}
+    ${/* Compact variant stays compact only from sm up: below that a 38px/12px
+          field is under the 44px touch target and makes iOS zoom on focus. */ ""}
+    ${full ? "h-11 text-base sm:text-sm" : "h-11 text-base sm:h-9.5 sm:text-[12px]"}
     w-full
     rounded-md
     border
@@ -97,7 +99,8 @@ export default function LeadForm({
   const labelClass = `
     mb-1
     block
-    text-[10px]
+    text-[11px]
+    sm:text-[10px]
     font-semibold
     uppercase
     tracking-[0.04em]
@@ -271,7 +274,7 @@ export default function LeadForm({
             rows={full ? 5 : 3}
             maxLength={1500}
             className={`
-              ${full ? "min-h-27.5 text-sm" : "min-h-17 text-[12px]"}
+              ${full ? "min-h-27.5 text-base sm:text-sm" : "min-h-20 text-base sm:min-h-17 sm:text-[12px]"}
               w-full
               resize-none
               rounded-md
@@ -402,7 +405,7 @@ export default function LeadForm({
         type="submit"
         disabled={state.busy}
         className={`
-          ${full ? "h-12 text-sm sm:col-span-2" : "h-10 text-[11px]"}
+          ${full ? "h-12 text-sm sm:col-span-2" : "h-12 text-sm sm:h-10 sm:text-[11px]"}
           group
           flex
           w-full

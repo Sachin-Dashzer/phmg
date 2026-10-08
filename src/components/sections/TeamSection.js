@@ -236,7 +236,9 @@ export function SubscribeSection() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
                     aria-label="Email address"
-                    className="h-11 w-full flex-1 rounded-md bg-white/10 px-4 text-sm text-white placeholder:text-white/50 outline-none ring-1 ring-white/20 focus:ring-white/50 sm:rounded-r-none"
+                    // flex-1 only from sm: in the stacked (flex-col) layout it sets
+                    // flex-basis on the height axis and collapses h-11 to ~17px.
+                    className="h-11 w-full shrink-0 rounded-md bg-white/10 px-4 text-base text-white placeholder:text-white/50 outline-none ring-1 ring-white/20 focus:ring-white/50 sm:flex-1 sm:rounded-r-none sm:text-sm"
                   />
                   <button
                     type="submit"

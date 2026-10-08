@@ -13,7 +13,8 @@ export default function WhatsAppFloat() {
     "max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 group-hover:max-w-32 group-hover:pl-2.5 group-hover:pr-1.5 group-hover:opacity-100 group-focus-visible:max-w-32 group-focus-visible:pl-2.5 group-focus-visible:pr-1.5 group-focus-visible:opacity-100";
   const halo = "absolute inset-0 -z-10 animate-ping rounded-full opacity-40 motion-reduce:hidden";
   return (
-    <div className="fixed bottom-20 right-4 z-40 flex flex-col items-end gap-3 md:bottom-6 md:right-6">
+    // Hidden below md: StickyMobileCTA already offers Call / WhatsApp / Enquire there.
+    <div className="fixed bottom-6 right-6 z-40 hidden flex-col items-end gap-3 md:flex">
       {wa && (
         <a href={wa} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp now" className={`${btn} bg-[#25d366] shadow-[#25d366]/40`}>
           <span aria-hidden="true" className={`${halo} bg-[#25d366]`} />

@@ -29,7 +29,8 @@ export default function PageHeader({ crumbs, title, intro, eyebrow, image = Bann
       {/* =========================================================
       LEFT DARK GRADIENT
       Keeps text readable while keeping the right side
-      of the image clearly visible.
+      of the image clearly visible. On narrow screens the text
+      runs the full width, so the wash does not fade out there.
       ========================================================= */}
       <div
         aria-hidden="true"
@@ -39,9 +40,11 @@ export default function PageHeader({ crumbs, title, intro, eyebrow, image = Bann
       -z-10
       bg-linear-to-r
       from-black/85
-      via-black/55
+      via-black/65
       via-42%
-      to-transparent
+      to-black/45
+      lg:via-black/55
+      lg:to-transparent
     "
       />
 

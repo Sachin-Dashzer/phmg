@@ -30,10 +30,11 @@ export function CategoryCard({ category: c, items = [], className = "" }) {
       <p className="mt-2 text-sm leading-relaxed text-brand-muted">{c.short}</p>
 
       {items.length > 0 && (
-        <ul className="relative z-10 mt-5 space-y-1.5 border-t border-neutral-200/70 pt-4">
+        <ul className="relative z-10 mt-5 space-y-0.5 border-t border-neutral-200/70 pt-3">
           {items.slice(0, 3).map((s) => (
             <li key={s.slug}>
-              <Link href={`/services/${s.category}/${s.slug}`} className="inline-flex items-center gap-1 text-sm text-brand-muted transition-colors hover:text-brand-blue">
+              {/* py-1.5 keeps the row past the 24px minimum target size */}
+              <Link href={`/services/${s.category}/${s.slug}`} className="inline-flex items-center gap-1 py-1.5 text-sm text-brand-muted transition-colors hover:text-brand-blue">
                 <ChevronRight size={14} className="shrink-0 text-brand-gold" aria-hidden="true" />
                 {s.title}
               </Link>

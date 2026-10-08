@@ -45,7 +45,7 @@ export default function TaxCalendar() {
                 <h2 id={title.toLowerCase().replace(/\s+/g, "-")} className="flex scroll-mt-28 items-center gap-3 border-b border-brand-line bg-brand-navy px-6 py-4 font-display text-xl font-semibold text-white">
                   <I size={20} className="text-brand-gold" aria-hidden="true" /> {title}
                 </h2>
-                <div className="overflow-x-auto">
+                <div tabIndex={0} role="region" aria-label={`${title}, scrolls horizontally`} className="overflow-x-auto">
                   <table className="w-full min-w-120 text-left text-sm">
                     <thead className="sr-only"><tr><th scope="col">Date</th><th scope="col">Compliance</th></tr></thead>
                     <tbody>

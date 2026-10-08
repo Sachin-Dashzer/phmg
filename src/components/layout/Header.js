@@ -89,17 +89,22 @@ export function Logo({ scrolled = false }) {
   return (
     <Link
       href="/"
-      className={`flex items-center rounded-lg transition-all duration-300 ${
-        scrolled ? "" : "bg-white px-3 py-1.5 shadow-lg shadow-black/20"
+      // shrink-0: without it flex squashes the image and distorts the wordmark.
+      className={`flex shrink-0 items-center rounded-lg transition-all duration-300 ${
+        scrolled ? "" : "bg-white px-2 py-1 shadow-lg shadow-black/20 sm:px-3 sm:py-1.5"
       }`}
       aria-label="PHMG & Associates home"
     >
-      {/* Logo is dark-on-transparent: it sits on a white chip over the dark hero. */}
+      {/* Logo is dark-on-transparent: it sits on a white chip over the dark hero.
+          The wordmark is ~7.4:1, so height alone decides how much of a phone bar
+          it eats — h-7 keeps it to ~55% and leaves room for the menu button.
+          It steps back down at lg, where the full nav claims the middle, and
+          only grows again at xl once there is room for it. */}
       <Image
         src={LogoImage}
         alt="PHMG & Associates"
         priority
-        className="h-22 w-auto sm:h-9"
+        className="h-6 w-auto min-[360px]:h-7 sm:h-9 lg:h-8 xl:h-11"
       />
     </Link>
   );
@@ -678,7 +683,8 @@ function MobilePanel({ pathname }) {
         absolute
         inset-x-0
         top-full
-        max-h-[calc(100dvh-4.5rem)]
+        max-h-[calc(100dvh-3.5rem)]
+        sm:max-h-[calc(100dvh-4rem)]
         overflow-y-auto
         border-t
         border-neutral-200
@@ -996,7 +1002,8 @@ export default function Header() {
       <style>{menuStyles}</style>
 
       {/* Header is fixed; inner pages need the space it covers. */}
-      {!isHome && <div className="h-18 lg:h-22" aria-hidden="true" />}
+      {/* Must track the bar's own height classes below, or inner pages jump. */}
+      {!isHome && <div className="h-14 sm:h-16 lg:h-22" aria-hidden="true" />}
 
       {/* ===================================================
           HEADER
@@ -1039,10 +1046,11 @@ export default function Header() {
           className="
             container-x
             flex
-            h-18
+            h-14
             items-center
-            lg:h-22
             justify-between
+            sm:h-16
+            lg:h-22
           "
         >
           {/* =================================================
@@ -1139,13 +1147,14 @@ export default function Header() {
               />
             </Link>
 
-            {/* Mobile phone */}
+            {/* Tablet phone button: below md StickyMobileCTA already has Call,
+                and dropping it here keeps the logo from squashing at 320px. */}
             {firm.phone && (
               <a
                 href={phoneHref()}
                 aria-label="Call office"
                 className={`
-                  flex
+                  hidden
                   h-10
                   w-10
                   items-center
@@ -1153,6 +1162,7 @@ export default function Header() {
                   rounded-xl
                   border
                   transition-colors
+                  md:flex
                   lg:hidden
 
                   ${

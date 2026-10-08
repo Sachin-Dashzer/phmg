@@ -21,8 +21,15 @@
   --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
 }
 
-html { scroll-behavior: smooth; }
+/* scroll-padding keeps anchor targets clear of the fixed header (h-18 / lg:h-22). */
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+@media (min-width: 1024px) { html { scroll-padding-top: 6.5rem; } }
+/* `clip` (not `hidden`) stops decorative absolutes from creating a horizontal
+   scrollbar without turning the viewport into a scroll container. */
+html, body { overflow-x: clip; }
 body { color: var(--color-brand-ink); background: #fff; }
+/* Long filing codes / URLs must not push narrow screens sideways. */
+h1, h2, h3, h4 { overflow-wrap: break-word; }
 /* base layer: unlayered rules beat Tailwind utilities, which would make text-white on headings a no-op */
 @layer base { h1, h2, h3 { color: var(--color-brand-navy); } }
 

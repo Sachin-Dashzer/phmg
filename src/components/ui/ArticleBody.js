@@ -10,7 +10,8 @@ export default function ArticleBody({ blocks }) {
         if (type === "ul") return <ul key={i}>{v.map((t) => <li key={t}>{t}</li>)}</ul>;
         if (type === "table")
           return (
-            <div key={i} className="my-6 overflow-x-auto rounded-2xl border border-brand-line">
+            // tabIndex makes the horizontal scroll reachable by keyboard (WCAG 2.1.1).
+            <div key={i} tabIndex={0} role="region" aria-label="Table, scrolls horizontally" className="my-6 overflow-x-auto rounded-2xl border border-brand-line">
               <table className="w-full min-w-120 text-left text-sm">
                 <thead className="bg-brand-navy text-white">
                   <tr>{v.head.map((h, j) => <th key={j} scope="col" className="p-3">{h}</th>)}</tr>
