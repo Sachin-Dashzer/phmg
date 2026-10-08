@@ -8,9 +8,7 @@ export default function PageHeader({ crumbs, title, intro, eyebrow, image = Bann
   return (
     <section className="relative isolate overflow-hidden">
 
-      {/* =========================================================
-      BACKGROUND IMAGE
-      ========================================================= */}
+    
       <Image
         src={image}
         alt=""
