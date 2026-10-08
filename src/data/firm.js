@@ -11,11 +11,11 @@ export const firm = {
   domain: "phmgindia.com",
   icaiFrn: "", // TODO: CLIENT TO CONFIRM (not in profile)
   foundedYear: "2014",
-  phone: "+91 9667722802",
-  phone2: "+91 9654123003",
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919667722802", // TODO: CLIENT TO CONFIRM 9667722802 is on WhatsApp
-  email: "piyushm@phmgindia.com",
-  email2: "caankit@phmgindia.com",
+  phone: "+91 96677 22802",
+  phone2: "",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919667722802",
+  email: "associatesphmg@gmail.com",
+  email2: "",
   hours: "", // TODO: CLIENT TO CONFIRM
   primaryCity: "Noida",
   address: {

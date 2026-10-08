@@ -27,8 +27,6 @@ export default function Contact() {
   const branches = offices.filter((o) => !o.head);
   // Secondary details in the side panel.
   const rows = [
-    firm.phone2 && { I: Phone, label: "Phone (alternate)", node: <a href={`tel:${firm.phone2.replace(/[^+\d]/g, "")}`} className="hover:text-brand-gold">{firm.phone2}</a> },
-    firm.email2 && { I: Mail, label: "Email (alternate)", node: <a href={`mailto:${firm.email2}`} className="hover:text-brand-gold">{firm.email2}</a> },
     hasAddress() && { I: MapPin, label: "Head office", node: [a.street, a.locality, a.city, a.region, a.postalCode].filter(Boolean).join(", ") },
     firm.hours && { I: Clock, label: "Hours", node: firm.hours },
   ].filter(Boolean);
