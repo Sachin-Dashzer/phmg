@@ -1,6 +1,7 @@
 // Regenerates docs/keyword-map.csv from the data files. Run: node scripts/keyword-map.mjs
 // Add a row to `manual` when you add an article or page. Flags duplicate primary keywords (cannibalisation).
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { cities } from "../src/data/cities.js";
 
 const rows = [];
 const add = (url, primary, secondary, intent, type) => rows.push({ url, primary, secondary: secondary.join("; "), intent, type });
@@ -44,11 +45,13 @@ const manual = [
   ["/tools/emi-calculator", "emi calculator", ["loan emi"], "transactional", "tool"],
   ["/tools/sip-calculator", "sip calculator", ["sip returns"], "transactional", "tool"],
   ["/tax-calendar", "tax calendar india", ["compliance due dates", "gst tds due dates"], "informational", "page"],
-  ["/ca-in-delhi", "chartered accountant in delhi", ["ca firm in delhi ncr", "ca in noida", "ca in gurgaon"], "local", "city"],
   ["/", "chartered accountants in india", ["ca firm", "online ca services", "phmg & associates"], "navigational", "home"],
   ["/services", "ca services", ["chartered accountant services"], "commercial", "hub"],
 ];
 for (const r of manual) add(...r);
+
+// City pages carry their own keywords in src/data/cities.js, so these rows cannot go stale.
+for (const c of cities) add(`/ca-in-${c.slug}`, c.primaryKeyword, c.secondaryKeywords, "local", "city");
 
 const seen = new Map();
 const dupes = [];

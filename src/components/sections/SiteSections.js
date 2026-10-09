@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import whoWeServeImage from "../../../public/who-we-serve.jpg";
 import { firm, offices, phoneHref } from "@/data/firm";
+import { cityByOffice } from "@/data/cities";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FAQAccordion from "@/components/ui/FAQAccordion";
@@ -272,33 +273,47 @@ export function ProcessSteps({ className = "bg-white", label = "How we work", ti
   );
 }
 
-export function OfficesGrid({ className = "bg-white" }) {
-  if (!offices.length) return null;
+// `exclude` is an office slug to leave out, so a city page can show "our other offices".
+// Each card links to that office's city page when one exists, which is what gives the city
+// pages their links to each other.
+export function OfficesGrid({ className = "bg-white", exclude, label = "Our office network", title }) {
+  const shown = offices.filter((o) => o.slug !== exclude);
+  if (!shown.length) return null;
   return (
     <section aria-labelledby="offices-title" className={`section ${className}`}>
       <div className="container-x">
         <SectionHeading
           id="offices-title"
-          label="Our office network"
-          title={`${offices.length} offices, pan-India reach`}
-          intro={firm.stats.professionals ? `${firm.stats.professionals} professionals: chartered accountants, company secretaries, semi-qualified CAs and specialists.` : undefined}
+          label={label}
+          title={title || `${shown.length} offices, pan-India reach`}
+          intro={firm.stats.professionals ? `${firm.stats.professionals} professionals: chartered accountants, company secretaries and semi-qualified chartered accountants.` : undefined}
           action={firm.phone && (
             <a href={phoneHref()} className="btn btn-secondary"><Phone size={15} aria-hidden="true" /> {firm.phone}</a>
           )}
         />
         <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {offices.map((o) => (
-            <div key={o.city} className={`card h-full p-5 ${o.head ? "border-brand-gold" : ""}`}>
-              <div className="flex items-center gap-2">
-                <MapPin size={20} className="shrink-0 text-brand-gold" aria-hidden="true" />
-                <h3 className="font-display text-lg font-semibold">{o.city}</h3>
-                {o.head && (
-                  <span className="ml-auto rounded-full bg-brand-gold/15 px-2.5 py-0.5 text-xs font-semibold text-brand-gold-dark">Head office</span>
+          {shown.map((o) => {
+            const city = cityByOffice(o.slug);
+            return (
+              <div key={o.slug} className={`card h-full p-5 ${o.head ? "border-brand-gold" : ""}`}>
+                <div className="flex items-center gap-2">
+                  <MapPin size={20} className="shrink-0 text-brand-gold" aria-hidden="true" />
+                  <h3 className="font-display text-lg font-semibold">
+                    {city ? <Link href={`/ca-in-${city.slug}`} className="transition-colors hover:text-brand-blue">{o.city}</Link> : o.city}
+                  </h3>
+                  {o.head && (
+                    <span className="ml-auto rounded-full bg-brand-gold/15 px-2.5 py-0.5 text-xs font-semibold text-brand-gold-dark">Head office</span>
+                  )}
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-brand-muted">{o.address}</p>
+                {city && (
+                  <Link href={`/ca-in-${city.slug}`} className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue">
+                    Chartered accountant in {city.name} <ArrowRight size={14} aria-hidden="true" />
+                  </Link>
                 )}
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-brand-muted">{o.address}</p>
-            </div>
-          ))}
+            );
+          })}
         </ScrollReveal>
       </div>
     </section>

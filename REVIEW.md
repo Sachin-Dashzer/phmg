@@ -124,6 +124,26 @@ make the page more specific and more useful, not a correction.
 | `/services/ngo-trust/csr-1-registration` | *hedged* — company CSR applicability thresholds and the spending proportion are described without figures | Section 135 — confirm net worth ₹500 crore / turnover ₹1,000 crore / net profit ₹5 crore and the 2% figure before adding them |
 | `/services/ngo-trust/csr-1-registration` | *hedged* — Form CSR-2 due date described as "the date prescribed for the financial year" | Confirm the current due date |
 
+### City pages
+
+The local content on each city page turns on the state position, so these are the claims to check.
+They are the same facts on every page that mentions them, so correcting one means correcting all.
+
+| Page | Claim | Check against |
+|---|---|---|
+| `/ca-in-noida`, `/ca-in-meerut` | **stated** — Uttar Pradesh levies **no** professional tax, so payroll from Noida or Meerut carries no PT registration, deduction or return | UP commercial tax department. Repeated on `/services/accounting-bookkeeping/payroll` |
+| `/ca-in-delhi` | **stated** — Delhi levies **no** professional tax | Delhi trade and taxes department |
+| `/ca-in-ludhiana` | **stated** — Punjab levies the Punjab State Development Tax as the state's professional tax, a flat monthly amount on persons liable to income tax above a threshold | Punjab State Development Tax Act, 2018. The ₹200 figure is **not** stated on the page |
+| `/ca-in-mumbai` | **stated** — Maharashtra levies professional tax on a slab basis with an annual ceiling, and there are **two** registrations (employer and own-account) | Maharashtra professional tax legislation. Confirm both registrations and the current slabs |
+| `/ca-in-noida`, `/ca-in-meerut` | **stated** — companies registered in Noida, Greater Noida and Meerut file with the Registrar of Companies for **Uttar Pradesh**, not the Delhi and Haryana registry | mca.gov.in — confirm the registry and its location |
+| `/ca-in-delhi` | **stated** — the Registrar of Companies for **Delhi and Haryana** covers Delhi, Gurugram and Faridabad | mca.gov.in |
+| `/ca-in-ludhiana` | **stated** — companies registered in Punjab file with the Registrar of Companies at **Chandigarh**, which also covers Chandigarh | mca.gov.in |
+| `/ca-in-mumbai` | **stated** — the Registrar of Companies for Maharashtra **at Mumbai** | mca.gov.in |
+| `/ca-in-mumbai` | **stated** — a public charitable trust in Mumbai is registered with the Charity Commissioner under the Maharashtra Public Trusts Act, 1950, with continuing annual obligations | [charity.maharashtra.gov.in](https://charity.maharashtra.gov.in/). Repeated on `/services/ngo-trust/trust-registration` |
+| `/ca-in-noida` | **stated** — supplies to a special economic zone unit or developer are zero-rated; the Noida Special Economic Zone is referred to generally | CGST/IGST Act. Confirm the firm actually serves NSEZ units before leaning on this |
+| `/ca-in-ludhiana`, `/ca-in-meerut` | Descriptive — the industry clusters named (hosiery and knitwear, bicycles and parts, auto components, machine tools in Ludhiana; sports goods, sugar and agriculture-linked processing in Meerut) | Not legal claims, but confirm they match the firm's actual client base rather than the city's general reputation |
+| `/ca-in-delhi` | **stated** — a Delhi business may need Shops and Establishments registration, a municipal trade licence and labour registrations depending on activity and premises | Delhi labour department and the municipal corporation |
+
 ### Not a legal claim, but confirm the framing
 
 | Page | Point |
@@ -194,9 +214,9 @@ structured data both hide empty values, so nothing breaks while they are blank.
 | Office hours | `firm.hours` | Currently empty. Needed before `openingHoursSpecification` can go into the office schema. |
 | Map links (5 offices) | `mapUrl` per office | Google Maps share link per office. The "Get directions" link on each city page renders only once this is set. |
 | Coordinates (5 offices) | `geo: { lat, lng }` per office | From Google Maps. `geo` goes into the office schema only once set. |
-| Branch head — Noida | `branchHead` in `src/data/cities.js` | `team.js` does not say who leads the head office. The Founding Partner was **not** named as Noida head because nothing confirms it. |
-| Branch head — Mumbai | `branchHead` in `src/data/cities.js` | Not named anywhere. Not invented. |
-| Branch head — Meerut | `branchHead` in `src/data/cities.js` | Not named anywhere. Not invented. |
+| Branch head — Noida | `branchHead` in `src/data/cities.js` | `team.js` does not say who leads the head office. The Founding Partner was **not** named as Noida head because nothing confirms it. Set the team slug and the branch head card appears automatically. |
+| Branch head — Mumbai | `branchHead` in `src/data/cities.js` | Not named anywhere. Not invented. The Mumbai page's FAQ says so explicitly; revise that answer when a head is appointed. |
+| Branch head — Meerut | `branchHead` in `src/data/cities.js` | Not named anywhere. Not invented. The Meerut page says engagements are coordinated with the partners. |
 | ICAI Firm Registration Number | `firm.icaiFrn` | Currently empty; the footer line renders only when set. |
 | LinkedIn company page URL | `firm.social.linkedin` | **Cleared** during this work: `https://www.linkedin.com/company/phmg-associates` did not resolve to a real page. Restore only once the company page exists, or the `sameAs` in the organisation schema points at a 404. |
 | Google Business Profile URLs (5) | `firm.social.googleBusiness` + per office | Needed for local SEO. See `docs/off-page-seo.md`. |

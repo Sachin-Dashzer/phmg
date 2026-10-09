@@ -10,7 +10,8 @@ import { OfficesGrid, StatsBand, ProcessSteps } from "@/components/sections/Site
 
 export const metadata = buildMetadata({
   title: "CA Services by Location",
-  description: "PHMG & Associates serves clients in Delhi NCR in person and across India online. Find your location and talk to our chartered accountants today.",
+  description:
+    "PHMG & Associates has offices in Noida, Delhi, Mumbai, Ludhiana and Meerut, and works with clients across India online. Find the office nearest to you.",
   path: "/locations",
 });
 
@@ -27,7 +28,7 @@ export default function Locations() {
         crumbs={[{ name: "Locations", href: "/locations" }]}
         eyebrow="Where we work"
         title={<>Local offices. <span className="text-brand-gold">Pan-India reach.</span></>}
-        intro="Most of our work is delivered online, so we serve clients across India. These pages cover the places where we also meet clients in person."
+        intro="Most of our work is delivered online, so we serve clients across India. These pages cover the five cities where we have an office and also meet clients in person."
         image="/images/office/office-1.jpeg"
       />
 

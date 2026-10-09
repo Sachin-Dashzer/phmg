@@ -37,7 +37,11 @@ const renderedTitle = (t) => (t.length + 20 <= 60 ? `${t} | PHMG & Associates` :
 // "Expeditors" does not trip "expert" and "bestow" does not trip "best".
 const banned = [
   /\bbest\b/i, /\btop\b/i, /\bleading\b/i, /\bno\.?\s?1\b/i, /\bmost trusted\b/i, /\btrusted\b/i,
-  /\bexperts?\b/i, /\bexpertise\b/i, /\bspecialis(t|ts|ing)\b/i, /\bguarantee/i, /\bcheapest\b/i,
+  /\bexperts?\b/i, /\bexpertise\b/i, /\bspecialis(t|ts|ing)\b/i, /\bcheapest\b/i,
+  // Only the promissory uses of "guarantee". "credit guarantee scheme", "bank guarantee" and
+  // "guaranteeing the borrowings" (the associated-enterprise test) are domain terms, not promises.
+  /\bwe guarantee\b/i, /\bguaranteed? (results?|outcome|success|approval|refund|savings)\b/i,
+  /\b(100%|fully|totally) guaranteed\b/i, /\bguarantee\b(?=[^.?!]*\b(we|our|us)\b[^.?!]*$)/i,
   /\bbetter than\b/i, /\bnever miss\b/i, /\bnever slip\b/i, /\bhurry\b/i, /\blimited (time|offer)\b/i,
   /\bfree consultation\b/i, /\bfree quote\b/i, /\bno obligation\b/i, /\bact now\b/i,
   /\b(today|now)\b(?=[^.?!]*$)/i, // urgency only when it closes the sentence ("...today.")
