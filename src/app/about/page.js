@@ -76,7 +76,7 @@ export default function About() {
               </p>
               <p>
                 Our team of {firm.stats.professionals || "50+"} professionals includes chartered accountants, company
-                secretaries, semi-qualified CAs and specialists.
+                secretaries, semi-qualified chartered accountants and support staff.
               </p>
             </div>
             {(firm.icaiFrn || firm.foundedYear) && (

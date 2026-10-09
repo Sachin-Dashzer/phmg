@@ -40,7 +40,7 @@ export const taxGstCompany = {
       "Foreign asset details, if any (account numbers, peak balance and income)",
     ],
     process: [
-      { title: "Free consultation", text: "We understand your income sources and decide the correct ITR form.", time: "Same day" },
+      { title: "First conversation", text: "We understand your income sources and decide the correct ITR form.", time: "Same day" },
       { title: "Document collection", text: "You share documents through a secure link. We download your AIS and 26AS ourselves.", time: "1–2 days" },
       { title: "Computation and review", text: "We compute tax under both regimes and share the computation with you for approval.", time: "1–3 days" },
       { title: "Filing and e-verification", text: "We file on the e-filing portal and help you e-verify with Aadhaar OTP or net banking.", time: "Same day" },

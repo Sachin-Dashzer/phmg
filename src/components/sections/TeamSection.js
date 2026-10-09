@@ -47,7 +47,8 @@ function TeamCard({ slug, name, role, credentials = [], years, photo }) {
             aria-hidden="true"
             className="absolute right-4 top-[46%] flex h-16 w-16 -rotate-12 flex-col items-center justify-center rounded-full border-2 border-dashed border-brand-gold/80 bg-brand-navy/80 text-brand-gold backdrop-blur-sm transition-transform duration-500 group-hover:rotate-0 motion-reduce:transition-none"
           >
-            <span className="font-display text-xl font-bold leading-none">{years}+</span>
+            {/* team.js already stores these as "15+", so no "+" is appended here. */}
+            <span className="font-display text-xl font-bold leading-none">{years}</span>
             <span className="mt-0.5 text-[9px] font-semibold tracking-wide">years</span>
           </div>
         ) : null}
@@ -140,7 +141,7 @@ export function TeamSection() {
             <h2 className="font-display text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl">
               Partner-led.
               <br />
-              <span className="text-white/55">Expert-driven.</span>
+              <span className="text-white/55">Qualified throughout.</span>
             </h2>
             <div className="divider-gold mt-6" />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/70">

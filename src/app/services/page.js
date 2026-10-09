@@ -29,7 +29,7 @@ export default function ServicesHub() {
         intro="From tax and GST to audit and company registration, our chartered accountants handle your compliance end to end, with a partner reviewing every important filing."
       >
         <div className="flex flex-wrap gap-3">
-          <Link href="/book-consultation" className="btn btn-gold">Book free consultation <ArrowRight size={16} aria-hidden="true" /></Link>
+          <Link href="/book-consultation" className="btn btn-gold">Book a consultation <ArrowRight size={16} aria-hidden="true" /></Link>
           {firm.phone && <a href={phoneHref()} className="btn btn-ghost-light"><Phone size={16} aria-hidden="true" />{firm.phone}</a>}
         </div>
       </PageHeader>
@@ -41,7 +41,7 @@ export default function ServicesHub() {
           <SectionHeading
             id="all-services"
             label="Our services"
-            title="Trusted expertise for your financial needs"
+            title="Services across audit, tax and advisory"
             intro="Pick a category to see every service in it, what documents you need and how we work."
           />
           <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

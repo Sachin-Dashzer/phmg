@@ -5,7 +5,7 @@ import { firm, waHref, phoneHref } from "@/data/firm";
 export default function CTABand({
   title = "Ready to get started?",
   text = "Tell us what you need. A qualified CA will review it and reply with next steps and a clear fee.",
-  cta = "Book Free Consultation",
+  cta = "Book a consultation",
 }) {
   return (
     <section data-seo-skip className="relative overflow-hidden bg-brand-navy">
@@ -29,7 +29,7 @@ export default function CTABand({
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 text-center">
           <div>
             <p className="mb-3 inline-block rounded-full border border-brand-gold/25 bg-brand-gold/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-gold">
-              Talk to a CA today
+              Speak to a chartered accountant
             </p>
             <h2 className="font-display text-3xl font-bold text-white md:text-4xl lg:text-5xl">
               {title}
@@ -58,7 +58,7 @@ export default function CTABand({
           </div>
 
           <p className="text-xs text-white/30">
-            No commitment · Reply within one business day · Your data stays confidential
+            Reply within one business day · Your data stays confidential
           </p>
         </div>
       </div>

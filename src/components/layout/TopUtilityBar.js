@@ -16,7 +16,7 @@ export default function TopUtilityBar() {
           )}
           {firm.hours && <span className="text-white/80">{firm.hours}</span>}
         </div>
-        <Link href="/book-consultation" className="font-semibold hover:underline">Book Free Consultation</Link>
+        <Link href="/book-consultation" className="font-semibold hover:underline">Book a consultation</Link>
       </div>
     </div>
   );

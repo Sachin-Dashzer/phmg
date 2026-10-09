@@ -77,7 +77,7 @@ export default function Footer() {
               href="/book-consultation"
               className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#0b1f3a] transition hover:bg-brand-gold hover:text-white"
             >
-              Book free consultation <ArrowRight size={15} aria-hidden="true" />
+              Book a consultation <ArrowRight size={15} aria-hidden="true" />
             </Link>
 
             {firm.icaiFrn && (

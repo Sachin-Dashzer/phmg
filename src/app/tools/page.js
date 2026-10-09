@@ -30,7 +30,7 @@ export default function Tools() {
         </div>
       </section>
       <WhoWeServe />
-      <CTABand title="Need the exact numbers?" text="Calculators give estimates. A chartered accountant can work out your actual liability and the best way to reduce it." />
+      <CTABand title="Need the exact numbers?" text="Calculators give estimates. A chartered accountant can work out your actual liability and the deductions and reliefs available to you." />
     </>
   );
 }

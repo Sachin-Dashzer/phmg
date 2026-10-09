@@ -35,7 +35,7 @@ const why = [
   { icon: Briefcase, title: "CFO advisory", text: "Virtual CFO services: financial controls, board reporting and compliance readiness.", accent: "text-brand-gold" },
   { icon: Globe2, title: "Multi-state compliance", text: "Compliance across Delhi, UP, Maharashtra and Punjab with local teams.", accent: "text-blue-400" },
   { icon: Cpu, title: "Technology driven", text: "Digitised workflows, real-time dashboards and paperless audit processes.", accent: "text-brand-teal" },
-  { icon: UserCheck, title: "Partner-led delivery", text: "A Partner owns every engagement end to end. Critical work is never left to juniors.", accent: "text-brand-gold" },
+  { icon: UserCheck, title: "Partner-led delivery", text: "A partner owns each engagement and reviews the work before it is submitted.", accent: "text-brand-gold" },
 ];
 
 // href points at the closest existing service category.
@@ -66,7 +66,7 @@ const toolGradients = [
 ];
 
 const defaultSteps = [
-  { title: "Free consultation", text: "Tell us what you need. We listen and explain your options." },
+  { title: "First conversation", text: "Tell us what you need. We listen and explain your options." },
   { title: "Proposal & documents", text: "You get a clear scope, fee and a document checklist." },
   { title: "We execute", text: "Our team prepares and files, with partner review at every step." },
   { title: "Proof & support", text: "You receive filing proof, acknowledgement and ongoing support." },
@@ -89,12 +89,15 @@ const statCols = { 1: "md:grid-cols-1", 2: "md:grid-cols-2", 3: "md:grid-cols-3"
 /* Sections                                                            */
 /* ------------------------------------------------------------------ */
 
+// Renders only while firm.showClientList is true. The names stay in the data either way, so a
+// partner decision is one boolean rather than a content change. See REVIEW.md.
 export function ClientsStrip({ className = "bg-white" }) {
+  if (!firm.showClientList) return null;
   return (
     <section aria-labelledby="clients-title" className={`py-14 md:py-16 ${className}`}>
       <div className="container-x text-center">
         <h2 id="clients-title" className="text-sm font-semibold text-brand-muted">
-          Trusted by banks, PSUs and businesses across sectors
+          Banks, PSUs and businesses we have worked with
         </h2>
         <ul className="mx-auto mt-6 flex max-w-5xl flex-wrap justify-center gap-3">
           {clients.map((c) => (
@@ -177,7 +180,7 @@ export function PracticeAreas({ className = "bg-brand-mist" }) {
           id="practice-title"
           label="Practice areas"
           title="Grouped by your business challenge"
-          intro="Specialist work for companies, banks and public bodies, led by partners who handle it every day."
+          intro="Work for companies, banks and public bodies, led by the partners who handle it day to day."
         />
         <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {serviceGroups.map((g) => (
@@ -206,7 +209,7 @@ export function PracticeAreas({ className = "bg-brand-mist" }) {
   );
 }
 
-export function WhyChoose({ className = "bg-brand-mist", title = "Built on integrity, driven by results" }) {
+export function WhyChoose({ className = "bg-brand-mist", title = "How we work" }) {
   return (
     <section aria-labelledby="why-title" className={`section ${className}`}>
       <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.8fr] lg:items-start">
@@ -217,11 +220,11 @@ export function WhyChoose({ className = "bg-brand-mist", title = "Built on integ
             <h2 id="why-title" className="font-display text-3xl font-bold leading-tight text-brand-navy md:text-4xl">{title}</h2>
             <div className="divider-gold mt-5" />
             <p className="mt-5 leading-relaxed text-brand-muted">
-              Deep technical expertise with personal attention, so your filings are handled right, your deadlines
-              never slip, and your business keeps moving.
+              A partner reviews the work before it is submitted, the scope and fee are agreed in writing before
+              we start, and due dates are tracked for you with reminders ahead of each one.
             </p>
             <Link href="/contact" className="btn btn-primary mt-7 w-fit">
-              Talk to a CA <ArrowRight size={16} aria-hidden="true" />
+              Speak to a chartered accountant <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </ScrollReveal>
         </div>
@@ -336,7 +339,7 @@ export function WhoWeServe({ className = "bg-white" }) {
               matters.
             </p>
             <Link href="/book-consultation" className="btn btn-primary mt-7">
-              Book a free consultation <ArrowRight size={16} aria-hidden="true" />
+              Book a consultation <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </ScrollReveal>
 

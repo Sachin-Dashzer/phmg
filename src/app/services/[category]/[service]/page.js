@@ -107,7 +107,7 @@ export default async function ServicePage({ params }) {
         }
       >
         <div className="flex flex-wrap gap-3">
-          <Link href="#lead" className="btn btn-gold">Get a free quote <ArrowRight size={16} aria-hidden="true" /></Link>
+          <Link href="#lead" className="btn btn-gold">Request a quote <ArrowRight size={16} aria-hidden="true" /></Link>
           <Link href="#documents" className="btn btn-ghost-light">Documents needed</Link>
         </div>
       </PageHeader>

@@ -30,7 +30,7 @@ export default function Team() {
       <PageHeader
         crumbs={[{ name: "Team", href: "/team" }]}
         eyebrow="Meet the team"
-        title={<>Partner-led. <span className="text-brand-gold">Expert-driven.</span></>}
+        title={<>Partner-led. <span className="text-brand-gold">Qualified throughout.</span></>}
         intro="Our partners and branch heads bring years of hands-on experience in audit, tax, litigation and advisory, and own every engagement end-to-end. Serving clients since 2014."
         image="/images/office/office-3.jpeg"
       />

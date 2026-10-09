@@ -24,7 +24,7 @@ const points = [
 ];
 
 const factors = ["The service and its scope", "Size and turnover of your business", "Volume of transactions or documents", "Complexity, notices or past defaults", "Deadlines and urgency"];
-const never = ["Hidden charges added later", "Work started without your approval", "Government fees marked up", "Surprise “extra” invoices"];
+const never = ["Charges added after the scope is agreed", "Work started without your approval", "Government fees marked up", "Invoices for work you did not approve"];
 
 export default function Pricing() {
   return (
@@ -75,7 +75,7 @@ export default function Pricing() {
                 <li key={f} className="flex gap-3 text-white/85"><X size={18} className="mt-0.5 shrink-0 text-brand-gold" aria-hidden="true" />{f}</li>
               ))}
             </ul>
-            <Link href="/book-consultation" className="btn btn-gold relative mt-8">Book a free consultation <ArrowRight size={16} aria-hidden="true" /></Link>
+            <Link href="/book-consultation" className="btn btn-gold relative mt-8">Book a consultation <ArrowRight size={16} aria-hidden="true" /></Link>
           </ScrollReveal>
         </div>
       </section>

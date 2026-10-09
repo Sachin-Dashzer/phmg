@@ -164,7 +164,40 @@ how people still search) and name the 2025 Act's equivalent only where it is cer
 This section lists **existing** pages and articles that cite 1961 sections or forms and should
 be reviewed. Per the brief, these are listed only — existing legal content was not rewritten.
 
-_The audit of existing pages and articles is filled in during Phase 6._
+### Existing pages and articles that cite 1961 sections or the old terminology
+
+**Listed only — none of this content was rewritten**, as instructed. What each page needs is a
+decision on whether to keep the 1961 reference (which is how people still search), add the 2025
+Act equivalent alongside it, or add the shared transition note. The 16 new pages already carry
+the note where it matters; these are the pages written earlier.
+
+Note that "assessment year" and "previous year" are the terminology the 2025 Act replaces with
+"tax year", so a page using those terms needs a decision even where it cites no section number.
+
+| Page | References found | Suggested action |
+|---|---|---|
+| `/services/audit-assurance/tax-audit` | s.44AB, s.44AD, s.44ADA, s.271B, "assessment year" | Highest priority: the whole page is built on 44AB. Add the transition note and consider naming the 2025 Act equivalent |
+| `/services/income-tax/income-tax-notice` | s.139(9), s.143(1), s.142(1), s.148, "assessment year" | Add the transition note; the notice section numbers are what clients quote, so keep them |
+| `/services/income-tax/itr-filing` | s.234F, "assessment year" | Add the transition note; "assessment year" appears in the due-date table |
+| `/services/audit-assurance/statutory-audit` | s.44AB | Single passing reference; the note is probably enough |
+| `/services/business-registration/section-8-company` | s.12A, s.80G | Now that `/services/ngo-trust/12a-80g-registration` exists and carries the note, link to it |
+| `/services/international-tax-fema/nri-tax-filing` | "assessment year" | Terminology only |
+| `/services/business-registration/udyam-registration` | s.43B | The 43B(h) MSME payment rule; confirm the 2025 Act equivalent |
+| `/insights/tax-audit-section-44ab-limits-applicability` | s.44AB, s.44AD, s.44ADA, "assessment year", "previous year" | Highest priority among the articles — the title itself names 44AB |
+| `/insights/how-to-reply-income-tax-notice` | s.143(1), s.139(9), s.142(1), s.148, "assessment year" | Add the note |
+| `/insights/capital-gains-tax-shares-property-mutual-funds` | s.54, s.54F, s.54E | Exemption sections; confirm the 2025 Act numbering |
+| `/insights/itr-due-dates-and-penalties` | s.234F, "assessment year" | Add the note |
+| `/insights/nri-income-tax-filing-tds-dtaa-basics` | s.195 | Add the note |
+| `/insights/statutory-audit-vs-tax-audit-vs-internal-audit` | s.44AB | Single reference |
+| `/insights/how-to-file-itr-online` | "assessment year" | Terminology only |
+| `/insights/old-vs-new-tax-regime` | "assessment year" | Terminology only |
+| `/insights/tds-rates-and-due-dates-chart` | "Income-tax Act, 1961" | Already names the Act explicitly, which is the clearest form |
+
+The article template already carries a standing footer note ("Section references are to the
+Income-tax Act, 1961 unless stated; the Income-tax Act, 2025 applies to later periods with
+renumbered sections"), so every article above has partial coverage already. The service pages
+written before this round have no equivalent note; adding `ITA_2025_NOTE` to the ones in the table
+would be the smallest change that covers them.
 
 ### Section mapping gathered during this work
 
@@ -228,9 +261,11 @@ structured data both hide empty values, so nothing breaks while they are blank.
 
 | Decision | Current state | Why it needs a decision |
 |---|---|---|
-| Client list | `firm.showClientList` defaults to `true`, so the "Trusted by banks, PSUs and businesses across sectors" strip with 16 named clients still renders exactly as before. | Naming clients may fall foul of the ICAI restrictions on advertising and on disclosing client relationships, and the firm may not have each client's consent. Set `showClientList: false` in `src/data/firm.js` to hide the section without deleting the data. |
-| "GST Litigation Specialists" empanelment line | Listed in `firm.empanelments`. | "Specialists" is a self-description the ICAI rules discourage. The other two entries (RBI Category-I, CAG of India) are factual empanelments. |
-| Remaining CTA wording | All "free consultation" / "free quote" wording replaced with neutral equivalents; buttons and forms unchanged. | Confirm the replacements read the way the partners want, and whether consultations are in fact free (if so, whether saying so is acceptable under the current guidelines). |
+| Client list | `firm.showClientList` is `true`, so the client strip with its 16 named clients renders as before. Its heading changed from "Trusted by banks, PSUs and businesses across sectors" to "Banks, PSUs and businesses we have worked with". | Naming clients may fall foul of the ICAI restrictions on advertising and on disclosing client relationships, and the firm may not have each client's consent. Set `showClientList: false` in `src/data/firm.js` to hide the section without deleting the names. |
+| "GST Litigation Specialists" | Changed to **"GST Litigation & Advisory"** in `firm.empanelments`, because "Specialists" is a self-description the ICAI rules discourage. | Confirm the replacement wording. Note the other two entries (RBI Category-I, CAG of India) are factual empanelments and were left as they are. |
+| Whether consultations are in fact free | All "free consultation" and "free quote" wording is replaced with neutral equivalents ("Book a consultation", "Request a quote"); every button, form and route is unchanged. | If the first consultation genuinely is free, decide whether saying so is acceptable under the current ICAI guidance. The neutral wording is safe either way, which is why it was chosen. |
+| Homepage hero wording | "Your Trusted Partner in Financial Success" / "Expert Accounting Solutions for a Stronger Tomorrow" / "a leading Chartered Accountant firm" are replaced with "Chartered Accountants since 2014" / "Audit, Tax and Advisory for Indian Business" / the factual credentials. | This is the most visible copy on the site. Confirm the replacements read the way the partners want before launch. |
+| Office hours | `firm.hours` and every office's `hours` are empty, and the "available 24/7" claim was removed because nothing supported it. | Supplying real hours makes the hours line appear on each city page and adds `openingHoursSpecification` to that office's schema, which helps local search. |
 
 ---
 

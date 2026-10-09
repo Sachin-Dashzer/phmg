@@ -130,7 +130,7 @@ export default function Home() {
             sm:text-xs
           "
               >
-                Your Trusted Partner in Financial Success
+                Chartered Accountants since 2014
               </p>
             </div>
 
@@ -152,9 +152,9 @@ export default function Home() {
           xl:text-[58px]
         "
             >
-              <span className="block">Expert Accounting</span>
-              <span className="block">Solutions for a</span>
-              <span className="block text-brand-gold">Stronger Tomorrow</span>
+              <span className="block">Audit, Tax and</span>
+              <span className="block">Advisory for</span>
+              <span className="block text-brand-gold">Indian Business</span>
             </h1>
 
             {/* =====================================================
@@ -171,9 +171,10 @@ export default function Home() {
           lg:text-[17px]
         "
             >
-              PHMG &amp; Associates, a leading Chartered Accountant firm,
-              offers comprehensive financial, advisory and compliance
-              services to help your business grow with confidence.
+              PHMG &amp; Associates is a firm of chartered accountants
+              established in 2014, empanelled with the Reserve Bank of India
+              in Category-I and with the CAG of India, with five offices
+              across north and west India.
             </p>
 
             {/* =====================================================
@@ -298,9 +299,9 @@ export default function Home() {
                 </div>
 
                 <span className="text-[13px] leading-[1.35] text-white/90">
-                  Trusted
+                  RBI Category-I
                   <br />
-                  Expertise
+                  &amp; CAG empanelled
                 </span>
               </div>
 
@@ -471,7 +472,7 @@ export default function Home() {
               <ScrollReveal>
                 <div className="section-label section-label-blue mb-4 w-fit">Our services</div>
                 <h2 id="services-title" className="font-display text-3xl font-bold leading-tight text-brand-navy md:text-4xl">
-                  Trusted expertise for your financial needs
+                  Services across audit, tax and advisory
                 </h2>
                 <p className="mt-4 leading-relaxed text-brand-muted">
                   From accounting and taxation to audits and business advisory, we provide reliable chartered

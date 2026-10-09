@@ -26,7 +26,7 @@ export default function Book() {
     <>
       <PageHeader
         crumbs={[{ name: "Book Consultation", href: "/book-consultation" }]}
-        eyebrow="Free consultation"
+        eyebrow="Book a consultation"
         title={<>Book a call with a <span className="text-brand-gold">chartered accountant</span></>}
         intro="Tell us what you need and when you are free. We will confirm the time by phone or message."
         image={whoWeServeImage}
@@ -43,7 +43,7 @@ export default function Book() {
           <div className="rounded-2xl border border-brand-line bg-white p-6 shadow-xl shadow-brand-navy/10 md:p-10">
             <div className="section-label section-label-blue mb-4 w-fit">Book now</div>
             <h2 className="font-display text-3xl font-bold">Request your consultation</h2>
-            <p className="mt-2 text-brand-muted">Takes under a minute. No payment needed.</p>
+            <p className="mt-2 text-brand-muted">Takes under a minute.</p>
             <div className="mt-8">
               <LeadForm variant="full" showSlot id="book" services={categories.map((c) => c.title)} submitLabel="Request Consultation" />
             </div>
@@ -65,7 +65,7 @@ export default function Book() {
                 ))}
               </ol>
               <p className="relative mt-6 flex items-center gap-2 border-t border-white/15 pt-5 text-sm text-white/60">
-                <Check size={16} className="text-brand-gold" aria-hidden="true" /> No commitment until you approve the written scope.
+                <Check size={16} className="text-brand-gold" aria-hidden="true" /> Work begins once you approve the written scope and fee.
               </p>
             </div>
           </div>
