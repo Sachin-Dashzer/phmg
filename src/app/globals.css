@@ -112,6 +112,9 @@ h1, h2, h3, h4 { overflow-wrap: break-word; }
 .prose-phmg p { margin-block: 1rem; line-height: 1.75; max-width: 65ch; }
 .prose-phmg ul { list-style: disc; padding-left: 1.25rem; margin-block: 1rem; }
 .prose-phmg li { margin-block: .35rem; }
+/* Underlined, not colour-only, so the link is distinguishable without relying on hue (WCAG 1.4.1). */
+.prose-phmg a { color: var(--color-brand-blue); text-decoration: underline; text-underline-offset: 2px; }
+.prose-phmg a:hover { color: var(--color-brand-gold-dark); }
 
 /* -- Animations ---------------------------------- */
 @keyframes fade-in-up {

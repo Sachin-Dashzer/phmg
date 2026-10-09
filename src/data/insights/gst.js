@@ -25,7 +25,7 @@ export const gstArticles = [
     description: "Understand the difference between GSTR-1 and GSTR-3B, what each return reports, and their due dates. Avoid mismatches that cause GST notices.",
     category: "gst",
     tags: ["GSTR-1", "GSTR-3B", "GST returns"],
-    services: ["gst-return-filing", "gst-notice"],
+    services: ["gst-return-filing", "gst-notice", "gst-refund"],
     body: [
       ["p", "These two returns are filed by almost every regular GST taxpayer. People often confuse them, but they do different jobs and must agree with each other."],
       ["h2", "Side-by-side comparison"],

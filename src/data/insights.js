@@ -1,8 +1,8 @@
-import { incomeTaxArticles } from "./insights/income-tax";
-import { gstArticles } from "./insights/gst";
-import { companyArticles } from "./insights/company";
-import { auditIntlArticles } from "./insights/audit-intl-compliance";
-import { articleExtras } from "./insights/extra";
+import { incomeTaxArticles } from "./insights/income-tax.js";
+import { gstArticles } from "./insights/gst.js";
+import { companyArticles } from "./insights/company.js";
+import { auditIntlArticles } from "./insights/audit-intl-compliance.js";
+import { articleExtras } from "./insights/extra.js";
 
 export const insightCategories = [
   { slug: "income-tax", title: "Income Tax" },

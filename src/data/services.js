@@ -1,4 +1,4 @@
-import { flagship } from "./service-content";
+import { flagship } from "./service-content.js";
 
 // [category, slug, title, one-line description]
 // A service gets a live page only once it has content in service-content.js

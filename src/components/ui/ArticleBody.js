@@ -1,6 +1,8 @@
 export const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-// Renders article blocks: ["h2", text] | ["p", text] | ["ul", [items]] | ["table", { head, rows }]
+// Renders article blocks: ["h2", text] | ["p", text] | ["ul", [items]]
+//   | ["table", { head, rows }] | ["links", [{ href, label, note? }]]
+// `links` exists so pages can cite official sources as real links while the data files stay plain data.
 export default function ArticleBody({ blocks }) {
   return (
     <div className="prose-phmg">
@@ -8,6 +10,17 @@ export default function ArticleBody({ blocks }) {
         if (type === "h2") return <h2 key={i} id={slugify(v)} className="mt-12 scroll-mt-28 border-l-4 border-brand-gold pl-4 font-display text-2xl font-bold md:text-3xl">{v}</h2>;
         if (type === "p") return <p key={i}>{v}</p>;
         if (type === "ul") return <ul key={i}>{v.map((t) => <li key={t}>{t}</li>)}</ul>;
+        if (type === "links")
+          return (
+            <ul key={i}>
+              {v.map((l) => (
+                <li key={l.href}>
+                  <a href={l.href} rel="noopener">{l.label}</a>
+                  {l.note ? ` — ${l.note}` : ""}
+                </li>
+              ))}
+            </ul>
+          );
         if (type === "table")
           return (
             // tabIndex makes the horizontal scroll reachable by keyboard (WCAG 2.1.1).
