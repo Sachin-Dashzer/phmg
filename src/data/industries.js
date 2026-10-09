@@ -109,7 +109,7 @@ export const industries = [
       { t: "Payroll compliance", d: "PF, ESI and TDS handled together." },
       { t: "Entity and tax planning", d: "Structure suited to partners and growth plans." },
     ],
-    services: ["gst-registration", "payroll-services", "llp-registration", "tax-audit", "itr-filing"],
+    services: ["gst-registration", "payroll", "llp-registration", "tax-audit", "itr-filing"],
     faqs: [
       { q: "Are healthcare services exempt from GST?", a: "Certain healthcare services by clinical establishments are exempt, but other supplies such as some medicines, goods and rentals may be taxable. We check each stream." },
       { q: "Can doctors form an LLP?", a: "Professionals can form an LLP, subject to the rules of their regulating councils. We advise on structure." },

@@ -8,7 +8,7 @@ export default function CTABand({
   cta = "Book Free Consultation",
 }) {
   return (
-    <section className="relative overflow-hidden bg-brand-navy">
+    <section data-seo-skip className="relative overflow-hidden bg-brand-navy">
       {/* Background decoration */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-brand-gold/8 blur-3xl" />

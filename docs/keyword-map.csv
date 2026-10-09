@@ -7,7 +7,7 @@ url,primary_keyword,secondary_keywords,intent,page_type,monthly_volume
 "/services/income-tax/income-tax-notice","income tax notice reply","notice u/s 143(1); notice u/s 142(1); scrutiny assessment; notice u/s 148; defective return notice","transactional","service",""
 "/services/gst/gst-notice","gst notice reply","GST show cause notice; ASMT-10; DRC-01; GST appeal; GST cancellation notice","transactional","service",""
 "/services/business-registration/opc-registration","opc registration","one person company; OPC vs sole proprietorship; OPC nominee; convert OPC to private limited","transactional","service",""
-"/services/business-registration/section-8-company","section 8 company registration","NGO registration; non-profit company; 12A 80G registration; CSR-1 registration","transactional","service",""
+"/services/business-registration/section-8-company","section 8 company registration","NGO registration; non-profit company; section 8 company licence; not for profit company registration","transactional","service",""
 "/services/business-registration/startup-india-registration","startup india registration","DPIIT recognition; startup benefits India; how to register startup in India; 80-IAC","transactional","service",""
 "/services/business-registration/udyam-registration","udyam registration","MSME registration; udyam certificate; MSME benefits; udyam registration documents","transactional","service",""
 "/services/business-registration/trademark-registration","trademark registration","trademark objection reply; brand name registration; trademark search; TM-A","transactional","service",""

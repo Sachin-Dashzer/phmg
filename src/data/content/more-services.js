@@ -128,7 +128,7 @@ export const moreServices = {
       { q: "What should I do if I get a notice under Section 148?", a: "It is a reassessment notice. Do not ignore it. Check the date and the reasons, and file your return and objections as advised. The process has specific conditions, so get professional help quickly." },
       { q: "Can I ignore a notice if I have no tax to pay?", a: "No. Not responding can result in an assessment on available information, penalties or a larger demand. Always reply, even when you believe nothing is due." },
     ],
-    related: ["itr-filing", "income-tax-appeals", "belated-revised-itr", "tax-planning"],
+    related: ["itr-filing", "income-tax-appeal", "belated-revised-itr", "tax-planning"],
   },
 
   "gst-notice": {
@@ -264,7 +264,7 @@ export const moreServices = {
     metaDescription:
       "Register a Section 8 company for charitable objects with expert help. Eligibility, licence, documents and compliance explained. Get a free quote today.",
     primaryKeyword: "section 8 company registration",
-    secondaryKeywords: ["NGO registration", "non-profit company", "12A 80G registration", "CSR-1 registration"],
+    secondaryKeywords: ["NGO registration", "non-profit company", "section 8 company licence", "not for profit company registration"],
     intro: "We guide you through licence application, drafting of charitable objects, incorporation and post-registration compliance. We also help with tax exemption under Sections 12A and 80G after registration.",
     definition: "A Section 8 company is a not-for-profit company incorporated under Section 8 of the Companies Act, 2013 to promote objects such as charity, education, science, art or environment. It applies its profits to those objects and does not pay dividends to members. It needs a licence from the Registrar before it can be incorporated.",
     whoNeedsIt: [
@@ -318,7 +318,7 @@ export const moreServices = {
       { q: "Can a Section 8 company receive foreign donations?", a: "Only after obtaining registration or prior permission under the Foreign Contribution (Regulation) Act, and following its rules." },
       { q: "How long does Section 8 registration take?", a: "It takes longer than a regular company because the Registrar examines the licence application. The time depends on the completeness of the documents." },
     ],
-    related: ["12a-80g-registration", "private-limited-company-registration", "annual-roc-filing", "statutory-audit"],
+    related: ["12a-80g-registration", "csr-1-registration", "private-limited-company-registration", "annual-roc-filing"],
   },
 
   "startup-india-registration": {
@@ -674,7 +674,7 @@ export const moreServices = {
       { q: "What is DTAA?", a: "It is a Double Taxation Avoidance Agreement between India and another country that prevents the same income being taxed twice, through exemptions or credit." },
       { q: "What are Form 15CA and 15CB?", a: "They are declarations and a CA certificate required before certain foreign remittances. The bank needs them to process the payment." },
     ],
-    related: ["itr-filing", "form-15ca-15cb", "capital-gains-tax", "fema-compliance"],
+    related: ["itr-filing", "15ca-15cb", "capital-gains-tax", "fema-compliance"],
   },
 
   "business-valuation": {

@@ -269,6 +269,6 @@ export const llpAuditRocBooks = {
       { q: "Why are books important if I have a small business?", a: "Accurate books help you know your real profit, file correct returns, get loans and respond to notices. Small businesses with turnover above prescribed limits also need audit, which depends on proper records." },
       { q: "Do you provide a CA review of the books?", a: "Yes. A qualified accountant maintains the books and a chartered accountant reviews them periodically as agreed in the scope." },
     ],
-    related: ["gst-return-filing", "payroll-services", "virtual-cfo-services", "statutory-audit"],
+    related: ["gst-return-filing", "payroll", "virtual-cfo", "statutory-audit"],
   },
 };

@@ -81,7 +81,7 @@ export const incomeTaxArticles = [
     description: "Understand common income tax notices, what each means and how to reply on the e-filing portal within the time given. Read this first.",
     category: "income-tax",
     tags: ["income tax notice", "143(1)", "148"],
-    services: ["income-tax-notice", "income-tax-appeals"],
+    services: ["income-tax-notice", "income-tax-appeal"],
     body: [
       ["p", "An income tax notice is not always bad news. Many are routine. What matters is reading it carefully and replying on time."],
       ["h2", "Common types of notices"],
