@@ -11,7 +11,7 @@ import { OfficesGrid, FAQSection } from "@/components/sections/SiteSections";
 export const metadata = buildMetadata({
   title: "Contact PHMG & Associates – Talk to a CA",
   description:
-    "Contact PHMG & Associates for audit, tax, GST, litigation and advisory. Send an enquiry and our chartered accountants will get back to you. Talk to a CA today.",
+    "Contact PHMG & Associates for audit, tax, GST, litigation and advisory. Send an enquiry and a chartered accountant will reply within one business day.",
   path: "/contact",
 });
 

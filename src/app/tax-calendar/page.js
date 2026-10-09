@@ -9,7 +9,7 @@ import { SubscribeSection } from "@/components/sections/TeamSection";
 
 export const metadata = buildMetadata({
   title: "Tax and Compliance Calendar – Due Dates",
-  description: "Recurring due dates for GST, TDS, advance tax, income tax returns, PF, ESI and ROC filings in one table. Check dates and plan your compliance today.",
+  description: "Recurring due dates for GST, TDS, advance tax, income tax returns, PF, ESI and ROC filings in one table, with what happens if each one is missed.",
   path: "/tax-calendar",
 });
 

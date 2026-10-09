@@ -103,7 +103,7 @@ export const cities = [
         p: "A good deal of the work from this office is for non-residents, which is unsurprising given how much Mumbai property is held by people living abroad. The recurring questions are the same: how rental income is taxed and at what rate tax is deducted; what happens on the sale of a flat, where the buyer deducts tax on the whole consideration while the actual liability is on the gain, usually producing a refund that only a filed return will recover; and how to get the money out afterwards, which brings in Form 15CA and a chartered accountant's certificate in Form 15CB, together with the bank's own checklist.",
       },
     ],
-    services: ["nri-tax-filing", "15ca-15cb", "itr-filing", "payroll", "trust-registration", "12a-80g-registration", "statutory-audit", "virtual-cfo"],
+    services: ["nri-tax-filing", "15ca-15cb", "itr-filing", "payroll", "trust-registration", "12a-80g-registration", "opc-registration", "virtual-cfo"],
     faqs: [
       { q: "Where is your Mumbai office?", a: "At C-2102, Vicinia, Powai Vihaar Road, Chandivali, Mumbai 400072. It sits between Powai and Andheri East, and is reachable from Saki Naka, Vikhroli and Ghatkopar. No branch head is named for this office; engagements are coordinated with the partners." },
       { q: "Do I need to register for professional tax in Maharashtra?", a: "If you employ people in Maharashtra, yes: you need the employer registration to deduct professional tax from salaries and pay it over, with the returns that go with it. A business or professional is also separately liable in their own right and needs that registration too. Maharashtra charges on a slab basis with an annual ceiling, and the rates and dates are set by the state. This is an obligation that does not exist for the same payroll run from Uttar Pradesh or Delhi." },
@@ -154,7 +154,7 @@ export const cities = [
         p: "CA Manish Goel leads this office, with a background in information technology audit, bank audit and compliance advisory. Routine work is handled online with documents shared through a secure link, and the Rohini office is used for meetings where being in the room helps — going through an assessment, preparing for a hearing, or working through the opening position of a new engagement.",
       },
     ],
-    services: ["itr-filing", "gst-registration", "gst-return-filing", "private-limited-company-registration", "annual-roc-filing", "statutory-audit", "income-tax-notice", "internal-audit"],
+    services: ["itr-filing", "gst-registration", "gst-return-filing", "private-limited-company-registration", "annual-roc-filing", "statutory-audit", "income-tax-notice", "trademark-registration"],
     faqs: [
       { q: "Where is your Delhi office?", a: "At First Floor, 83-84, Sector 24, Rohini, Delhi 110085, in north-west Delhi. It is reachable from Pitampura, Shalimar Bagh, Netaji Subhash Place and Punjabi Bagh. The office is led by CA Manish Goel." },
       { q: "Who leads the Delhi office?", a: "CA Manish Goel heads the Delhi branch. He is a chartered accountant with the DISA qualification, and his work covers information technology audit, bank audit, overseas accounting and compliance advisory." },

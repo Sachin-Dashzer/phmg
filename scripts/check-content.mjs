@@ -15,6 +15,7 @@
 import { publishedServices, serviceUrl } from "../src/data/services.js";
 import { newServices2026 } from "../src/data/content/new-services-2026.js";
 import { cities } from "../src/data/cities.js";
+import { articles } from "../src/data/insights.js";
 
 const NEW_CITIES = ["noida", "mumbai", "ludhiana", "meerut", "delhi"];
 
@@ -174,6 +175,35 @@ for (const c of cities) {
   checkText(c.slug, at, c.metaDescription);
   checkText(c.slug, at, c.intro);
   for (const l of c.local) checkText(c.slug, at, l.p);
+}
+
+/* ------------------------------------------------------------------ */
+/* Inbound links: a page nothing links to is an orphan, however good it is.            */
+/* The category page links to every service automatically, so that one is not counted. */
+/* ------------------------------------------------------------------ */
+
+if (!only) {
+  const inbound = new Map(publishedServices.map((s) => [s.slug, 0]));
+  const count = (slug, fromSlug) => {
+    if (inbound.has(slug) && slug !== fromSlug) inbound.set(slug, inbound.get(slug) + 1);
+  };
+
+  for (const s of publishedServices) {
+    for (const r of s.related || []) count(r, s.slug);
+    for (const [t, v] of s.sections || []) {
+      if (t !== "links") continue;
+      for (const l of v) {
+        const target = publishedServices.find((p) => serviceUrl(p) === l.href);
+        if (target) count(target.slug, s.slug);
+      }
+    }
+  }
+  for (const a of articles) for (const sv of a.services || []) count(sv, null);
+  for (const c of cities) for (const sv of c.services || []) count(sv, null);
+
+  for (const [slug, n] of inbound) {
+    if (n < 2) bad(slug, `/services/.../${slug}: only ${n} inbound internal link(s) besides its category page (want 2+)`);
+  }
 }
 
 /* ------------------------------------------------------------------ */

@@ -15,9 +15,11 @@ import {
 import CTABand from "@/components/ui/CTABand";
 import InsightCard from "@/components/ui/InsightCard";
 import { articles } from "@/data/insights";
+import { webSiteSchema } from "@/lib/schema";
+import JsonLd from "@/components/seo/JsonLd";
 import { tools } from "@/data/tools";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import BannerImg from "../../public/banner.png";
+import BannerImg from "../../public/banner.jpg";
 
 /* ------------------------------------------------------------------ */
 /* Content                                                             */
@@ -37,6 +39,8 @@ const fade = "linear-gradient(to bottom, black, transparent 75%)";
 export default function Home() {
   return (
     <>
+      {/* Organisation schema is in the root layout; this adds the WebSite node. */}
+      <JsonLd data={webSiteSchema()} />
       {/* =========================================================
     HERO SECTION
     ========================================================= */}
@@ -51,7 +55,8 @@ export default function Home() {
           src={BannerImg}
           alt=""
           fill
-          priority
+          fetchPriority="high"
+          loading="eager"
           sizes="100vw"
           className="absolute inset-0 -z-20 object-cover object-center"
         />

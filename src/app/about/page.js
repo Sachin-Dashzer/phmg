@@ -13,7 +13,7 @@ import { AboutSplit, StatsBand, WhyChoose, OfficesGrid } from "@/components/sect
 export const metadata = buildMetadata({
   title: "About PHMG & Associates – Chartered Accountants",
   description:
-    "PHMG & Associates: RBI Category-I and CAG empanelled chartered accountants since 2014, across Noida, Delhi, Mumbai, Ludhiana and Meerut. Talk to us today.",
+    "PHMG & Associates: RBI Category-I and CAG of India empanelled chartered accountants since 2014, with offices in Noida, Delhi, Mumbai, Ludhiana and Meerut.",
   path: "/about",
 });
 
@@ -133,7 +133,7 @@ export default function About() {
             </div>
             <div className="space-y-3 leading-relaxed text-brand-muted">
               <h2 id="policy-title" className="font-display text-2xl font-bold">Editorial and review policy</h2>
-              <p>Guides and service pages on this site are written for general information. They are prepared by our team and reviewed by a chartered accountant, with references to the Income-tax Act, the CGST Act, the Companies Act, the LLP Act and official notifications. Each page shows when it was last reviewed.</p>
+              <p>Guides and service pages on this site are written for general information. They are prepared by our team and reviewed by a chartered accountant, with references to the Income-tax Act, the CGST Act, the Companies Act, the LLP Act and official notifications. Each service page shows the date it was last reviewed, and each article shows when it was published and last updated.</p>
               <p>Tax and company laws change often. If you notice something out of date, please tell us through the <Link href="/contact" className="font-semibold text-brand-blue underline">contact page</Link> and we will correct it.</p>
             </div>
           </ScrollReveal>

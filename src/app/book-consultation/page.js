@@ -9,8 +9,8 @@ import { ClientsStrip, ProcessSteps, WhyChoose, FAQSection } from "@/components/
 import whoWeServeImage from "../../../public/who-we-serve.jpg";
 
 export const metadata = buildMetadata({
-  title: "Book a Free Consultation with a CA",
-  description: "Book a free consultation with PHMG & Associates. Pick a service and a convenient time and our chartered accountants will confirm. Book your slot today.",
+  title: "Book a Consultation with a CA",
+  description: "Request a consultation with PHMG & Associates. Choose the service and a time that suits you, and a chartered accountant will confirm the appointment.",
   path: "/book-consultation",
 });
 

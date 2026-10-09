@@ -7,7 +7,7 @@ import { FAQSection, ProcessSteps } from "@/components/sections/SiteSections";
 export const metadata = buildMetadata({
   title: "FAQ – Questions About Our CA Services",
   description:
-    "Answers to common questions about working with PHMG & Associates: services, fees, documents, confidentiality and online filing. Ask us anything today.",
+    "Answers to common questions about working with PHMG & Associates: services, fees, documents, confidentiality and filing online. Send us your question.",
   path: "/faq",
 });
 

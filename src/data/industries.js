@@ -27,7 +27,7 @@ export const industries = [
   {
     slug: "ecommerce-retail",
     title: "E-commerce & Retail",
-    metaDescription: "CA services for e-commerce sellers and retailers: GST registration, returns, reconciliation of marketplace data and bookkeeping. Get a free quote.",
+    metaDescription: "CA services for e-commerce sellers and retailers: GST registration and returns, reconciliation of marketplace settlement data, and bookkeeping.",
     intro: "Online and retail businesses deal with high transaction volumes, multiple sales channels and marketplace deductions. Accurate reconciliation is the difference between a clean return and a notice.",
     challenges: [
       "Reconciling marketplace settlements with sales and fees.",
@@ -119,7 +119,7 @@ export const industries = [
   {
     slug: "professionals",
     title: "Professionals",
-    metaDescription: "Tax and compliance support for doctors, lawyers, architects and consultants: ITR, presumptive tax, GST and advance tax. Get a free quote.",
+    metaDescription: "Tax and compliance for doctors, lawyers, architects and consultants: ITR filing, presumptive taxation, GST where it applies, and advance tax.",
     intro: "Doctors, lawyers, architects and other independent professionals are taxed on receipts and expenses, have advance tax duties and may need GST. Simple, regular records make filing easy.",
     challenges: [
       "Choosing between regular accounts and presumptive taxation.",
@@ -142,7 +142,7 @@ export const industries = [
   {
     slug: "freelancers-creators",
     title: "Freelancers & Creators",
-    metaDescription: "CA services for freelancers and content creators: ITR, GST, foreign income, advance tax and expense planning. Get help from our CAs today.",
+    metaDescription: "CA services for freelancers and content creators: ITR filing, GST on services, foreign income and treaty relief, advance tax and expenses.",
     intro: "Freelancers and creators often earn from several platforms and countries, with little TDS. Planning ahead avoids a heavy tax bill at year end.",
     challenges: [
       "Foreign income and export of services.",

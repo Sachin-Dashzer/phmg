@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Check, AlertTriangle, ArrowRight, FileCheck2, ShieldCheck, CalendarClock } from "lucide-react";
 import { publishedServices, getService, serviceUrl } from "@/data/services";
 import { getCategory } from "@/data/categories";
+import { team } from "@/data/team";
 import { buildMetadata } from "@/lib/seo";
 import { serviceSchema } from "@/lib/schema";
 import JsonLd from "@/components/seo/JsonLd";
@@ -37,7 +38,7 @@ const whyPhmg = [
 
 // Fallback hero photo per category; services can still set their own heroImage.
 const categoryImage = {
-  "audit-assurance": "/images/stock-audit.png",
+  "audit-assurance": "/images/stock-audit.jpg",
   "income-tax": "/who-we-serve.jpg",
   gst: "/images/office/office-3.jpeg",
 };
@@ -63,11 +64,22 @@ export default async function ServicePage({ params }) {
   if (!s) notFound();
   const cat = getCategory(category);
   const related = (s.related || []).map((slug) => publishedServices.find((x) => x.slug === slug)).filter(Boolean);
+  // Rendered only when a partner has been assigned as reviewer for this page (see REVIEW.md).
+  const reviewer = s.reviewedBy ? team.find((t) => t.slug === s.reviewedBy) : null;
   const image = s.heroImage || categoryImage[cat.slug] || "/images/office/office-1.jpeg";
 
   return (
     <>
-      <JsonLd data={serviceSchema({ name: s.title, description: s.metaDescription, path: serviceUrl(s) })} />
+      <JsonLd
+        data={serviceSchema({
+          name: s.title,
+          description: s.metaDescription,
+          path: serviceUrl(s),
+          serviceType: s.primaryKeyword,
+          audience: s.audience,
+          dateModified: s.lastReviewed,
+        })}
+      />
       <PageHeader
         crumbs={[
           { name: "Services", href: "/services" },
@@ -201,9 +213,17 @@ export default async function ServicePage({ params }) {
       )}
 
       <div className="bg-white py-8">
-        <p className="container-x text-xs text-brand-muted">
-          This content is for general information and does not constitute professional advice. Laws, rates and due dates change; please confirm the current position for your case before acting.
-        </p>
+        <div className="container-x space-y-2 text-xs text-brand-muted">
+          {s.lastReviewed && (
+            <p>
+              <span className="font-semibold text-brand-navy">Last reviewed:</span> {s.lastReviewed}
+              {reviewer && <> · <span className="font-semibold text-brand-navy">Reviewed by:</span> {reviewer.name}{reviewer.credentials?.length ? ` (${reviewer.credentials.join(", ")})` : ""}</>}
+            </p>
+          )}
+          <p>
+            This content is for general information and does not constitute professional advice. Laws, rates and due dates change; please confirm the current position for your case before acting.
+          </p>
+        </div>
       </div>
       <CTABand />
     </>

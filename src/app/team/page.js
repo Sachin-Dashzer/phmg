@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Check, ArrowRight } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
+import { teamSchema } from "@/lib/schema";
+import JsonLd from "@/components/seo/JsonLd";
 import { team } from "@/data/team";
 import PageHeader from "@/components/ui/PageHeader";
 import CTABand from "@/components/ui/CTABand";
@@ -12,7 +14,7 @@ import { StatsBand, WhyChoose, ProcessSteps } from "@/components/sections/SiteSe
 export const metadata = buildMetadata({
   title: "Our Team – Chartered Accountants",
   description:
-    "Meet the chartered accountants and professionals at PHMG & Associates who review and handle your tax, audit, GST and compliance work. Contact us today.",
+    "The partners and branch heads at PHMG & Associates who review and handle tax, audit, GST and compliance work, with their qualifications and areas of focus.",
   path: "/team",
   noindex: team.length === 0,
 });
@@ -24,6 +26,7 @@ export default function Team() {
   const [lead, ...rest] = team;
   return (
     <>
+      {team.length > 0 && <JsonLd data={teamSchema(team)} />}
       <PageHeader
         crumbs={[{ name: "Team", href: "/team" }]}
         eyebrow="Meet the team"

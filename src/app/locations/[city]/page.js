@@ -7,6 +7,8 @@ import { firm, getOffice, phoneHref, waHref } from "@/data/firm";
 import { team } from "@/data/team";
 import { publishedServices } from "@/data/services";
 import { buildMetadata } from "@/lib/seo";
+import { cityOfficeSchema } from "@/lib/schema";
+import JsonLd from "@/components/seo/JsonLd";
 import PageHeader from "@/components/ui/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -36,6 +38,8 @@ export default async function CityPage({ params }) {
 
   return (
     <>
+      {/* BreadcrumbList comes from Breadcrumbs in PageHeader, FAQPage from FAQAccordion. */}
+      {office && <JsonLd data={cityOfficeSchema(office)} />}
       <PageHeader
         crumbs={[{ name: "Locations", href: "/locations" }, { name: c.name, href: `/ca-in-${c.slug}` }]}
         eyebrow={`Chartered accountants · ${c.name}`}

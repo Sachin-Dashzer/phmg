@@ -5,7 +5,7 @@ export const llpAuditRocBooks = {
     h1: "LLP Registration Online in India",
     metaTitle: "LLP Registration in India – Documents, Process",
     metaDescription:
-      "Register a Limited Liability Partnership with expert help. Eligibility, documents, timeline and compliance explained by chartered accountants. Get a quote.",
+      "Registering an LLP: eligibility, designated partners, Form FiLLiP, the LLP agreement, documents required and the annual filings that follow.",
     primaryKeyword: "llp registration",
     secondaryKeywords: ["LLP agreement", "limited liability partnership", "LLP vs private limited", "Form FiLLiP", "LLP compliance"],
     intro:
@@ -210,7 +210,7 @@ export const llpAuditRocBooks = {
     h1: "Bookkeeping & Accounting Services for Businesses",
     metaTitle: "Bookkeeping Services in India – Monthly Accounting",
     metaDescription:
-      "Monthly bookkeeping and accounting on Tally, Zoho or QuickBooks, with MIS and compliance support from chartered accountants. Get a free quote today.",
+      "Monthly bookkeeping on Tally, Zoho or QuickBooks: what a monthly close covers, the records kept, MIS reporting and GST and TDS reconciliation.",
     primaryKeyword: "bookkeeping services",
     secondaryKeywords: ["accounting services", "outsourced accounting", "Tally accounting service", "MIS reporting", "monthly accounting"],
     intro:

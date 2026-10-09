@@ -6,7 +6,7 @@ export const taxGstCompany = {
     h1: "ITR Filing Online in India",
     metaTitle: "ITR Filing Online in India – Fees, Process",
     metaDescription:
-      "File your income tax return accurately with help from chartered accountants. Documents, due dates and process explained. Get a free quote today.",
+      "Income tax return filing by chartered accountants: which ITR form applies, the documents needed, due dates, and how the two tax regimes compare.",
     primaryKeyword: "itr filing online",
     secondaryKeywords: ["income tax return filing", "file ITR online", "ITR for salaried", "ITR for business", "ITR for freelancers"],
     intro:
@@ -77,7 +77,7 @@ export const taxGstCompany = {
     h1: "GST Registration Online in India",
     metaTitle: "GST Registration Online in India – Documents, Process",
     metaDescription:
-      "Apply for GST registration with the right documents and classification. Eligibility, timeline and expert help from chartered accountants. Get a quote.",
+      "Applying for GST registration: who needs it, the turnover thresholds, documents required, Aadhaar authentication and how long the process takes.",
     primaryKeyword: "gst registration online",
     secondaryKeywords: ["GST registration documents", "who needs GST registration", "GST registration for freelancers", "GST for e-commerce sellers", "GSTIN"],
     intro:
@@ -146,7 +146,7 @@ export const taxGstCompany = {
     h1: "GST Return Filing Online – GSTR-1, GSTR-3B and More",
     metaTitle: "GST Return Filing Online – GSTR-1, 3B | Due Dates",
     metaDescription:
-      "Monthly and annual GST return filing handled by chartered accountants. Due dates, late fees and reconciliation explained. Get a free quote today.",
+      "GST return filing by chartered accountants: GSTR-1 and GSTR-3B due dates, the late fee and interest, and reconciling your returns with GSTR-2B.",
     primaryKeyword: "gst return filing",
     secondaryKeywords: ["GSTR-1", "GSTR-3B", "GST late fee", "ITC reconciliation", "GST consultant"],
     intro:
@@ -214,7 +214,7 @@ export const taxGstCompany = {
     h1: "Private Limited Company Registration in India",
     metaTitle: "Private Limited Company Registration – Cost, Process",
     metaDescription:
-      "Register a private limited company with expert help. Documents, timeline, costs and compliance explained by chartered accountants. Get a free quote.",
+      "Registering a private limited company: directors and shareholders needed, documents, the incorporation timeline, costs and first-year compliance.",
     primaryKeyword: "private limited company registration",
     secondaryKeywords: ["company registration", "private limited vs LLP", "cost of company registration", "startup registration", "SPICe+"],
     intro:

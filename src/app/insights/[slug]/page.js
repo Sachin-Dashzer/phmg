@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import { articles, getArticle, categoryTitle, SITE_REVIEWER } from "@/data/insights";
 import { publishedServices, serviceUrl } from "@/data/services";
 import { firm } from "@/data/firm";
-import { buildMetadata, absUrl } from "@/lib/seo";
+import { team } from "@/data/team";
+import { buildMetadata } from "@/lib/seo";
+import { articleSchema } from "@/lib/schema";
 import JsonLd from "@/components/seo/JsonLd";
 import PageHeader from "@/components/ui/PageHeader";
 import { Clock, CalendarDays, ArrowRight } from "lucide-react";
@@ -28,23 +30,12 @@ export default async function ArticlePage({ params }) {
   const toc = [...a.body.filter(([t]) => t === "h2").map(([, v]) => v), ...(a.faqs.length ? ["Frequently asked questions"] : [])];
   const services = (a.services || []).map((s) => publishedServices.find((p) => p.slug === s)).filter(Boolean);
   const more = articles.filter((x) => x.slug !== a.slug && (x.category === a.category || x.tags.some((t) => a.tags.includes(t)))).slice(0, 3);
-  const org = { "@type": "Organization", name: firm.name, url: absUrl("/") };
+  // Rendered only when a partner has been assigned as reviewer for this article (see REVIEW.md).
+  const reviewer = a.reviewedBy ? team.find((t) => t.slug === a.reviewedBy) : null;
 
   return (
     <>
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Article",
-          headline: a.title,
-          description: a.description,
-          datePublished: a.publishedAt,
-          dateModified: a.updatedAt,
-          author: org,
-          publisher: org,
-          mainEntityOfPage: absUrl(`/insights/${a.slug}`),
-        }}
-      />
+      <JsonLd data={articleSchema({ ...a, reviewer })} />
       <PageHeader
         crumbs={[{ name: "Insights", href: "/insights" }, { name: a.title, href: `/insights/${a.slug}` }]}
         eyebrow={categoryTitle(a.category)}
@@ -53,7 +44,7 @@ export default async function ArticlePage({ params }) {
       >
         <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/70">
           <li>{firm.name} editorial team</li>
-          <li>{SITE_REVIEWER}</li>
+          <li>{reviewer ? `Reviewed by ${reviewer.name}` : SITE_REVIEWER}</li>
           <li className="flex items-center gap-1.5"><Clock size={14} className="text-brand-gold" aria-hidden="true" />{a.readMinutes} min read</li>
           <li className="flex items-center gap-1.5"><CalendarDays size={14} className="text-brand-gold" aria-hidden="true" />Published {fmtDate(a.publishedAt)} · Updated {fmtDate(a.updatedAt)}</li>
         </ul>

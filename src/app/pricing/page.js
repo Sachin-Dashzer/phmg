@@ -12,7 +12,7 @@ import { ProcessSteps, WhyChoose, FAQSection } from "@/components/sections/SiteS
 // TODO: CLIENT TO CONFIRM fee policy before adding any "starting from" plans.
 export const metadata = buildMetadata({
   title: "Fees and Pricing – How We Quote",
-  description: "How PHMG & Associates decides fees: clear scope, written quote and no hidden charges. Request a quote from our chartered accountants today.",
+  description: "How PHMG & Associates decides fees: a written scope and quote before work starts, with government fees shown separately and nothing added later.",
   path: "/pricing",
 });
 

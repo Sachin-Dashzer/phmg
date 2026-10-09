@@ -27,11 +27,15 @@ export const firm = {
     country: "IN",
   },
   geo: { lat: "", lng: "" },
+  // Only profiles that actually exist: every value here goes into `sameAs` in the organisation
+  // schema, and a sameAs pointing at a 404 is worse than an absent one.
+  // LinkedIn is cleared until the company page exists — see REVIEW.md.
   social: {
-    linkedin: "https://www.linkedin.com/company/phmg-associates",
+    linkedin: "", // TODO: CLIENT TO CONFIRM — the company page did not resolve
     facebook: "",
-    instagram: "",
-    youtube: "",
+    instagram: "https://www.instagram.com/phmgassociates/",
+    youtube: "https://www.youtube.com/@phmgindia",
+    x: "https://x.com/PHMGAssociates",
     googleBusiness: "",
   },
   empanelments: ["RBI Category-I Empanelled", "CAG of India Empanelled", "GST Litigation Specialists"],
@@ -52,12 +56,15 @@ export const firm = {
 // what is empty, so a "Get directions" link and a geo/openingHours node appear only once set.
 // TODO: CLIENT TO CONFIRM coordinates, map links, office hours, the Ludhiana PIN code and the
 // Meerut building number. Tracked in REVIEW.md. Never invent these.
+// `address` is the full printed address, used wherever the address is displayed.
+// `street` and `locality` are the same address split for structured data, so streetAddress does
+// not repeat the city and PIN that already have their own fields. Keep the two in step.
 export const offices = [
-  { slug: "noida", city: "Noida", head: true, address: "D-23, 3rd Floor, Sector 59, Noida - 201301", locality: "Sector 59", region: "Uttar Pradesh", postalCode: "201301", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
-  { slug: "mumbai", city: "Mumbai", address: "C-2102, Vicinia, Powai Vihaar Road, Chandivali, Mumbai - 400072", locality: "Chandivali, Powai", region: "Maharashtra", postalCode: "400072", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
-  { slug: "delhi", city: "Delhi", address: "First Floor, 83-84, Sector 24, Rohini, Delhi - 110085", locality: "Sector 24, Rohini", region: "Delhi", postalCode: "110085", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
-  { slug: "ludhiana", city: "Ludhiana", address: "223, First Floor, Industrial Area-A, Cheema Chowk, Ludhiana", locality: "Industrial Area-A, Cheema Chowk", region: "Punjab", postalCode: "", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
-  { slug: "meerut", city: "Meerut", address: "Opp. Canara Bank, Near Mohiuddinpur Sugar Mill, Meerut - 250205", locality: "Mohiuddinpur", region: "Uttar Pradesh", postalCode: "250205", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
+  { slug: "noida", city: "Noida", head: true, address: "D-23, 3rd Floor, Sector 59, Noida - 201301", street: "D-23, 3rd Floor", locality: "Sector 59", region: "Uttar Pradesh", postalCode: "201301", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
+  { slug: "mumbai", city: "Mumbai", address: "C-2102, Vicinia, Powai Vihaar Road, Chandivali, Mumbai - 400072", street: "C-2102, Vicinia, Powai Vihaar Road", locality: "Chandivali, Powai", region: "Maharashtra", postalCode: "400072", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
+  { slug: "delhi", city: "Delhi", address: "First Floor, 83-84, Sector 24, Rohini, Delhi - 110085", street: "First Floor, 83-84", locality: "Sector 24, Rohini", region: "Delhi", postalCode: "110085", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
+  { slug: "ludhiana", city: "Ludhiana", address: "223, First Floor, Industrial Area-A, Cheema Chowk, Ludhiana", street: "223, First Floor", locality: "Industrial Area-A, Cheema Chowk", region: "Punjab", postalCode: "", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
+  { slug: "meerut", city: "Meerut", address: "Opp. Canara Bank, Near Mohiuddinpur Sugar Mill, Meerut - 250205", street: "Opp. Canara Bank", locality: "Near Mohiuddinpur Sugar Mill", region: "Uttar Pradesh", postalCode: "250205", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
 ];
 
 export const getOffice = (slug) => offices.find((o) => o.slug === slug);

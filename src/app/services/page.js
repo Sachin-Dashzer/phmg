@@ -15,7 +15,7 @@ import { ClientsStrip, PracticeAreas, WhoWeServe, ProcessSteps, WhyChoose, FAQSe
 export const metadata = buildMetadata({
   title: "CA Services – Tax, Audit, GST, ROC",
   description:
-    "Explore PHMG & Associates services: income tax, GST, audit, company registration, ROC compliance, accounting and more. Talk to our chartered accountants today.",
+    "PHMG & Associates services: income tax, GST, audit and assurance, company registration, ROC compliance, accounting, payroll and international taxation.",
   path: "/services",
 });
 

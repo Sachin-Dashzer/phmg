@@ -103,7 +103,7 @@ export function Logo({ scrolled = false }) {
       <Image
         src={LogoImage}
         alt="PHMG & Associates"
-        priority
+        loading="eager"
         className="h-6 w-auto min-[360px]:h-7 sm:h-9 lg:h-8 xl:h-11"
       />
     </Link>
