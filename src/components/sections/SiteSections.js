@@ -115,7 +115,7 @@ export function AboutSplit({ className = "bg-brand-mist", cta = true, title = "A
           <h2 id="about-title" className="font-display text-3xl font-bold leading-tight text-brand-navy md:text-4xl">{title}</h2>
           <div className="divider-gold mt-5" />
           <p className="mt-5 leading-relaxed text-brand-muted">
-            PHMG and Associates is empanelled with the Reserve Bank of India in Category-I and with the CAG of India,
+            PHMG &amp; Associates is empanelled with the Reserve Bank of India in Category-I and with the CAG of India,
             and handles bank statutory and concurrent audits. We serve corporate, banking, government, PSU and
             private sector clients across India and globally.
           </p>
