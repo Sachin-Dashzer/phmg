@@ -18,7 +18,9 @@ npm run dev                    # http://localhost:3000
 | `npm run build` / `npm start` | Production build and server |
 | `npm run lint` | ESLint |
 | `npm test` | Calculator maths (Node's built-in test runner) |
-| `npm run check:seo -- http://localhost:3000` | Crawls a running server: titles, descriptions, canonicals, H1, og:image, JSON-LD, internal links, placeholder text |
+| `npm run check:seo -- http://localhost:3000` | Crawls a running server: titles, descriptions, canonicals, H1, og:image, JSON-LD, internal links, placeholder text, and word count on service and insight pages |
+| `node scripts/check-content.mjs` | Validates service and city content against the field rules below, plus the ICAI wording list, offline. Add `--all` to include pages written before October 2026 |
+| `node scripts/optimise-images.mjs` | Recompresses heavy images in `public/` using the `sharp` that ships with Next |
 | `npm run analyze` | Bundle analyzer |
 | `node scripts/keyword-map.mjs` | Regenerates `docs/keyword-map.csv` and flags duplicate primary keywords |
 
@@ -55,7 +57,9 @@ Edit `src/data/firm.js`. Anything left empty (phone, address, stats, testimonial
 
 ### Add or publish a service
 1. If it is not in the catalog, add a row to `src/data/services.js`: `[category, slug, title, one-line description]`.
-2. Add its content to a file in `src/data/content/` (copy an existing entry). Required fields: `h1`, `metaTitle` (≤ 60 chars), `metaDescription` (about 140–158 chars, ends with a call to action), `primaryKeyword`, `secondaryKeywords`, `intro`, `definition` (40–60 words), `whoNeedsIt`, `benefits`, `documents`, `process`, `deadlines`, `mistakes`, `faqs`, `related`. Import the file in `src/data/service-content.js` if it is new.
+2. Add its content to a file in `src/data/content/` (copy an existing entry). Required fields: `h1`, `metaTitle` (≤ 60 chars), `metaDescription` (140–158 chars), `primaryKeyword`, `secondaryKeywords` (5–8), `intro`, `definition` (40–60 words, answer-first and standalone), `whoNeedsIt`, `benefits`, `documents`, `process`, `deadlines`, `dueNote`, `mistakes`, `faqs` (6–8), `related` (3–4 published slugs, at least one outside its own category), and `sections` for the in-depth content. Import the file in `src/data/service-content.js` if it is new.
+
+   Meta descriptions must **not** end with a call to action: ICAI rules bar urgency and inducement, so close with a neutral informational line instead. `node scripts/check-content.mjs` enforces all of the above, including the wording rules.
 3. The page, menu, footer, sitemap, `llms.txt` and checklist page update automatically. Run `node scripts/keyword-map.mjs`, `npm run build` and `npm run check:seo`.
 
 A service with no content stays on its category page as an "on request" line and has no URL.

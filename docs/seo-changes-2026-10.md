@@ -304,3 +304,77 @@ well-defined follow-up work.
 | `scripts/check-seo.mjs` | word count now measures `<main>` minus the CTA band, as its comment always described |
 | `scripts/keyword-map.mjs` | city rows read from `cities.js` instead of a hand-maintained list |
 | `src/data/*.js` | imports carry `.js` extensions so node scripts can import the data directly |
+
+---
+
+## Manual steps after deploy
+
+These cannot be done from the repository. In rough priority order.
+
+### 1. Before you deploy
+
+- **Delete or move `public/phmg-main.zip`.** It is a 10.5 MB archive sitting in `public/`, which
+  means a deploy from this working directory would publish it at `/phmg-main.zip`. It is in
+  `.gitignore` now, so it is out of git, but it is still on disk.
+- Confirm the highest-priority facts in [`REVIEW.md`](../REVIEW.md) — the Section 138 thresholds,
+  the Form 10AB "whichever is earlier" deadline, and the labour codes commencement dates.
+- Read the new homepage hero copy and the CTA wording, which are the most visible changes.
+
+### 2. Search engines
+
+- **Google Search Console**: submit `https://phmgindia.com/sitemap.xml`.
+- **Bing Webmaster Tools**: submit the same sitemap. Bing also accepts an import of the Search
+  Console configuration, which is quicker than setting it up twice.
+- **Request indexing for the 21 new URLs** listed at the top of this document. In Search Console
+  this is the URL Inspection tool, one URL at a time; there is a daily quota, so expect to spread
+  them over two or three days. Bing's URL submission takes several at once.
+- Check Search Console's Pages report a week later for anything reported as "Discovered – currently
+  not indexed", which on a new set of pages usually means internal linking rather than quality.
+
+### 3. Validate the structured data
+
+Test at least three pages, one of each template, in both tools:
+
+| Page | What to expect |
+|---|---|
+| `/` | `AccountingService` + `ProfessionalService`, `WebSite`, `FAQPage`, five `AccountingService` office nodes under `subOrganization` |
+| `/ca-in-ludhiana` | the organisation, that office's `AccountingService` node, `BreadcrumbList`, `FAQPage` |
+| `/services/audit-assurance/bank-audit` | the organisation, `Service` with `areaServed` and `dateModified`, `BreadcrumbList`, `FAQPage` |
+
+- [Rich Results Test](https://search.google.com/test/rich-results)
+- [Schema.org validator](https://validator.schema.org/)
+
+Expect the Rich Results Test to report no eligible rich result for `AccountingService` and
+`Service` — that is normal, those types have no rich result. What matters is that it reports no
+errors. `FAQPage` and `BreadcrumbList` are the two that should be recognised.
+
+### 4. Supply the data that is deliberately missing
+
+Each of these makes something appear that is currently hidden, rather than changing anything:
+
+| Add to | Effect |
+|---|---|
+| `geo: { lat, lng }` per office in `firm.js` | adds `geo` to that office's schema node |
+| `mapUrl` per office in `firm.js` | makes the "Get directions" button appear on that city page |
+| `hours` per office in `firm.js` | shows the hours line and adds `openingHoursSpecification` |
+| `firm.icaiFrn` | shows the ICAI registration number in the footer and in `/llms.txt` |
+| `firm.social.linkedin` | returns LinkedIn to `sameAs` — only once the company page exists |
+| `firm.social.googleBusiness` | adds the Google Business Profile to `sameAs` |
+| `branchHead` in `cities.js` for Noida, Mumbai, Meerut | shows the branch head card on that page |
+| `reviewers` in `service-content.js` / `insights.js` | shows "Reviewed by" and adds schema `reviewedBy` |
+| Ludhiana PIN code, Meerut building number | completes those two addresses |
+
+### 5. Google Business Profile
+
+Create or claim a profile for each of the five offices, and make the name, address and phone
+match `firm.js` exactly — inconsistent NAP data across profiles is the most common cause of weak
+local ranking. Then put each profile URL and each office's coordinates into `firm.js`. See
+`docs/off-page-seo.md`.
+
+### 6. Worth watching afterwards
+
+- The `/locations/:city` → `/ca-in-:city` redirects, in Search Console's Pages report: the old URLs
+  should drop out and the new ones appear, not both.
+- Core Web Vitals on the hero images after the recompression, particularly LCP on mobile.
+- Whether `/llms-full.txt` is being fetched, in the server or CDN logs, by the AI crawlers named
+  in `robots.txt`. That is the only way to tell whether the GEO work is reaching anything.
