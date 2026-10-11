@@ -11,5 +11,10 @@
 // The canonical on the page points at /ca-in-:city, so only one URL is indexable.
 const redirects = [
   { source: "/locations/:city", destination: "/ca-in-:city", permanent: true },
+
+  // /tools became /knowledge-bank in October 2026. The five original calculators kept their
+  // slugs, so each old URL maps to exactly one new one and no link is lost.
+  { source: "/tools", destination: "/knowledge-bank", permanent: true },
+  { source: "/tools/:slug", destination: "/knowledge-bank/calculators/:slug", permanent: true },
 ];
 export default redirects;

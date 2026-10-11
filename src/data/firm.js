@@ -41,10 +41,6 @@ export const firm = {
   // "Specialists" is a self-description the ICAI rules discourage; the other two are factual
   // empanelments. Flagged for a partner decision in REVIEW.md.
   empanelments: ["RBI Category-I Empanelled", "CAG of India Empanelled", "GST Litigation & Advisory"],
-  // Renders the "Trusted by banks, PSUs and businesses" strip with its 16 named clients.
-  // Defaults to true, so nothing changes until a partner decides. Naming clients may fall foul
-  // of the ICAI restrictions on advertising and may need each client's consent — see REVIEW.md.
-  showClientList: true,
   stats: {
     yearsExperience: "10+",
     assignments: "400+",

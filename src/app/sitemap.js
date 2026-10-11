@@ -4,7 +4,7 @@ import { team } from "@/data/team";
 import { industries } from "@/data/industries";
 import { cities } from "@/data/cities";
 import { articles, insightCategories, articlesIn } from "@/data/insights";
-import { tools } from "@/data/tools";
+import { calculators, utilities } from "@/data/knowledge-bank";
 import { publishedServices, servicesIn, serviceUrl } from "@/data/services";
 
 // `new Date()` on every URL told search engines the whole site changes on every deploy, which
@@ -16,7 +16,7 @@ const STATIC_REVIEWED = "2026-10-09";
 // lastReviewed is a month name such as "October 2026"; reviewedToISO turns it into a real date.
 const fromReviewed = (v) => reviewedToISO(v, STATIC_REVIEWED);
 
-const staticPaths = ["/", "/about", ...(team.length ? ["/team"] : []), "/services", "/faq", "/contact", "/industries", "/locations", "/pricing", "/book-consultation", "/insights", "/tools", "/tax-calendar", "/download", "/privacy-policy", "/terms", "/disclaimer"];
+const staticPaths = ["/", "/about", ...(team.length ? ["/team"] : []), "/services", "/faq", "/contact", "/industries", "/locations", "/pricing", "/book-consultation", "/insights", "/knowledge-bank", "/knowledge-bank/official-resources", "/careers", "/gallery", "/tax-calendar", "/download", "/privacy-policy", "/terms", "/disclaimer"];
 
 export default function sitemap() {
   const entries = [
@@ -27,7 +27,9 @@ export default function sitemap() {
     ...cities.map((c) => [`/ca-in-${c.slug}`, c.updatedAt || STATIC_REVIEWED]),
     ...insightCategories.filter((c) => articlesIn(c.slug).length).map((c) => [`/insights/category/${c.slug}`, STATIC_REVIEWED]),
     ...articles.map((a) => [`/insights/${a.slug}`, a.updatedAt]),
-    ...tools.map((t) => [`/tools/${t.slug}`, STATIC_REVIEWED]),
+    ...calculators.map((c) => [`/knowledge-bank/calculators/${c.slug}`, STATIC_REVIEWED]),
+    ...utilities.map((u) => [`/knowledge-bank/utilities/${u.slug}`, STATIC_REVIEWED]),
+    ...team.map((t) => [`/team/${t.slug}`, STATIC_REVIEWED]),
   ];
   return entries.map(([path, lastModified]) => ({ url: absUrl(path), lastModified }));
 }

@@ -23,12 +23,6 @@ const sectors = [
   "IT Companies & Gov Entities", "FMCG, Real Estate & Textiles", "Eco-Recycling & Chemicals",
 ];
 
-// Named in the "Few Esteemed Clients" page of PHMG_Profile_Updated.pdf.
-const clients = [
-  "State Bank of India", "Bank of Baroda", "Bank of India", "J&K Bank", "Crompton", "Expeditors", "Allied", "Likhitha",
-  "Ryan Clinic", "Oasis Grandstand", "MPS", "Atlantic Water World", "Greenfield Public School", "Vikas", "CAIT", "Blue Bell Travel Experts",
-];
-
 const why = [
   { icon: Gavel, title: "Litigation focus", text: "Representation before ITAT, CIT(A), GST Tribunals and High Courts in high-stakes tax matters.", accent: "text-brand-blue" },
   { icon: Search, title: "Search and survey support", text: "Representation and support during income tax and GST search and survey proceedings.", accent: "text-brand-teal" },
@@ -88,26 +82,6 @@ const statCols = { 1: "md:grid-cols-1", 2: "md:grid-cols-2", 3: "md:grid-cols-3"
 /* ------------------------------------------------------------------ */
 /* Sections                                                            */
 /* ------------------------------------------------------------------ */
-
-// Renders only while firm.showClientList is true. The names stay in the data either way, so a
-// partner decision is one boolean rather than a content change. See REVIEW.md.
-export function ClientsStrip({ className = "bg-white" }) {
-  if (!firm.showClientList) return null;
-  return (
-    <section aria-labelledby="clients-title" className={`py-14 md:py-16 ${className}`}>
-      <div className="container-x text-center">
-        <h2 id="clients-title" className="text-sm font-semibold text-brand-muted">
-          Banks, PSUs and businesses we have worked with
-        </h2>
-        <ul className="mx-auto mt-6 flex max-w-5xl flex-wrap justify-center gap-3">
-          {clients.map((c) => (
-            <li key={c} className="rounded-full border border-brand-line bg-brand-mist px-5 py-2 text-sm font-medium text-brand-navy">{c}</li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
 
 export function AboutSplit({ className = "bg-brand-mist", cta = true, title = "A decade of trust. A future of growth." }) {
   return (
@@ -372,7 +346,7 @@ export function WhoWeServe({ className = "bg-white" }) {
 export function ToolCard({ tool: t, index = 0 }) {
   return (
     <Link
-      href={`/tools/${t.slug}`}
+      href={`/knowledge-bank/calculators/${t.slug}`}
       className={`group relative flex h-full flex-col overflow-hidden rounded-2xl bg-linear-to-br ${toolGradients[index % toolGradients.length]} p-6 text-white transition-[transform,box-shadow] duration-300 hover:-translate-y-px hover:shadow-2xl motion-reduce:transition-none motion-reduce:hover:translate-y-0`}
     >
       <div className="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-white/5" aria-hidden="true" />

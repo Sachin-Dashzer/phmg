@@ -41,7 +41,8 @@ See `.env.example`.
 ## Where things live
 ```
 src/data/        All editable content: firm, services, content/, categories, industries,
-                 cities, insights/, tools, faqs, team, legal, taxSlabs, navigation, redirects
+                 cities, insights/, knowledge-bank, gallery, jobs, faqs, team, legal,
+                 taxSlabs, navigation, redirects
 src/app/         Routes (App Router), sitemap, robots, manifest, llms.txt, feed.xml, OG images
 src/components/  layout/, ui/, forms/, tools/, seo/
 src/lib/         seo.js (metadata), schema.js (JSON-LD), email.js, validators.js, calculators/
@@ -72,7 +73,7 @@ Only for cities the firm genuinely serves. Add an entry to `src/data/cities.js` 
 
 ### Add an industry, FAQ, team member or calculator
 - Industry: `src/data/industries.js`. FAQ: `src/data/faqs.js`. Team member: `src/data/team.js` (the `/team` page switches from `noindex` to indexed once it has entries and appears in the sitemap).
-- Calculator: add pure maths and tests in `src/lib/calculators/`, a runner in `runners.js`, and page copy in `src/data/tools.js`.
+- Calculator: add pure maths and tests in `src/lib/calculators/`, a runner in `runners.js` or `runners-finance.js`, and page copy in `src/data/knowledge-bank.js`. Keep rates as arguments, never baked into the maths.
 
 ### Redirect an old URL
 Add `{ source, destination, permanent: true }` to `src/data/redirects.mjs`, then redeploy.
@@ -128,3 +129,20 @@ Note: the form rate limiter keeps counts in memory, so it resets on restart and 
 - `docs/keyword-map.csv`: one primary keyword per page (no cannibalisation)
 - `docs/off-page-seo.md`: Google Business Profile, citations, links
 - `docs/content-calendar.md`: quarterly reviews, Budget updates, article backlog
+
+### Add a gallery photo or video
+Photos: put the file in `public/images/gallery`, add an entry to `photos` in
+`src/data/gallery.js` with factual `alt` text, then run `node scripts/optimise-images.mjs`.
+Videos: add the YouTube **video id** (not the URL) to `videos`. The video section renders only
+when that array has entries; otherwise the page links the channel. Embeds use
+`youtube-nocookie.com`, which is already allowed in the Content-Security-Policy.
+
+### Post a job
+Add an object to `jobs` in `src/data/jobs.js`. With an empty array `/careers` shows a
+"no advertised openings" state and still accepts speculative applications, so there is never a
+fake vacancy. Applications post to `/api/careers` and are emailed to `CONTACT_TO_EMAIL`.
+
+### Fill in a partner's profile
+Set the fields for that partner in `profiles` in `src/data/team.js`. Each of `bio`,
+`icaiMembership`, `education`, `languages`, `office`, `appearsBefore` and `email` renders on
+`/team/{slug}` only when it has a value, so a partial profile is safe to ship.

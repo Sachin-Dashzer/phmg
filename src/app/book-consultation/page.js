@@ -5,7 +5,7 @@ import { categories } from "@/data/categories";
 import { faqs } from "@/data/faqs";
 import PageHeader from "@/components/ui/PageHeader";
 import LeadForm from "@/components/forms/LeadForm";
-import { ClientsStrip, ProcessSteps, WhyChoose, FAQSection } from "@/components/sections/SiteSections";
+import { ProcessSteps, WhyChoose, FAQSection } from "@/components/sections/SiteSections";
 import whoWeServeImage from "../../../public/who-we-serve.jpg";
 
 export const metadata = buildMetadata({
@@ -17,7 +17,7 @@ export const metadata = buildMetadata({
 const expect = ["A short call to understand your requirement", "Clear next steps and a document checklist", "A written scope and fee if you decide to proceed"];
 const badges = [
   { I: Clock, t: "Reply within one business day" },
-  { I: BadgeIndianRupee, t: "Free, no obligation" },
+  { I: BadgeIndianRupee, t: "Scope and fee agreed in writing first" },
   { I: ShieldCheck, t: "Strictly confidential" },
 ];
 
@@ -28,7 +28,7 @@ export default function Book() {
         crumbs={[{ name: "Book Consultation", href: "/book-consultation" }]}
         eyebrow="Book a consultation"
         title={<>Book a call with a <span className="text-brand-gold">chartered accountant</span></>}
-        intro="Tell us what you need and when you are free. We will confirm the time by phone or message."
+        intro="Tell us what you need and the times that suit you. We will confirm the time by phone or message."
         image={whoWeServeImage}
       >
         <ul className="flex flex-wrap gap-x-6 gap-y-3">
@@ -72,7 +72,6 @@ export default function Book() {
         </div>
       </section>
 
-      <ClientsStrip />
       <ProcessSteps className="bg-brand-mist" />
       <WhyChoose className="bg-white" />
       <FAQSection faqs={faqs} />

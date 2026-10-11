@@ -135,7 +135,7 @@ export const moreServices = {
     h1: "GST Notice Reply and Appeals Support",
     metaTitle: "GST Notice Reply – Show Cause, Demand, Appeal",
     metaDescription:
-      "Received a GST notice? Our chartered accountants review it, prepare the reply and handle hearings and appeals. Share your notice for a free review.",
+      "Received a GST notice? What each type means, the time limit to reply, how a reply is prepared, and the appeal route if the order goes against you.",
     primaryKeyword: "gst notice reply",
     secondaryKeywords: ["GST show cause notice", "ASMT-10", "DRC-01", "GST appeal", "GST cancellation notice"],
     intro: "Send us the notice and we will explain it, check the deadline, and prepare a response backed by data and documents. We also represent you at hearings and help file appeals where needed.",

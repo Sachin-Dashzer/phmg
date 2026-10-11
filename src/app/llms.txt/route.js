@@ -4,7 +4,7 @@ import { publishedServices, serviceUrl, servicesIn } from "@/data/services";
 import { cities } from "@/data/cities";
 import { team } from "@/data/team";
 import { articles } from "@/data/insights";
-import { tools } from "@/data/tools";
+import { calculators, utilities } from "@/data/knowledge-bank";
 import { absUrl } from "@/lib/seo";
 
 // Plain-text site summary for AI crawlers (llmstxt.org format). Generated from the same data the
@@ -54,8 +54,11 @@ export function GET() {
     "## Guides",
     ...articles.map((a) => link(a.title, `/insights/${a.slug}`, a.description)),
     "",
-    "## Calculators",
-    ...tools.map((t) => link(t.title, `/tools/${t.slug}`, t.short)),
+    "## Knowledge Bank",
+    link("Knowledge Bank", "/knowledge-bank", "calculators, reference tables and official sources"),
+    ...calculators.map((c) => link(c.title, `/knowledge-bank/calculators/${c.slug}`, c.short)),
+    ...utilities.map((u) => link(u.title, `/knowledge-bank/utilities/${u.slug}`, u.short)),
+    link("Official sources", "/knowledge-bank/official-resources", "directory of the government sources behind the guidance on this site"),
     "",
     "## Company",
     link("About", "/about", `established ${firm.foundedYear}, RBI Category-I and CAG empanelled`),

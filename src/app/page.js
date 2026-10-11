@@ -10,14 +10,14 @@ import HeroEnquiry from "@/components/sections/HeroEnquiry";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { CategoryCard } from "@/components/ui/ServiceCard";
 import {
-  ClientsStrip, AboutSplit, WhoWeServe, StatsBand, PracticeAreas, WhyChoose, ProcessSteps, OfficesGrid, FAQSection, ToolCard,
+  AboutSplit, WhoWeServe, StatsBand, PracticeAreas, WhyChoose, ProcessSteps, OfficesGrid, FAQSection, ToolCard,
 } from "@/components/sections/SiteSections";
 import CTABand from "@/components/ui/CTABand";
 import InsightCard from "@/components/ui/InsightCard";
 import { articles } from "@/data/insights";
 import { webSiteSchema } from "@/lib/schema";
 import JsonLd from "@/components/seo/JsonLd";
-import { tools } from "@/data/tools";
+import { calculators } from "@/data/knowledge-bank";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import BannerImg from "../../public/banner.jpg";
 
@@ -448,7 +448,6 @@ export default function Home() {
         <HeroEnquiry />
       </div>
 
-      <ClientsStrip />
 
       <AboutSplit />
 
@@ -549,24 +548,24 @@ export default function Home() {
 
       <OfficesGrid />
 
-      {/* -- 13. FREE TOOLS ----------------------------------- */}
-      {tools.length > 0 && (
+      {/* -- 13. CALCULATORS ---------------------------------- */}
+      {calculators.length > 0 && (
         <section aria-labelledby="tools-title" className="section bg-brand-mist">
           <div className="container-x">
             <SectionHeading
               id="tools-title"
-              label="Free resources"
-              title="Free calculators & tools"
-              intro="Use these tools free, no sign-up required."
+              label="Calculators"
+              title="Calculators and reference tables"
+              intro="Work out the numbers yourself, with no sign-up."
               action={
-                <Link href="/tools" className="btn btn-secondary">
-                  All tools <ArrowRight size={15} aria-hidden="true" />
+                <Link href="/knowledge-bank" className="btn btn-secondary">
+                  Knowledge Bank <ArrowRight size={15} aria-hidden="true" />
                 </Link>
               }
             />
 
             <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {tools.slice(0, 3).map((t, i) => (
+              {calculators.slice(0, 3).map((t, i) => (
                 <ToolCard key={t.slug} tool={t} index={i} />
               ))}
             </ScrollReveal>

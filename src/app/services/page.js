@@ -10,7 +10,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { CategoryCard } from "@/components/ui/ServiceCard";
 import CTABand from "@/components/ui/CTABand";
-import { ClientsStrip, PracticeAreas, WhoWeServe, ProcessSteps, WhyChoose, FAQSection } from "@/components/sections/SiteSections";
+import { PracticeAreas, WhoWeServe, ProcessSteps, WhyChoose, FAQSection } from "@/components/sections/SiteSections";
 
 export const metadata = buildMetadata({
   title: "CA Services – Tax, Audit, GST, ROC",
@@ -34,7 +34,6 @@ export default function ServicesHub() {
         </div>
       </PageHeader>
 
-      <ClientsStrip />
 
       <section aria-labelledby="all-services" className="section bg-brand-mist">
         <div className="container-x">

@@ -12,7 +12,7 @@ export const mainNav = [
   { title: "Services", href: "/services", mega: true },
   { title: "Industries", href: "/industries" },
   { title: "Insights", href: "/insights" },
-  { title: "Tools", href: "/tools" },
+  { title: "Knowledge Bank", href: "/knowledge-bank" },
   { title: "About", href: "/about" },
   { title: "Contact", href: "/contact" },
 ];

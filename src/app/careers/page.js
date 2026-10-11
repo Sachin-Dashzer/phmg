@@ -1,98 +1,196 @@
 import Link from "next/link";
-import Image from "next/image";
-import { GraduationCap, Users, Building2, TrendingUp, Mail, ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin, Clock, GraduationCap, Briefcase, CalendarDays } from "lucide-react";
+import { jobs, whyJoin } from "@/data/jobs";
+import { offices } from "@/data/firm";
 import { buildMetadata } from "@/lib/seo";
-import { firm } from "@/data/firm";
 import PageHeader from "@/components/ui/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { StatsBand } from "@/components/sections/SiteSections";
+import CTABand from "@/components/ui/CTABand";
+import ApplicationForm from "@/components/forms/ApplicationForm";
+import { ProcessSteps } from "@/components/sections/SiteSections";
 
-// noindex until real openings exist (thin page otherwise).
 export const metadata = buildMetadata({
-  title: "Careers and Articleship",
-  description: "Work with PHMG & Associates: articleship and hiring enquiries for accountants, auditors and tax professionals. Get in touch to share your profile.",
+  title: "Careers",
+  description:
+    "Work with PHMG & Associates: current openings, articleship and applications for accountants, auditors and tax professionals across our five offices.",
   path: "/careers",
-  noindex: true,
 });
 
-const perks = [
-  { I: GraduationCap, t: "Learn on real files", d: "Bank audits, GST litigation, tax appeals and advisory work from day one." },
-  { I: Users, t: "Partner mentorship", d: "A chartered accountant reviews your work and explains the why behind it." },
-  { I: Building2, t: "Five offices", d: "Opportunities in Noida, Delhi, Mumbai, Ludhiana and Meerut." },
-  { I: TrendingUp, t: "Grow with the firm", d: "Take on more responsibility as you show care and accuracy." },
+const officeName = (slug) => offices.find((o) => o.slug === slug)?.city || slug;
+
+const steps = [
+  { title: "Apply", text: "Send your details and a link to your CV through the form on this page." },
+  { title: "First conversation", text: "A short call about your experience and what you would like to work on." },
+  { title: "Technical discussion", text: "A discussion with a partner on the areas relevant to the role." },
+  { title: "Offer", text: "Role, office, responsibilities and terms confirmed in writing." },
 ];
-const roles = ["Articled assistants", "Accountants", "Tax professionals", "Audit professionals"];
+
+const fmt = (d) =>
+  d ? new Date(d).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" }) : "";
 
 export default function Careers() {
+  const roles = jobs.map((j) => j.title);
+  const locations = offices.map((o) => o.city);
+
   return (
     <>
       <PageHeader
         crumbs={[{ name: "Careers", href: "/careers" }]}
-        eyebrow="Careers & articleship"
-        title={<>Build your career with <span className="text-brand-gold">PHMG</span></>}
-        intro="We are always interested in meeting capable people who care about accuracy and clients."
+        eyebrow="Careers"
+        title="Work with us"
+        intro="We are a firm of chartered accountants with offices in Noida, Delhi, Mumbai, Ludhiana and Meerut, working in audit, tax, litigation and advisory. If you care about accuracy and want a partner to review and explain your work, we would like to hear from you."
         image="/images/office/office-3.jpeg"
       >
-        <Link href="#apply" className="btn btn-gold">How to apply <ArrowRight size={16} aria-hidden="true" /></Link>
+        <div className="flex flex-wrap gap-3">
+          <Link href="#apply" className="btn btn-gold">Apply <ArrowRight size={16} aria-hidden="true" /></Link>
+          {jobs.length > 0 && <Link href="#openings" className="btn btn-ghost-light">Current openings</Link>}
+        </div>
       </PageHeader>
 
-      <section aria-labelledby="why-work" className="section bg-white">
+      <section aria-labelledby="openings-title" id="openings" className="section scroll-mt-24 bg-white">
         <div className="container-x">
-          <SectionHeading id="why-work" label="Why work with us" title="Careful work, clear communication" center />
-          <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {perks.map(({ I, t, d }) => (
-              <div key={t} className="card card-hover h-full p-6">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-navy text-brand-gold"><I size={22} aria-hidden="true" /></span>
-                <h3 className="mt-5 text-lg font-semibold">{t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-brand-muted">{d}</p>
-              </div>
+          <SectionHeading
+            id="openings-title"
+            label={jobs.length ? "Open roles" : "Openings"}
+            title={jobs.length ? `${jobs.length} open ${jobs.length === 1 ? "role" : "roles"}` : "No advertised openings at the moment"}
+            intro={
+              jobs.length
+                ? "Each role says which offices it is open in and what is expected."
+                : "We do not have an advertised vacancy right now, but we read every application that comes in and keep profiles on file for when a role opens. Articleship enquiries are welcome at any time."
+            }
+          />
+
+          {jobs.length > 0 && (
+            <ScrollReveal stagger className="grid gap-5 lg:grid-cols-2">
+              {jobs.map((j) => (
+                <article key={j.slug} className="flex h-full flex-col rounded-2xl border border-brand-line bg-brand-mist p-6">
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <h3 className="font-display text-xl font-semibold text-brand-navy">{j.title}</h3>
+                    {j.type && (
+                      <span className="rounded-full bg-brand-gold/15 px-3 py-1 text-xs font-semibold text-brand-gold-dark">{j.type}</span>
+                    )}
+                  </div>
+
+                  <dl className="mt-4 grid gap-2 text-sm text-brand-muted sm:grid-cols-2">
+                    {j.locations?.length > 0 && (
+                      <div className="flex items-center gap-2">
+                        <MapPin size={15} className="shrink-0 text-brand-gold" aria-hidden="true" />
+                        <dt className="sr-only">Offices</dt>
+                        <dd>{j.locations.map(officeName).join(", ")}</dd>
+                      </div>
+                    )}
+                    {j.experience && (
+                      <div className="flex items-center gap-2">
+                        <Clock size={15} className="shrink-0 text-brand-gold" aria-hidden="true" />
+                        <dt className="sr-only">Experience</dt>
+                        <dd>{j.experience}</dd>
+                      </div>
+                    )}
+                    {j.qualification && (
+                      <div className="flex items-center gap-2">
+                        <GraduationCap size={15} className="shrink-0 text-brand-gold" aria-hidden="true" />
+                        <dt className="sr-only">Qualification</dt>
+                        <dd>{j.qualification}</dd>
+                      </div>
+                    )}
+                    {j.closesAt && (
+                      <div className="flex items-center gap-2">
+                        <CalendarDays size={15} className="shrink-0 text-brand-gold" aria-hidden="true" />
+                        <dt className="sr-only">Applications close</dt>
+                        <dd>Closes {fmt(j.closesAt)}</dd>
+                      </div>
+                    )}
+                  </dl>
+
+                  {j.about && <p className="mt-4 text-sm leading-relaxed text-brand-ink">{j.about}</p>}
+
+                  {j.responsibilities?.length > 0 && (
+                    <>
+                      <h4 className="mt-5 text-sm font-semibold text-brand-navy">What you would do</h4>
+                      <ul className="mt-2 space-y-1.5">
+                        {j.responsibilities.map((r) => (
+                          <li key={r} className="flex items-start gap-2 text-sm text-brand-muted">
+                            <Briefcase size={13} className="mt-1 shrink-0 text-brand-gold" aria-hidden="true" />{r}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+
+                  {j.requirements?.length > 0 && (
+                    <>
+                      <h4 className="mt-5 text-sm font-semibold text-brand-navy">What we look for</h4>
+                      <ul className="mt-2 space-y-1.5">
+                        {j.requirements.map((r) => (
+                          <li key={r} className="flex items-start gap-2 text-sm text-brand-muted">
+                            <Briefcase size={13} className="mt-1 shrink-0 text-brand-gold" aria-hidden="true" />{r}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+
+                  <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-6">
+                    {j.postedAt && <span className="text-xs text-brand-muted">Posted {fmt(j.postedAt)}</span>}
+                    <Link href="#apply" className="btn btn-primary">Apply for this role <ArrowRight size={15} aria-hidden="true" /></Link>
+                  </div>
+                </article>
+              ))}
+            </ScrollReveal>
+          )}
+        </div>
+      </section>
+
+      <section aria-labelledby="why-title" className="section bg-brand-mist">
+        <div className="container-x">
+          <SectionHeading id="why-title" label="What the work is like" title="What you would be joining" />
+          <ScrollReveal stagger className="grid gap-5 md:grid-cols-2">
+            {whyJoin.map((w) => (
+              <section key={w.h} className="h-full rounded-2xl border border-brand-line bg-white p-6">
+                <h3 className="text-lg font-semibold text-brand-navy">{w.h}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-brand-muted">{w.p}</p>
+              </section>
             ))}
           </ScrollReveal>
         </div>
       </section>
 
-      <StatsBand />
+      <ProcessSteps className="bg-white" label="How hiring works" title="From application to offer" steps={steps} />
 
-      <section aria-label="Life at PHMG" className="section bg-brand-mist">
-        <div className="container-x">
-          <SectionHeading label="Life at PHMG" title="Where you'll work" />
-          <ScrollReveal className="grid gap-4 sm:grid-cols-3">
-            {["office-1", "office-2", "office-3"].map((o, i) => (
-              <div key={o} className={`relative overflow-hidden rounded-2xl shadow-lg ${i === 0 ? "aspect-4/3 sm:col-span-2 sm:row-span-2 sm:aspect-auto" : "aspect-4/3"}`}>
-                <Image src={`/images/office/${o}.jpeg`} alt="PHMG & Associates office" fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover transition duration-700 hover:scale-105" />
-              </div>
-            ))}
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <section id="apply" aria-labelledby="apply-title" className="section scroll-mt-28 bg-white">
-        <div className="container-x grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <ScrollReveal>
-            <div className="section-label section-label-blue mb-4 w-fit">Who we look for</div>
-            <h2 id="apply-title" className="font-display text-3xl font-bold md:text-4xl">Work with us</h2>
-            <div className="divider-gold mt-5" />
-            <p className="mt-5 leading-relaxed text-brand-muted">
-              We look for people who enjoy careful work and clear communication. You will work on real files with a
-              chartered accountant reviewing your work.
-            </p>
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {roles.map((r) => <li key={r} className="rounded-full border border-brand-line bg-brand-mist px-4 py-2 text-sm font-medium text-brand-navy">{r}</li>)}
-            </ul>
-          </ScrollReveal>
-          <ScrollReveal className="relative overflow-hidden rounded-2xl bg-brand-navy p-8 text-white">
-            <div aria-hidden="true" className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-gold/15 blur-3xl" />
-            <Mail className="relative text-brand-gold" size={32} aria-hidden="true" />
-            <h3 className="relative mt-4 font-display text-2xl font-semibold text-white">Share your profile</h3>
-            <p className="relative mt-2 text-sm leading-relaxed text-white/70">Mention the role you are interested in and attach your CV.</p>
-            <div className="relative mt-6 flex flex-wrap gap-3">
-              {firm.email && <a href={`mailto:${firm.email}?subject=Career enquiry`} className="btn btn-gold">Email {firm.email}</a>}
-              <Link href="/contact" className="btn btn-ghost-light">Contact page</Link>
+      <section aria-labelledby="apply-title" id="apply" className="section scroll-mt-24 bg-brand-mist">
+        <div className="container-x grid gap-10 lg:grid-cols-[1fr_30rem] lg:gap-14">
+          <div>
+            <SectionHeading id="apply-title" label="Apply" title="Send us your details" />
+            <div className="space-y-4 leading-relaxed text-brand-muted">
+              <p>
+                Applications go straight to the team by email. There is no account to create and no
+                portal to log in to.
+              </p>
+              <p>
+                Link your CV from Google Drive, Dropbox or LinkedIn rather than attaching a file —
+                please make sure the link is readable by anyone who has it, or we will not be able
+                to open it.
+              </p>
+              <p>
+                If you are applying for articleship, say so in the message and tell us which exam
+                stage you have cleared and when you are available to start.
+              </p>
+              <p>
+                We read every application. If there is nothing suitable now, we keep your details
+                on file and come back to you when a role opens.
+              </p>
             </div>
-          </ScrollReveal>
+          </div>
+          <ApplicationForm roles={roles} locations={locations} id="careers-apply" />
         </div>
       </section>
+
+      <CTABand
+        title="Questions about a role?"
+        text="If you would like to ask about the work, the offices or articleship before applying, send us a note."
+        cta="Contact us"
+      />
     </>
   );
 }

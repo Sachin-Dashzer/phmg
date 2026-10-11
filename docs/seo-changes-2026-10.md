@@ -393,3 +393,77 @@ local ranking. Then put each profile URL and each office's coordinates into `fir
 - Core Web Vitals on the hero images after the recompression, particularly LCP on mobile.
 - Whether `/llms-full.txt` is being fetched, in the server or CDN logs, by the AI crawlers named
   in `robots.txt`. That is the only way to tell whether the GEO work is reaching anything.
+
+---
+
+## October 2026, second round: new sections and the ICAI client-list removal
+
+### What changed
+
+**The client list is gone.** The "Trusted by banks, PSUs and businesses across sectors" strip and
+all 16 client names are deleted from the homepage, the services page and the booking page, along
+with the `showClientList` flag added earlier. A flag kept the names in the repository one edit away
+from publication; naming clients is the ICAI exposure, so the names went with the section. Git
+history has them if the position ever changes.
+
+**Every offer-style use of "free" is removed.** "Free Tools", "Free checklists", "Free calculator",
+"Free resources", "Free, no obligation", "Share your notice for a free review", "Use these tools
+free, no sign-up required". What stayed, deliberately, is the word used in its ordinary or legal
+sense, because removing it would make the pages wrong: "free from material misstatement" in an
+audit opinion, "collateral-free loans" under CGTMSE, "free of liabilities" on LLP closure, "the GST
+portal is free", "tax-free", "free-of-charge service" in the transfer pricing page.
+
+### New pages
+
+| URL | What it is |
+|---|---|
+| `/gallery` | Office and team photographs in a CSS-column masonry grid, grouped into albums from `src/data/gallery.js`. The video section renders only when video ids are supplied; until then the page links the YouTube channel. Embeds use youtube-nocookie and load nothing until play is pressed, which keeps them consistent with the cookie banner. |
+| `/careers` | Rebuilt. Job listings render from `src/data/jobs.js`; with none set the page shows a "no advertised openings" state and still accepts speculative applications. A real application form posts to a new `/api/careers` handler with the same rate limit, honeypot and consent pattern as the enquiry form. |
+| `/team/{slug}` | A page for each of the five partners and branch heads, with `Person` structured data. Built from `team.js`, with optional `bio`, `icaiMembership`, `education`, `languages`, `office` and `appearsBefore` fields that each render only when set. Related services are matched from the partner's own focus areas rather than a hand-kept list. |
+| `/knowledge-bank` | Replaces `/tools`. Hub for the calculators, the reference tables and the official-sources directory. |
+| `/knowledge-bank/calculators/{slug}` | 14 calculators: the 5 that existed, plus GST MRP, TDS, net profit, net worth, effective capital, NSC, home loan with prepayment, loan tenure and RERA delay interest. |
+| `/knowledge-bank/utilities/{slug}` | 6 reference tables: income tax rates, the GST rate structure, 80TTA against 80TTB, TDS due dates, PF and ESI rates and dates, and recurring compliance due dates. |
+| `/knowledge-bank/official-resources` | A curated directory of 30 official sources, grouped by subject, plus a table of the datasets deliberately **not** reproduced and where to get them. |
+
+### Redirects
+
+`/tools` → `/knowledge-bank` and `/tools/:slug` → `/knowledge-bank/calculators/:slug`. The five
+original calculators kept their slugs, so every old URL maps to exactly one new one.
+
+### Knowledge Bank: what was built and what was not
+
+The brief for this section listed roughly 250 items across Calculators, Bulletins, Utilities,
+Links, Acts, Rules and Forms. Calculators and Utilities were built properly. The rest was scoped
+down deliberately, and the reasoning is worth recording:
+
+- **Acts, Rules and Forms** are link directories. Building them as listed would have meant several
+  hundred near-empty pages, each holding a handful of government deep links that cannot be verified
+  and frequently break. That is thin content, and it would have been added to a site that had just
+  reached a clean SEO pass. They are one curated directory of sources we can stand behind instead.
+- **Bulletins** (RBI and SEBI notifications, circulars, departmental updates) are a subscription
+  content feed on the sites that carry them. Without a feed those pages would be permanently empty,
+  so the official notification pages are linked from the directory rather than mirrored.
+- **Eight datasets are explicitly not reproduced** and say so on the page: IFSC and MICR codes,
+  daily gold and silver rates, the full HSN and SAC schedules, state stamp duty, the National
+  Industries Classification, the cost inflation index, depreciation schedules, and ROC and LLP fee
+  slabs. Each links the authority that maintains it. A stale rate table is worse than no rate
+  table, and a wrong cost inflation index figure produces a wrong capital gain.
+
+Every calculator's maths is a pure function in `src/lib/calculators/finance.js` with no rate baked
+in — every rate is an argument, so a change in the law is a data change rather than a code change.
+`finance.test.js` adds 14 tests (24 in total), including the cases that matter: that GST is divided
+out of an MRP rather than subtracted from it, that TDS applies to the whole payment once the
+threshold is crossed rather than to the excess, that a revaluation reserve never reaches effective
+capital, and that a loan instalment below the first month's interest is reported as never clearing
+instead of returning a nonsense tenure.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| `npm run lint` | passes |
+| `npm test` | 24 pass (was 10) |
+| `npm run build` | compiles |
+| `npm run check:seo` | **132 pages, All checks passed** (was 109) |
+| `/tools` redirects | 308 to the matching Knowledge Bank URL, verified for the hub and all five original calculator slugs |
+| Client names in the HTML | 0 occurrences |
