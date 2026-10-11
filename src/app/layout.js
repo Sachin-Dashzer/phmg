@@ -18,7 +18,7 @@ export const metadata = {
   ...buildMetadata({
     title: "PHMG & Associates | Chartered Accountants in India",
     description:
-      "Trusted CA firm for tax, audit, GST, company registration & compliance. Partner-led, transparent fees, pan-India online service. Book a free consultation.",
+      "Chartered accountants since 2014, empanelled with the RBI in Category-I and the CAG of India. Audit, income tax, GST, company law and compliance services.",
     path: "/",
     ownImage: true, // root opengraph-image.js supplies it
   }),

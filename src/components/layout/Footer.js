@@ -2,6 +2,7 @@ import Link from "next/link";
 import { firm, hasAddress } from "@/data/firm";
 import { categories } from "@/data/categories";
 import { publishedServices, serviceUrl } from "@/data/services";
+import { cities } from "@/data/cities";
 import { legalLinks } from "@/data/navigation";
 import { Logo } from "./Header";
 import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
@@ -12,10 +13,12 @@ const quick = [
   { title: "Locations", href: "/locations" },
   { title: "Pricing", href: "/pricing" },
   { title: "Insights", href: "/insights" },
-  { title: "Free Tools", href: "/tools" },
+  { title: "Knowledge Bank", href: "/knowledge-bank" },
   { title: "Tax Calendar", href: "/tax-calendar" },
   { title: "Book Consultation", href: "/book-consultation" },
   { title: "Team", href: "/team" },
+  { title: "Gallery", href: "/gallery" },
+  { title: "Careers", href: "/careers" },
   { title: "FAQ", href: "/faq" },
   { title: "Contact", href: "/contact" },
 ];
@@ -77,7 +80,7 @@ export default function Footer() {
               href="/book-consultation"
               className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#0b1f3a] transition hover:bg-brand-gold hover:text-white"
             >
-              Book free consultation <ArrowRight size={15} aria-hidden="true" />
+              Book a consultation <ArrowRight size={15} aria-hidden="true" />
             </Link>
 
             {firm.icaiFrn && (
@@ -104,6 +107,23 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+
+            {/* Every city page gets a site-wide link from here, built from cities.js so a new
+                city appears automatically. */}
+            {cities.length > 0 && (
+              <div className="mt-9">
+                <ColumnHeading>Offices</ColumnHeading>
+                <ul className="flex flex-wrap gap-x-5 gap-y-3">
+                  {cities.map((c) => (
+                    <li key={c.slug}>
+                      <Link href={`/ca-in-${c.slug}`} className={linkClass}>
+                        CA in {c.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </nav>
 
           {/* Company */}

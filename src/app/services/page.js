@@ -10,12 +10,12 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { CategoryCard } from "@/components/ui/ServiceCard";
 import CTABand from "@/components/ui/CTABand";
-import { ClientsStrip, PracticeAreas, WhoWeServe, ProcessSteps, WhyChoose, FAQSection } from "@/components/sections/SiteSections";
+import { PracticeAreas, WhoWeServe, ProcessSteps, WhyChoose, FAQSection } from "@/components/sections/SiteSections";
 
 export const metadata = buildMetadata({
   title: "CA Services – Tax, Audit, GST, ROC",
   description:
-    "Explore PHMG & Associates services: income tax, GST, audit, company registration, ROC compliance, accounting and more. Talk to our chartered accountants today.",
+    "PHMG & Associates services: income tax, GST, audit and assurance, company registration, ROC compliance, accounting, payroll and international taxation.",
   path: "/services",
 });
 
@@ -29,19 +29,18 @@ export default function ServicesHub() {
         intro="From tax and GST to audit and company registration, our chartered accountants handle your compliance end to end, with a partner reviewing every important filing."
       >
         <div className="flex flex-wrap gap-3">
-          <Link href="/book-consultation" className="btn btn-gold">Book free consultation <ArrowRight size={16} aria-hidden="true" /></Link>
+          <Link href="/book-consultation" className="btn btn-gold">Book a consultation <ArrowRight size={16} aria-hidden="true" /></Link>
           {firm.phone && <a href={phoneHref()} className="btn btn-ghost-light"><Phone size={16} aria-hidden="true" />{firm.phone}</a>}
         </div>
       </PageHeader>
 
-      <ClientsStrip />
 
       <section aria-labelledby="all-services" className="section bg-brand-mist">
         <div className="container-x">
           <SectionHeading
             id="all-services"
             label="Our services"
-            title="Trusted expertise for your financial needs"
+            title="Services across audit, tax and advisory"
             intro="Pick a category to see every service in it, what documents you need and how we work."
           />
           <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

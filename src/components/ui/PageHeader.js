@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Breadcrumbs from "./Breadcrumbs";
-import BannerImg from "../../../public/banner.png";
+import BannerImg from "../../../public/banner.jpg";
 
 // Inner-page hero in the homepage's language: photo, navy wash, gold eyebrow, serif headline.
 // `children` renders under the intro (buttons, meta). `aside` fills a right-hand column.
@@ -8,12 +8,18 @@ export default function PageHeader({ crumbs, title, intro, eyebrow, image = Bann
   return (
     <section className="relative isolate overflow-hidden">
 
+
+
+
     
+      {/* Next 16 deprecated the `priority` prop. This hero is the LCP element, so it asks for
+          high fetch priority and eager loading directly. */}
       <Image
         src={image}
         alt=""
         fill
-        priority
+        fetchPriority="high"
+        loading="eager"
         sizes="100vw"
         className="
       absolute

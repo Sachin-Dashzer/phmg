@@ -10,14 +10,16 @@ import HeroEnquiry from "@/components/sections/HeroEnquiry";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { CategoryCard } from "@/components/ui/ServiceCard";
 import {
-  ClientsStrip, AboutSplit, WhoWeServe, StatsBand, PracticeAreas, WhyChoose, ProcessSteps, OfficesGrid, FAQSection, ToolCard,
+  AboutSplit, WhoWeServe, StatsBand, PracticeAreas, WhyChoose, ProcessSteps, OfficesGrid, FAQSection, ToolCard,
 } from "@/components/sections/SiteSections";
 import CTABand from "@/components/ui/CTABand";
 import InsightCard from "@/components/ui/InsightCard";
 import { articles } from "@/data/insights";
-import { tools } from "@/data/tools";
+import { webSiteSchema } from "@/lib/schema";
+import JsonLd from "@/components/seo/JsonLd";
+import { calculators } from "@/data/knowledge-bank";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import BannerImg from "../../public/banner.png";
+import BannerImg from "../../public/banner.jpg";
 
 /* ------------------------------------------------------------------ */
 /* Content                                                             */
@@ -37,6 +39,8 @@ const fade = "linear-gradient(to bottom, black, transparent 75%)";
 export default function Home() {
   return (
     <>
+      {/* Organisation schema is in the root layout; this adds the WebSite node. */}
+      <JsonLd data={webSiteSchema()} />
       {/* =========================================================
     HERO SECTION
     ========================================================= */}
@@ -51,7 +55,8 @@ export default function Home() {
           src={BannerImg}
           alt=""
           fill
-          priority
+          fetchPriority="high"
+          loading="eager"
           sizes="100vw"
           className="absolute inset-0 -z-20 object-cover object-center"
         />
@@ -125,7 +130,7 @@ export default function Home() {
             sm:text-xs
           "
               >
-                Your Trusted Partner in Financial Success
+                Chartered Accountants since 2014
               </p>
             </div>
 
@@ -147,9 +152,9 @@ export default function Home() {
           xl:text-[58px]
         "
             >
-              <span className="block">Expert Accounting</span>
-              <span className="block">Solutions for a</span>
-              <span className="block text-brand-gold">Stronger Tomorrow</span>
+              <span className="block">Audit, Tax and</span>
+              <span className="block">Advisory for</span>
+              <span className="block text-brand-gold">Indian Business</span>
             </h1>
 
             {/* =====================================================
@@ -166,9 +171,10 @@ export default function Home() {
           lg:text-[17px]
         "
             >
-              PHMG &amp; Associates, a leading Chartered Accountant firm,
-              offers comprehensive financial, advisory and compliance
-              services to help your business grow with confidence.
+              PHMG &amp; Associates is a firm of chartered accountants
+              established in 2014, empanelled with the Reserve Bank of India
+              in Category-I and with the CAG of India, with five offices
+              across north and west India.
             </p>
 
             {/* =====================================================
@@ -293,9 +299,9 @@ export default function Home() {
                 </div>
 
                 <span className="text-[13px] leading-[1.35] text-white/90">
-                  Trusted
+                  RBI Category-I
                   <br />
-                  Expertise
+                  &amp; CAG empanelled
                 </span>
               </div>
 
@@ -442,7 +448,6 @@ export default function Home() {
         <HeroEnquiry />
       </div>
 
-      <ClientsStrip />
 
       <AboutSplit />
 
@@ -466,7 +471,7 @@ export default function Home() {
               <ScrollReveal>
                 <div className="section-label section-label-blue mb-4 w-fit">Our services</div>
                 <h2 id="services-title" className="font-display text-3xl font-bold leading-tight text-brand-navy md:text-4xl">
-                  Trusted expertise for your financial needs
+                  Services across audit, tax and advisory
                 </h2>
                 <p className="mt-4 leading-relaxed text-brand-muted">
                   From accounting and taxation to audits and business advisory, we provide reliable chartered
@@ -543,24 +548,24 @@ export default function Home() {
 
       <OfficesGrid />
 
-      {/* -- 13. FREE TOOLS ----------------------------------- */}
-      {tools.length > 0 && (
+      {/* -- 13. CALCULATORS ---------------------------------- */}
+      {calculators.length > 0 && (
         <section aria-labelledby="tools-title" className="section bg-brand-mist">
           <div className="container-x">
             <SectionHeading
               id="tools-title"
-              label="Free resources"
-              title="Free calculators & tools"
-              intro="Use these tools free, no sign-up required."
+              label="Calculators"
+              title="Calculators and reference tables"
+              intro="Work out the numbers yourself, with no sign-up."
               action={
-                <Link href="/tools" className="btn btn-secondary">
-                  All tools <ArrowRight size={15} aria-hidden="true" />
+                <Link href="/knowledge-bank" className="btn btn-secondary">
+                  Knowledge Bank <ArrowRight size={15} aria-hidden="true" />
                 </Link>
               }
             />
 
             <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {tools.slice(0, 3).map((t, i) => (
+              {calculators.slice(0, 3).map((t, i) => (
                 <ToolCard key={t.slug} tool={t} index={i} />
               ))}
             </ScrollReveal>

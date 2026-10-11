@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Info, ArrowRight } from "lucide-react";
-import { tools, getTool } from "@/data/tools";
+import { calculators, getCalculator, calculatorsIn } from "@/data/knowledge-bank";
 import { publishedServices } from "@/data/services";
 import { buildMetadata, absUrl } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
@@ -14,28 +14,57 @@ import ToolRunner from "@/components/tools/ToolRunner";
 import { FAQSection, ToolCard } from "@/components/sections/SiteSections";
 
 export const dynamicParams = false;
-export const generateStaticParams = () => tools.map((t) => ({ slug: t.slug }));
+export const generateStaticParams = () => calculators.map((c) => ({ slug: c.slug }));
 
 export async function generateMetadata({ params }) {
-  const t = getTool((await params).slug);
-  if (!t) return {};
-  return buildMetadata({ title: t.metaTitle, description: t.metaDescription, path: `/tools/${t.slug}` });
+  const c = getCalculator((await params).slug);
+  if (!c) return {};
+  return buildMetadata({
+    title: c.metaTitle,
+    description: c.metaDescription,
+    path: `/knowledge-bank/calculators/${c.slug}`,
+  });
 }
 
-export default async function ToolPage({ params }) {
-  const t = getTool((await params).slug);
-  if (!t) notFound();
-  const services = t.services.map((s) => publishedServices.find((p) => p.slug === s)).filter(Boolean);
-  const others = tools.filter((x) => x.slug !== t.slug).slice(0, 3);
+export default async function CalculatorPage({ params }) {
+  const c = getCalculator((await params).slug);
+  if (!c) notFound();
+  const services = c.services.map((s) => publishedServices.find((p) => p.slug === s)).filter(Boolean);
+  // Prefer other calculators in the same group: a person on the EMI page wants the tenure one.
+  const sameGroup = calculatorsIn(c.group).filter((x) => x.slug !== c.slug);
+  const others = [...sameGroup, ...calculators.filter((x) => x.group !== c.group && x.slug !== c.slug)].slice(0, 3);
+
   return (
     <>
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "WebApplication", name: t.title, url: absUrl(`/tools/${t.slug}`), applicationCategory: "FinanceApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: "0", priceCurrency: "INR" } }} />
-      <PageHeader crumbs={[{ name: "Tools", href: "/tools" }, { name: t.title, href: `/tools/${t.slug}` }]} eyebrow="Free calculator" title={t.title} intro={t.intro} />
+      {/* No Offer node: the calculators are not a priced product, and an offer at price 0 would
+          be an inducement claim rather than a fact about the page. */}
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: c.title,
+          description: c.metaDescription,
+          url: absUrl(`/knowledge-bank/calculators/${c.slug}`),
+          applicationCategory: "FinanceApplication",
+          operatingSystem: "Any",
+          inLanguage: "en-IN",
+          publisher: { "@id": absUrl("/#organization") },
+        }}
+      />
+      <PageHeader
+        crumbs={[
+          { name: "Knowledge Bank", href: "/knowledge-bank" },
+          { name: c.title, href: `/knowledge-bank/calculators/${c.slug}` },
+        ]}
+        eyebrow="Calculator"
+        title={c.title}
+        intro={c.intro}
+      />
 
       <section className="bg-brand-mist pb-16 md:pb-20">
         <div className="container-x relative z-10 -mt-8 md:-mt-12">
           <div className="rounded-2xl border border-brand-line bg-white p-5 shadow-xl shadow-brand-navy/10 md:p-8">
-            <ToolRunner slug={t.slug} />
+            <ToolRunner slug={c.slug} />
           </div>
           <p className="mt-4 flex items-center gap-2 text-sm text-brand-muted">
             <Info size={16} className="shrink-0 text-brand-gold" aria-hidden="true" />
@@ -50,7 +79,7 @@ export default async function ToolPage({ params }) {
             <div className="section-label section-label-blue mb-4 w-fit">Explainer</div>
             <h2 id="how-title" className="font-display text-3xl font-bold">How this calculator works</h2>
             <div className="divider-gold mt-5" />
-            <div className="prose-phmg mt-2 text-brand-ink">{t.explainer.map((p) => <p key={p}>{p}</p>)}</div>
+            <div className="prose-phmg mt-2 text-brand-ink">{c.explainer.map((p) => <p key={p}>{p}</p>)}</div>
           </ScrollReveal>
           {services.length > 0 && (
             <div>
@@ -74,12 +103,12 @@ export default async function ToolPage({ params }) {
         </div>
       </section>
 
-      <FAQSection faqs={t.faqs} />
+      <FAQSection faqs={c.faqs} />
 
       {services.length > 0 && (
         <section aria-labelledby="svc-title" className="section bg-white">
           <div className="container-x">
-            <SectionHeading id="svc-title" label="Related services" title="Let a CA handle it" />
+            <SectionHeading id="svc-title" label="Related services" title="Where we can help" />
             <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((s) => <ServiceCard key={s.slug} service={s} />)}
             </ScrollReveal>
@@ -90,7 +119,7 @@ export default async function ToolPage({ params }) {
       {others.length > 0 && (
         <section aria-labelledby="more-tools" className="section bg-brand-mist">
           <div className="container-x">
-            <SectionHeading id="more-tools" label="More tools" title="Try another calculator" />
+            <SectionHeading id="more-tools" label="Knowledge Bank" title="Try another calculator" />
             <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {others.map((o, i) => <ToolCard key={o.slug} tool={o} index={i} />)}
             </ScrollReveal>

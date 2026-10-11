@@ -35,7 +35,7 @@ export default function LeadCard({
           <span className="h-px w-5 bg-brand-gold" />
 
           <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-brand-gold">
-            Free Consultation
+            Enquiry
           </span>
         </div>
 

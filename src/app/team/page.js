@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Check, ArrowRight } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
+import { teamSchema } from "@/lib/schema";
+import JsonLd from "@/components/seo/JsonLd";
 import { team } from "@/data/team";
 import PageHeader from "@/components/ui/PageHeader";
 import CTABand from "@/components/ui/CTABand";
@@ -12,7 +14,7 @@ import { StatsBand, WhyChoose, ProcessSteps } from "@/components/sections/SiteSe
 export const metadata = buildMetadata({
   title: "Our Team – Chartered Accountants",
   description:
-    "Meet the chartered accountants and professionals at PHMG & Associates who review and handle your tax, audit, GST and compliance work. Contact us today.",
+    "The partners and branch heads at PHMG & Associates who review and handle tax, audit, GST and compliance work, with their qualifications and areas of focus.",
   path: "/team",
   noindex: team.length === 0,
 });
@@ -24,10 +26,11 @@ export default function Team() {
   const [lead, ...rest] = team;
   return (
     <>
+      {team.length > 0 && <JsonLd data={teamSchema(team)} />}
       <PageHeader
         crumbs={[{ name: "Team", href: "/team" }]}
         eyebrow="Meet the team"
-        title={<>Partner-led. <span className="text-brand-gold">Expert-driven.</span></>}
+        title={<>Partner-led. <span className="text-brand-gold">Qualified throughout.</span></>}
         intro="Our partners and branch heads bring years of hands-on experience in audit, tax, litigation and advisory, and own every engagement end-to-end. Serving clients since 2014."
         image="/images/office/office-3.jpeg"
       />
@@ -70,7 +73,10 @@ export default function Team() {
                     <li key={f} className="flex items-start gap-2 text-sm"><Check size={16} className="mt-0.5 shrink-0 text-brand-gold" aria-hidden="true" />{f}</li>
                   ))}
                 </ul>
-                <Link href="/contact" className="btn btn-primary mt-8">Speak with a partner <ArrowRight size={16} aria-hidden="true" /></Link>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link href={`/team/${lead.slug}`} className="btn btn-primary">Read full profile <ArrowRight size={16} aria-hidden="true" /></Link>
+                  <Link href="/contact" className="btn btn-secondary">Speak with a partner</Link>
+                </div>
               </ScrollReveal>
             </div>
           </section>
@@ -86,7 +92,7 @@ export default function Team() {
                 <SectionHeading id="team-title" dark label="Partners & branch heads" title="The people behind your filings" center />
                 <ScrollReveal stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                   {rest.map((p) => (
-                    <article key={p.slug} className="group">
+                    <Link key={p.slug} href={`/team/${p.slug}`} className="group block">
                       <div className="relative aspect-3/4 overflow-hidden rounded-3xl bg-linear-to-b from-brand-blue/40 via-brand-navy to-brand-navy ring-1 ring-white/10 transition duration-500 group-hover:ring-2 group-hover:ring-brand-gold">
                         <div aria-hidden="true" className="absolute inset-0" style={{ backgroundImage: ledgerLines }} />
                         <Image src={p.photo} alt={p.name} fill sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 90vw" className="object-cover object-top grayscale-[35%] transition duration-700 group-hover:scale-[1.04] group-hover:grayscale-0 motion-reduce:transition-none" />
@@ -108,7 +114,10 @@ export default function Team() {
                           <li key={f} className="rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[11px] text-white/75">{f}</li>
                         ))}
                       </ul>
-                    </article>
+                      <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-brand-gold">
+                        View profile <ArrowRight size={13} aria-hidden="true" />
+                      </span>
+                    </Link>
                   ))}
                 </ScrollReveal>
               </div>

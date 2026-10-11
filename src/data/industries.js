@@ -27,7 +27,7 @@ export const industries = [
   {
     slug: "ecommerce-retail",
     title: "E-commerce & Retail",
-    metaDescription: "CA services for e-commerce sellers and retailers: GST registration, returns, reconciliation of marketplace data and bookkeeping. Get a free quote.",
+    metaDescription: "CA services for e-commerce sellers and retailers: GST registration and returns, reconciliation of marketplace settlement data, and bookkeeping.",
     intro: "Online and retail businesses deal with high transaction volumes, multiple sales channels and marketplace deductions. Accurate reconciliation is the difference between a clean return and a notice.",
     challenges: [
       "Reconciling marketplace settlements with sales and fees.",
@@ -109,7 +109,7 @@ export const industries = [
       { t: "Payroll compliance", d: "PF, ESI and TDS handled together." },
       { t: "Entity and tax planning", d: "Structure suited to partners and growth plans." },
     ],
-    services: ["gst-registration", "payroll-services", "llp-registration", "tax-audit", "itr-filing"],
+    services: ["gst-registration", "payroll", "llp-registration", "tax-audit", "itr-filing"],
     faqs: [
       { q: "Are healthcare services exempt from GST?", a: "Certain healthcare services by clinical establishments are exempt, but other supplies such as some medicines, goods and rentals may be taxable. We check each stream." },
       { q: "Can doctors form an LLP?", a: "Professionals can form an LLP, subject to the rules of their regulating councils. We advise on structure." },
@@ -119,7 +119,7 @@ export const industries = [
   {
     slug: "professionals",
     title: "Professionals",
-    metaDescription: "Tax and compliance support for doctors, lawyers, architects and consultants: ITR, presumptive tax, GST and advance tax. Get a free quote.",
+    metaDescription: "Tax and compliance for doctors, lawyers, architects and consultants: ITR filing, presumptive taxation, GST where it applies, and advance tax.",
     intro: "Doctors, lawyers, architects and other independent professionals are taxed on receipts and expenses, have advance tax duties and may need GST. Simple, regular records make filing easy.",
     challenges: [
       "Choosing between regular accounts and presumptive taxation.",
@@ -142,7 +142,7 @@ export const industries = [
   {
     slug: "freelancers-creators",
     title: "Freelancers & Creators",
-    metaDescription: "CA services for freelancers and content creators: ITR, GST, foreign income, advance tax and expense planning. Get help from our CAs today.",
+    metaDescription: "CA services for freelancers and content creators: ITR filing, GST on services, foreign income and treaty relief, advance tax and expenses.",
     intro: "Freelancers and creators often earn from several platforms and countries, with little TDS. Planning ahead avoids a heavy tax bill at year end.",
     challenges: [
       "Foreign income and export of services.",

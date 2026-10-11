@@ -103,7 +103,7 @@ export function Logo({ scrolled = false }) {
       <Image
         src={LogoImage}
         alt="PHMG & Associates"
-        priority
+        loading="eager"
         className="h-6 w-auto min-[360px]:h-7 sm:h-9 lg:h-8 xl:h-11"
       />
     </Link>
@@ -159,6 +159,13 @@ function DesktopMega({
 }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
+  const [openedAt, setOpenedAt] = useState(pathname);
+
+  // Close on navigation by resetting during render: an effect here would cascade renders.
+  if (openedAt !== pathname) {
+    setOpenedAt(pathname);
+    setOpen(false);
+  }
 
   const closeTimer = useRef(null);
   const toggleRef = useRef(null);
@@ -175,10 +182,6 @@ function DesktopMega({
       setOpen(false);
     }, 140);
   };
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     if (!open) return;
@@ -945,6 +948,7 @@ export default function Header() {
   const [scrollY, setScrolled] = useState(false);
 
   const pathname = usePathname();
+  const [shownAt, setShownAt] = useState(pathname);
 
   // Transparent-over-hero only exists on the homepage; inner pages start light.
   const isHome = pathname === "/";
@@ -977,11 +981,13 @@ export default function Header() {
 
   /* =======================================================
      CLOSE MOBILE MENU ON ROUTE CHANGE
+     Reset during render: an effect here would cascade renders.
      ======================================================= */
 
-  useEffect(() => {
+  if (shownAt !== pathname) {
+    setShownAt(pathname);
     setIsOpen(false);
-  }, [pathname]);
+  }
 
   /* =======================================================
      LOCK BODY WHEN MOBILE MENU IS OPEN

@@ -18,7 +18,9 @@ npm run dev                    # http://localhost:3000
 | `npm run build` / `npm start` | Production build and server |
 | `npm run lint` | ESLint |
 | `npm test` | Calculator maths (Node's built-in test runner) |
-| `npm run check:seo -- http://localhost:3000` | Crawls a running server: titles, descriptions, canonicals, H1, og:image, JSON-LD, internal links, placeholder text |
+| `npm run check:seo -- http://localhost:3000` | Crawls a running server: titles, descriptions, canonicals, H1, og:image, JSON-LD, internal links, placeholder text, and word count on service and insight pages |
+| `node scripts/check-content.mjs` | Validates service and city content against the field rules below, plus the ICAI wording list, offline. Add `--all` to include pages written before October 2026 |
+| `node scripts/optimise-images.mjs` | Recompresses heavy images in `public/` using the `sharp` that ships with Next |
 | `npm run analyze` | Bundle analyzer |
 | `node scripts/keyword-map.mjs` | Regenerates `docs/keyword-map.csv` and flags duplicate primary keywords |
 
@@ -39,7 +41,8 @@ See `.env.example`.
 ## Where things live
 ```
 src/data/        All editable content: firm, services, content/, categories, industries,
-                 cities, insights/, tools, faqs, team, legal, taxSlabs, navigation, redirects
+                 cities, insights/, knowledge-bank, gallery, jobs, faqs, team, legal,
+                 taxSlabs, navigation, redirects
 src/app/         Routes (App Router), sitemap, robots, manifest, llms.txt, feed.xml, OG images
 src/components/  layout/, ui/, forms/, tools/, seo/
 src/lib/         seo.js (metadata), schema.js (JSON-LD), email.js, validators.js, calculators/
@@ -55,7 +58,9 @@ Edit `src/data/firm.js`. Anything left empty (phone, address, stats, testimonial
 
 ### Add or publish a service
 1. If it is not in the catalog, add a row to `src/data/services.js`: `[category, slug, title, one-line description]`.
-2. Add its content to a file in `src/data/content/` (copy an existing entry). Required fields: `h1`, `metaTitle` (≤ 60 chars), `metaDescription` (about 140–158 chars, ends with a call to action), `primaryKeyword`, `secondaryKeywords`, `intro`, `definition` (40–60 words), `whoNeedsIt`, `benefits`, `documents`, `process`, `deadlines`, `mistakes`, `faqs`, `related`. Import the file in `src/data/service-content.js` if it is new.
+2. Add its content to a file in `src/data/content/` (copy an existing entry). Required fields: `h1`, `metaTitle` (≤ 60 chars), `metaDescription` (140–158 chars), `primaryKeyword`, `secondaryKeywords` (5–8), `intro`, `definition` (40–60 words, answer-first and standalone), `whoNeedsIt`, `benefits`, `documents`, `process`, `deadlines`, `dueNote`, `mistakes`, `faqs` (6–8), `related` (3–4 published slugs, at least one outside its own category), and `sections` for the in-depth content. Import the file in `src/data/service-content.js` if it is new.
+
+   Meta descriptions must **not** end with a call to action: ICAI rules bar urgency and inducement, so close with a neutral informational line instead. `node scripts/check-content.mjs` enforces all of the above, including the wording rules.
 3. The page, menu, footer, sitemap, `llms.txt` and checklist page update automatically. Run `node scripts/keyword-map.mjs`, `npm run build` and `npm run check:seo`.
 
 A service with no content stays on its category page as an "on request" line and has no URL.
@@ -68,7 +73,7 @@ Only for cities the firm genuinely serves. Add an entry to `src/data/cities.js` 
 
 ### Add an industry, FAQ, team member or calculator
 - Industry: `src/data/industries.js`. FAQ: `src/data/faqs.js`. Team member: `src/data/team.js` (the `/team` page switches from `noindex` to indexed once it has entries and appears in the sitemap).
-- Calculator: add pure maths and tests in `src/lib/calculators/`, a runner in `runners.js`, and page copy in `src/data/tools.js`.
+- Calculator: add pure maths and tests in `src/lib/calculators/`, a runner in `runners.js` or `runners-finance.js`, and page copy in `src/data/knowledge-bank.js`. Keep rates as arguments, never baked into the maths.
 
 ### Redirect an old URL
 Add `{ source, destination, permanent: true }` to `src/data/redirects.mjs`, then redeploy.
@@ -124,3 +129,20 @@ Note: the form rate limiter keeps counts in memory, so it resets on restart and 
 - `docs/keyword-map.csv`: one primary keyword per page (no cannibalisation)
 - `docs/off-page-seo.md`: Google Business Profile, citations, links
 - `docs/content-calendar.md`: quarterly reviews, Budget updates, article backlog
+
+### Add a gallery photo or video
+Photos: put the file in `public/images/gallery`, add an entry to `photos` in
+`src/data/gallery.js` with factual `alt` text, then run `node scripts/optimise-images.mjs`.
+Videos: add the YouTube **video id** (not the URL) to `videos`. The video section renders only
+when that array has entries; otherwise the page links the channel. Embeds use
+`youtube-nocookie.com`, which is already allowed in the Content-Security-Policy.
+
+### Post a job
+Add an object to `jobs` in `src/data/jobs.js`. With an empty array `/careers` shows a
+"no advertised openings" state and still accepts speculative applications, so there is never a
+fake vacancy. Applications post to `/api/careers` and are emailed to `CONTACT_TO_EMAIL`.
+
+### Fill in a partner's profile
+Set the fields for that partner in `profiles` in `src/data/team.js`. Each of `bio`,
+`icaiMembership`, `education`, `languages`, `office`, `appearsBefore` and `email` renders on
+`/team/{slug}` only when it has a value, so a partial profile is safe to ship.

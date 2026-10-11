@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import whoWeServeImage from "../../../public/who-we-serve.jpg";
 import { firm, offices, phoneHref } from "@/data/firm";
+import { cityByOffice } from "@/data/cities";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FAQAccordion from "@/components/ui/FAQAccordion";
@@ -22,19 +23,13 @@ const sectors = [
   "IT Companies & Gov Entities", "FMCG, Real Estate & Textiles", "Eco-Recycling & Chemicals",
 ];
 
-// Named in the "Few Esteemed Clients" page of PHMG_Profile_Updated.pdf.
-const clients = [
-  "State Bank of India", "Bank of Baroda", "Bank of India", "J&K Bank", "Crompton", "Expeditors", "Allied", "Likhitha",
-  "Ryan Clinic", "Oasis Grandstand", "MPS", "Atlantic Water World", "Greenfield Public School", "Vikas", "CAIT", "Blue Bell Travel Experts",
-];
-
 const why = [
   { icon: Gavel, title: "Litigation focus", text: "Representation before ITAT, CIT(A), GST Tribunals and High Courts in high-stakes tax matters.", accent: "text-brand-blue" },
-  { icon: Search, title: "Search & survey specialists", text: "Immediate expert response during IT and GST search and survey, available 24/7.", accent: "text-brand-teal" },
+  { icon: Search, title: "Search and survey support", text: "Representation and support during income tax and GST search and survey proceedings.", accent: "text-brand-teal" },
   { icon: Briefcase, title: "CFO advisory", text: "Virtual CFO services: financial controls, board reporting and compliance readiness.", accent: "text-brand-gold" },
   { icon: Globe2, title: "Multi-state compliance", text: "Compliance across Delhi, UP, Maharashtra and Punjab with local teams.", accent: "text-blue-400" },
   { icon: Cpu, title: "Technology driven", text: "Digitised workflows, real-time dashboards and paperless audit processes.", accent: "text-brand-teal" },
-  { icon: UserCheck, title: "Partner-led delivery", text: "A Partner owns every engagement end to end. Critical work is never left to juniors.", accent: "text-brand-gold" },
+  { icon: UserCheck, title: "Partner-led delivery", text: "A partner owns each engagement and reviews the work before it is submitted.", accent: "text-brand-gold" },
 ];
 
 // href points at the closest existing service category.
@@ -65,7 +60,7 @@ const toolGradients = [
 ];
 
 const defaultSteps = [
-  { title: "Free consultation", text: "Tell us what you need. We listen and explain your options." },
+  { title: "First conversation", text: "Tell us what you need. We listen and explain your options." },
   { title: "Proposal & documents", text: "You get a clear scope, fee and a document checklist." },
   { title: "We execute", text: "Our team prepares and files, with partner review at every step." },
   { title: "Proof & support", text: "You receive filing proof, acknowledgement and ongoing support." },
@@ -88,23 +83,6 @@ const statCols = { 1: "md:grid-cols-1", 2: "md:grid-cols-2", 3: "md:grid-cols-3"
 /* Sections                                                            */
 /* ------------------------------------------------------------------ */
 
-export function ClientsStrip({ className = "bg-white" }) {
-  return (
-    <section aria-labelledby="clients-title" className={`py-14 md:py-16 ${className}`}>
-      <div className="container-x text-center">
-        <h2 id="clients-title" className="text-sm font-semibold text-brand-muted">
-          Trusted by banks, PSUs and businesses across sectors
-        </h2>
-        <ul className="mx-auto mt-6 flex max-w-5xl flex-wrap justify-center gap-3">
-          {clients.map((c) => (
-            <li key={c} className="rounded-full border border-brand-line bg-brand-mist px-5 py-2 text-sm font-medium text-brand-navy">{c}</li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
 export function AboutSplit({ className = "bg-brand-mist", cta = true, title = "A decade of trust. A future of growth." }) {
   return (
     <section aria-labelledby="about-title" className={`section ${className}`}>
@@ -114,7 +92,7 @@ export function AboutSplit({ className = "bg-brand-mist", cta = true, title = "A
           <h2 id="about-title" className="font-display text-3xl font-bold leading-tight text-brand-navy md:text-4xl">{title}</h2>
           <div className="divider-gold mt-5" />
           <p className="mt-5 leading-relaxed text-brand-muted">
-            PHMG and Associates is empanelled with the Reserve Bank of India in Category-I and with the CAG of India,
+            PHMG &amp; Associates is empanelled with the Reserve Bank of India in Category-I and with the CAG of India,
             and handles bank statutory and concurrent audits. We serve corporate, banking, government, PSU and
             private sector clients across India and globally.
           </p>
@@ -176,7 +154,7 @@ export function PracticeAreas({ className = "bg-brand-mist" }) {
           id="practice-title"
           label="Practice areas"
           title="Grouped by your business challenge"
-          intro="Specialist work for companies, banks and public bodies, led by partners who handle it every day."
+          intro="Work for companies, banks and public bodies, led by the partners who handle it day to day."
         />
         <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {serviceGroups.map((g) => (
@@ -205,7 +183,7 @@ export function PracticeAreas({ className = "bg-brand-mist" }) {
   );
 }
 
-export function WhyChoose({ className = "bg-brand-mist", title = "Built on integrity, driven by results" }) {
+export function WhyChoose({ className = "bg-brand-mist", title = "How we work" }) {
   return (
     <section aria-labelledby="why-title" className={`section ${className}`}>
       <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.8fr] lg:items-start">
@@ -216,11 +194,11 @@ export function WhyChoose({ className = "bg-brand-mist", title = "Built on integ
             <h2 id="why-title" className="font-display text-3xl font-bold leading-tight text-brand-navy md:text-4xl">{title}</h2>
             <div className="divider-gold mt-5" />
             <p className="mt-5 leading-relaxed text-brand-muted">
-              Deep technical expertise with personal attention, so your filings are handled right, your deadlines
-              never slip, and your business keeps moving.
+              A partner reviews the work before it is submitted, the scope and fee are agreed in writing before
+              we start, and due dates are tracked for you with reminders ahead of each one.
             </p>
             <Link href="/contact" className="btn btn-primary mt-7 w-fit">
-              Talk to a CA <ArrowRight size={16} aria-hidden="true" />
+              Speak to a chartered accountant <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </ScrollReveal>
         </div>
@@ -272,33 +250,47 @@ export function ProcessSteps({ className = "bg-white", label = "How we work", ti
   );
 }
 
-export function OfficesGrid({ className = "bg-white" }) {
-  if (!offices.length) return null;
+// `exclude` is an office slug to leave out, so a city page can show "our other offices".
+// Each card links to that office's city page when one exists, which is what gives the city
+// pages their links to each other.
+export function OfficesGrid({ className = "bg-white", exclude, label = "Our office network", title }) {
+  const shown = offices.filter((o) => o.slug !== exclude);
+  if (!shown.length) return null;
   return (
     <section aria-labelledby="offices-title" className={`section ${className}`}>
       <div className="container-x">
         <SectionHeading
           id="offices-title"
-          label="Our office network"
-          title={`${offices.length} offices, pan-India reach`}
-          intro={firm.stats.professionals ? `${firm.stats.professionals} professionals: chartered accountants, company secretaries, semi-qualified CAs and specialists.` : undefined}
+          label={label}
+          title={title || `${shown.length} offices, pan-India reach`}
+          intro={firm.stats.professionals ? `${firm.stats.professionals} professionals: chartered accountants, company secretaries and semi-qualified chartered accountants.` : undefined}
           action={firm.phone && (
             <a href={phoneHref()} className="btn btn-secondary"><Phone size={15} aria-hidden="true" /> {firm.phone}</a>
           )}
         />
         <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {offices.map((o) => (
-            <div key={o.city} className={`card h-full p-5 ${o.head ? "border-brand-gold" : ""}`}>
-              <div className="flex items-center gap-2">
-                <MapPin size={20} className="shrink-0 text-brand-gold" aria-hidden="true" />
-                <h3 className="font-display text-lg font-semibold">{o.city}</h3>
-                {o.head && (
-                  <span className="ml-auto rounded-full bg-brand-gold/15 px-2.5 py-0.5 text-xs font-semibold text-brand-gold-dark">Head office</span>
+          {shown.map((o) => {
+            const city = cityByOffice(o.slug);
+            return (
+              <div key={o.slug} className={`card h-full p-5 ${o.head ? "border-brand-gold" : ""}`}>
+                <div className="flex items-center gap-2">
+                  <MapPin size={20} className="shrink-0 text-brand-gold" aria-hidden="true" />
+                  <h3 className="font-display text-lg font-semibold">
+                    {city ? <Link href={`/ca-in-${city.slug}`} className="transition-colors hover:text-brand-blue">{o.city}</Link> : o.city}
+                  </h3>
+                  {o.head && (
+                    <span className="ml-auto rounded-full bg-brand-gold/15 px-2.5 py-0.5 text-xs font-semibold text-brand-gold-dark">Head office</span>
+                  )}
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-brand-muted">{o.address}</p>
+                {city && (
+                  <Link href={`/ca-in-${city.slug}`} className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue">
+                    Chartered accountant in {city.name} <ArrowRight size={14} aria-hidden="true" />
+                  </Link>
                 )}
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-brand-muted">{o.address}</p>
-            </div>
-          ))}
+            );
+          })}
         </ScrollReveal>
       </div>
     </section>
@@ -321,7 +313,7 @@ export function WhoWeServe({ className = "bg-white" }) {
               matters.
             </p>
             <Link href="/book-consultation" className="btn btn-primary mt-7">
-              Book a free consultation <ArrowRight size={16} aria-hidden="true" />
+              Book a consultation <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </ScrollReveal>
 
@@ -354,7 +346,7 @@ export function WhoWeServe({ className = "bg-white" }) {
 export function ToolCard({ tool: t, index = 0 }) {
   return (
     <Link
-      href={`/tools/${t.slug}`}
+      href={`/knowledge-bank/calculators/${t.slug}`}
       className={`group relative flex h-full flex-col overflow-hidden rounded-2xl bg-linear-to-br ${toolGradients[index % toolGradients.length]} p-6 text-white transition-[transform,box-shadow] duration-300 hover:-translate-y-px hover:shadow-2xl motion-reduce:transition-none motion-reduce:hover:translate-y-0`}
     >
       <div className="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-white/5" aria-hidden="true" />

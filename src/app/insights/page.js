@@ -7,7 +7,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import InsightCard from "@/components/ui/InsightCard";
 import { SubscribeSection } from "@/components/sections/TeamSection";
 import { ToolCard } from "@/components/sections/SiteSections";
-import { tools } from "@/data/tools";
+import { calculators } from "@/data/knowledge-bank";
 
 export const metadata = buildMetadata({
   title: "Insights – Tax, GST & Compliance Guides",
@@ -62,12 +62,12 @@ export default function Insights() {
         </section>
       )}
 
-      {tools.length > 0 && (
+      {calculators.length > 0 && (
         <section aria-labelledby="tools-title" className="section bg-white">
           <div className="container-x">
-            <SectionHeading id="tools-title" label="Free resources" title="Put it into numbers" />
+            <SectionHeading id="tools-title" label="Calculators" title="Put it into numbers" />
             <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {tools.slice(0, 3).map((t, i) => <ToolCard key={t.slug} tool={t} index={i} />)}
+              {calculators.slice(0, 3).map((t, i) => <ToolCard key={t.slug} tool={t} index={i} />)}
             </ScrollReveal>
           </div>
         </section>

@@ -5,19 +5,19 @@ import { categories } from "@/data/categories";
 import { faqs } from "@/data/faqs";
 import PageHeader from "@/components/ui/PageHeader";
 import LeadForm from "@/components/forms/LeadForm";
-import { ClientsStrip, ProcessSteps, WhyChoose, FAQSection } from "@/components/sections/SiteSections";
+import { ProcessSteps, WhyChoose, FAQSection } from "@/components/sections/SiteSections";
 import whoWeServeImage from "../../../public/who-we-serve.jpg";
 
 export const metadata = buildMetadata({
-  title: "Book a Free Consultation with a CA",
-  description: "Book a free consultation with PHMG & Associates. Pick a service and a convenient time and our chartered accountants will confirm. Book your slot today.",
+  title: "Book a Consultation with a CA",
+  description: "Request a consultation with PHMG & Associates. Choose the service and a time that suits you, and a chartered accountant will confirm the appointment.",
   path: "/book-consultation",
 });
 
 const expect = ["A short call to understand your requirement", "Clear next steps and a document checklist", "A written scope and fee if you decide to proceed"];
 const badges = [
   { I: Clock, t: "Reply within one business day" },
-  { I: BadgeIndianRupee, t: "Free, no obligation" },
+  { I: BadgeIndianRupee, t: "Scope and fee agreed in writing first" },
   { I: ShieldCheck, t: "Strictly confidential" },
 ];
 
@@ -26,9 +26,9 @@ export default function Book() {
     <>
       <PageHeader
         crumbs={[{ name: "Book Consultation", href: "/book-consultation" }]}
-        eyebrow="Free consultation"
+        eyebrow="Book a consultation"
         title={<>Book a call with a <span className="text-brand-gold">chartered accountant</span></>}
-        intro="Tell us what you need and when you are free. We will confirm the time by phone or message."
+        intro="Tell us what you need and the times that suit you. We will confirm the time by phone or message."
         image={whoWeServeImage}
       >
         <ul className="flex flex-wrap gap-x-6 gap-y-3">
@@ -43,7 +43,7 @@ export default function Book() {
           <div className="rounded-2xl border border-brand-line bg-white p-6 shadow-xl shadow-brand-navy/10 md:p-10">
             <div className="section-label section-label-blue mb-4 w-fit">Book now</div>
             <h2 className="font-display text-3xl font-bold">Request your consultation</h2>
-            <p className="mt-2 text-brand-muted">Takes under a minute. No payment needed.</p>
+            <p className="mt-2 text-brand-muted">Takes under a minute.</p>
             <div className="mt-8">
               <LeadForm variant="full" showSlot id="book" services={categories.map((c) => c.title)} submitLabel="Request Consultation" />
             </div>
@@ -65,14 +65,13 @@ export default function Book() {
                 ))}
               </ol>
               <p className="relative mt-6 flex items-center gap-2 border-t border-white/15 pt-5 text-sm text-white/60">
-                <Check size={16} className="text-brand-gold" aria-hidden="true" /> No commitment until you approve the written scope.
+                <Check size={16} className="text-brand-gold" aria-hidden="true" /> Work begins once you approve the written scope and fee.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <ClientsStrip />
       <ProcessSteps className="bg-brand-mist" />
       <WhyChoose className="bg-white" />
       <FAQSection faqs={faqs} />

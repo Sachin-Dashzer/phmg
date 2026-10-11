@@ -1,12 +1,13 @@
 import { compareRegimes } from "./incomeTax.js";
 import { hra, gst, emi, sip } from "./simple.js";
 import { taxSlabs } from "../../data/taxSlabs.js";
+import { financeRunners } from "./runners-finance.js";
 
 const inr = (n) => "₹" + Math.round(n).toLocaleString("en-IN");
 const num = { type: "number", min: 0 };
 
 // Each runner: fields for the form, run(values) -> { rows: [{ label, value, strong? }], note? }
-export const runners = {
+const coreRunners = {
   "income-tax-calculator": {
     fields: [
       { name: "income", label: "Annual income before deductions (₹)", default: 1500000, ...num },
@@ -103,3 +104,6 @@ export const runners = {
     },
   },
 };
+
+// The Knowledge Bank calculators added in October 2026 live in their own module.
+export const runners = { ...coreRunners, ...financeRunners };

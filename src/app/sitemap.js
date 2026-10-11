@@ -1,24 +1,35 @@
-import { absUrl } from "@/lib/seo";
+import { absUrl, reviewedToISO } from "@/lib/seo";
 import { categories } from "@/data/categories";
 import { team } from "@/data/team";
 import { industries } from "@/data/industries";
 import { cities } from "@/data/cities";
 import { articles, insightCategories, articlesIn } from "@/data/insights";
-import { tools } from "@/data/tools";
+import { calculators, utilities } from "@/data/knowledge-bank";
 import { publishedServices, servicesIn, serviceUrl } from "@/data/services";
 
-const staticPaths = ["/", "/about", ...(team.length ? ["/team"] : []), "/services", "/faq", "/contact", "/industries", "/locations", "/pricing", "/book-consultation", "/insights", "/tools", "/tax-calendar", "/download", "/privacy-policy", "/terms", "/disclaimer"];
+// `new Date()` on every URL told search engines the whole site changes on every deploy, which
+// makes lastModified worthless as a signal. Each entry now carries a real date: the service's
+// lastReviewed, the article's updatedAt, the city's updatedAt, or this constant for static pages.
+// Bump STATIC_REVIEWED when the static pages are actually edited.
+const STATIC_REVIEWED = "2026-10-09";
+
+// lastReviewed is a month name such as "October 2026"; reviewedToISO turns it into a real date.
+const fromReviewed = (v) => reviewedToISO(v, STATIC_REVIEWED);
+
+const staticPaths = ["/", "/about", ...(team.length ? ["/team"] : []), "/services", "/faq", "/contact", "/industries", "/locations", "/pricing", "/book-consultation", "/insights", "/knowledge-bank", "/knowledge-bank/official-resources", "/careers", "/gallery", "/tax-calendar", "/download", "/privacy-policy", "/terms", "/disclaimer"];
 
 export default function sitemap() {
-  const paths = [
-    ...staticPaths,
-    ...categories.filter((c) => servicesIn(c.slug).length).map((c) => `/services/${c.slug}`),
-    ...publishedServices.map(serviceUrl),
-    ...industries.map((i) => `/industries/${i.slug}`),
-    ...cities.map((c) => `/ca-in-${c.slug}`),
-    ...insightCategories.filter((c) => articlesIn(c.slug).length).map((c) => `/insights/category/${c.slug}`),
-    ...articles.map((a) => `/insights/${a.slug}`),
-    ...tools.map((t) => `/tools/${t.slug}`),
+  const entries = [
+    ...staticPaths.map((p) => [p, STATIC_REVIEWED]),
+    ...categories.filter((c) => servicesIn(c.slug).length).map((c) => [`/services/${c.slug}`, STATIC_REVIEWED]),
+    ...publishedServices.map((s) => [serviceUrl(s), fromReviewed(s.lastReviewed)]),
+    ...industries.map((i) => [`/industries/${i.slug}`, STATIC_REVIEWED]),
+    ...cities.map((c) => [`/ca-in-${c.slug}`, c.updatedAt || STATIC_REVIEWED]),
+    ...insightCategories.filter((c) => articlesIn(c.slug).length).map((c) => [`/insights/category/${c.slug}`, STATIC_REVIEWED]),
+    ...articles.map((a) => [`/insights/${a.slug}`, a.updatedAt]),
+    ...calculators.map((c) => [`/knowledge-bank/calculators/${c.slug}`, STATIC_REVIEWED]),
+    ...utilities.map((u) => [`/knowledge-bank/utilities/${u.slug}`, STATIC_REVIEWED]),
+    ...team.map((t) => [`/team/${t.slug}`, STATIC_REVIEWED]),
   ];
-  return paths.map((p) => ({ url: absUrl(p), lastModified: new Date() }));
+  return entries.map(([path, lastModified]) => ({ url: absUrl(path), lastModified }));
 }

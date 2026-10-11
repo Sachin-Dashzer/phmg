@@ -7,7 +7,7 @@ import CTABand from "@/components/ui/CTABand";
 
 export const metadata = buildMetadata({
   title: "Document Checklists – Print or Save as PDF",
-  description: "Document checklists for ITR, GST, company registration, audit and more. Open a checklist, print or save as PDF and get ready before you start. Use it today.",
+  description: "Document checklists for ITR, GST, company registration, audit and more. Open a checklist, print it or save it as a PDF before you start collecting.",
   path: "/download",
 });
 
@@ -16,7 +16,7 @@ export default function Download() {
     <>
       <PageHeader
         crumbs={[{ name: "Checklists", href: "/download" }]}
-        eyebrow="Free checklists"
+        eyebrow="Document checklists"
         title={<>Know what to bring <span className="text-brand-gold">before you start</span></>}
         intro="Open a service to see the documents usually needed. Use your browser's print option to save a copy as PDF."
         image="/images/office/office-3.jpeg"

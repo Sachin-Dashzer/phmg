@@ -42,7 +42,7 @@ export const auditIntlArticles = [
     description: "How NRIs are taxed in India: residential status, taxable income, TDS and treaty relief. A starting guide before you file an Indian return.",
     category: "fema-international",
     tags: ["NRI", "DTAA", "TDS"],
-    services: ["nri-tax-filing", "form-15ca-15cb"],
+    services: ["nri-tax-filing", "15ca-15cb", "fema-compliance"],
     body: [
       ["p", "NRIs pay Indian tax only on income earned or received in India, but the rules depend on residential status, which is decided by days spent in India."],
       ["h2", "Residential status in brief"],
@@ -64,7 +64,7 @@ export const auditIntlArticles = [
     description: "How to register a Section 8 company for NGO work: eligibility, licence, documents, steps and what to do after registration. Plan your non-profit.",
     category: "company-law",
     tags: ["Section 8", "NGO", "non-profit"],
-    services: ["section-8-company", "12a-80g-registration"],
+    services: ["section-8-company", "12a-80g-registration", "trust-registration", "csr-1-registration"],
     body: [
       ["p", "A Section 8 company is a registered not-for-profit company. It suits NGOs that want corporate governance and credibility with donors."],
       ["h2", "Eligibility"],
@@ -84,7 +84,7 @@ export const auditIntlArticles = [
     description: "What Form 15CA and Form 15CB are, when they are needed for foreign remittances and how the process works. Know before you remit abroad.",
     category: "fema-international",
     tags: ["Form 15CA", "Form 15CB", "foreign remittance"],
-    services: ["form-15ca-15cb", "nri-tax-filing"],
+    services: ["15ca-15cb", "nri-tax-filing"],
     body: [
       ["p", "When you send money abroad, your bank may ask for Form 15CA and sometimes Form 15CB. They relate to income tax on payments to non-residents."],
       ["h2", "What they are"],
@@ -104,7 +104,7 @@ export const auditIntlArticles = [
     description: "A quick chart of common TDS sections, rates, deposit dates and return due dates for businesses. Always confirm current rates before deducting.",
     category: "income-tax",
     tags: ["TDS", "rates", "due dates"],
-    services: ["tds-return-filing", "bookkeeping-services"],
+    services: ["tds-return-filing", "bookkeeping-services", "payroll"],
     body: [
       ["p", "This chart lists commonly used TDS provisions under the Income-tax Act, 1961 with indicative rates for residents. Rates and thresholds change with each Budget, and sections are renumbered under the Income-tax Act, 2025. Treat this as a reference and confirm before deducting."],
       ["h2", "Common TDS rates"],
@@ -122,7 +122,7 @@ export const auditIntlArticles = [
     description: "A month-by-month view of the recurring tax and compliance dates most Indian businesses face: GST, TDS, PF, advance tax and ROC. Plan ahead.",
     category: "compliance-calendar",
     tags: ["due dates", "calendar", "compliance"],
-    services: ["gst-return-filing", "annual-roc-filing", "tds-return-filing"],
+    services: ["gst-return-filing", "annual-roc-filing", "tds-return-filing", "payroll"],
     body: [
       ["p", "Missing a due date costs fees and interest. This is a recurring view of dates that apply to most businesses. Specific dates are sometimes extended, so confirm on the official portals."],
       ["h2", "Every month"],

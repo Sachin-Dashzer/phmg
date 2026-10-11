@@ -40,10 +40,14 @@ for (const path of paths) {
   if (h1s !== 1) bad(`${h1s} h1 tags`);
   if (!/property="og:image"/.test(html)) bad("no og:image");
 
-  // thin-content check on money pages and articles (visible words inside <main>, excluding the shared CTA band)
+  // thin-content check on money pages and articles: visible words inside <main>, excluding the
+  // shared CTA band, which marks itself with data-seo-skip and is always the last block in <main>.
   const min = /^\/services\/[^/]+\/[^/]+$/.test(path) ? 1200 : /^\/insights\/[^/]+$/.test(path) ? 900 : 0;
   if (min) {
-    const main = (html.match(/<article[\s\S]*<\/article>/) || [""])[0].replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<[^>]+>/g, " ");
+    const main = (html.match(/<main[^>]*>([\s\S]*)<\/main>/) || ["", ""])[1]
+      .split(/<[a-z]+ data-seo-skip/)[0]
+      .replace(/<script[\s\S]*?<\/script>/g, " ")
+      .replace(/<[^>]+>/g, " ");
     const words = main.split(/\s+/).filter(Boolean).length;
     if (process.env.SHOW_WORDS) console.log(words, path);
     if (words < min) bad(`only ${words} words (target ${min})`);

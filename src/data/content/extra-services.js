@@ -1,7 +1,7 @@
-import { extraA } from "./extra-services-a";
-import { extraB } from "./extra-services-b";
-import { extraC } from "./extra-services-c";
-import { extraD } from "./extra-services-d";
+import { extraA } from "./extra-services-a.js";
+import { extraB } from "./extra-services-b.js";
+import { extraC } from "./extra-services-c.js";
+import { extraD } from "./extra-services-d.js";
 
 // slug -> extra in-depth content blocks, rendered after "Benefits" on the service page.
 // Parts A and B are the first round; C and D are later rounds placed after them.

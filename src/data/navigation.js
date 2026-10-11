@@ -1,5 +1,5 @@
-import { categories } from "./categories";
-import { servicesIn, serviceUrl } from "./services";
+import { categories } from "./categories.js";
+import { servicesIn, serviceUrl } from "./services.js";
 
 // Mega-menu and footer are built from data, so published services appear automatically.
 export const megaMenu = categories.map((c) => ({
@@ -12,7 +12,7 @@ export const mainNav = [
   { title: "Services", href: "/services", mega: true },
   { title: "Industries", href: "/industries" },
   { title: "Insights", href: "/insights" },
-  { title: "Tools", href: "/tools" },
+  { title: "Knowledge Bank", href: "/knowledge-bank" },
   { title: "About", href: "/about" },
   { title: "Contact", href: "/contact" },
 ];

@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
   if (!c) return {};
   return buildMetadata({
     title: `${c.title} Guides and Updates`,
-    description: `Practical ${c.title.toLowerCase()} guides from PHMG & Associates, prepared and reviewed by chartered accountants. Read the latest articles today.`,
+    description: `Practical ${c.title.toLowerCase()} guides from PHMG & Associates, written and reviewed by chartered accountants, and updated as the law changes.`,
     path: `/insights/category/${c.slug}`,
   });
 }

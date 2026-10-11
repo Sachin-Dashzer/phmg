@@ -38,7 +38,7 @@ export default async function IndustryPage({ params }) {
         image={whoWeServeImage}
       >
         <div className="flex flex-wrap gap-3">
-          <Link href="#lead" className="btn btn-gold">Talk to a specialist <ArrowRight size={16} aria-hidden="true" /></Link>
+          <Link href="#lead" className="btn btn-gold">Speak to a chartered accountant <ArrowRight size={16} aria-hidden="true" /></Link>
           {services.length > 0 && <Link href="#services" className="btn btn-ghost-light">See services</Link>}
         </div>
       </PageHeader>

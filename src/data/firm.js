@@ -27,14 +27,20 @@ export const firm = {
     country: "IN",
   },
   geo: { lat: "", lng: "" },
+  // Only profiles that actually exist: every value here goes into `sameAs` in the organisation
+  // schema, and a sameAs pointing at a 404 is worse than an absent one.
+  // LinkedIn is cleared until the company page exists — see REVIEW.md.
   social: {
-    linkedin: "https://www.linkedin.com/company/phmg-associates",
+    linkedin: "", // TODO: CLIENT TO CONFIRM — the company page did not resolve
     facebook: "",
-    instagram: "",
-    youtube: "",
+    instagram: "https://www.instagram.com/phmgassociates/",
+    youtube: "https://www.youtube.com/@phmgindia",
+    x: "https://x.com/PHMGAssociates",
     googleBusiness: "",
   },
-  empanelments: ["RBI Category-I Empanelled", "CAG of India Empanelled", "GST Litigation Specialists"],
+  // "Specialists" is a self-description the ICAI rules discourage; the other two are factual
+  // empanelments. Flagged for a partner decision in REVIEW.md.
+  empanelments: ["RBI Category-I Empanelled", "CAG of India Empanelled", "GST Litigation & Advisory"],
   stats: {
     yearsExperience: "10+",
     assignments: "400+",
@@ -47,13 +53,27 @@ export const firm = {
 };
 
 // Head office first. Branch addresses as printed in the profile.
+// `slug` ties an office to its city page and to its /#office-{slug} node in the schema.
+// `geo`, `mapUrl` and `hours` are empty until confirmed: the UI and the schema both omit
+// what is empty, so a "Get directions" link and a geo/openingHours node appear only once set.
+// TODO: CLIENT TO CONFIRM coordinates, map links, office hours, the Ludhiana PIN code and the
+// Meerut building number. Tracked in REVIEW.md. Never invent these.
+// `address` is the full printed address, used wherever the address is displayed.
+// `street` and `locality` are the same address split for structured data, so streetAddress does
+// not repeat the city and PIN that already have their own fields. Keep the two in step.
+//
+// Coordinates and the map link live on the matching city in src/data/cities.js, not here, so that
+// everything a person edits for a city page sits in one file. `hours` stays here because it is a
+// property of the office rather than of the page.
 export const offices = [
-  { city: "Noida", head: true, address: "D-23, 3rd Floor, Sector 59, Noida - 201301" },
-  { city: "Mumbai", address: "C-2102, Vicinia, Powai Vihaar Road, Chandivali, Mumbai - 400072" },
-  { city: "Delhi", address: "First Floor, 83-84, Sector 24, Rohini, Delhi - 110085" },
-  { city: "Ludhiana", address: "223, First Floor, Industrial Area-A, Cheema Chowk, Ludhiana" },
-  { city: "Meerut", address: "Opp. Canara Bank, Near Mohiuddinpur Sugar Mill, Meerut - 250205" },
+  { slug: "noida", city: "Noida", head: true, address: "D-23, 3rd Floor, Sector 59, Noida - 201301", street: "D-23, 3rd Floor", locality: "Sector 59", region: "Uttar Pradesh", postalCode: "201301", hours: "" },
+  { slug: "mumbai", city: "Mumbai", address: "C-2102, Vicinia, Powai Vihaar Road, Chandivali, Mumbai - 400072", street: "C-2102, Vicinia, Powai Vihaar Road", locality: "Chandivali, Powai", region: "Maharashtra", postalCode: "400072", hours: "" },
+  { slug: "delhi", city: "Delhi", address: "First Floor, 83-84, Sector 24, Rohini, Delhi - 110085", street: "First Floor, 83-84", locality: "Sector 24, Rohini", region: "Delhi", postalCode: "110085", hours: "" },
+  { slug: "ludhiana", city: "Ludhiana", address: "223, First Floor, Industrial Area-A, Cheema Chowk, Ludhiana", street: "223, First Floor", locality: "Industrial Area-A, Cheema Chowk", region: "Punjab", postalCode: "", hours: "" },
+  { slug: "meerut", city: "Meerut", address: "Opp. Canara Bank, Near Mohiuddinpur Sugar Mill, Meerut - 250205", street: "Opp. Canara Bank", locality: "Near Mohiuddinpur Sugar Mill", region: "Uttar Pradesh", postalCode: "250205", hours: "" },
 ];
+
+export const getOffice = (slug) => offices.find((o) => o.slug === slug);
 
 export const hasAddress = () => Boolean(firm.address.street && firm.address.city);
 export const phoneHref = () => (firm.phone ? `tel:${firm.phone.replace(/[^+\d]/g, "")}` : "");

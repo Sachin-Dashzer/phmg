@@ -16,7 +16,7 @@ export default function LeadForm({
   defaultService = "",
   services = [],
   id = "lead",
-  submitLabel = "Book Free Consultation",
+  submitLabel = "Send enquiry",
   showSlot = false,
   inline = false,
 }) {

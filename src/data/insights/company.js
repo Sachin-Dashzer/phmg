@@ -44,7 +44,7 @@ export const companyArticles = [
     description: "A year-round checklist of ROC and company law compliances for private limited companies: AGM, AOC-4, MGT-7, director KYC and more. Stay on track.",
     category: "company-law",
     tags: ["ROC", "AOC-4", "MGT-7", "annual compliance"],
-    services: ["annual-roc-filing", "director-kyc", "statutory-audit"],
+    services: ["annual-roc-filing", "director-kyc", "statutory-audit", "internal-audit"],
     body: [
       ["p", "Every company must meet certain compliances every year, whether or not it earns revenue. Missing them leads to fees that grow daily and, eventually, director disqualification."],
       ["h2", "Checklist"],

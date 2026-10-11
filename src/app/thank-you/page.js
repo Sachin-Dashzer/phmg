@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { ToolCard } from "@/components/sections/SiteSections";
-import { tools } from "@/data/tools";
+import { calculators } from "@/data/knowledge-bank";
 
 export const metadata = buildMetadata({ title: "Thank You", description: "Thank you for your enquiry.", path: "/thank-you", noindex: true });
 
@@ -22,12 +22,12 @@ export default function ThankYou() {
           </div>
         </div>
       </section>
-      {tools.length > 0 && (
+      {calculators.length > 0 && (
         <section className="section bg-brand-mist">
           <div className="container-x">
-            <h2 className="text-center font-display text-3xl font-bold">While you wait, try a free calculator</h2>
+            <h2 className="text-center font-display text-3xl font-bold">While you wait, try a calculator</h2>
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {tools.slice(0, 3).map((t, i) => <ToolCard key={t.slug} tool={t} index={i} />)}
+              {calculators.slice(0, 3).map((t, i) => <ToolCard key={t.slug} tool={t} index={i} />)}
             </div>
           </div>
         </section>

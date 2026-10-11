@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
   if (!c) return {};
   return buildMetadata({
     title: `${c.title} Services`,
-    description: `${c.intro} Talk to our chartered accountants – call or WhatsApp today.`.slice(0, 158),
+    description: c.metaDescription,
     path: `/services/${c.slug}`,
     noindex: servicesIn(c.slug).length === 0, // thin until services are published
   });
@@ -49,8 +49,8 @@ export default async function CategoryPage({ params }) {
             <div className="flex items-center gap-4">
               <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-gold text-brand-navy"><Icon name={c.icon} size={26} /></span>
               <div>
-                <p className="font-display text-3xl font-bold text-white">{live.length + comingSoon.length}</p>
-                <p className="text-sm text-white/70">services in this practice</p>
+                <p className="font-display text-3xl font-bold text-white">{live.length}</p>
+                <p className="text-sm text-white/70">{live.length === 1 ? "service page" : "service pages"} in this practice</p>
               </div>
             </div>
             <p className="mt-5 border-t border-white/15 pt-5 text-sm leading-relaxed text-white/75">{c.short}</p>

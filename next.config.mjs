@@ -11,7 +11,8 @@ const csp = [
   "img-src 'self' data: blob: https://www.google-analytics.com https://*.clarity.ms https://c.bing.com",
   "font-src 'self' data:",
   "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.clarity.ms",
-  "frame-src https://www.google.com",
+  // youtube-nocookie for the gallery video embeds; google for a Maps iframe if one is added.
+  "frame-src https://www.google.com https://www.youtube-nocookie.com https://www.youtube.com",
   "frame-ancestors 'self'",
   "base-uri 'self'",
   "form-action 'self'",

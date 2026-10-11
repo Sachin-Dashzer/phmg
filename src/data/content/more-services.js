@@ -6,7 +6,7 @@ export const moreServices = {
     h1: "Tax Audit under Section 44AB – Applicability and Process",
     metaTitle: "Tax Audit u/s 44AB in India – Limits, Due Date",
     metaDescription:
-      "Tax audit under Section 44AB by chartered accountants. Applicability limits, Form 3CD, due dates and penalties explained. Get a free quote today.",
+      "Tax audit under Section 44AB by chartered accountants: applicability limits, Form 3CA and 3CB, Form 3CD, due dates and the penalty for a default.",
     primaryKeyword: "tax audit 44AB",
     secondaryKeywords: ["is tax audit applicable", "Form 3CD", "tax audit limit", "F&O tax audit", "tax audit report"],
     intro: "We examine your books against income tax requirements and file the tax audit report on time. You also get a short note on gaps that could cause disallowances or notices.",
@@ -68,9 +68,9 @@ export const moreServices = {
 
   "income-tax-notice": {
     h1: "Income Tax Notice Reply – Help with 143(1), 142(1), 148 and More",
-    metaTitle: "Income Tax Notice Reply – Expert CA Help",
+    metaTitle: "Income Tax Notice Reply – 143(1) to 148",
     metaDescription:
-      "Received an income tax notice? Our chartered accountants review it, prepare the reply and respond on the portal on time. Get a free review today.",
+      "What each income tax notice means and how a reply is prepared: intimations under 143(1), scrutiny under 143(2), 142(1) and reassessment under 148.",
     primaryKeyword: "income tax notice reply",
     secondaryKeywords: ["notice u/s 143(1)", "notice u/s 142(1)", "scrutiny assessment", "notice u/s 148", "defective return notice"],
     intro: "Share your notice and we will tell you what it means, what the department wants and how long you have. We prepare a documented reply and submit it on the e-filing portal.",
@@ -128,14 +128,14 @@ export const moreServices = {
       { q: "What should I do if I get a notice under Section 148?", a: "It is a reassessment notice. Do not ignore it. Check the date and the reasons, and file your return and objections as advised. The process has specific conditions, so get professional help quickly." },
       { q: "Can I ignore a notice if I have no tax to pay?", a: "No. Not responding can result in an assessment on available information, penalties or a larger demand. Always reply, even when you believe nothing is due." },
     ],
-    related: ["itr-filing", "income-tax-appeals", "belated-revised-itr", "tax-planning"],
+    related: ["itr-filing", "income-tax-appeal", "belated-revised-itr", "tax-planning"],
   },
 
   "gst-notice": {
     h1: "GST Notice Reply and Appeals Support",
     metaTitle: "GST Notice Reply – Show Cause, Demand, Appeal",
     metaDescription:
-      "Received a GST notice? Our chartered accountants review it, prepare the reply and handle hearings and appeals. Share your notice for a free review.",
+      "Received a GST notice? What each type means, the time limit to reply, how a reply is prepared, and the appeal route if the order goes against you.",
     primaryKeyword: "gst notice reply",
     secondaryKeywords: ["GST show cause notice", "ASMT-10", "DRC-01", "GST appeal", "GST cancellation notice"],
     intro: "Send us the notice and we will explain it, check the deadline, and prepare a response backed by data and documents. We also represent you at hearings and help file appeals where needed.",
@@ -200,7 +200,7 @@ export const moreServices = {
     h1: "One Person Company (OPC) Registration in India",
     metaTitle: "OPC Registration in India – Eligibility, Process",
     metaDescription:
-      "Register a One Person Company with expert help. Eligibility, nominee rules, documents and compliance explained by chartered accountants. Get a quote.",
+      "Registering a One Person Company: who is eligible, the nominee requirement, documents needed, and how an OPC compares with a proprietorship.",
     primaryKeyword: "opc registration",
     secondaryKeywords: ["one person company", "OPC vs sole proprietorship", "OPC nominee", "convert OPC to private limited"],
     intro: "We register your One Person Company, prepare the nominee consent and charter documents, and set up your compliance calendar. You get a company structure with limited liability while you remain the only owner.",
@@ -262,9 +262,9 @@ export const moreServices = {
     h1: "Section 8 Company (NGO) Registration in India",
     metaTitle: "Section 8 Company Registration – NGO Set-up",
     metaDescription:
-      "Register a Section 8 company for charitable objects with expert help. Eligibility, licence, documents and compliance explained. Get a free quote today.",
+      "Registering a Section 8 company for charitable objects: the licence from the Registrar, documents required, and the 12A and 80G steps that follow.",
     primaryKeyword: "section 8 company registration",
-    secondaryKeywords: ["NGO registration", "non-profit company", "12A 80G registration", "CSR-1 registration"],
+    secondaryKeywords: ["NGO registration", "non-profit company", "section 8 company licence", "not for profit company registration"],
     intro: "We guide you through licence application, drafting of charitable objects, incorporation and post-registration compliance. We also help with tax exemption under Sections 12A and 80G after registration.",
     definition: "A Section 8 company is a not-for-profit company incorporated under Section 8 of the Companies Act, 2013 to promote objects such as charity, education, science, art or environment. It applies its profits to those objects and does not pay dividends to members. It needs a licence from the Registrar before it can be incorporated.",
     whoNeedsIt: [
@@ -318,14 +318,14 @@ export const moreServices = {
       { q: "Can a Section 8 company receive foreign donations?", a: "Only after obtaining registration or prior permission under the Foreign Contribution (Regulation) Act, and following its rules." },
       { q: "How long does Section 8 registration take?", a: "It takes longer than a regular company because the Registrar examines the licence application. The time depends on the completeness of the documents." },
     ],
-    related: ["12a-80g-registration", "private-limited-company-registration", "annual-roc-filing", "statutory-audit"],
+    related: ["12a-80g-registration", "csr-1-registration", "private-limited-company-registration", "annual-roc-filing"],
   },
 
   "startup-india-registration": {
     h1: "Startup India (DPIIT) Recognition",
     metaTitle: "Startup India DPIIT Recognition – Process, Benefits",
     metaDescription:
-      "Get DPIIT recognition for your startup with expert help. Eligibility, documents, benefits and process explained by chartered accountants. Get a quote.",
+      "DPIIT recognition under Startup India: who is eligible, the documents needed, the recognition process, and the tax and tender benefits available.",
     primaryKeyword: "startup india registration",
     secondaryKeywords: ["DPIIT recognition", "startup benefits India", "how to register startup in India", "80-IAC"],
     intro: "We check your eligibility, prepare the application and pitch description, and submit it on the Startup India portal. We also explain which benefits apply to you and which need a separate approval.",
@@ -444,7 +444,7 @@ export const moreServices = {
     h1: "Trademark Registration in India",
     metaTitle: "Trademark Registration in India – Process, Timeline",
     metaDescription:
-      "Register your brand name or logo as a trademark. Search, filing, objection reply and timeline explained by chartered accountants. Get a free quote today.",
+      "Trademark registration for a brand name or logo: the public search, classes, Form TM-A, replying to an objection, and how long registration takes.",
     primaryKeyword: "trademark registration",
     secondaryKeywords: ["trademark objection reply", "brand name registration", "trademark search", "TM-A"],
     intro: "We search for conflicts, choose the right classes, file your trademark application and handle objections or oppositions. You get regular status updates until registration.",
@@ -561,7 +561,7 @@ export const moreServices = {
     h1: "LLP Annual Filing – Form 11 and Form 8",
     metaTitle: "LLP Annual Filing – Form 11, Form 8 | Due Dates",
     metaDescription:
-      "File LLP Form 11 and Form 8 on time with help from chartered accountants. Due dates, penalties and documents explained. Get a free quote today.",
+      "LLP annual filing of Form 11 and Form 8: the due date for each, the documents needed, and how the late fee accrues for every day of the delay.",
     primaryKeyword: "llp annual filing",
     secondaryKeywords: ["LLP Form 11", "LLP Form 8", "LLP compliance", "LLP late fee"],
     intro: "We prepare and file Form 11 and Form 8 for your LLP, along with income tax return support, so there is no accumulation of late fees.",
@@ -620,9 +620,9 @@ export const moreServices = {
     h1: "NRI Tax Filing in India",
     metaTitle: "NRI Tax Filing in India – ITR, TDS, DTAA",
     metaDescription:
-      "File your Indian income tax return as an NRI with help from chartered accountants. Residency, TDS, DTAA and documents explained. Get a free quote today.",
+      "Income tax filing for non-residents: how residential status is determined, which income is taxable in India, TDS, treaty relief and refund claims.",
     primaryKeyword: "nri tax filing",
-    secondaryKeywords: ["NRI income tax return", "can NRI file ITR online", "NRI property sale tax", "DTAA", "Form 15CA 15CB"],
+    secondaryKeywords: ["NRI income tax return", "can NRI file ITR online", "NRI property sale tax", "DTAA relief for NRI", "NRI residential status"],
     intro: "We determine your residential status, compute tax on Indian income, claim treaty relief and file your return online. You can share documents and sign off from anywhere.",
     definition: "NRI tax filing means filing an Indian income tax return as a non-resident for income earned or received in India, such as rent, interest, capital gains or salary for services in India. Residential status depends on days spent in India, not on citizenship. Non-residents are taxed in India only on Indian-source income.",
     whoNeedsIt: [
@@ -674,7 +674,7 @@ export const moreServices = {
       { q: "What is DTAA?", a: "It is a Double Taxation Avoidance Agreement between India and another country that prevents the same income being taxed twice, through exemptions or credit." },
       { q: "What are Form 15CA and 15CB?", a: "They are declarations and a CA certificate required before certain foreign remittances. The bank needs them to process the payment." },
     ],
-    related: ["itr-filing", "form-15ca-15cb", "capital-gains-tax", "fema-compliance"],
+    related: ["itr-filing", "15ca-15cb", "capital-gains-tax", "fema-compliance"],
   },
 
   "business-valuation": {
