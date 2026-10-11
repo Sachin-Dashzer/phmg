@@ -622,7 +622,7 @@ export const moreServices = {
     metaDescription:
       "Income tax filing for non-residents: how residential status is determined, which income is taxable in India, TDS, treaty relief and refund claims.",
     primaryKeyword: "nri tax filing",
-    secondaryKeywords: ["NRI income tax return", "can NRI file ITR online", "NRI property sale tax", "DTAA", "Form 15CA 15CB"],
+    secondaryKeywords: ["NRI income tax return", "can NRI file ITR online", "NRI property sale tax", "DTAA relief for NRI", "NRI residential status"],
     intro: "We determine your residential status, compute tax on Indian income, claim treaty relief and file your return online. You can share documents and sign off from anywhere.",
     definition: "NRI tax filing means filing an Indian income tax return as a non-resident for income earned or received in India, such as rent, interest, capital gains or salary for services in India. Residential status depends on days spent in India, not on citizenship. Non-residents are taxed in India only on Indian-source income.",
     whoNeedsIt: [

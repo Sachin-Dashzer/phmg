@@ -245,8 +245,8 @@ structured data both hide empty values, so nothing breaks while they are blank.
 | Ludhiana office PIN code | `offices` in `src/data/firm.js` | The profile address ("223, First Floor, Industrial Area-A, Cheema Chowk, Ludhiana") has no PIN. Not invented. |
 | Meerut office building number | `offices` in `src/data/firm.js` | Address is only "Opp. Canara Bank, Near Mohiuddinpur Sugar Mill, Meerut - 250205". |
 | Office hours | `firm.hours` | Currently empty. Needed before `openingHoursSpecification` can go into the office schema. |
-| Map links (5 offices) | `mapUrl` per office | Google Maps share link per office. The "Get directions" link on each city page renders only once this is set. |
-| Coordinates (5 offices) | `geo: { lat, lng }` per office | From Google Maps. `geo` goes into the office schema only once set. |
+| Map links (5 offices) | `mapUrl` per city in `src/data/cities.js` | Google Maps share link. The "Get directions" button on each city page renders only once this is set, and `hasMap` then appears in that office's schema node. Verified working end to end with a test value. |
+| Coordinates (5 offices) | `geo: { lat, lng }` per city in `src/data/cities.js` | From Google Maps. `geo` appears in that office's schema node only once set. Verified working end to end with a test value. |
 | Branch head — Noida | `branchHead` in `src/data/cities.js` | `team.js` does not say who leads the head office. The Founding Partner was **not** named as Noida head because nothing confirms it. Set the team slug and the branch head card appears automatically. |
 | Branch head — Mumbai | `branchHead` in `src/data/cities.js` | Not named anywhere. Not invented. The Mumbai page's FAQ says so explicitly; revise that answer when a head is appointed. |
 | Branch head — Meerut | `branchHead` in `src/data/cities.js` | Not named anywhere. Not invented. The Meerut page says engagements are coordinated with the partners. |

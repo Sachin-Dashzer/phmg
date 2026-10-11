@@ -65,12 +65,16 @@ export const firm = {
 // `address` is the full printed address, used wherever the address is displayed.
 // `street` and `locality` are the same address split for structured data, so streetAddress does
 // not repeat the city and PIN that already have their own fields. Keep the two in step.
+//
+// Coordinates and the map link live on the matching city in src/data/cities.js, not here, so that
+// everything a person edits for a city page sits in one file. `hours` stays here because it is a
+// property of the office rather than of the page.
 export const offices = [
-  { slug: "noida", city: "Noida", head: true, address: "D-23, 3rd Floor, Sector 59, Noida - 201301", street: "D-23, 3rd Floor", locality: "Sector 59", region: "Uttar Pradesh", postalCode: "201301", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
-  { slug: "mumbai", city: "Mumbai", address: "C-2102, Vicinia, Powai Vihaar Road, Chandivali, Mumbai - 400072", street: "C-2102, Vicinia, Powai Vihaar Road", locality: "Chandivali, Powai", region: "Maharashtra", postalCode: "400072", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
-  { slug: "delhi", city: "Delhi", address: "First Floor, 83-84, Sector 24, Rohini, Delhi - 110085", street: "First Floor, 83-84", locality: "Sector 24, Rohini", region: "Delhi", postalCode: "110085", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
-  { slug: "ludhiana", city: "Ludhiana", address: "223, First Floor, Industrial Area-A, Cheema Chowk, Ludhiana", street: "223, First Floor", locality: "Industrial Area-A, Cheema Chowk", region: "Punjab", postalCode: "", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
-  { slug: "meerut", city: "Meerut", address: "Opp. Canara Bank, Near Mohiuddinpur Sugar Mill, Meerut - 250205", street: "Opp. Canara Bank", locality: "Near Mohiuddinpur Sugar Mill", region: "Uttar Pradesh", postalCode: "250205", geo: { lat: "", lng: "" }, mapUrl: "", hours: "" },
+  { slug: "noida", city: "Noida", head: true, address: "D-23, 3rd Floor, Sector 59, Noida - 201301", street: "D-23, 3rd Floor", locality: "Sector 59", region: "Uttar Pradesh", postalCode: "201301", hours: "" },
+  { slug: "mumbai", city: "Mumbai", address: "C-2102, Vicinia, Powai Vihaar Road, Chandivali, Mumbai - 400072", street: "C-2102, Vicinia, Powai Vihaar Road", locality: "Chandivali, Powai", region: "Maharashtra", postalCode: "400072", hours: "" },
+  { slug: "delhi", city: "Delhi", address: "First Floor, 83-84, Sector 24, Rohini, Delhi - 110085", street: "First Floor, 83-84", locality: "Sector 24, Rohini", region: "Delhi", postalCode: "110085", hours: "" },
+  { slug: "ludhiana", city: "Ludhiana", address: "223, First Floor, Industrial Area-A, Cheema Chowk, Ludhiana", street: "223, First Floor", locality: "Industrial Area-A, Cheema Chowk", region: "Punjab", postalCode: "", hours: "" },
+  { slug: "meerut", city: "Meerut", address: "Opp. Canara Bank, Near Mohiuddinpur Sugar Mill, Meerut - 250205", street: "Opp. Canara Bank", locality: "Near Mohiuddinpur Sugar Mill", region: "Uttar Pradesh", postalCode: "250205", hours: "" },
 ];
 
 export const getOffice = (slug) => offices.find((o) => o.slug === slug);

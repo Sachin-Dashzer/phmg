@@ -798,6 +798,7 @@ export const newServices2026 = {
       ["p", "A correction return replaces specific records in a return already filed, rather than replacing the whole return. The consolidated file for the original return is downloaded from the portal, the records in question are amended, and the file is filed as a correction. There is no fee for the correction itself."],
       ["p", "The place to start is the justification report for the quarter, which lists exactly what the department has treated as a default: short deduction, short payment, late payment, late deduction or an invalid PAN. Working from that report rather than from the deductor's own reconciliation is faster, because it shows the defaults as the system sees them. Where a challan was simply tagged to the wrong deductions, the correction is an exercise in re-tagging rather than paying anything further."],
       ["h2", "A quarterly routine that avoids defaults"],
+      ["p", "Almost every default traces back to something that could have been settled earlier in the quarter: a PAN not validated, a rate not checked, or a challan not reconciled before filing. The routine below is built around those points."],
       ["ul", [
         "Collect and validate the PAN of every new vendor or employee before the first payment, not at the year end",
         "Check the rate and the threshold for each nature of payment at the start of the year, and again when a new type of payment arises",
@@ -936,6 +937,8 @@ export const newServices2026 = {
         "The portal is the record: letters sent outside it may not reach the appellate unit at all",
         "Registered contact details must be current, because a missed notice is still a served notice",
       ]],
+      ["h2", "Example: how the appeal clock runs"],
+      ["p", "The dates below are illustrative and assume no extension or condonation. An assessment order is passed on 3 March and the notice of demand is served on the taxpayer on 11 March. The 30-day period for the first appeal runs from service, not from the date on the order, so the appeal in Form 35 is due by about 10 April — and the eight days between the two dates are the taxpayer's, not the department's. The demand is payable in the meantime, so the stay application is prepared alongside the appeal rather than after it. Suppose the Commissioner (Appeals) decides the matter on 20 November of the following year and the order is communicated on 28 November: the 60-day period for an appeal to the Tribunal runs from communication, giving until about 27 January. If the Tribunal's order is then received on 5 June, an appeal to the High Court on a substantial question of law is due within 120 days, by about 3 October. The practical lesson is that every one of these periods starts from service or communication, which is why the date each order actually arrives should be recorded the day it does."],
       ["h2", "Appeal, rectification or revision?"],
       ["p", "Not every disputed order needs an appeal, and choosing the wrong remedy wastes the limitation period."],
       ["table", { head: ["Remedy", "When it fits", "Note"], rows: [
@@ -1460,6 +1463,7 @@ export const newServices2026 = {
       ["p", "A profitable business can run out of cash, and this is the single most common reason a growing company hits a wall without warning. Profit is recognised when a sale is made; cash arrives when the customer pays. If a business grows quickly while customers take 75 days to pay and suppliers are paid in 30, growth consumes cash rather than producing it, and the faster it grows the worse the gap becomes."],
       ["p", "That is why a rolling forecast matters more than a cash figure at the month end. A thirteen-week forecast, updated weekly or fortnightly, shows the low point before it arrives, which is when something can still be done about it: accelerating collections, re-timing a payment, drawing on a facility or deferring spend. A business that discovers the position on the day has none of those options left."],
       ["h2", "How does a virtual CFO differ from bookkeeping and audit?"],
+      ["p", "They answer different questions for different readers: bookkeeping records what happened, a virtual CFO works out what it means and what to do about it, and a statutory audit gives shareholders an opinion on the accounts. The three cannot all sit with the same firm on the same company."],
       ["table", { head: ["", "Bookkeeping", "Virtual CFO", "Statutory audit"], rows: [
         ["Question answered", "What happened?", "What does it mean and what should we do?", "Do the accounts give a true and fair view?"],
         ["Output", "Books and returns", "Reporting pack, forecast, budget, controls", "An audit opinion"],
@@ -1590,6 +1594,7 @@ export const newServices2026 = {
         "Year end: declarations verified against proofs, final tax adjusted, and Form 16 issued by 15 June",
       ]],
       ["h2", "Which statutory deductions apply?"],
+      ["p", "Four may apply, and only two of them are national: provident fund and ESI depend on the establishment being covered and the employee being within the wage conditions, tax on salary applies to anyone whose estimated annual income is taxable, and professional tax applies only in states that levy it."],
       ["table", { head: ["Deduction", "Who it applies to", "When it is paid"], rows: [
         ["Provident fund", "Establishments covered by the Employees' Provident Funds Act, for members within the wage conditions", "By the 15th of the following month, with the ECR"],
         ["ESI", "Establishments covered by the ESI Act, for employees within the wage ceiling", "By the 15th of the following month"],
@@ -1619,6 +1624,7 @@ export const newServices2026 = {
         { href: "/services/income-tax/tds-return-filing", label: "TDS return filing", note: "Form 24Q and the certificates generated from it" },
         { href: "/services/accounting-bookkeeping/bookkeeping-services", label: "Bookkeeping services", note: "payroll postings in the monthly books" },
         { href: "/tax-calendar", label: "Tax and compliance calendar", note: "the monthly and quarterly statutory dates" },
+        { href: "/insights/compliance-calendar-monthly-due-dates-for-businesses", label: "Compliance calendar: monthly due dates for businesses", note: "where the PF and ESI dates sit alongside the rest" },
       ]],
       ["h2", "Official sources"],
       ["links", [
@@ -1900,6 +1906,8 @@ export const newServices2026 = {
         "Apply for the permanent account number and open the bank account",
         "Apply for registration under Section 12AB and approval under Section 80G in Form 10A",
       ]],
+      ["h2", "Example: setting up a charitable trust in two states"],
+      ["p", "The sequence below is illustrative and shows why the state matters more than anything else at this stage. Two founders settle an identical corpus on an identical set of objects, one creating the trust in Noida and one in Mumbai. Both draft the deed, execute it on stamp paper at the value their own state prescribes, and register it with the sub-registrar having jurisdiction over the registered office. At that point the Noida trust is constituted and moves straight on to its permanent account number, bank account and the Form 10A application for 12A and 80G. The Mumbai trust has a further step: it must also be registered with the Charity Commissioner under the Maharashtra Public Trusts Act, 1950, and from then on it carries continuing obligations to that office, including annual accounts and reporting any change of trustees. Same deed, same objects, two materially different compliance burdens — which is the single most useful thing to establish before drafting rather than after."],
       ["h2", "Trust, society or Section 8 company?"],
       ["p", "All three can carry on charitable work and all three can obtain tax exemption. They differ in how they are governed, how hard they are to change, and how familiar they are to funders."],
       ["table", { head: ["", "Trust", "Society", "Section 8 company"], rows: [
@@ -2033,6 +2041,8 @@ export const newServices2026 = {
       ["h2", "How does provisional registration work?"],
       ["p", "A newly formed organisation has no activity to show, so the law gives it provisional registration on the strength of its documents and objects, for three years. That period exists so the organisation can start work and build a record. Regular registration is then granted on the basis of what it has actually done."],
       ["p", "The trap is the conversion deadline, because it is not simply six months before the three years end. It is the earlier of that date and six months after the organisation commences its activities. An organisation registered in April that begins its programmes in July therefore has a deadline in the following January, more than two years before the provisional registration would otherwise expire. Organisations that diarise only the expiry date routinely miss it, and the consequence is that the provisional registration lapses rather than simply being extended."],
+      ["h2", "Example: why the conversion deadline arrives early"],
+      ["p", "The dates below are illustrative and show the trap in the conversion rule. A trust is registered in April 2026 and applies in Form 10A, receiving provisional registration that runs for three years, to April 2029. It begins its first programme in July 2026. The deadline for the Form 10AB application converting provisional into regular registration is the earlier of two dates: six months before the provisional registration expires, which is October 2028, or six months after activities commenced, which is January 2027. The earlier of those is January 2027 — about nine months after registration, and nearly two years before the date most organisations have in their diary. An organisation that notes only the April 2029 expiry misses the deadline by a wide margin, and the consequence is not an extension but a lapse, leaving the intervening period unprotected. The date to diarise is therefore set by when work actually starts, which is why it should be recorded the month the first programme begins."],
       ["h2", "Why are applications refused?"],
       ["p", "Refusals are rarely arbitrary. They cluster around a small number of defects, most of which can be fixed before filing rather than argued about afterwards."],
       ["ul", [
@@ -2186,7 +2196,10 @@ export const newServices2026 = {
       ["h2", "What does the designated account arrangement mean in practice?"],
       ["p", "There are two accounts doing two different jobs. The designated FCRA account at the specified branch is the only account into which a foreign contribution may be received; nothing else may be credited to it and it is not used for day-to-day payments. A utilisation account, which may be at any bank the organisation chooses, receives transfers from the designated account and is used for actual expenditure on the programmes."],
       ["p", "Two consequences follow. First, the designated account has to be opened before any funds are expected, and opening it is not instantaneous, so the timetable for a grant has to allow for it. Second, domestic donations must never enter either account: foreign contributions are kept in separate accounts and separate books throughout, and a single domestic credit into the designated account is a compliance problem rather than a bookkeeping one."],
+      ["h2", "Example: a first foreign grant, step by step"],
+      ["p", "The sequence below is illustrative. An organisation with three years of activity is offered a grant by an overseas foundation. Because it has the track record, it applies for registration rather than prior permission, but the first practical step is opening the designated FCRA account at the specified State Bank of India branch in New Delhi, which takes time and cannot be hurried once a grant is promised. Registration is granted and runs for five years. The foundation remits the grant, which must arrive in that designated account and nowhere else; a well-meaning transfer to the organisation's existing current account is a contravention, not a bookkeeping error, and cannot be corrected by moving the money afterwards. Funds are then transferred from the designated account to a utilisation account at the organisation's own bank for actual spending. Separate books are kept from the first receipt, administrative expenditure is tracked against the permitted proportion through the year rather than computed at the year end, and Form FC-4 is filed by 31 December for the year ended 31 March — including in a later year when no foreign contribution is received at all, when a nil return is still due."],
       ["h2", "The annual compliance cycle"],
+      ["p", "Registration brings a recurring set of obligations, and the ones most often missed are the nil return in a year with no receipts and the renewal application six months before expiry."],
       ["ul", [
         "Maintain separate books of account for foreign contributions, distinct from domestic funds",
         "Have the foreign contribution accounts audited for the financial year",
@@ -2306,6 +2319,7 @@ export const newServices2026 = {
       ] }],
       ["p", "For the large majority of organisations, which fall in the second row, the practical sequence is therefore: form the entity and register it, obtain 12A and 80G, build the track record of activity, and then file Form CSR-1. An organisation that files before the tax registrations are granted is filing on a basis it does not yet satisfy."],
       ["h2", "How is Form CSR-1 filed?"],
+      ["p", "On the Ministry of Corporate Affairs portal, certified by a practising professional and signed with a digital signature certificate. The filing itself is short; the work is in having the prerequisites in place before it, as below."],
       ["ul", [
         "Confirm the entity's category and that the prerequisites for that category are met",
         "Assemble the registration certificate, the constitution documents, the permanent account number and the 12A and 80G orders",
@@ -2315,6 +2329,8 @@ export const newServices2026 = {
         "File it on the Ministry's portal, completing the one-time password verification of the email address and mobile number",
         "Record the CSR registration number and give it to funders when asked",
       ]],
+      ["h2", "Example: why the order of the steps decides the timeline"],
+      ["p", "The sequence below is illustrative. A registered society is approached in June by a company that wants to fund a programme from its CSR obligation, and the company asks for a CSR registration number. The society was formed two years earlier and holds neither 12A registration nor 80G approval. Form CSR-1 itself is generated on filing, usually the same day, so the registration is not the constraint — the prerequisites are. The society must first obtain registration under Section 12AB and approval under Section 80G, which is its own application and timeline, and it must satisfy the track record of similar activity the Rules require. Only then can Form CSR-1 be prepared, certified by a practising professional and filed with a valid digital signature. An organisation that starts the whole sequence when a funder asks will usually miss that funder's spending year; one that obtained 12A and 80G when it was formed can answer the question in days. The lesson is that CSR-1 is the last step of a chain, not the first."],
       ["h2", "How does a company use the registration number?"],
       ["p", "A company within the CSR obligation can discharge it either by carrying out activities itself or by routing the spending through an implementing agency. If it uses an agency, the Rules require that agency to be registered and the company records the agency's CSR registration number in its own CSR documentation and reporting. The company's board and its CSR committee, where it has one, approve the programme and the agency, and the company reports its spending for the year in the form prescribed for that purpose."],
       ["p", "The consequence for an organisation seeking funds is that the registration number is a gate rather than a recommendation. A company cannot count spending routed through an unregistered agency towards its obligation, so the question is usually asked before any discussion of the programme itself gets far."],
@@ -2337,6 +2353,7 @@ export const newServices2026 = {
         { href: "/services/ngo-trust/fcra-registration", label: "FCRA registration", note: "the separate regime for foreign contributions" },
         { href: "/services/business-registration/section-8-company", label: "Section 8 company registration", note: "the form most corporate funders are familiar with" },
         { href: "/services/audit-assurance/statutory-audit", label: "Statutory audit", note: "the audited accounts a funder will ask for" },
+        { href: "/insights/section-8-company-ngo-registration-process", label: "Section 8 company and NGO registration process", note: "the structures corporate funders recognise" },
       ]],
       ["h2", "Official sources"],
       ["links", [

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { firm, hasAddress } from "@/data/firm";
 import { categories } from "@/data/categories";
 import { publishedServices, serviceUrl } from "@/data/services";
+import { cities } from "@/data/cities";
 import { legalLinks } from "@/data/navigation";
 import { Logo } from "./Header";
 import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
@@ -104,6 +105,23 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+
+            {/* Every city page gets a site-wide link from here, built from cities.js so a new
+                city appears automatically. */}
+            {cities.length > 0 && (
+              <div className="mt-9">
+                <ColumnHeading>Offices</ColumnHeading>
+                <ul className="flex flex-wrap gap-x-5 gap-y-3">
+                  {cities.map((c) => (
+                    <li key={c.slug}>
+                      <Link href={`/ca-in-${c.slug}`} className={linkClass}>
+                        CA in {c.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </nav>
 
           {/* Company */}

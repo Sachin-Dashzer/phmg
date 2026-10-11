@@ -85,8 +85,9 @@ export default async function CityPage({ params }) {
                   </div>
                 )}
               </address>
-              {office.mapUrl && (
-                <a href={office.mapUrl} rel="noopener" className="btn btn-secondary mt-5">
+              {/* mapUrl lives on the city, not the office — see src/data/cities.js. */}
+              {c.mapUrl && (
+                <a href={c.mapUrl} rel="noopener" className="btn btn-secondary mt-5">
                   <Navigation size={15} aria-hidden="true" /> Get directions
                 </a>
               )}

@@ -1,4 +1,5 @@
 import { firm, offices, hasAddress } from "@/data/firm";
+import { cityByOffice } from "@/data/cities";
 import { absUrl, reviewedToISO } from "./seo";
 
 // Drops empty values so nothing half-filled reaches the structured data. Whenever a field below
@@ -32,9 +33,15 @@ const KNOWS_ABOUT = [
   "NGO, trust and FCRA compliance",
 ];
 
-/** One AccountingService node per office, referenced from the organisation. */
-export const officeSchema = (o) =>
-  compact({
+/**
+ * One AccountingService node per office, referenced from the organisation.
+ * Coordinates and the map link come from the matching city in cities.js, which is where they are
+ * edited; the office contributes the address and hours.
+ */
+export const officeSchema = (o) => {
+  const city = cityByOffice(o.slug);
+  const geo = city?.geo;
+  return compact({
     "@type": "AccountingService",
     "@id": absUrl(`/#office-${o.slug}`),
     name: `${firm.name} – ${o.city}`,
@@ -52,12 +59,13 @@ export const officeSchema = (o) =>
       postalCode: o.postalCode,
     }),
     // Only when the data is actually set, per REVIEW.md: no invented coordinates or map links.
-    geo: o.geo?.lat && o.geo?.lng ? { "@type": "GeoCoordinates", latitude: o.geo.lat, longitude: o.geo.lng } : undefined,
-    hasMap: o.mapUrl || undefined,
+    geo: geo?.lat && geo?.lng ? { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng } : undefined,
+    hasMap: city?.mapUrl || undefined,
     openingHoursSpecification: o.hours
       ? { "@type": "OpeningHoursSpecification", description: o.hours }
       : undefined,
   });
+};
 
 export function organizationSchema() {
   const a = firm.address;

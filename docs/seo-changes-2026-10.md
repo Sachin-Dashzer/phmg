@@ -283,6 +283,21 @@ published pages, and the category aside now says "service pages in this practice
 | `node scripts/check-content.mjs` | All content checks passed |
 | `/locations/:city` redirect | one 308 hop to `/ca-in-:city`, final 200, no loop — all five verified in a running server |
 
+## Follow-up pass — gaps closed
+
+An audit of the delivered work against the brief found six gaps, all since closed.
+
+| Gap | Fix |
+|---|---|
+| City pages were not linked from the footer, which Phase 4.9 required | An "Offices" column in the footer, built from `cities.js`, so every city page has a site-wide link and a new city appears automatically |
+| `geo` and `mapUrl` were on `offices` in `firm.js`, not in `cities.js` as the brief specified | Moved to `cities.js`, where city-page data is edited. The office schema reads them back through `cityByOffice()`, so there is still one source of truth. Verified end to end: setting a test value produced `GeoCoordinates`, `hasMap` and the "Get directions" button; reverting removed all three |
+| `audience` was plumbed through to the Service schema but no page set it | An `audiences` map in `service-content.js` covering **all 37** published services, kept in one place so the older content files needed no edits |
+| `nri-tax-filing` still listed "Form 15CA 15CB" as a secondary keyword — the cannibalisation pair the brief named | Replaced with "DTAA relief for NRI" and "NRI residential status", which the dedicated 15CA/15CB page does not target |
+| Five new pages had no worked example | Added to `income-tax-appeal`, `trust-registration`, `12a-80g-registration`, `fcra-registration` and `csr-1-registration`. On procedural pages the useful example is a dated sequence rather than figures — how the appeal limitation clock runs, why the Form 10AB deadline arrives early, the two-account FCRA mechanics — and each uses only dates and amounts that follow from rules already stated on the page |
+| No answer-first pass on existing service pages | 50 headings on the 20 older pages ran straight into a bullet list or table with nothing answering the heading. Each now has one leading sentence that summarises what the list says. Purely additive: no existing sentence was rewritten and no new legal claim introduced |
+
+The recount also caught the same defect on **five of the new pages** — three of them question-shaped headings running straight into a table or list. Those were fixed too, so no content heading anywhere on the site now lacks an answering paragraph. The only headings without one are the 51 structural labels ("Key facts", "Related reading", "Official sources"), each of which heads a table or link list by design.
+
 ### Known, deliberate gap
 
 `node scripts/check-content.mjs --all` is still red. The default run gates this round's pages and

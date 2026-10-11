@@ -11,7 +11,10 @@
 // deliberately empty for Noida, Mumbai and Meerut: nothing confirms who leads those offices, and
 // inventing a name is not an option. Tracked in REVIEW.md.
 //
-// `geo` and `mapUrl` live on the office in firm.js, not here.
+// `geo` and `mapUrl` are deliberately empty. Supplying them makes the coordinates appear in
+// that office's schema node and the "Get directions" button appear on the page; until then both
+// are simply omitted. They live here rather than on the office in firm.js so that everything
+// editable for a city page sits in one file; the office schema reads them back via cityByOffice().
 
 const updatedAt = "2026-10-09"; // TODO: update when a partner re-reviews these pages
 
@@ -22,6 +25,8 @@ export const cities = [
     officeCity: "noida",
     branchHead: "", // TODO: CLIENT TO CONFIRM who leads the head office
     nearby: ["Sector 59", "Sector 62", "Sector 63", "Greater Noida", "Noida Extension", "Ghaziabad"],
+    geo: { lat: "", lng: "" }, // TODO: CLIENT TO CONFIRM - coordinates from Google Maps
+    mapUrl: "", // TODO: CLIENT TO CONFIRM - Google Maps link; enables the "Get directions" button
     primaryKeyword: "chartered accountant in noida",
     secondaryKeywords: ["ca firm in noida", "ca in sector 62 noida", "chartered accountant greater noida", "gst consultant noida", "company registration noida"],
     updatedAt,
@@ -73,6 +78,8 @@ export const cities = [
     officeCity: "mumbai",
     branchHead: "", // TODO: CLIENT TO CONFIRM; no branch head is named for Mumbai
     nearby: ["Powai", "Chandivali", "Andheri East", "Vikhroli", "Saki Naka", "Ghatkopar"],
+    geo: { lat: "", lng: "" }, // TODO: CLIENT TO CONFIRM - coordinates from Google Maps
+    mapUrl: "", // TODO: CLIENT TO CONFIRM - Google Maps link; enables the "Get directions" button
     primaryKeyword: "ca in powai",
     secondaryKeywords: ["chartered accountant in powai mumbai", "ca firm chandivali", "ca in andheri east", "professional tax registration mumbai", "trust registration mumbai charity commissioner"],
     updatedAt,
@@ -120,6 +127,8 @@ export const cities = [
     officeCity: "delhi",
     branchHead: "manish-goel",
     nearby: ["Rohini", "Pitampura", "Shalimar Bagh", "Netaji Subhash Place", "Punjabi Bagh", "North-West Delhi"],
+    geo: { lat: "", lng: "" }, // TODO: CLIENT TO CONFIRM - coordinates from Google Maps
+    mapUrl: "", // TODO: CLIENT TO CONFIRM - Google Maps link; enables the "Get directions" button
     primaryKeyword: "chartered accountant in delhi",
     secondaryKeywords: ["ca firm in rohini delhi", "ca in pitampura", "chartered accountant north west delhi", "gst consultant delhi", "roc delhi and haryana filing"],
     updatedAt,
@@ -171,6 +180,8 @@ export const cities = [
     officeCity: "ludhiana",
     branchHead: "mehtaab-qureshi",
     nearby: ["Cheema Chowk", "Industrial Area-A", "Focal Point", "Gill Road", "Sahnewal", "Doraha"],
+    geo: { lat: "", lng: "" }, // TODO: CLIENT TO CONFIRM - coordinates from Google Maps
+    mapUrl: "", // TODO: CLIENT TO CONFIRM - Google Maps link; enables the "Get directions" button
     primaryKeyword: "chartered accountant in ludhiana",
     secondaryKeywords: ["ca firm in ludhiana", "stock audit ludhiana", "gst refund for exporters ludhiana", "punjab state development tax", "ca for hosiery manufacturers"],
     updatedAt,
@@ -222,6 +233,8 @@ export const cities = [
     officeCity: "meerut",
     branchHead: "", // TODO: CLIENT TO CONFIRM; no branch head is named for Meerut
     nearby: ["Mohiuddinpur", "Partapur", "Delhi Road", "Sports Goods Complex", "Modipuram", "Baghpat Road"],
+    geo: { lat: "", lng: "" }, // TODO: CLIENT TO CONFIRM - coordinates from Google Maps
+    mapUrl: "", // TODO: CLIENT TO CONFIRM - Google Maps link; enables the "Get directions" button
     primaryKeyword: "ca in meerut",
     secondaryKeywords: ["chartered accountant in meerut", "ca firm meerut", "ca for sports goods exporters", "gst consultant meerut", "sugar mill accounting meerut"],
     updatedAt,
