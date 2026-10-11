@@ -57,6 +57,17 @@ export default function Locations() {
       </section>
 
       <OfficesGrid />
+
+      <section className="bg-white py-12">
+        <div className="container-x flex flex-col items-start justify-between gap-5 rounded-2xl border border-brand-line bg-brand-mist p-7 md:flex-row md:items-center">
+          <div>
+            <h2 className="font-display text-xl font-semibold">See the offices</h2>
+            <p className="mt-1.5 text-sm text-brand-muted">Photographs of the places we work from and the people who lead them.</p>
+          </div>
+          <Link href="/gallery" className="btn btn-primary shrink-0">Open the gallery <ArrowRight size={16} aria-hidden="true" /></Link>
+        </div>
+      </section>
+
       <StatsBand />
 
       <section aria-labelledby="online-title" className="section bg-brand-mist">

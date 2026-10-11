@@ -17,6 +17,8 @@ const quick = [
   { title: "Tax Calendar", href: "/tax-calendar" },
   { title: "Book Consultation", href: "/book-consultation" },
   { title: "Team", href: "/team" },
+  { title: "Gallery", href: "/gallery" },
+  { title: "Careers", href: "/careers" },
   { title: "FAQ", href: "/faq" },
   { title: "Contact", href: "/contact" },
 ];
