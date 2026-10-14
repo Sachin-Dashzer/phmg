@@ -1,3 +1,7 @@
+> **Superseded in part:** the Mumbai branch closed in October 2026. `/ca-in-mumbai` now 308s to
+> `/locations` and the firm has four offices in three states. Mumbai and Maharashtra below are kept
+> as a record of what the page said, not as a description of the live site.
+
 # SEO and GEO upgrade — October 2026
 
 Branch `seo-geo-upgrade`, six commits, one per phase. This is what changed and why.
@@ -171,8 +175,8 @@ which carried urgency *and* could truncate mid-word; each category now carries i
 `description` naming both empanelments, `contactPoint`, `knowsAbout`, and one `AccountingService`
 node per office at `/#office-{slug}` with `parentOrganization`, referenced via `subOrganization`.
 `geo`, `hasMap` and `openingHoursSpecification` appear only when the data is set. `sameAs` carries
-only Instagram, YouTube and X — LinkedIn is cleared because the company page did not resolve, and
-a `sameAs` pointing at a 404 is worse than an absent one. `numberOfEmployees` is omitted: "50+" is
+LinkedIn, Instagram, X and YouTube; Facebook and the Google Business Profile stay empty in
+`firm.js` until those exist, because a `sameAs` pointing at a 404 is worse than an absent one. `numberOfEmployees` is omitted: "50+" is
 not a number schema.org can take. `WebSite` on the home page, no `SearchAction`. `Person` per
 partner on `/team`. `Service` gained `areaServed` (India plus the five cities), `serviceType`,
 `audience` and an ISO `dateModified`. `Article` gained `image`, `publisher.logo` and `inLanguage`.
@@ -371,11 +375,11 @@ Each of these makes something appear that is currently hidden, rather than chang
 |---|---|
 | `geo: { lat, lng }` per office in `firm.js` | adds `geo` to that office's schema node |
 | `mapUrl` per office in `firm.js` | makes the "Get directions" button appear on that city page |
-| `hours` per office in `firm.js` | shows the hours line and adds `openingHoursSpecification` |
+| `geo` per city in `cities.js` | adds coordinates to that office's schema node |
 | `firm.icaiFrn` | shows the ICAI registration number in the footer and in `/llms.txt` |
-| `firm.social.linkedin` | returns LinkedIn to `sameAs` — only once the company page exists |
+| `firm.social.facebook` | adds Facebook to `sameAs` and to the social row — only once the Page exists |
 | `firm.social.googleBusiness` | adds the Google Business Profile to `sameAs` |
-| `branchHead` in `cities.js` for Noida, Mumbai, Meerut | shows the branch head card on that page |
+| `branchHead` in `cities.js` for Noida, Meerut | shows the branch head card on that page |
 | `reviewers` in `service-content.js` / `insights.js` | shows "Reviewed by" and adds schema `reviewedBy` |
 | Ludhiana PIN code, Meerut building number | completes those two addresses |
 

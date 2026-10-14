@@ -8,7 +8,7 @@
 // that office. Those differences are real, so the pages do not read alike.
 //
 // `branchHead` is a team.js slug, and the branch head card renders only when it is set. It is
-// deliberately empty for Noida, Mumbai and Meerut: nothing confirms who leads those offices, and
+// deliberately empty for Noida and Meerut: nothing confirms who leads those offices, and
 // inventing a name is not an option. Tracked in REVIEW.md.
 //
 // `geo` and `mapUrl` are deliberately empty. Supplying them makes the coordinates appear in
@@ -42,7 +42,7 @@ export const cities = [
       },
       {
         h: "Your registrations follow Uttar Pradesh, not Delhi",
-        p: "This matters more than most businesses expect when they move across the border. GST is registered state by state, so an office in Noida needs an Uttar Pradesh registration even if the promoters and the customers are in Delhi, and a business supplying from both needs one in each state. Company filings go to the Registrar of Companies for Uttar Pradesh rather than the Delhi registry. One point works in your favour: Uttar Pradesh does not levy professional tax, so salaries processed from a Noida office carry no professional tax deduction, registration or return at all — unlike the same payroll run from Mumbai.",
+        p: "This matters more than most businesses expect when they move across the border. GST is registered state by state, so an office in Noida needs an Uttar Pradesh registration even if the promoters and the customers are in Delhi, and a business supplying from both needs one in each state. Company filings go to the Registrar of Companies for Uttar Pradesh rather than the Delhi registry. One point works in your favour: Uttar Pradesh does not levy professional tax, so salaries processed from a Noida office carry no professional tax deduction, registration or return at all — unlike the same payroll run from a state that levies it, such as Punjab.",
       },
       {
         h: "Export-led units and the Noida Special Economic Zone",
@@ -69,55 +69,6 @@ export const cities = [
       { q: "Is professional tax deducted from salaries in Noida?", a: "No. Uttar Pradesh does not levy professional tax, so an employer processing payroll from a Noida office has no professional tax registration, deduction or return for those employees. Provident fund, employees' state insurance and tax deducted at source on salary all apply as usual. An employer with staff in Maharashtra or Punjab as well will have professional tax obligations for those states only." },
       { q: "Do you work with businesses in Greater Noida and Ghaziabad?", a: "Yes. Greater Noida, Noida Extension and Ghaziabad are all within the area served from this office, and the Uttar Pradesh position on GST and company filings is the same across them. Ghaziabad falls in a different district but the same state, so the registrations work the same way." },
       { q: "Can I work with you without visiting the office?", a: "Yes. Most filings, audits and advisory work are handled online: documents are shared through a secure link rather than open email, and you receive the filing acknowledgement and proof by email. The office is there for the occasions when meeting in person is genuinely more useful." },
-    ],
-  },
-
-  {
-    slug: "mumbai",
-    name: "Mumbai",
-    officeCity: "mumbai",
-    branchHead: "", // TODO: CLIENT TO CONFIRM; no branch head is named for Mumbai
-    nearby: ["Powai", "Chandivali", "Andheri East", "Vikhroli", "Saki Naka", "Ghatkopar"],
-    geo: { lat: "", lng: "" }, // TODO: CLIENT TO CONFIRM - coordinates from Google Maps
-    mapUrl: "", // TODO: CLIENT TO CONFIRM - Google Maps link; enables the "Get directions" button
-    primaryKeyword: "ca in powai",
-    secondaryKeywords: ["chartered accountant in powai mumbai", "ca firm chandivali", "ca in andheri east", "professional tax registration mumbai", "trust registration mumbai charity commissioner"],
-    updatedAt,
-    title: "Chartered Accountant in Powai, Mumbai",
-    metaDescription:
-      "Chartered accountants at Powai, Mumbai: income tax, GST, audit, Maharashtra professional tax, trust registration and NRI advisory from our Chandivali office.",
-    intro:
-      "Our Mumbai office is at Vicinia, Powai Vihaar Road, in Chandivali, which puts it between the Powai business district and Andheri East. Maharashtra adds two things that businesses moving from north India do not expect: a state professional tax, and a Charity Commissioner who registers public trusts.",
-    local: [
-      {
-        h: "Powai, Chandivali and Andheri East",
-        p: "The stretch from Powai through Chandivali to Andheri East and Saki Naka holds an unusually dense mix of technology companies, startups, media and design businesses, and independent professionals — consultants, architects, doctors and lawyers working on their own account. Powai in particular has become a base for venture-funded companies, which brings a specific set of needs: employee share option schemes and their valuation, investor reporting on a monthly cycle, and records that will survive a diligence exercise. The professionals nearby need something different: presumptive taxation where it fits, advance tax managed through the year, and clean invoicing.",
-      },
-      {
-        h: "Maharashtra levies professional tax, and it has two registrations",
-        p: "This is the most common surprise for a business opening in Mumbai. Maharashtra charges professional tax on a slab basis, deducted monthly from salaries with an annual ceiling, and there are two separate registrations: one as an employer, to deduct and pay for employees, and one for the business or professional in their own right. Both carry their own returns. An employer running payroll from Mumbai therefore has a monthly obligation that the same payroll run from a Noida or Delhi office does not have at all, and the slabs and return frequency are set by the state rather than nationally.",
-      },
-      {
-        h: "Registrar of Companies, Mumbai",
-        p: "A company with its registered office in Mumbai files with the Registrar of Companies for Maharashtra at Mumbai. For a group with entities in more than one state this means annual filings going to different registries on the same timetable, which is worth planning for rather than discovering in October. The incorporation route is the same nationally, but the registry that handles the file, and any correspondence or compounding that follows, is the Mumbai one.",
-      },
-      {
-        h: "Public trusts and the Charity Commissioner",
-        p: "Maharashtra is one of the states with its own public trusts legislation, and the practical effect is significant. A public charitable trust here is not only created by a registered trust deed: it is also registered with the Charity Commissioner under the Maharashtra Public Trusts Act, 1950, and it then has continuing obligations to that office, including annual accounts and reporting changes in trustees. A founder who has set up a trust in Uttar Pradesh or Delhi, where there is no equivalent Act, will find the Mumbai position materially more demanding. The tax registrations under Sections 12AB and 80G are separate again, and come after.",
-      },
-      {
-        h: "Non-resident clients with income and property in India",
-        p: "A good deal of the work from this office is for non-residents, which is unsurprising given how much Mumbai property is held by people living abroad. The recurring questions are the same: how rental income is taxed and at what rate tax is deducted; what happens on the sale of a flat, where the buyer deducts tax on the whole consideration while the actual liability is on the gain, usually producing a refund that only a filed return will recover; and how to get the money out afterwards, which brings in Form 15CA and a chartered accountant's certificate in Form 15CB, together with the bank's own checklist.",
-      },
-    ],
-    services: ["nri-tax-filing", "15ca-15cb", "itr-filing", "payroll", "trust-registration", "12a-80g-registration", "opc-registration", "virtual-cfo"],
-    faqs: [
-      { q: "Where is your Mumbai office?", a: "At C-2102, Vicinia, Powai Vihaar Road, Chandivali, Mumbai 400072. It sits between Powai and Andheri East, and is reachable from Saki Naka, Vikhroli and Ghatkopar. No branch head is named for this office; engagements are coordinated with the partners." },
-      { q: "Do I need to register for professional tax in Maharashtra?", a: "If you employ people in Maharashtra, yes: you need the employer registration to deduct professional tax from salaries and pay it over, with the returns that go with it. A business or professional is also separately liable in their own right and needs that registration too. Maharashtra charges on a slab basis with an annual ceiling, and the rates and dates are set by the state. This is an obligation that does not exist for the same payroll run from Uttar Pradesh or Delhi." },
-      { q: "Which Registrar of Companies covers a company registered in Mumbai?", a: "The Registrar of Companies for Maharashtra at Mumbai. Incorporation and annual filings for a company with its registered office in Mumbai go there. If you have entities in Mumbai and elsewhere, the filings for each go to that state's registry on the same annual timetable." },
-      { q: "How is a public charitable trust registered in Mumbai?", a: "In two steps rather than one. The trust deed is executed on stamp paper and registered with the sub-registrar, and the trust is then also registered with the Charity Commissioner under the Maharashtra Public Trusts Act, 1950. After that the trust has continuing obligations to the Charity Commissioner's office, including annual accounts and reporting any change of trustees. Registration under Section 12AB and approval under Section 80G for tax purposes are separate applications made afterwards." },
-      { q: "Do you work with non-residents who own property in Mumbai?", a: "Yes, this is a regular part of the work from this office. It typically covers the return of income for rental income or a property sale, applying for a lower deduction certificate where tax would otherwise be deducted on the full sale consideration, computing the actual capital gain, and then the Form 15CA and Form 15CB documentation the bank requires to remit the proceeds abroad." },
-      { q: "Can we meet at the Powai office?", a: "Yes. Most work is handled online with documents shared securely, but the Chandivali office is available for meetings where that is more useful — at the start of an audit, to go through a notice, or to work through a property sale and the remittance that follows." },
     ],
   },
 
@@ -216,9 +167,9 @@ export const cities = [
         p: "CA Mehtaab Qureshi leads this office, working in technology-driven audit, due diligence and income tax. The office is at Cheema Chowk, within reach of Industrial Area-A, Focal Point, Gill Road and the industrial belt towards Sahnewal. Routine compliance is handled online; stock audits, physical verification and the opening stages of a statutory audit are done on site.",
       },
     ],
-    services: ["gst-refund", "stock-audit", "project-report", "statutory-audit", "gst-return-filing", "payroll", "tax-audit", "udyam-registration"],
+    services: ["gst-refund", "stock-audit", "project-report", "statutory-audit", "gst-return-filing", "payroll", "tax-audit", "udyam-registration", "opc-registration"],
     faqs: [
-      { q: "Where is your Ludhiana office?", a: "At 223, First Floor, Industrial Area-A, Cheema Chowk, Ludhiana. It is within reach of Focal Point, Gill Road and the industrial belt towards Sahnewal. The office is led by CA Mehtaab Qureshi." },
+      { q: "Where is your Ludhiana office?", a: "At 223, First Floor, Industrial Area-A, Cheema Chowk, Ludhiana 141003. It is within reach of Focal Point, Gill Road and the industrial belt towards Sahnewal. The office is led by CA Mehtaab Qureshi." },
       { q: "Who leads the Ludhiana office?", a: "CA Mehtaab Qureshi heads the Ludhiana branch. He is a chartered accountant with a forensic qualification, and his work covers technology-driven audit, due diligence, assurance technology and income tax." },
       { q: "Which Registrar of Companies covers a company registered in Punjab?", a: "The Registrar of Companies at Chandigarh, which covers Punjab and Chandigarh. Incorporation documents and annual filings for a company with its registered office in Ludhiana go there. A group with entities in Punjab and in Uttar Pradesh will be filing with two different registries on the same annual timetable." },
       { q: "Does Punjab have professional tax?", a: "Yes. Punjab levies the Punjab State Development Tax, which functions as the state's professional tax. It is charged as a flat monthly amount on persons liable to pay income tax whose income exceeds the threshold the state Act prescribes, and an employer deducts and pays it for employees in the state. This is a difference from Uttar Pradesh and Delhi, neither of which levies professional tax, so an employer with offices in Ludhiana and Noida has the obligation for the Ludhiana staff only." },

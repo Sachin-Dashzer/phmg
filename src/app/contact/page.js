@@ -6,6 +6,7 @@ import { categories } from "@/data/categories";
 import { faqs } from "@/data/faqs";
 import PageHeader from "@/components/ui/PageHeader";
 import LeadForm from "@/components/forms/LeadForm";
+import SocialLinks from "@/components/layout/SocialLinks";
 import { OfficesGrid, FAQSection } from "@/components/sections/SiteSections";
 
 export const metadata = buildMetadata({
@@ -97,6 +98,10 @@ export default function Contact() {
                   </li>
                 )}
               </ul>
+              <div className="mt-6 border-t border-white/10 pt-5">
+                <p className="text-xs text-white/60">Official profiles</p>
+                <SocialLinks className="mt-3 text-white" />
+              </div>
               <div className="mt-6 flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-white/70">
                 <ShieldCheck size={18} className="mt-0.5 shrink-0 text-brand-gold" aria-hidden="true" />
                 Your details are used only to respond to your enquiry and are never shared.

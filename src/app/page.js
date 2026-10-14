@@ -55,8 +55,9 @@ export default function Home() {
           src={BannerImg}
           alt=""
           fill
-          fetchPriority="high"
-          loading="eager"
+          // `priority` covers eager + fetchPriority="high" and also emits the preload link, so the
+          // LCP image is discovered in the head rather than when the <img> is parsed.
+          priority
           sizes="100vw"
           className="absolute inset-0 -z-20 object-cover object-center"
         />
@@ -173,8 +174,8 @@ export default function Home() {
             >
               PHMG &amp; Associates is a firm of chartered accountants
               established in 2014, empanelled with the Reserve Bank of India
-              in Category-I and with the CAG of India, with five offices
-              across north and west India.
+              in Category-I and with the CAG of India, with four offices
+              across north India.
             </p>
 
             {/* =====================================================

@@ -25,8 +25,9 @@ Create profiles with identical NAP and a link to the site. Only list services ac
 | JustDial | Free listing, verify by phone |
 | Sulekha | Free listing |
 | IndiaMART | Only if relevant services fit |
-| LinkedIn company page | Add website, description, partners |
-| Facebook / Instagram / YouTube | Add links to `firm.social` in `src/data/firm.js` so they appear in structured data |
+| LinkedIn company page | Live at `linkedin.com/company/phmgindia`. Add website, description, partners |
+| Facebook | Not created yet. Paste the Page URL into `firm.social.facebook` in `src/data/firm.js` and it appears in the footer and in structured data |
+| Instagram / X / YouTube | Live and already in `firm.social`, so they are in `sameAs` and `/llms.txt` |
 | Clutch / local business directories | Optional |
 
 Track each listing (URL, date, login owner) in a shared sheet. Re-check NAP twice a year.

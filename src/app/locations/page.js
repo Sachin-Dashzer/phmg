@@ -6,12 +6,13 @@ import PageHeader from "@/components/ui/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import CTABand from "@/components/ui/CTABand";
+import SocialLinks from "@/components/layout/SocialLinks";
 import { OfficesGrid, StatsBand, ProcessSteps } from "@/components/sections/SiteSections";
 
 export const metadata = buildMetadata({
   title: "CA Services by Location",
   description:
-    "PHMG & Associates has offices in Noida, Delhi, Mumbai, Ludhiana and Meerut, and works with clients across India online. Find the office nearest to you.",
+    "PHMG & Associates has offices in Noida, Delhi, Ludhiana and Meerut, and works with clients across India online. Find the office nearest to you.",
   path: "/locations",
 });
 
@@ -28,7 +29,7 @@ export default function Locations() {
         crumbs={[{ name: "Locations", href: "/locations" }]}
         eyebrow="Where we work"
         title={<>Local offices. <span className="text-brand-gold">Pan-India reach.</span></>}
-        intro="Most of our work is delivered online, so we serve clients across India. These pages cover the five cities where we have an office and also meet clients in person."
+        intro="Most of our work is delivered online, so we serve clients across India. These pages cover the four cities where we have an office and also meet clients in person."
         image="/images/office/office-1.jpeg"
       />
 
@@ -65,6 +66,10 @@ export default function Locations() {
             <p className="mt-1.5 text-sm text-brand-muted">Photographs of the places we work from and the people who lead them.</p>
           </div>
           <Link href="/gallery" className="btn btn-primary shrink-0">Open the gallery <ArrowRight size={16} aria-hidden="true" /></Link>
+        </div>
+        <div className="container-x mt-8">
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-muted">Official profiles</p>
+          <SocialLinks className="mt-3 text-brand-navy" />
         </div>
       </section>
 

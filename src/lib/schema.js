@@ -6,6 +6,19 @@ import { absUrl, reviewedToISO } from "./seo";
 // is gated on data being present, this is why: an empty geo or map URL simply does not appear.
 const compact = (o) => Object.fromEntries(Object.entries(o).filter(([, v]) => v && (!Array.isArray(v) || v.length)));
 
+// schema.org wants an unambiguous number; the display form uses spaces, so hyphenate here rather
+// than keep a second copy of the number in the data.
+const telephone = firm.phone ? firm.phone.replace(/ /g, "-") : undefined;
+
+// Hours are the same at every office, so one spec serves the firm and every office node.
+// Sunday is absent because the offices are closed: schema.org reads a missing day as closed.
+const openingHours = firm.hoursSpec?.map(({ days, opens, closes }) => ({
+  "@type": "OpeningHoursSpecification",
+  dayOfWeek: days,
+  opens,
+  closes,
+}));
+
 const postalAddress = ({ street, locality, city, region, postalCode, country = "IN" }) =>
   compact({
     "@type": "PostalAddress",
@@ -46,7 +59,10 @@ export const officeSchema = (o) => {
     "@id": absUrl(`/#office-${o.slug}`),
     name: `${firm.name} – ${o.city}`,
     url: absUrl(`/ca-in-${o.slug}`),
-    telephone: firm.phone,
+    // The Rich Results Test warns on an AccountingService with no image. The logo is the honest
+    // choice: the office photos in /images/office are generic, not of a specific branch.
+    image: absUrl("/logo.png"),
+    telephone,
     email: firm.email,
     parentOrganization: { "@id": absUrl("/#organization") },
     // `street`/`locality`, not the full `address` string, or streetAddress would repeat the
@@ -61,9 +77,7 @@ export const officeSchema = (o) => {
     // Only when the data is actually set, per REVIEW.md: no invented coordinates or map links.
     geo: geo?.lat && geo?.lng ? { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng } : undefined,
     hasMap: city?.mapUrl || undefined,
-    openingHoursSpecification: o.hours
-      ? { "@type": "OpeningHoursSpecification", description: o.hours }
-      : undefined,
+    openingHoursSpecification: openingHours,
   });
 };
 
@@ -81,9 +95,10 @@ export function organizationSchema() {
     logo: absUrl("/logo.png"),
     image: absUrl("/logo.png"),
     description:
-      "PHMG & Associates is a firm of chartered accountants established in 2014, empanelled with the Reserve Bank of India in Category-I and with the Comptroller and Auditor General of India. It provides audit and assurance, income tax, GST, company law, accounting and international tax services from offices in Noida, Delhi, Mumbai, Ludhiana and Meerut.",
-    telephone: firm.phone,
+      "PHMG & Associates is a firm of chartered accountants established in 2014, empanelled with the Reserve Bank of India in Category-I and with the Comptroller and Auditor General of India. It provides audit and assurance, income tax, GST, company law, accounting and international tax services from offices in Noida, Delhi, Ludhiana and Meerut.",
+    telephone,
     email: firm.email,
+    openingHoursSpecification: openingHours,
     foundingDate: firm.foundedYear,
     areaServed: { "@type": "Country", name: "India" },
     knowsAbout: KNOWS_ABOUT,
@@ -93,7 +108,7 @@ export function organizationSchema() {
     contactPoint: compact({
       "@type": "ContactPoint",
       contactType: "customer service",
-      telephone: firm.phone,
+      telephone,
       email: firm.email,
       areaServed: "IN",
       availableLanguage: ["en", "hi"],

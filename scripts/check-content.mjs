@@ -17,7 +17,7 @@ import { newServices2026 } from "../src/data/content/new-services-2026.js";
 import { cities } from "../src/data/cities.js";
 import { articles } from "../src/data/insights.js";
 
-const NEW_CITIES = ["noida", "mumbai", "ludhiana", "meerut", "delhi"];
+const NEW_CITIES = ["noida", "ludhiana", "meerut", "delhi"];
 
 const args = process.argv.slice(2);
 const all = args.includes("--all");

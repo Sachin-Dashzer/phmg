@@ -5,6 +5,7 @@ import { buildMetadata } from "@/lib/seo";
 import { firm } from "@/data/firm";
 import PageHeader from "@/components/ui/PageHeader";
 import CTABand from "@/components/ui/CTABand";
+import SocialLinks from "@/components/layout/SocialLinks";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { TeamSection } from "@/components/sections/TeamSection";
@@ -13,7 +14,7 @@ import { AboutSplit, StatsBand, WhyChoose, OfficesGrid } from "@/components/sect
 export const metadata = buildMetadata({
   title: "About PHMG & Associates – Chartered Accountants",
   description:
-    "PHMG & Associates: RBI Category-I and CAG of India empanelled chartered accountants since 2014, with offices in Noida, Delhi, Mumbai, Ludhiana and Meerut.",
+    "PHMG & Associates: RBI Category-I and CAG of India empanelled chartered accountants since 2014, with offices in Noida, Delhi, Ludhiana and Meerut.",
   path: "/about",
 });
 
@@ -67,7 +68,7 @@ export default function About() {
             <div className="mt-5 space-y-4 leading-relaxed text-brand-muted">
               <p>
                 We serve corporate, banking, government, PSU and private sector clients across India and globally, from
-                offices in Noida (head office), Delhi, Mumbai, Ludhiana and Meerut covering four states.
+                offices in Noida (head office), Delhi, Ludhiana and Meerut covering three states.
               </p>
               <p>
                 Our work spans manufacturing and infrastructure, healthcare and pharmaceuticals, banking and financial
@@ -135,6 +136,10 @@ export default function About() {
               <h2 id="policy-title" className="font-display text-2xl font-bold">Editorial and review policy</h2>
               <p>Guides and service pages on this site are written for general information. They are prepared by our team and reviewed by a chartered accountant, with references to the Income-tax Act, the CGST Act, the Companies Act, the LLP Act and official notifications. Each service page shows the date it was last reviewed, and each article shows when it was published and last updated.</p>
               <p>Tax and company laws change often. If you notice something out of date, please tell us through the <Link href="/contact" className="font-semibold text-brand-blue underline">contact page</Link> and we will correct it.</p>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-gold-dark">Official profiles</p>
+                <SocialLinks className="mt-3 text-brand-navy" />
+              </div>
             </div>
           </ScrollReveal>
         </div>

@@ -5,6 +5,7 @@ import { publishedServices, serviceUrl } from "@/data/services";
 import { cities } from "@/data/cities";
 import { legalLinks } from "@/data/navigation";
 import { Logo } from "./Header";
+import SocialLinks from "./SocialLinks";
 import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 
 const quick = [
@@ -47,7 +48,7 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <Logo light />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
-              PHMG & Associates, Chartered Accountants since 2014. Assurance, tax, advisory and litigation across Noida, Delhi, Mumbai, Ludhiana and Meerut.
+              PHMG & Associates, Chartered Accountants since 2014. Assurance, tax, advisory and litigation across Noida, Delhi, Ludhiana and Meerut.
               RBI Category-I and CAG empanelled. Partner-led delivery.
             </p>
 
@@ -75,6 +76,8 @@ export default function Footer() {
                 )}
               </address>
             )}
+
+            <SocialLinks className="mt-6" />
 
             <Link
               href="/book-consultation"

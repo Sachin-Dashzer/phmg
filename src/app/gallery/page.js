@@ -12,7 +12,7 @@ import CTABand from "@/components/ui/CTABand";
 export const metadata = buildMetadata({
   title: "Gallery",
   description:
-    "Photographs of the PHMG & Associates offices and team across Noida, Delhi, Mumbai, Ludhiana and Meerut, together with videos from our channel.",
+    "Photographs of the PHMG & Associates offices and team across Noida, Delhi, Ludhiana and Meerut, together with videos from our channel.",
   path: "/gallery",
 });
 
@@ -46,7 +46,7 @@ export default function Gallery() {
         crumbs={[{ name: "Gallery", href: "/gallery" }]}
         eyebrow="Gallery"
         title="Our offices and team"
-        intro="Photographs from the five offices we work from, and the partners and branch heads who lead them."
+        intro="Photographs from the four offices we work from, and the partners and branch heads who lead them."
         image="/images/office/office-1.jpeg"
       >
         <div className="flex flex-wrap gap-3">
@@ -137,7 +137,7 @@ export default function Gallery() {
 
       <CTABand
         title="Prefer to meet in person?"
-        text="You are welcome at any of our five offices. Tell us what you need and we will arrange a time."
+        text="You are welcome at any of our four offices. Tell us what you need and we will arrange a time."
         cta="Book a consultation"
       />
     </>

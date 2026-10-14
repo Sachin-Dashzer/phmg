@@ -13,7 +13,7 @@ import { ProcessSteps } from "@/components/sections/SiteSections";
 export const metadata = buildMetadata({
   title: "Careers",
   description:
-    "Work with PHMG & Associates: current openings, articleship and applications for accountants, auditors and tax professionals across our five offices.",
+    "Work with PHMG & Associates: current openings, articleship and applications for accountants, auditors and tax professionals across our four offices.",
   path: "/careers",
 });
 
@@ -39,7 +39,7 @@ export default function Careers() {
         crumbs={[{ name: "Careers", href: "/careers" }]}
         eyebrow="Careers"
         title="Work with us"
-        intro="We are a firm of chartered accountants with offices in Noida, Delhi, Mumbai, Ludhiana and Meerut, working in audit, tax, litigation and advisory. If you care about accuracy and want a partner to review and explain your work, we would like to hear from you."
+        intro="We are a firm of chartered accountants with offices in Noida, Delhi, Ludhiana and Meerut, working in audit, tax, litigation and advisory. If you care about accuracy and want a partner to review and explain your work, we would like to hear from you."
         image="/images/office/office-3.jpeg"
       >
         <div className="flex flex-wrap gap-3">

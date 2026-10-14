@@ -27,7 +27,7 @@ const why = [
   { icon: Gavel, title: "Litigation focus", text: "Representation before ITAT, CIT(A), GST Tribunals and High Courts in high-stakes tax matters.", accent: "text-brand-blue" },
   { icon: Search, title: "Search and survey support", text: "Representation and support during income tax and GST search and survey proceedings.", accent: "text-brand-teal" },
   { icon: Briefcase, title: "CFO advisory", text: "Virtual CFO services: financial controls, board reporting and compliance readiness.", accent: "text-brand-gold" },
-  { icon: Globe2, title: "Multi-state compliance", text: "Compliance across Delhi, UP, Maharashtra and Punjab with local teams.", accent: "text-blue-400" },
+  { icon: Globe2, title: "Multi-state compliance", text: "Compliance across Delhi, Uttar Pradesh and Punjab with local teams.", accent: "text-blue-400" },
   { icon: Cpu, title: "Technology driven", text: "Digitised workflows, real-time dashboards and paperless audit processes.", accent: "text-brand-teal" },
   { icon: UserCheck, title: "Partner-led delivery", text: "A partner owns each engagement and reviews the work before it is submitted.", accent: "text-brand-gold" },
 ];

@@ -30,8 +30,8 @@ export const whyJoin = [
     p: "Every engagement is owned by a partner who reviews the work before it is submitted and explains the reasoning behind the position taken. That review is where most of the learning happens.",
   },
   {
-    h: "Five offices",
-    p: "Noida, Delhi, Mumbai, Ludhiana and Meerut, each with a different client base — IT and electronics around Noida, manufacturing and exports in Ludhiana, NRI and trust work from Mumbai. Exposure varies by office.",
+    h: "Four offices",
+    p: "Noida, Delhi, Ludhiana and Meerut, each with a different client base — IT and electronics around Noida, manufacturing and exports in Ludhiana. Exposure varies by office.",
   },
   {
     h: "Breadth early",

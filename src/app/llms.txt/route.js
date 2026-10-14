@@ -1,4 +1,4 @@
-import { firm, offices } from "@/data/firm";
+import { firm, offices, waHref } from "@/data/firm";
 import { categories } from "@/data/categories";
 import { publishedServices, serviceUrl, servicesIn } from "@/data/services";
 import { cities } from "@/data/cities";
@@ -11,6 +11,15 @@ import { absUrl } from "@/lib/seo";
 // pages render from, so it cannot drift from the site. /llms-full.txt carries the page content.
 export function GET() {
   const link = (title, path, note) => `- [${title}](${absUrl(path)})${note ? `: ${note}` : ""}`;
+  // Labelled profiles, so an assistant can tell the firm's own accounts from accounts using its name.
+  const profiles = [
+    ["LinkedIn", firm.social.linkedin],
+    ["Instagram", firm.social.instagram],
+    ["X", firm.social.x],
+    ["YouTube", firm.social.youtube],
+    ["Facebook", firm.social.facebook],
+    ["Google Business Profile", firm.social.googleBusiness],
+  ].filter(([, href]) => href);
 
   const body = [
     `# ${firm.name}`,
@@ -28,6 +37,13 @@ export function GET() {
     `- Website: ${absUrl("/")}`,
     ...(firm.icaiFrn ? [`- ICAI Firm Registration Number: ${firm.icaiFrn}`] : []),
     "",
+    "### Official profiles",
+    `- Website: ${absUrl("/")}`,
+    ...profiles.map(([label, href]) => `- ${label}: ${href}`),
+    `- Telephone: ${firm.phone}`,
+    ...(firm.whatsapp ? [`- WhatsApp: ${waHref().split("?")[0]}`] : []),
+    `- Email: ${firm.email}`,
+    "",
     "### Offices",
     ...offices.map((o) => `- ${o.city}${o.head ? " (head office)" : ""}: ${o.address}`),
     "",
@@ -41,7 +57,7 @@ export function GET() {
     "",
     "## Locations",
     ...cities.map((c) => link(c.title, `/ca-in-${c.slug}`, c.metaDescription)),
-    link("All locations", "/locations", "the five offices and how remote work is handled"),
+    link("All locations", "/locations", "the four offices and how remote work is handled"),
     "",
     "## Services by practice area",
     ...categories.flatMap((c) => [
