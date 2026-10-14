@@ -8,9 +8,6 @@ export default function PageHeader({ crumbs, title, intro, eyebrow, image = Bann
   return (
     <section className="relative isolate overflow-hidden">
 
-
-
-
     
       {/* Next 16 deprecated the `priority` prop. This hero is the LCP element, so it asks for
           high fetch priority and eager loading directly. */}
