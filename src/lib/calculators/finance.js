@@ -1,4 +1,4 @@
-// Maths for the Knowledge Bank calculators. Pure functions, no rounding (format at display time),
+// Maths for the Resources calculators. Pure functions, no rounding (format at display time),
 // no rates baked in: every rate is an argument, so a change in the law is a data change on the
 // page and not a code change here.
 

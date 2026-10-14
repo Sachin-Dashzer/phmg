@@ -105,5 +105,5 @@ const coreRunners = {
   },
 };
 
-// The Knowledge Bank calculators added in October 2026 live in their own module.
+// The Resources calculators added in October 2026 live in their own module.
 export const runners = { ...coreRunners, ...financeRunners };

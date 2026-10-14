@@ -15,7 +15,9 @@ import CTABand from "@/components/ui/CTABand";
 import { WhoWeServe } from "@/components/sections/SiteSections";
 
 export const metadata = buildMetadata({
-  title: "Knowledge Bank",
+  // Short enough that buildMetadata keeps the "| PHMG & Associates" suffix; the nav, breadcrumb
+  // and eyebrow all read "Resources".
+  title: "Calculators and Reference Tables",
   description:
     "Calculators for tax, GST and loans, reference tables for rates and due dates, and a directory of the official sources we work from.",
   path: "/knowledge-bank",
@@ -25,8 +27,8 @@ export default function KnowledgeBank() {
   return (
     <>
       <PageHeader
-        crumbs={[{ name: "Knowledge Bank", href: "/knowledge-bank" }]}
-        eyebrow="Knowledge Bank"
+        crumbs={[{ name: "Resources", href: "/knowledge-bank" }]}
+        eyebrow="Resources"
         title={<>Work out the numbers <span className="text-brand-gold">yourself</span></>}
         intro="Calculators that show their working, reference tables for the rates and dates that come up most often, and links to the official sources behind them. No sign-up."
       >

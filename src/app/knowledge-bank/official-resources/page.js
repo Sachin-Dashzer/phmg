@@ -21,7 +21,7 @@ export default function OfficialResources() {
     <>
       <PageHeader
         crumbs={[
-          { name: "Knowledge Bank", href: "/knowledge-bank" },
+          { name: "Resources", href: "/knowledge-bank" },
           { name: "Official sources", href: "/knowledge-bank/official-resources" },
         ]}
         eyebrow="Official sources"
@@ -116,7 +116,7 @@ export default function OfficialResources() {
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/knowledge-bank" className="btn btn-primary">Back to the Knowledge Bank <ArrowRight size={16} aria-hidden="true" /></Link>
+            <Link href="/knowledge-bank" className="btn btn-primary">Back to Resources <ArrowRight size={16} aria-hidden="true" /></Link>
             <Link href="/insights" className="btn btn-secondary">Read our guides</Link>
           </div>
         </div>

@@ -1,0 +1,18 @@
+# Source files are LF everywhere, including on Windows checkouts.
+#
+# Why this file exists: with core.autocrlf=true, Windows checks these out as CRLF. Turbopack's
+# server build keeps the CR inside a multi-line template literal while the browser's parser
+# normalises it away, so every multi-line `className={` in a Client Component hydrated with a
+# mismatch (server "\r\n\n", client "\n\n") and React discarded the server HTML for that tree.
+# The committed blobs were always LF, so pinning eol here changes the checkout, not the history.
+* text=auto eol=lf
+
+# Keep binaries byte-for-byte.
+*.jpg  binary
+*.jpeg binary
+*.png  binary
+*.svg  text eol=lf
+*.ico  binary
+*.webp binary
+*.avif binary
+*.xlsx binary

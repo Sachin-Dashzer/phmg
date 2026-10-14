@@ -24,6 +24,21 @@ npm run dev                    # http://localhost:3000
 | `npm run analyze` | Bundle analyzer |
 | `node scripts/keyword-map.mjs` | Regenerates `docs/keyword-map.csv` and flags duplicate primary keywords |
 
+## Forms
+
+Three endpoints, all stateless: `/api/contact` (enquiry forms), `/api/careers` (job applications)
+and `/api/newsletter`. Each validates with Zod, drops bot submissions via a honeypot field, and
+applies a per-IP rate limit of 5 submissions per 10 minutes.
+
+Every submission is emailed to `CONTACT_TO_EMAIL` and, when `SHEETS_WEBHOOK_URL` is set, appended
+as a row to a Google Sheet. Setup instructions are in the header of
+[`docs/google-sheet-webhook.gs`](docs/google-sheet-webhook.gs) — paste that file into the sheet's
+Apps Script editor and deploy it as a web app.
+
+The sheet is a copy, never the system of record: if it is down, slow or misconfigured the visitor
+still gets a success and the email still arrives. Failures are logged server-side as `[sheet] ...`,
+so check the host's runtime logs if rows stop appearing.
+
 ## Environment variables
 See `.env.example`.
 
@@ -31,6 +46,7 @@ See `.env.example`.
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | Canonical URLs, sitemap, structured data (`https://phmgindia.com`) |
 | `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` | Enquiry and newsletter emails via Resend. If missing, forms return a 503 in production (and log to the console in development) |
+| `SHEETS_WEBHOOK_URL`, `SHEETS_WEBHOOK_TOKEN` | Copies every form submission into a Google Sheet. The URL is the Apps Script web app's `/exec` address and the token must match `SECRET` in `docs/google-sheet-webhook.gs`. Both optional: leave them unset and forms work exactly as before, by email only |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp buttons (digits with country code, e.g. `919812345678`). Hidden if empty |
 | `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_CLARITY_ID` | Analytics. Loaded only after the visitor accepts the cookie banner. No banner shows if both are empty |
 | `NEXT_PUBLIC_GSC_VERIFICATION` | Google Search Console verification tag |

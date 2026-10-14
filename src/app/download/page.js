@@ -19,7 +19,7 @@ export default function Download() {
         eyebrow="Document checklists"
         title={<>Know what to bring <span className="text-brand-gold">before you start</span></>}
         intro="Open a service to see the documents usually needed. Use your browser's print option to save a copy as PDF."
-        image="/images/office/office-3.jpeg"
+        image="/images/office/office-9.jpeg"
       />
       <section className="section bg-brand-mist">
         <div className="container-x">

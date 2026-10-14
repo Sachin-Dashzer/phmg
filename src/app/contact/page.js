@@ -79,7 +79,7 @@ export default function Contact() {
 
           <aside className="h-fit overflow-hidden rounded-2xl bg-brand-navy text-white lg:sticky lg:top-28">
             <div className="relative h-48">
-              <Image src="/images/office/office-3.jpeg" alt="" fill sizes="(min-width: 1024px) 24rem, 100vw" className="object-cover" />
+              <Image src="/images/office/office-10.jpeg" alt="" fill sizes="(min-width: 1024px) 24rem, 100vw" className="object-cover" />
               <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-brand-navy to-transparent" />
             </div>
             <div className="p-6">

@@ -20,6 +20,13 @@ const targets = [
   { file: "public/who-we-serve.jpg", to: "public/who-we-serve.jpg", q: 80, maxWidth: 2400 },
   { file: "public/banner.png", to: "public/banner.jpg", q: 82 },
   { file: "public/images/stock-audit.png", to: "public/images/stock-audit.jpg", q: 82 },
+  // Phone photographs added in October 2026, stored at full camera resolution. 1600px covers the
+  // widest variant any layout here requests (a full-bleed hero at 100vw), so the cap costs nothing
+  // on screen and takes several megabytes out of the repository and the deploy.
+  { file: "public/images/office/office-12.jpeg", to: "public/images/office/office-12.jpeg", q: 80, maxWidth: 1600 },
+  { file: "public/images/office/office-13.jpeg", to: "public/images/office/office-13.jpeg", q: 80, maxWidth: 1600 },
+  { file: "public/images/office/office-14.jpeg", to: "public/images/office/office-14.jpeg", q: 80, maxWidth: 1600 },
+  { file: "public/images/team/full-team.jpeg", to: "public/images/team/full-team.jpeg", q: 80, maxWidth: 1600 },
 ];
 
 const kb = (n) => `${Math.round(n / 1024)} KB`;

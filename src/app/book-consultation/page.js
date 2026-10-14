@@ -51,7 +51,7 @@ export default function Book() {
 
           <div className="space-y-6">
             <div className="relative aspect-4/3 overflow-hidden rounded-2xl shadow-lg">
-              <Image src="/images/office/office-3.jpeg" alt="A partner in a client consultation" fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
+              <Image src="/images/office/office-9.jpeg" alt="The team at work at a PHMG & Associates office" fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
             </div>
             <div className="relative overflow-hidden rounded-2xl bg-brand-navy p-6 text-white md:p-8">
               <div aria-hidden="true" className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand-gold/15 blur-2xl" />

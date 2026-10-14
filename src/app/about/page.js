@@ -33,7 +33,7 @@ export default function About() {
         eyebrow={`Chartered Accountants${firm.foundedYear ? ` · Since ${firm.foundedYear}` : ""}`}
         title={<>Strategic advisors to <span className="text-brand-gold">growing businesses</span></>}
         intro="A decade of trust. A future of growth. A multi-location CA firm with a specialisation in audit, GST litigation and advisory."
-        image="/images/office/office-2.jpeg"
+        image="/images/office/office-10.jpeg"
       >
         <div className="flex flex-wrap gap-3">
           <Link href="/contact" className="btn btn-gold">Talk to a partner <ArrowRight size={16} aria-hidden="true" /></Link>
@@ -49,7 +49,7 @@ export default function About() {
         <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <ScrollReveal className="relative order-last lg:order-first">
             <div className="relative aspect-4/5 overflow-hidden rounded-2xl shadow-xl sm:aspect-4/3 lg:aspect-4/5">
-              <Image src="/images/office/office-3.jpeg" alt="Partners reviewing an engagement" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+              <Image src="/images/office/office-6.jpeg" alt="Colleagues reviewing a working file" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
             </div>
             <figure className="relative -mt-16 ml-auto max-w-sm rounded-2xl bg-brand-navy p-6 text-white shadow-2xl sm:-mt-24 sm:-mr-4 lg:-mr-8">
               <Quote className="text-brand-gold" size={28} aria-hidden="true" />

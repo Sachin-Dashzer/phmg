@@ -1,4 +1,4 @@
-// The Knowledge Bank: calculators and reference tables, at /knowledge-bank.
+// The Resources: calculators and reference tables, at /knowledge-bank.
 //
 // This replaced the old /tools section. Calculator copy for the five original calculators moved
 // here from tools.js unchanged apart from the ICAI wording; the nine added in October 2026 follow.
@@ -680,7 +680,7 @@ export const officialResources = [
 ];
 
 // Datasets that are deliberately not reproduced, and where to get them instead. Shown on the
-// Knowledge Bank hub so the omission is explicit rather than looking like an oversight.
+// Resources hub so the omission is explicit rather than looking like an oversight.
 export const notReproduced = [
   { what: "IFSC and MICR codes", why: "Tens of thousands of records that change as branches open, merge and close", where: { label: "Reserve Bank of India", href: "https://www.rbi.org.in/Scripts/Bs_viewcontent.aspx?Id=2009" } },
   { what: "Gold and silver rates", why: "Change daily, so any published table is wrong by the time it is read", where: { label: "Income Tax Department", href: "https://incometaxindia.gov.in/charts%20%20tables/gold-and-silver-rates.htm" } },

@@ -128,7 +128,8 @@ function navUnderline(scrolled) {
   return `
     relative
     after:absolute
-    after:inset-x-3
+    after:inset-x-2
+    xl:after:inset-x-3
     after:-bottom-1
     after:h-0.5
     after:origin-left
@@ -247,8 +248,9 @@ function DesktopMega({
           className="
             rounded-l-lg
             py-2
-            pl-4
+            pl-2.5
             pr-1
+            xl:pl-4
             text-sm
             font-medium
             transition-colors
@@ -1074,9 +1076,10 @@ export default function Header() {
             className="
               hidden
               items-center
-              gap-1
+              gap-0.5
               self-stretch
               lg:flex
+              xl:gap-1
             "
           >
             {mainNav.map((item) =>
@@ -1102,9 +1105,11 @@ export default function Header() {
                   className={`
                     ${navUnderline(scrolled)}
                     rounded-lg
-                    px-4
+                    whitespace-nowrap
+                    px-2.5
                     py-2
                     text-sm
+                    xl:px-4
                     font-medium
                     transition-colors
                     duration-300
@@ -1122,7 +1127,9 @@ export default function Header() {
 
           <div className="flex items-center gap-3">
 
-            {/* Desktop CTA */}
+            {/* Desktop CTA. Hidden at lg only: at exactly 1024px the eight nav links plus the
+                logo leave no room for it, and the nav's own Contact link (with the floating
+                Call / WhatsApp buttons) covers the same job until xl brings it back. */}
             <Link
               href="/contact"
               className={`
@@ -1138,6 +1145,8 @@ export default function Header() {
                 transition-all
                 duration-300
                 sm:inline-flex
+                lg:hidden
+                xl:inline-flex
 
                 bg-brand-gold
                 text-[#17140f]

@@ -8,12 +8,16 @@ export const megaMenu = categories.map((c) => ({
   items: servicesIn(c.slug).map((s) => ({ title: s.title, href: serviceUrl(s) })),
 }));
 
+// Eight items is what the desktop bar holds at lg once the link padding tightens (see Header.js).
+// Adding a ninth means either a shorter label or grouping two of these under a dropdown.
 export const mainNav = [
   { title: "Services", href: "/services", mega: true },
   { title: "Industries", href: "/industries" },
   { title: "Insights", href: "/insights" },
-  { title: "Knowledge Bank", href: "/knowledge-bank" },
+  { title: "Resources", href: "/knowledge-bank" },
+  { title: "Gallery", href: "/gallery" },
   { title: "About", href: "/about" },
+  { title: "Careers", href: "/careers" },
   { title: "Contact", href: "/contact" },
 ];
 

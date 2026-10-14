@@ -1,4 +1,4 @@
-// Runners for the Knowledge Bank calculators added in October 2026. Same shape as runners.js:
+// Runners for the Resources calculators added in October 2026. Same shape as runners.js:
 // fields for the form, and run(values) -> { rows, note }. Merged into `runners` there.
 import {
   gstFromMrp,

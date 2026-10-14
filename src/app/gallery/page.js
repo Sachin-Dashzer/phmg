@@ -21,7 +21,10 @@ export const metadata = buildMetadata({
 // which is what makes a gallery of mixed portrait and landscape photographs look deliberate.
 const Photo = ({ p, priority }) => (
   <figure className="group mb-4 break-inside-avoid overflow-hidden rounded-2xl border border-brand-line bg-brand-mist">
-    <div className="relative aspect-4/3 overflow-hidden">
+    <div
+      className="relative overflow-hidden"
+      style={{ aspectRatio: p.width && p.height ? `${p.width} / ${p.height}` : "4 / 3" }}
+    >
       <Image
         src={p.src}
         alt={p.alt}

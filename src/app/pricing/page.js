@@ -34,7 +34,7 @@ export default function Pricing() {
         eyebrow="Fees & pricing"
         title={<>Clear fees, <span className="text-brand-gold">agreed in writing</span></>}
         intro="Our fees depend on the service, the size of your business and the complexity of your case. Here is exactly how we quote."
-        image="/images/office/office-3.jpeg"
+        image="/images/office/office-2.jpeg"
       >
         <Link href="/book-consultation" className="btn btn-gold">Request a quote <ArrowRight size={16} aria-hidden="true" /></Link>
       </PageHeader>

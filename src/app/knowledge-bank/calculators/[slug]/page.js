@@ -53,7 +53,7 @@ export default async function CalculatorPage({ params }) {
       />
       <PageHeader
         crumbs={[
-          { name: "Knowledge Bank", href: "/knowledge-bank" },
+          { name: "Resources", href: "/knowledge-bank" },
           { name: c.title, href: `/knowledge-bank/calculators/${c.slug}` },
         ]}
         eyebrow="Calculator"
@@ -119,7 +119,7 @@ export default async function CalculatorPage({ params }) {
       {others.length > 0 && (
         <section aria-labelledby="more-tools" className="section bg-brand-mist">
           <div className="container-x">
-            <SectionHeading id="more-tools" label="Knowledge Bank" title="Try another calculator" />
+            <SectionHeading id="more-tools" label="Resources" title="Try another calculator" />
             <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {others.map((o, i) => <ToolCard key={o.slug} tool={o} index={i} />)}
             </ScrollReveal>

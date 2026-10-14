@@ -14,7 +14,7 @@ const quick = [
   { title: "Locations", href: "/locations" },
   { title: "Pricing", href: "/pricing" },
   { title: "Insights", href: "/insights" },
-  { title: "Knowledge Bank", href: "/knowledge-bank" },
+  { title: "Resources", href: "/knowledge-bank" },
   { title: "Tax Calendar", href: "/tax-calendar" },
   { title: "Book Consultation", href: "/book-consultation" },
   { title: "Team", href: "/team" },

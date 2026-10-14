@@ -35,7 +35,7 @@ export default async function UtilityPage({ params }) {
     <>
       <PageHeader
         crumbs={[
-          { name: "Knowledge Bank", href: "/knowledge-bank" },
+          { name: "Resources", href: "/knowledge-bank" },
           { name: u.title, href: `/knowledge-bank/utilities/${u.slug}` },
         ]}
         eyebrow="Reference table"

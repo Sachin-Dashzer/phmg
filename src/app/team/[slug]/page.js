@@ -88,7 +88,7 @@ export default async function PartnerPage({ params }) {
             ? profile.bio[0]
             : `${p.credentials.join(", ")}. ${p.years} years in practice, working in ${p.focus.slice(0, 3).join(", ").toLowerCase()}.`
         }
-        image="/images/office/office-3.jpeg"
+        image="/images/office/office-10.jpeg"
       >
         <div className="flex flex-wrap gap-3">
           <Link href="#enquiry" className="btn btn-gold">Send an enquiry <ArrowRight size={16} aria-hidden="true" /></Link>

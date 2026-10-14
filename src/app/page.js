@@ -560,7 +560,7 @@ export default function Home() {
               intro="Work out the numbers yourself, with no sign-up."
               action={
                 <Link href="/knowledge-bank" className="btn btn-secondary">
-                  Knowledge Bank <ArrowRight size={15} aria-hidden="true" />
+                  Resources <ArrowRight size={15} aria-hidden="true" />
                 </Link>
               }
             />
