@@ -1,5 +1,5 @@
 import { applicationSchema } from "@/lib/validators";
-import { rateLimited, rows, sendMail, sendToSheet } from "@/lib/email";
+import { delivered, rateLimited, rows, sendMail, sendToSheet } from "@/lib/email";
 
 // Job applications. Mirrors the contact handler: same rate limit, same honeypot behaviour, and
 // the same stateless approach — nothing is stored, the application is emailed on.
@@ -26,9 +26,8 @@ export async function POST(request) {
     CV: d.cv,
     Message: d.message,
   })}`;
-  const [failed] = await Promise.all([
+  return delivered(await Promise.all([
     sendMail({ subject: `Job application: ${d.role || "General"} – ${d.name}`, html, replyTo: d.email }),
     sendToSheet("careers", d, request),
-  ]);
-  return failed || Response.json({ ok: true });
+  ]));
 }

@@ -35,9 +35,11 @@ as a row to a Google Sheet. Setup instructions are in the header of
 [`docs/google-sheet-webhook.gs`](docs/google-sheet-webhook.gs) — paste that file into the sheet's
 Apps Script editor and deploy it as a web app.
 
-The sheet is a copy, never the system of record: if it is down, slow or misconfigured the visitor
-still gets a success and the email still arrives. Failures are logged server-side as `[sheet] ...`,
-so check the host's runtime logs if rows stop appearing.
+A submission succeeds when **either** sink accepts it, so a working sheet is enough on its own and
+a working mailbox is enough on its own. The visitor only sees "Submissions are temporarily
+unavailable" when both failed, which is the one case where the enquiry really was lost. Failures are
+logged server-side as `[mail] ...` or `[sheet] ...`, so check the host's runtime logs if one channel
+stops arriving while forms keep succeeding.
 
 ## Environment variables
 See `.env.example`.

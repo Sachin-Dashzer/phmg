@@ -1,5 +1,5 @@
 import { leadSchema } from "@/lib/validators";
-import { rateLimited, rows, sendMail, sendToSheet } from "@/lib/email";
+import { delivered, rateLimited, rows, sendMail, sendToSheet } from "@/lib/email";
 
 export async function POST(request) {
   if (rateLimited(request)) return Response.json({ error: "Too many requests. Please try again later." }, { status: 429 });
@@ -14,9 +14,8 @@ export async function POST(request) {
 
   const d = parsed.data;
   const html = `<h2>New enquiry</h2>${rows({ Name: d.name, Phone: d.phone, Email: d.email, Service: d.service, City: d.city, "Preferred time": d.slot, Message: d.message })}`;
-  const [failed] = await Promise.all([
+  return delivered(await Promise.all([
     sendMail({ subject: `New enquiry: ${d.service || "General"} – ${d.name}`, html, replyTo: d.email }),
     sendToSheet("contact", d, request),
-  ]);
-  return failed || Response.json({ ok: true });
+  ]));
 }
