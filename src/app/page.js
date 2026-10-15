@@ -19,7 +19,7 @@ import { webSiteSchema } from "@/lib/schema";
 import JsonLd from "@/components/seo/JsonLd";
 import { calculators } from "@/data/knowledge-bank";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import BannerImg from "../../public/banner.jpg";
+import BannerImg from "../../public/images/office/office-1.jpeg";
 
 /* ------------------------------------------------------------------ */
 /* Content                                                             */
@@ -55,9 +55,11 @@ export default function Home() {
           src={BannerImg}
           alt=""
           fill
-          // `priority` covers eager + fetchPriority="high" and also emits the preload link, so the
-          // LCP image is discovered in the head rather than when the <img> is parsed.
-          priority
+          // Next 16 deprecated `priority`: `preload` emits the <head> link, so the LCP image is
+          // discovered there rather than when the <img> is parsed.
+          preload
+          fetchPriority="high"
+          loading="eager"
           sizes="100vw"
           className="absolute inset-0 -z-20 object-cover object-center"
         />

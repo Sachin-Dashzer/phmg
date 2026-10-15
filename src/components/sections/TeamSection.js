@@ -169,7 +169,7 @@ export function TeamSection() {
             <div
               ref={track}
               onScroll={update}
-              className="-m-1 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth p-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="-m-1 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth p-1 scroll-p-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {team.map((member) => (
                 <TeamCard key={member.slug} {...member} />

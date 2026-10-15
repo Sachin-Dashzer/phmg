@@ -115,7 +115,7 @@ export function AboutSplit({ className = "bg-brand-mist", cta = true, title = "A
 
         <ScrollReveal className="grid grid-cols-2 gap-4">
           <div className="relative col-span-2 aspect-video overflow-hidden rounded-2xl shadow-lg">
-            <Image src="/images/office/office-1.jpeg" alt="PHMG & Associates office, Noida" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+            <Image src="/images/office/office-2.jpeg" alt="PHMG & Associates office, Noida" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
           </div>
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl shadow-lg">
             <Image src="/images/office/office-9.jpeg" alt="PHMG & Associates team at work" fill sizes="(min-width: 1024px) 22vw, 50vw" className="object-cover" />
