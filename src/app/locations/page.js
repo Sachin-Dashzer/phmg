@@ -11,7 +11,7 @@ import { OfficesGrid, StatsBand, ProcessSteps } from "@/components/sections/Site
 import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
-  title: "CA Services by Location",
+  title: "CA Offices in Noida, Delhi, Ludhiana & Meerut",
   description:
     "PHMG & Associates has offices in Noida, Delhi, Ludhiana and Meerut, and works with clients across India online. Find the office nearest to you.",
   path: "/locations",

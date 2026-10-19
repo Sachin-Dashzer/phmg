@@ -18,8 +18,17 @@ export const reviewedToISO = (value, fallback = "") => {
   return new Date(Date.UTC(Number(m[2]), month, 1)).toISOString().slice(0, 10);
 };
 
-/** Keep titles within ~60 chars: the brand suffix is dropped if too long. */
-const withBrand = (t) => (t.length + 20 <= 60 ? `${t} | ${firm.name}` : t);
+/**
+ * Keep titles within 60 characters, and aim for at least 50.
+ *
+ * The old rule appended " | PHMG & Associates" or nothing, so a 41-character title lost the brand
+ * entirely for being one character over, and 74 of the 131 pages ended up below 50. The ladder
+ * takes the longest form of the firm's name that still fits. Every entry is a real rendering of
+ * the name — no invented variants, and no padding a title with keywords to reach a character
+ * count, which would make it worse to read for the sake of a guideline.
+ */
+const BRAND_SUFFIXES = [` | ${firm.name}, ${firm.tagline}`, ` | ${firm.name}`, " | PHMG"];
+const withBrand = (t) => BRAND_SUFFIXES.map((s) => t + s).find((v) => v.length <= 60) ?? t;
 
 // ownImage: the route has its own opengraph-image file, so skip the default one.
 export function buildMetadata({ title, description, path = "/", noindex = false, type = "website", ownImage = false, extra = {} }) {

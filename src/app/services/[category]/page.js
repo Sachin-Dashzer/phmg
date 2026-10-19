@@ -22,7 +22,9 @@ export async function generateMetadata({ params }) {
   const c = getCategory(category);
   if (!c) return {};
   return buildMetadata({
-    title: `${c.title} Services`,
+    // The office cities carry the local intent these hub titles otherwise lack, and bring the
+    // shorter ones ("Income Tax Services" was 19 characters) into the 50-60 range.
+    title: `${c.title} Services in Noida & Delhi`,
     description: c.metaDescription,
     path: `/services/${c.slug}`,
     noindex: servicesIn(c.slug).length === 0, // thin until services are published

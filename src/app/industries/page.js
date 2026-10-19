@@ -13,7 +13,7 @@ import whoWeServeImage from "../../../public/who-we-serve.jpg";
 import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
-  title: "CA Services by Industry",
+  title: "CA Services by Industry in India",
   description: "See how PHMG & Associates supports startups, e-commerce, real estate, manufacturing, healthcare, professionals and NGOs. Talk to our chartered accountants.",
   path: "/industries",
 });

@@ -238,10 +238,13 @@ for (const path of paths) {
   }
 
   /* --- thin content ---------------------------------------------- */
+  // The brief set the floor at 400 words for a service or industry page and 150 for a tool or
+  // category page. The money pages are held to the higher bar check-seo.mjs already enforced and
+  // they already clear it, so lowering them to the brief's floor would only let them rot.
   const min =
-    /^\/services\/[^/]+\/[^/]+$/.test(path) ? 400
-      : /^\/industries\/[^/]+$/.test(path) ? 400
-        : /^\/insights\/[^/]+$/.test(path) ? 400
+    /^\/services\/[^/]+\/[^/]+$/.test(path) ? 1200
+      : /^\/insights\/[^/]+$/.test(path) ? 900
+        : /^\/industries\/[^/]+$/.test(path) ? 400
           : /^\/insights\/category\//.test(path) ? 150
             : /^\/knowledge-bank\/(calculators|utilities)\//.test(path) ? 150
               : 0;
