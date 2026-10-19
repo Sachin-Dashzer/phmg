@@ -17,8 +17,12 @@ export async function generateMetadata({ params }) {
   const c = live.find((x) => x.slug === slug);
   if (!c) return {};
   return buildMetadata({
-    title: `${c.title} Guides and Updates`,
-    description: `Practical ${c.title.toLowerCase()} guides from PHMG & Associates, written and reviewed by chartered accountants, and updated as the law changes.`,
+    // "GST Guides and Updates" was 22 characters, so the title came out at 42 once the brand was
+    // added. The longer phrasing holds every category title inside the 50-60 target.
+    title: `${c.title} Guides for Indian Businesses`,
+    // Per-category, from insights.js. The old description was the same sentence with one word
+    // swapped, which is near-duplicate text across seven pages.
+    description: c.metaDescription,
     path: `/insights/category/${c.slug}`,
   });
 }

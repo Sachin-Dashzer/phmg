@@ -24,25 +24,35 @@ export const dynamicParams = false;
 export const generateStaticParams = () => team.map((t) => ({ slug: t.slug }));
 
 /**
- * Builds a description that lands inside check-seo's 120-158 window without truncating mid-word.
+ * Builds a description that lands inside the 140-160 window without truncating mid-word.
  * Starts with the fullest version and drops one focus area at a time until it fits; if the
- * shortest version is still under 120 it adds the years in practice, which every member has.
+ * shortest version is still under 140 it adds the years in practice, which every member has.
  */
 function describe(p) {
   const creds = p.credentials?.length ? ` (${p.credentials.join(", ")})` : "";
   const head = `${p.name}${creds}, ${p.role.toLowerCase()} at PHMG & Associates, chartered accountants.`;
-  for (let n = Math.min(3, p.focus.length); n >= 1; n--) {
+  for (let n = Math.min(4, p.focus.length); n >= 1; n--) {
     const d = `${head} Works in ${p.focus.slice(0, n).join(", ").toLowerCase()}.`;
-    if (d.length <= 158) return d.length >= 120 ? d : `${d} ${p.years} years in practice.`;
+    if (d.length <= 160) return d.length >= 140 ? d : `${d} ${p.years} years in practice.`;
   }
   return head;
 }
+
+/**
+ * "CA Praveen Thakur – Partner" is 27 characters, which leaves the title at 47 once the brand is
+ * added. A short role gets the qualification spelled out instead; it is accurate for every member
+ * and keeps the longer branch-head titles untouched.
+ */
+const titleFor = (p) => {
+  const base = `${p.name} – ${p.role}`;
+  return base.length >= 30 ? base : `${p.name}, ${p.role} – Chartered Accountant`;
+};
 
 export async function generateMetadata({ params }) {
   const p = getMember((await params).slug);
   if (!p) return {};
   return buildMetadata({
-    title: `${p.name} – ${p.role}`,
+    title: titleFor(p),
     description: describe(p),
     path: `/team/${p.slug}`,
   });

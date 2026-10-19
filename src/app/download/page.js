@@ -8,7 +8,7 @@ import CTABand from "@/components/ui/CTABand";
 import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
-  title: "Document Checklists – Print or Save as PDF",
+  title: "Document Checklists for ITR, GST, Audit and ROC",
   description: "Document checklists for ITR, GST, company registration, audit and more. Open a checklist, print it or save it as a PDF before you start collecting.",
   path: "/download",
 });

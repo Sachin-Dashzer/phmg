@@ -21,7 +21,9 @@ export const generateStaticParams = () => industries.map((i) => ({ slug: i.slug 
 export async function generateMetadata({ params }) {
   const i = getIndustry((await params).slug);
   if (!i) return {};
-  return buildMetadata({ title: `CA Services for ${i.title}`, description: i.metaDescription, path: `/industries/${i.slug}` });
+  // "in India" is what keeps the shorter sector names ("Manufacturing", "Professionals") inside
+  // the 50-60 title target once the brand suffix is added, and it is where the work is done.
+  return buildMetadata({ title: `CA Services for ${i.title} in India`, description: i.metaDescription, path: `/industries/${i.slug}` });
 }
 
 export default async function IndustryPage({ params }) {

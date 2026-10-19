@@ -30,7 +30,7 @@ export const cities = [
     primaryKeyword: "chartered accountant in noida",
     secondaryKeywords: ["ca firm in noida", "ca in sector 62 noida", "chartered accountant greater noida", "gst consultant noida", "company registration noida"],
     updatedAt,
-    title: "Chartered Accountant in Noida",
+    title: "Chartered Accountant in Noida, Sector 59",
     metaDescription:
       "Chartered accountants at our head office in Sector 59, Noida: audit, income tax, GST, ROC and company registration for Noida and Greater Noida businesses.",
     intro:
@@ -63,7 +63,7 @@ export const cities = [
     ],
     services: ["itr-filing", "gst-registration", "gst-refund", "private-limited-company-registration", "statutory-audit", "internal-audit", "payroll", "virtual-cfo"],
     faqs: [
-      { q: "Where is your Noida office?", a: "Our head office is at D-23, 3rd Floor, Sector 59, Noida 201301. It is the firm's principal office and most engagements are coordinated from there. Sector 59 is close to the sector 62 and 63 business areas and is reachable from Greater Noida, Noida Extension and Ghaziabad." },
+      { q: "Where is your Noida office?", a: "Our head office is at D-23, 3rd Floor, Sector 59, Noida 201309. It is the firm's principal office and most engagements are coordinated from there. Sector 59 is close to the sector 62 and 63 business areas and is reachable from Greater Noida, Noida Extension and Ghaziabad." },
       { q: "Do I need an Uttar Pradesh GST registration if my office is in Noida?", a: "Yes, if you make supplies from that office. GST registration is state-specific, so a place of business in Noida needs a registration in Uttar Pradesh regardless of where the promoters live or the customers are. A business that supplies from both Noida and Delhi generally needs a registration in each state, and the invoicing has to follow the place from which the supply is actually made." },
       { q: "Which Registrar of Companies covers Noida?", a: "A company whose registered office is in Noida or Greater Noida falls under the Registrar of Companies for Uttar Pradesh, not the Delhi and Haryana registry. This affects where incorporation documents and annual filings go. It is a common point of confusion for businesses that operate across the national capital region but have their registered office on the Uttar Pradesh side." },
       { q: "Is professional tax deducted from salaries in Noida?", a: "No. Uttar Pradesh does not levy professional tax, so an employer processing payroll from a Noida office has no professional tax registration, deduction or return for those employees. Provident fund, employees' state insurance and tax deducted at source on salary all apply as usual. An employer with staff in Maharashtra or Punjab as well will have professional tax obligations for those states only." },
@@ -83,7 +83,7 @@ export const cities = [
     primaryKeyword: "chartered accountant in delhi",
     secondaryKeywords: ["ca firm in rohini delhi", "ca in pitampura", "chartered accountant north west delhi", "gst consultant delhi", "roc delhi and haryana filing"],
     updatedAt,
-    title: "Chartered Accountant in Delhi",
+    title: "Chartered Accountant in Delhi, Rohini",
     metaDescription:
       "Chartered accountants at our Rohini office in Delhi, led by CA Manish Goel: income tax, GST, audit, ROC Delhi and Haryana filings and company registration.",
     intro:
@@ -136,7 +136,7 @@ export const cities = [
     primaryKeyword: "chartered accountant in ludhiana",
     secondaryKeywords: ["ca firm in ludhiana", "stock audit ludhiana", "gst refund for exporters ludhiana", "punjab state development tax", "ca for hosiery manufacturers"],
     updatedAt,
-    title: "Chartered Accountant in Ludhiana",
+    title: "Chartered Accountant in Ludhiana, Cheema Chowk",
     metaDescription:
       "Chartered accountants in Industrial Area-A, Ludhiana, led by CA Mehtaab Qureshi: audit, GST refunds for exporters, stock audits and Punjab registrations.",
     intro:
@@ -189,7 +189,7 @@ export const cities = [
     primaryKeyword: "ca in meerut",
     secondaryKeywords: ["chartered accountant in meerut", "ca firm meerut", "ca for sports goods exporters", "gst consultant meerut", "sugar mill accounting meerut"],
     updatedAt,
-    title: "Chartered Accountant in Meerut",
+    title: "Chartered Accountant in Meerut, Mohiuddinpur",
     metaDescription:
       "Chartered accountants in Meerut: audit, income tax, GST and compliance for sports goods makers, sugar and agriculture-linked businesses, and traders.",
     intro:

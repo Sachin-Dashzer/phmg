@@ -39,7 +39,7 @@ export const auditIntlArticles = [
   {
     slug: "nri-income-tax-filing-tds-dtaa-basics",
     title: "NRI Income Tax in India: Filing, TDS and DTAA Basics",
-    description: "How NRIs are taxed in India: residential status, taxable income, TDS and treaty relief. A starting guide before you file an Indian return.",
+    description: "How NRIs are taxed in India: residential status, taxable income, TDS and treaty relief under a DTAA. A starting guide before you file an Indian return.",
     category: "fema-international",
     tags: ["NRI", "DTAA", "TDS"],
     services: ["nri-tax-filing", "15ca-15cb", "fema-compliance"],
@@ -80,8 +80,8 @@ export const auditIntlArticles = [
   },
   {
     slug: "form-15ca-15cb-explained",
-    title: "Form 15CA and 15CB Explained",
-    description: "What Form 15CA and Form 15CB are, when they are needed for foreign remittances and how the process works. Know before you remit abroad.",
+    title: "Form 15CA and 15CB Explained for Remittances",
+    description: "What Form 15CA and Form 15CB are, when each is needed for a foreign remittance and how the process works. Read this before you remit funds abroad.",
     category: "fema-international",
     tags: ["Form 15CA", "Form 15CB", "foreign remittance"],
     services: ["15ca-15cb", "nri-tax-filing"],
@@ -100,7 +100,7 @@ export const auditIntlArticles = [
   },
   {
     slug: "tds-rates-and-due-dates-chart",
-    title: "TDS Rates and Due Dates Chart",
+    title: "TDS Rates and Due Dates Chart for Businesses",
     description: "A quick chart of common TDS sections, rates, deposit dates and return due dates for businesses. Always confirm current rates before deducting.",
     category: "income-tax",
     tags: ["TDS", "rates", "due dates"],
@@ -119,7 +119,7 @@ export const auditIntlArticles = [
   {
     slug: "compliance-calendar-monthly-due-dates-for-businesses",
     title: "Compliance Calendar: Monthly Due Dates for Businesses",
-    description: "A month-by-month view of the recurring tax and compliance dates most Indian businesses face: GST, TDS, PF, advance tax and ROC. Plan ahead.",
+    description: "A month-by-month view of the recurring tax and compliance dates most Indian businesses face: GST, TDS, PF, ESI, advance tax and ROC. Plan the year ahead.",
     category: "compliance-calendar",
     tags: ["due dates", "calendar", "compliance"],
     services: ["gst-return-filing", "annual-roc-filing", "tds-return-filing", "payroll"],

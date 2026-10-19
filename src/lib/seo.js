@@ -26,6 +26,17 @@ export const reviewedToISO = (value, fallback = "") => {
  * takes the longest form of the firm's name that still fits. Every entry is a real rendering of
  * the name — no invented variants, and no padding a title with keywords to reach a character
  * count, which would make it worse to read for the sake of a guideline.
+ *
+ * Three rungs cannot cover every base length, so WRITING A NEW TITLE means staying in one of
+ * these windows, measured before the suffix is added:
+ *
+ *     7-17   ->  + " | PHMG & Associates, Chartered Accountants"  ->  50-60
+ *     30-40  ->  + " | PHMG & Associates"                         ->  50-60
+ *     43-53  ->  + " | PHMG"                                      ->  50-60
+ *     54-60  ->  no suffix fits, the title stands alone           ->  54-60
+ *
+ * 18-29 and 41-42 land short of 50, and scripts/seo-audit.mjs fails on them. Say something more
+ * useful about the page rather than reaching for filler: that is how all 74 were fixed.
  */
 const BRAND_SUFFIXES = [` | ${firm.name}, ${firm.tagline}`, ` | ${firm.name}`, " | PHMG"];
 const withBrand = (t) => BRAND_SUFFIXES.map((s) => t + s).find((v) => v.length <= 60) ?? t;

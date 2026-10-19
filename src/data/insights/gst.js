@@ -41,7 +41,7 @@ export const gstArticles = [
   {
     slug: "gst-late-fee-and-interest",
     title: "GST Late Fee and Interest Explained",
-    description: "How GST late fees and interest work for GSTR-1, GSTR-3B and annual returns, with examples of what to expect. Know the cost of filing late.",
+    description: "How GST late fees and interest work for GSTR-1, GSTR-3B and the annual return, with worked examples of what to expect. Know the cost of filing late.",
     category: "gst",
     tags: ["GST late fee", "interest", "penalty"],
     services: ["gst-return-filing", "gst-notice"],

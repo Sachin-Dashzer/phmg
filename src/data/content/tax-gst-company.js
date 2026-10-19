@@ -4,7 +4,7 @@
 export const taxGstCompany = {
   "itr-filing": {
     h1: "ITR Filing Online in India",
-    metaTitle: "ITR Filing Online in India – Fees, Process",
+    metaTitle: "ITR Filing Online in India – Fees and Process",
     metaDescription:
       "Income tax return filing by chartered accountants: which ITR form applies, the documents needed, due dates, and how the two tax regimes compare.",
     primaryKeyword: "itr filing online",

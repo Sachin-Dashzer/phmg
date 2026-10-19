@@ -14,7 +14,7 @@ export const legal = {
   },
   terms: {
     title: "Terms of Use",
-    description: "Terms for using the PHMG & Associates website, including limits on reliance on general information. Read them before using the site.",
+    description: "Terms for using the PHMG & Associates website, including the limits on relying on general information published here. Read them before using the site.",
     sections: [
       { h: "General information only", p: ["The content on this website is for general information and does not constitute professional advice, solicitation or an offer to provide services. Do not act on it without advice on your specific facts."] },
       { h: "No professional relationship", p: ["Using this website or sending an enquiry does not create a client relationship. A relationship begins only when we confirm an engagement in writing."] },

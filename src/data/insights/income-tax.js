@@ -4,7 +4,7 @@
 export const incomeTaxArticles = [
   {
     slug: "how-to-file-itr-online",
-    title: "How to File ITR Online: Step-by-Step Guide",
+    title: "How to File ITR Online: A Step-by-Step Guide",
     description: "A plain step-by-step guide to filing your income tax return online, from documents and form selection to e-verification. Read before you file.",
     category: "income-tax",
     tags: ["ITR", "e-filing", "salaried"],
@@ -78,7 +78,7 @@ export const incomeTaxArticles = [
   {
     slug: "how-to-reply-income-tax-notice",
     title: "How to Reply to an Income Tax Notice (143(1), 142(1), 148)",
-    description: "Understand common income tax notices, what each means and how to reply on the e-filing portal within the time given. Read this first.",
+    description: "Understand the common income tax notices, what each one means and how to reply on the e-filing portal within the time given. Read this one first.",
     category: "income-tax",
     tags: ["income tax notice", "143(1)", "148"],
     services: ["income-tax-notice", "income-tax-appeal"],

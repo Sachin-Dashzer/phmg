@@ -1493,7 +1493,7 @@ export const newServices2026 = {
 
   "payroll": {
     h1: "Payroll, PF and ESI Services – Processing and Compliance",
-    metaTitle: "Payroll Outsourcing – PF, ESI & Salary TDS",
+    metaTitle: "Payroll Outsourcing – PF, ESI and Salary TDS",
     metaDescription:
       "Payroll outsourcing explained: salary processing, TDS on salary, PF and ESI due dates, state professional tax, Form 16 and full and final settlements.",
     primaryKeyword: "payroll outsourcing services",

@@ -20,7 +20,7 @@ export const metadata = buildMetadata({
   // and eyebrow all read "Resources".
   title: "Calculators and Reference Tables",
   description:
-    "Calculators for tax, GST and loans, reference tables for rates and due dates, and a directory of the official sources we work from.",
+    "Calculators for income tax, GST and loans, reference tables for rates and statutory due dates, and a directory of the official sources we work from.",
   path: "/knowledge-bank",
 });
 

@@ -73,7 +73,7 @@ export const industries = [
   {
     slug: "manufacturing",
     title: "Manufacturing",
-    metaDescription: "CA services for manufacturers: GST and ITC, costing, stock audit, MSME registration and bank finance documentation. Request a quote.",
+    metaDescription: "CA services for manufacturers: GST and input tax credit, costing, stock audit, MSME registration and bank finance documentation. Request a quote.",
     intro: "Manufacturers carry inventory, raw material credits and bank finance. Clean costing and credit management protect margins.",
     challenges: [
       "Input tax credit on raw materials and capital goods.",
@@ -142,7 +142,7 @@ export const industries = [
   {
     slug: "freelancers-creators",
     title: "Freelancers & Creators",
-    metaDescription: "CA services for freelancers and content creators: ITR filing, GST on services, foreign income and treaty relief, advance tax and expenses.",
+    metaDescription: "CA services for freelancers and content creators: ITR filing, GST on services, foreign income and treaty relief, advance tax and allowable expenses.",
     intro: "Freelancers and creators often earn from several platforms and countries, with little TDS. Planning ahead avoids a heavy tax bill at year end.",
     challenges: [
       "Foreign income and export of services.",
@@ -188,7 +188,7 @@ export const industries = [
   {
     slug: "export-import",
     title: "Export & Import",
-    metaDescription: "CA services for exporters and importers: IEC, GST LUT and refunds, FEMA, Form 15CA/15CB and compliance. Request a quote from our CAs.",
+    metaDescription: "CA services for exporters and importers: IEC, GST LUT and refunds, FEMA reporting, Form 15CA and 15CB, and customs compliance. Request a quote from our CAs.",
     intro: "Trading across borders involves registrations, foreign exchange rules and tax refunds. Missed steps delay payments and refunds.",
     challenges: [
       "IEC registration and foreign trade documentation.",

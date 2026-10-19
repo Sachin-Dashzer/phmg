@@ -191,15 +191,18 @@ for (const path of paths) {
   if (words < 50) bad(path, `only ${words} words inside <main> in the server HTML — content may be client-rendered`);
 
   /* --- title and description ------------------------------------- */
+  // Lengths are failures, not warnings: every one of the 131 pages is inside both windows, so a
+  // page falling out of them is a regression someone has just introduced, not standing debt.
+  // src/lib/seo.js documents the base-title lengths that survive the brand suffix.
   if (!title) bad(path, "no title");
   else {
-    if (title.length < 50 || title.length > 60) warn.push(`${path} — title ${title.length} chars (target 50-60): ${title}`);
+    if (title.length < 50 || title.length > 60) bad(path, `title ${title.length} chars (target 50-60): ${title}`);
     if (titles.has(title)) bad(path, `duplicate title with ${titles.get(title)}`);
     titles.set(title, path);
   }
   if (!desc) bad(path, "no meta description");
   else {
-    if (desc.length < 140 || desc.length > 160) warn.push(`${path} — description ${desc.length} chars (target 140-160)`);
+    if (desc.length < 140 || desc.length > 160) bad(path, `description ${desc.length} chars (target 140-160): ${desc}`);
     if (descs.has(desc)) bad(path, `duplicate description with ${descs.get(desc)}`);
     descs.set(desc, path);
   }

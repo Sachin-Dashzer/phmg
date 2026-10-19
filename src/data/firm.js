@@ -29,7 +29,7 @@ export const firm = {
     locality: "",
     city: "Noida",
     region: "Uttar Pradesh",
-    postalCode: "201301",
+    postalCode: "201309",
     country: "IN",
   },
   geo: { lat: "", lng: "" },
@@ -75,7 +75,7 @@ export const firm = {
 // Coordinates and the map link live on the matching city in src/data/cities.js, not here, so that
 // everything a person edits for a city page sits in one file.
 export const offices = [
-  { slug: "noida", city: "Noida", head: true, address: "D-23, 3rd Floor, Sector 59, Noida - 201301", street: "D-23, 3rd Floor", locality: "Sector 59", region: "Uttar Pradesh", postalCode: "201301" },
+  { slug: "noida", city: "Noida", head: true, address: "D-23, 3rd Floor, Sector 59, Noida - 201309", street: "D-23, 3rd Floor", locality: "Sector 59", region: "Uttar Pradesh", postalCode: "201309" },
   { slug: "delhi", city: "Delhi", address: "First Floor, 83-84, Sector 24, Rohini, Delhi - 110085", street: "First Floor, 83-84", locality: "Sector 24, Rohini", region: "Delhi", postalCode: "110085" },
   { slug: "ludhiana", city: "Ludhiana", address: "223, First Floor, Industrial Area-A, Cheema Chowk, Ludhiana - 141003", street: "223, First Floor", locality: "Industrial Area-A, Cheema Chowk", region: "Punjab", postalCode: "141003" },
   { slug: "meerut", city: "Meerut", address: "Opp. Canara Bank, Near Mohiuddinpur Sugar Mill, Meerut - 250205", street: "Opp. Canara Bank", locality: "Near Mohiuddinpur Sugar Mill", region: "Uttar Pradesh", postalCode: "250205" },

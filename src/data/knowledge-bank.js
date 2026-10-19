@@ -33,9 +33,9 @@ export const calculators = [
     group: "tax",
     title: "Income Tax Calculator (Old vs New Regime)",
     short: "Compare tax under the old and new regimes.",
-    metaTitle: "Income Tax Calculator – Old vs New Regime",
+    metaTitle: "Income Tax Calculator – Old vs New Tax Regime",
     metaDescription:
-      "Compare income tax under the old and new regimes for FY 2025-26 and see which costs less, with the standard deduction and rebate applied.",
+      "Compare income tax under the old and new regimes for FY 2025-26 and see which one costs less, with the standard deduction and the rebate applied.",
     intro: "Enter your income and deductions to see tax under both regimes side by side.",
     explainer: [
       "This calculator estimates your income tax for FY 2025-26 under the new regime and under the old regime, so you can see which one costs less. It applies the standard deduction for salaried taxpayers, the rebate under Section 87A and 4% health and education cess.",
@@ -97,7 +97,7 @@ export const calculators = [
     short: "Add GST to an amount or remove it from one.",
     metaTitle: "GST Calculator – Add or Remove GST",
     metaDescription:
-      "Add GST to an amount or remove it from a GST-inclusive figure, with the CGST and SGST split shown at 5%, 12%, 18% and 28%.",
+      "Add GST to an amount or remove it from a GST-inclusive figure, with the CGST and SGST split shown at each of the 5%, 12%, 18% and 28% rate slabs.",
     intro: "Work out GST on an amount, either way round.",
     explainer: [
       "Enter an amount and a rate. Choose whether the amount already includes GST or not: adding GST to ₹10,000 at 18% gives ₹11,800, while removing GST from ₹11,800 gives a taxable value of ₹10,000.",
@@ -202,7 +202,7 @@ export const calculators = [
     short: "Interest on money paid for a delayed possession.",
     metaTitle: "RERA Delay Interest Calculator for Home Buyers",
     metaDescription:
-      "Work out interest on amounts paid to a developer for a delay in possession: enter the amount, the prescribed rate and the days of delay.",
+      "Work out interest on amounts paid to a developer for a delay in possession: enter the amount paid, the prescribed rate and the days of delay.",
     intro: "Work out interest on amounts paid, for a delay in possession.",
     explainer: [
       "Where possession of a flat is delayed, the Real Estate (Regulation and Development) Act entitles an allottee to interest on the amounts already paid, either for the period of the delay if they continue with the project, or with a refund if they withdraw.",
@@ -264,7 +264,7 @@ export const calculators = [
     short: "From revenue down to profit after tax.",
     metaTitle: "Net Profit Calculator – Gross to Profit After Tax",
     metaDescription:
-      "Work from revenue down to profit after tax: gross profit, operating profit, profit before tax and net margin, from your own cost figures.",
+      "Work from revenue down to profit after tax: gross profit, operating profit, profit before tax and the net margin, all from your own cost figures.",
     intro: "Work down from revenue to profit after tax.",
     explainer: [
       "Three profit figures matter and they answer different questions. Gross profit is revenue less the direct cost of what you sold, and it tells you whether your pricing covers your product. Operating profit takes off the cost of running the business, and it tells you whether the business model works. Profit after tax is what is actually left.",
@@ -303,7 +303,7 @@ export const calculators = [
     group: "business",
     title: "Effective Capital Calculator",
     short: "Schedule V effective capital, for managerial remuneration.",
-    metaTitle: "Effective Capital Calculator – Schedule V",
+    metaTitle: "Effective Capital Calculator – Schedule V Basis",
     metaDescription:
       "Work out effective capital on the Schedule V basis used for managerial remuneration under the Companies Act, with revaluation reserves excluded.",
     intro: "Work out effective capital on the Schedule V basis.",
@@ -339,7 +339,7 @@ export const utilities = [
     short: "Slabs under both regimes, with the standard deduction and rebate.",
     metaTitle: "Income Tax Rates – Both Regimes",
     metaDescription:
-      "Income tax slab rates under the new and old regimes, with the standard deduction, the rebate limit and the health and education cess.",
+      "Income tax slab rates under both the new and the old regime, with the standard deduction, the rebate limit and the health and education cess shown.",
     intro: `Slab rates for FY ${taxSlabs.financialYear} (assessment year ${taxSlabs.assessmentYear}), under both regimes.`,
     // Built from taxSlabs.js, the same data the income tax calculator uses, so the page and the
     // calculator can never disagree.
@@ -387,7 +387,7 @@ export const utilities = [
     short: "The rate slabs, how the tax splits, and where cess applies.",
     metaTitle: "GST Rate Structure – Slabs and the Tax Split",
     metaDescription:
-      "The GST rate slabs, how tax splits between CGST, SGST and IGST, where compensation cess applies, and why classification decides the rate.",
+      "The GST rate slabs, how the tax splits between CGST, SGST and IGST, where compensation cess applies, and why classification decides the rate you pay.",
     intro: "The rate slabs and how the tax splits between the Centre and the states.",
     source: { label: "CBIC – GST", href: "https://cbic-gst.gov.in/" },
     sections: [
@@ -427,7 +427,7 @@ export const utilities = [
     short: "Which deduction applies to interest income, and to whom.",
     metaTitle: "Section 80TTA vs 80TTB – Interest Deduction",
     metaDescription:
-      "How Section 80TTA and 80TTB differ: who can claim each, which interest qualifies, the limits, and why only one of them can be claimed.",
+      "How Section 80TTA and Section 80TTB differ: who can claim each one, which interest qualifies, the limits, and why only one of them can be claimed.",
     intro: "Two deductions for interest income, and the differences between them.",
     source: { label: "Income Tax Department", href: "https://www.incometax.gov.in/iec/foportal/" },
     sections: [
@@ -549,7 +549,7 @@ export const utilities = [
     short: "The monthly, quarterly and annual dates in one place.",
     metaTitle: "Compliance Due Dates – Monthly to Annual",
     metaDescription:
-      "Recurring statutory due dates for GST, TDS, advance tax, provident fund, ESI and ROC filings, grouped by how often each one comes round.",
+      "The recurring statutory due dates for GST, TDS, advance tax, provident fund, ESI and ROC filings, grouped by how often each one of them comes round.",
     intro: "The recurring dates a business works to, grouped by frequency.",
     source: { label: "GST portal", href: "https://www.gst.gov.in/" },
     sections: [

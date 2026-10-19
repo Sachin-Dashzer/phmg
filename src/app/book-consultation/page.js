@@ -10,7 +10,7 @@ import whoWeServeImage from "../../../public/who-we-serve.jpg";
 import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
-  title: "Book a Consultation with a CA",
+  title: "Book a Consultation with a Chartered Accountant",
   description: "Request a consultation with PHMG & Associates. Choose the service and a time that suits you, and a chartered accountant will confirm the appointment.",
   path: "/book-consultation",
 });

@@ -126,17 +126,33 @@ ignored, which is worse than not checking. There are no genuine ICAI wording pro
 content: no superlatives about the firm, no comparisons with other firms, no testimonials
 (`firm.testimonials` is empty), no success rates and no guarantees.
 
+## Titles and descriptions
+
+All 131 pages are inside the 50-60 character title window and the 140-160 character description
+window, and both are **failures** in the audit rather than warnings, so a page falling out of
+either is caught as a regression.
+
+Getting there was structural first and editorial second:
+
+- `withBrand` in `src/lib/seo.js` appended `" | PHMG & Associates"` or nothing at all, so a
+  41-character title lost the brand entirely for being one character over the limit. It now takes
+  the longest real rendering of the firm's name that fits. **74 short titles became 20.**
+- The remaining 20 were fixed by saying something more useful, not by padding: the generated
+  patterns for industry pages (`… in India`), insight categories (`… Guides for Indian
+  Businesses`) and partner pages were lengthened, the four city titles gained their locality
+  (Sector 59, Rohini, Cheema Chowk, Mohiuddinpur), and a dozen individual titles were rewritten.
+- The 32 short descriptions were extended with real detail. The seven insight category pages had
+  been sharing one generated sentence with a single word swapped — near-duplicate text — and now
+  carry a purpose-written `metaDescription` each, in `src/data/insights.js`.
+- `describe()` on the partner pages was already adaptive, targeting a 120-158 window; it was
+  retargeted to 140-160 and allowed a fourth focus area.
+
+Three brand-suffix rungs cannot cover every base length. The windows a new title has to sit in are
+documented at `withBrand` in `src/lib/seo.js`; base lengths of 18-29 and 41-42 come out short and
+the audit will fail on them.
+
 ## Known, deliberate gaps
 
-- **20 titles are 39-49 characters** against the 50-60 target, and **32 descriptions are 122-139**
-  against 140-160. All are *short*, never truncated, all unique and all descriptive. The
-  structural cause was fixed (74 short titles became 20); the rest would need padding real titles
-  with filler to hit a character count, which makes them worse to read and is not why any page was
-  unindexed. They stay as warnings in the audit so they remain visible for an editorial pass.
-- **Noida PIN code.** The brief gives `201309`; `src/data/firm.js` has `201301`, sourced from
-  `PHMG_Profile_Updated.pdf`. Both are live Noida codes and Sector 59 is normally 201301, so this
-  was left alone rather than changed on the strength of a figure in a task description. Worth a
-  partner confirming, since it goes into the `PostalAddress` of every office node.
 - The pre-existing content debt `scripts/check-content.mjs` reports (a few older service pages
   with short `sections`, two `related` slugs pointing at unpublished services) is unchanged and
   still warns rather than fails. The `related` slugs are filtered out at render, so no link is

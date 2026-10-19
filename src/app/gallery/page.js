@@ -13,7 +13,7 @@ import RelatedLinks from "@/components/ui/RelatedLinks";
 export const metadata = buildMetadata({
   title: "Gallery",
   description:
-    "Photographs of the PHMG & Associates offices and team across Noida, Delhi, Ludhiana and Meerut, together with videos from our channel.",
+    "Photographs of the PHMG & Associates offices and team across Noida, Delhi, Ludhiana and Meerut, together with videos from our YouTube channel.",
   path: "/gallery",
 });
 

@@ -60,7 +60,7 @@ export const companyArticles = [
   {
     slug: "dir-3-kyc-who-must-file-and-penalty",
     title: "DIR-3 KYC: Who Must File and What Is the Penalty",
-    description: "What DIR-3 KYC is, who must file it, how it works and what happens if you do not file. Keep your DIN active with this simple guide.",
+    description: "What DIR-3 KYC is, who must file it, how the filing works and what happens if you do not file it. Keep your DIN active with this simple guide.",
     category: "company-law",
     tags: ["DIR-3 KYC", "DIN", "director"],
     services: ["director-kyc", "annual-roc-filing"],
@@ -81,7 +81,7 @@ export const companyArticles = [
   {
     slug: "startup-india-dpiit-recognition-benefits",
     title: "Startup India DPIIT Recognition: Benefits, Eligibility",
-    description: "Who can get DPIIT recognition, what benefits it unlocks and what it does not give you automatically. Learn before you apply as a startup.",
+    description: "Who can get DPIIT recognition, what benefits it unlocks and what it does not give you automatically. Read this before you apply as a recognised startup.",
     category: "startups",
     tags: ["Startup India", "DPIIT", "startup"],
     services: ["startup-india-registration", "private-limited-company-registration"],
