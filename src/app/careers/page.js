@@ -41,7 +41,7 @@ export default function Careers() {
         eyebrow="Careers"
         title="Work with us"
         intro="We are a firm of chartered accountants with offices in Noida, Delhi, Ludhiana and Meerut, working in audit, tax, litigation and advisory. If you care about accuracy and want a partner to review and explain your work, we would like to hear from you."
-        image="/images/office/office-13.jpeg"
+        image="/images/office/office-8.jpeg"
       >
         <div className="flex flex-wrap gap-3">
           <Link href="#apply" className="btn btn-gold">Apply <ArrowRight size={16} aria-hidden="true" /></Link>
