@@ -8,6 +8,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import CTABand from "@/components/ui/CTABand";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
   title: "Gallery",
@@ -138,6 +139,7 @@ export default function Gallery() {
         </section>
       )}
 
+      <RelatedLinks url="/gallery" />
       <CTABand
         title="Prefer to meet in person?"
         text="You are welcome at any of our four offices. Tell us what you need and we will arrange a time."

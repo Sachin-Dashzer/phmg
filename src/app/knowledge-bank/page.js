@@ -13,6 +13,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import CTABand from "@/components/ui/CTABand";
 import { WhoWeServe } from "@/components/sections/SiteSections";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
   // Short enough that buildMetadata keeps the "| PHMG & Associates" suffix; the nav, breadcrumb
@@ -161,6 +162,7 @@ export default function KnowledgeBank() {
       </section>
 
       <WhoWeServe className="bg-brand-mist" />
+      <RelatedLinks url="/knowledge-bank" />
       <CTABand
         title="Need the exact numbers?"
         text="Calculators give estimates. A chartered accountant can work out your actual position and the deductions and reliefs available to you."

@@ -11,6 +11,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { CategoryCard } from "@/components/ui/ServiceCard";
 import CTABand from "@/components/ui/CTABand";
 import { PracticeAreas, WhoWeServe, ProcessSteps, WhyChoose, FAQSection } from "@/components/sections/SiteSections";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
   title: "CA Services – Tax, Audit, GST, ROC",
@@ -54,6 +55,7 @@ export default function ServicesHub() {
       <ProcessSteps />
       <WhyChoose />
       <FAQSection faqs={faqs} className="bg-white" />
+      <RelatedLinks url="/services" />
       <CTABand />
     </>
   );

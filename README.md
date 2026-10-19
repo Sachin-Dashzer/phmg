@@ -18,7 +18,7 @@ npm run dev                    # http://localhost:3000
 | `npm run build` / `npm start` | Production build and server |
 | `npm run lint` | ESLint |
 | `npm test` | Calculator maths (Node's built-in test runner) |
-| `npm run check:seo -- http://localhost:3000` | Crawls a running server: titles, descriptions, canonicals, H1, og:image, JSON-LD, internal links, placeholder text, and word count on service and insight pages |
+| `npm run check:seo -- http://localhost:3000` | Full SEO audit of a running server: status, canonicals, robots, titles, descriptions, H1, og:image, JSON-LD, thin content, ICAI wording, inbound in-body link counts and orphans, plus a single-hop assertion on every old WordPress URL. Writes `seo-audit-report.md` |
 | `node scripts/check-content.mjs` | Validates service and city content against the field rules below, plus the ICAI wording list, offline. Add `--all` to include pages written before October 2026 |
 | `node scripts/optimise-images.mjs` | Recompresses heavy images in `public/` using the `sharp` that ships with Next |
 | `npm run analyze` | Bundle analyzer |
@@ -65,7 +65,7 @@ src/app/         Routes (App Router), sitemap, robots, manifest, llms.txt, feed.
 src/components/  layout/, ui/, forms/, tools/, seo/
 src/lib/         seo.js (metadata), schema.js (JSON-LD), email.js, validators.js, calculators/
 docs/            launch-checklist, keyword-map, off-page-seo, content-calendar
-scripts/         check-seo.mjs, keyword-map.mjs
+scripts/         seo-audit.mjs, keyword-map.mjs
 ```
 Theme colours are tokens in `src/app/globals.css` (`@theme`). Tailwind v4 has no `tailwind.config.js`.
 

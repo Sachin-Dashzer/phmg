@@ -8,6 +8,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import LeadForm from "@/components/forms/LeadForm";
 import SocialLinks from "@/components/layout/SocialLinks";
 import { OfficesGrid, FAQSection } from "@/components/sections/SiteSections";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
   title: "Contact PHMG & Associates – Talk to a CA",
@@ -112,6 +113,7 @@ export default function Contact() {
       </section>
 
       <OfficesGrid className="bg-brand-mist" />
+      <RelatedLinks url="/contact" />
       <FAQSection faqs={faqs} className="bg-white" ctaHref="#enquiry" />
     </>
   );

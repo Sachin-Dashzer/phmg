@@ -7,6 +7,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import LeadForm from "@/components/forms/LeadForm";
 import { ProcessSteps, WhyChoose, FAQSection } from "@/components/sections/SiteSections";
 import whoWeServeImage from "../../../public/who-we-serve.jpg";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
   title: "Book a Consultation with a CA",
@@ -74,6 +75,7 @@ export default function Book() {
 
       <ProcessSteps className="bg-brand-mist" />
       <WhyChoose className="bg-white" />
+      <RelatedLinks url="/book-consultation" />
       <FAQSection faqs={faqs} />
     </>
   );

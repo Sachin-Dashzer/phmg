@@ -12,6 +12,7 @@ import { ServiceCard, CategoryCard } from "@/components/ui/ServiceCard";
 import LeadCard from "@/components/forms/LeadCard";
 import CTABand from "@/components/ui/CTABand";
 import { ProcessSteps, WhyChoose, StatsBand } from "@/components/sections/SiteSections";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const dynamicParams = false;
 export const generateStaticParams = () => categories.map((c) => ({ category: c.slug }));
@@ -109,6 +110,7 @@ export default async function CategoryPage({ params }) {
         </div>
       </section>
 
+      <RelatedLinks url={`/services/${c.slug}`} />
       <CTABand />
     </>
   );

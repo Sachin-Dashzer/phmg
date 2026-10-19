@@ -8,6 +8,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import CTABand from "@/components/ui/CTABand";
 import SocialLinks from "@/components/layout/SocialLinks";
 import { OfficesGrid, StatsBand, ProcessSteps } from "@/components/sections/SiteSections";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
   title: "CA Services by Location",
@@ -91,6 +92,7 @@ export default function Locations() {
       </section>
 
       <ProcessSteps />
+      <RelatedLinks url="/locations" />
       <CTABand />
     </>
   );

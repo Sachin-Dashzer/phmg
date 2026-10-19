@@ -9,6 +9,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import CTABand from "@/components/ui/CTABand";
 import ApplicationForm from "@/components/forms/ApplicationForm";
 import { ProcessSteps } from "@/components/sections/SiteSections";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
   title: "Careers",
@@ -186,6 +187,7 @@ export default function Careers() {
         </div>
       </section>
 
+      <RelatedLinks url="/careers" />
       <CTABand
         title="Questions about a role?"
         text="If you would like to ask about the work, the offices or articleship before applying, send us a note."

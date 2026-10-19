@@ -13,6 +13,7 @@ import { ServiceCard } from "@/components/ui/ServiceCard";
 import LeadCard from "@/components/forms/LeadCard";
 import { ProcessSteps, FAQSection, StatsBand } from "@/components/sections/SiteSections";
 import whoWeServeImage from "../../../../public/who-we-serve.jpg";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const dynamicParams = false;
 export const generateStaticParams = () => industries.map((i) => ({ slug: i.slug }));
@@ -27,7 +28,11 @@ export default async function IndustryPage({ params }) {
   const i = getIndustry((await params).slug);
   if (!i) notFound();
   const services = i.services.map((s) => publishedServices.find((p) => p.slug === s)).filter(Boolean);
-  const others = industries.filter((x) => x.slug !== i.slug).slice(0, 4);
+  // Rotated, not sliced from the front: a plain `.slice(0, 4)` always showed the same first four
+  // sectors, so the ones further down industries.js never appeared as anyone's sibling and ended
+  // up with almost no inbound body links.
+  const at = industries.findIndex((x) => x.slug === i.slug);
+  const others = [...industries.slice(at + 1), ...industries.slice(0, at)].slice(0, 4);
   return (
     <>
       <PageHeader
@@ -111,6 +116,7 @@ export default async function IndustryPage({ params }) {
         </div>
       </section>
 
+      <RelatedLinks url={`/industries/${i.slug}`} />
       <CTABand />
     </>
   );

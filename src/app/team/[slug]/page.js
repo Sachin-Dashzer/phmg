@@ -15,6 +15,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import CTABand from "@/components/ui/CTABand";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import LeadCard from "@/components/forms/LeadCard";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 // A page per partner. Everything beyond name, role, credentials, years and focus comes from
 // `profiles` in team.js and is empty until a partner supplies it, so each block below renders
@@ -229,6 +230,7 @@ export default async function PartnerPage({ params }) {
         </section>
       )}
 
+      <RelatedLinks url={`/team/${p.slug}`} />
       <CTABand />
     </>
   );

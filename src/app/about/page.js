@@ -10,6 +10,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { TeamSection } from "@/components/sections/TeamSection";
 import { AboutSplit, StatsBand, WhyChoose, OfficesGrid } from "@/components/sections/SiteSections";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
   title: "About PHMG & Associates – Chartered Accountants",
@@ -145,6 +146,7 @@ export default function About() {
         </div>
       </section>
 
+      <RelatedLinks url="/about" />
       <CTABand />
     </>
   );

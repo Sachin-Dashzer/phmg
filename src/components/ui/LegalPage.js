@@ -1,6 +1,7 @@
 import { legal } from "@/data/legal";
 import { buildMetadata } from "@/lib/seo";
 import PageHeader from "./PageHeader";
+import RelatedLinks from "./RelatedLinks";
 import { slugify } from "./ArticleBody";
 
 export const legalMetadata = (slug) =>
@@ -31,6 +32,13 @@ export default function LegalPage({ slug }) {
           </div>
         </div>
       </section>
+      {/* The legal pages are in the sitemap, so they need body links of their own: the footer is
+          not counted, and each one otherwise sits with nothing pointing at it. */}
+      <RelatedLinks
+        url={`/${slug}`}
+        className="bg-white"
+        extra={["/privacy-policy", "/terms", "/disclaimer"]}
+      />
     </>
   );
 }

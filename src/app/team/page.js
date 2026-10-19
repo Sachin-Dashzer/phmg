@@ -10,6 +10,7 @@ import CTABand from "@/components/ui/CTABand";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { StatsBand, WhyChoose, ProcessSteps } from "@/components/sections/SiteSections";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
   title: "Our Team – Chartered Accountants",
@@ -141,6 +142,7 @@ export default function Team() {
         </div>
       </section>
 
+      <RelatedLinks url="/team" />
       <CTABand />
     </>
   );

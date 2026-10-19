@@ -8,6 +8,7 @@ import InsightCard from "@/components/ui/InsightCard";
 import { SubscribeSection } from "@/components/sections/TeamSection";
 import { ToolCard } from "@/components/sections/SiteSections";
 import { calculators } from "@/data/knowledge-bank";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
   title: "Insights – Tax, GST & Compliance Guides",
@@ -73,6 +74,7 @@ export default function Insights() {
         </section>
       )}
 
+      <RelatedLinks url="/insights" />
       <SubscribeSection />
     </>
   );

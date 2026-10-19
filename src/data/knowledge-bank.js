@@ -14,7 +14,7 @@
 // page links the official source rather than reproducing it. That is deliberate: a stale rate
 // table is worse than no rate table.
 
-import { taxSlabs } from "./taxSlabs";
+import { taxSlabs } from "./taxSlabs.js";
 
 /* ------------------------------------------------------------------ */
 /* Calculators                                                         */

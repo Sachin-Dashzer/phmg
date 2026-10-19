@@ -6,6 +6,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import InsightCard from "@/components/ui/InsightCard";
 import { SubscribeSection } from "@/components/sections/TeamSection";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const dynamicParams = false;
 const live = insightCategories.filter((c) => articlesIn(c.slug).length);
@@ -50,10 +51,21 @@ export default async function CategoryArchive({ params }) {
         </ul>
       </PageHeader>
       <section className="section bg-brand-mist">
-        <ScrollReveal stagger className="container-x grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {list.map((a) => <InsightCard key={a.slug} a={a} />)}
-        </ScrollReveal>
+        <div className="container-x">
+          {c.intro && (
+            <div className="mb-10 max-w-prose">
+              <h2 className="font-display text-2xl font-bold text-brand-navy">What this category covers</h2>
+              <span className="mt-2 block h-0.5 w-10 rounded-full bg-brand-gold" aria-hidden="true" />
+              <p className="mt-4 leading-relaxed text-brand-ink">{c.intro}</p>
+            </div>
+          )}
+          <h2 className="sr-only">All {c.title.toLowerCase()} guides</h2>
+          <ScrollReveal stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {list.map((a) => <InsightCard key={a.slug} a={a} />)}
+          </ScrollReveal>
+        </div>
       </section>
+      <RelatedLinks url={`/insights/category/${c.slug}`} />
       <SubscribeSection />
     </>
   );

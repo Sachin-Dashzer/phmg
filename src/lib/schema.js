@@ -1,6 +1,6 @@
 import { firm, offices, hasAddress } from "@/data/firm";
 import { cityByOffice } from "@/data/cities";
-import { absUrl, reviewedToISO } from "./seo";
+import { absUrl, reviewedToISO } from "./seo.js";
 
 // Drops empty values so nothing half-filled reaches the structured data. Whenever a field below
 // is gated on data being present, this is why: an empty geo or map URL simply does not appear.

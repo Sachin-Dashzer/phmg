@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "analyze": "next experimental-analyze",
-    "check:seo": "node scripts/check-seo.mjs",
-    "test": "node --test \"src/lib/calculators/*.test.js\""
+    "check:seo": "node scripts/seo-audit.mjs",
+    "test": "node --test \"src/lib/**/*.test.js\""
   },
   "dependencies": {
     "lucide-react": "^1.50.0",

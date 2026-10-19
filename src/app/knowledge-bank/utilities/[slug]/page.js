@@ -10,6 +10,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import ArticleBody from "@/components/ui/ArticleBody";
 import CTABand from "@/components/ui/CTABand";
 import { ServiceCard } from "@/components/ui/ServiceCard";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const dynamicParams = false;
 export const generateStaticParams = () => utilities.map((u) => ({ slug: u.slug }));
@@ -127,6 +128,7 @@ export default async function UtilityPage({ params }) {
         </section>
       )}
 
+      <RelatedLinks url={`/knowledge-bank/utilities/${u.slug}`} />
       <CTABand />
     </>
   );

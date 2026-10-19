@@ -6,6 +6,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import CTABand from "@/components/ui/CTABand";
 import DueDateLedger from "@/components/sections/DueDateLedger";
 import { SubscribeSection } from "@/components/sections/TeamSection";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
   title: "Tax and Compliance Calendar – Due Dates",
@@ -74,6 +75,7 @@ export default function TaxCalendar() {
       </section>
 
       <SubscribeSection />
+      <RelatedLinks url="/tax-calendar" />
       <CTABand title="Let us track your deadlines" text="We file on time and remind you well before every due date, so penalties never become a surprise." />
     </>
   );

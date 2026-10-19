@@ -16,6 +16,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import LeadCard from "@/components/forms/LeadCard";
 import { ProcessSteps, FAQSection } from "@/components/sections/SiteSections";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const dynamicParams = false;
 
@@ -225,6 +226,7 @@ export default async function ServicePage({ params }) {
           </p>
         </div>
       </div>
+      <RelatedLinks url={serviceUrl(s)} />
       <CTABand />
     </>
   );

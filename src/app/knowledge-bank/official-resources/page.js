@@ -6,6 +6,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import CTABand from "@/components/ui/CTABand";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
   title: "Official Sources",
@@ -122,6 +123,7 @@ export default function OfficialResources() {
         </div>
       </section>
 
+      <RelatedLinks url="/knowledge-bank/official-resources" />
       <CTABand
         title="Not sure which rule applies?"
         text="The hard part is usually not finding the provision but working out how it applies to your case. Tell us the position and we will set out the options."

@@ -7,6 +7,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import CTABand from "@/components/ui/CTABand";
 import { ProcessSteps, WhyChoose, FAQSection } from "@/components/sections/SiteSections";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 // No prices are published: fee display needs the firm's approval (ICAI norms).
 // TODO: CLIENT TO CONFIRM fee policy before adding any "starting from" plans.
@@ -83,6 +84,7 @@ export default function Pricing() {
       <ProcessSteps />
       <WhyChoose />
       <FAQSection faqs={faqs} className="bg-white" />
+      <RelatedLinks url="/pricing" />
       <CTABand />
     </>
   );

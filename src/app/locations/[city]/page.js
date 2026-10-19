@@ -16,6 +16,7 @@ import CTABand from "@/components/ui/CTABand";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import LeadCard from "@/components/forms/LeadCard";
 import { OfficesGrid, FAQSection } from "@/components/sections/SiteSections";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 // Public URL is /ca-in-{city} (rewritten in next.config.mjs); this is the canonical.
 // /locations/{city} redirects to /ca-in-{city} (see src/data/redirects.mjs), and because Next
@@ -169,6 +170,7 @@ export default async function CityPage({ params }) {
 
       <OfficesGrid className="bg-brand-mist" exclude={c.officeCity} label="Our other offices" title="Where else we work" />
       <FAQSection faqs={c.faqs} />
+      <RelatedLinks url={`/ca-in-${c.slug}`} />
       <CTABand />
     </>
   );

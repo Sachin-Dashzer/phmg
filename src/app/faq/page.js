@@ -3,6 +3,7 @@ import { faqs } from "@/data/faqs";
 import PageHeader from "@/components/ui/PageHeader";
 import CTABand from "@/components/ui/CTABand";
 import { FAQSection, ProcessSteps } from "@/components/sections/SiteSections";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
   title: "FAQ – Questions About Our CA Services",
@@ -23,6 +24,7 @@ export default function FAQ() {
       />
       <FAQSection faqs={faqs} className="bg-white" title="Everything you need to know" />
       <ProcessSteps className="bg-brand-mist" />
+      <RelatedLinks url="/faq" />
       <CTABand />
     </>
   );

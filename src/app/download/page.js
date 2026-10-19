@@ -1,9 +1,11 @@
-import { ChevronDown, FileCheck2, Info } from "lucide-react";
-import { publishedServices } from "@/data/services";
+import Link from "next/link";
+import { ChevronDown, FileCheck2, Info, ArrowRight } from "lucide-react";
+import { publishedServices, serviceUrl } from "@/data/services";
 import { buildMetadata } from "@/lib/seo";
 import PageHeader from "@/components/ui/PageHeader";
 import PrintButton from "@/components/ui/PrintButton";
 import CTABand from "@/components/ui/CTABand";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const metadata = buildMetadata({
   title: "Document Checklists – Print or Save as PDF",
@@ -41,16 +43,25 @@ export default function Download() {
                   </span>
                   <ChevronDown size={20} className="shrink-0 text-brand-muted transition group-open:rotate-180" aria-hidden="true" />
                 </summary>
-                <ol className="space-y-2 border-t border-brand-line bg-brand-mist/50 p-5 text-sm">
-                  {s.documents.map((d, i) => (
-                    <li key={d} className="flex gap-3"><span className="w-5 shrink-0 font-display font-semibold text-brand-gold-dark">{i + 1}.</span>{d}</li>
-                  ))}
-                </ol>
+                <div className="border-t border-brand-line bg-brand-mist/50 p-5 text-sm">
+                  <ol className="space-y-2">
+                    {s.documents.map((d, i) => (
+                      <li key={d} className="flex gap-3"><span className="w-5 shrink-0 font-display font-semibold text-brand-gold-dark">{i + 1}.</span>{d}</li>
+                    ))}
+                  </ol>
+                  {/* The link sits here rather than in the <summary>, where it would fight the
+                      disclosure toggle. It is also how every service page gets a body link from a
+                      page Google has already indexed. */}
+                  <Link href={serviceUrl(s)} className="mt-4 inline-flex items-center gap-1.5 font-semibold text-brand-blue hover:underline">
+                    {s.title}: process, timeline and fees <ArrowRight size={14} aria-hidden="true" />
+                  </Link>
+                </div>
               </details>
             ))}
           </div>
         </div>
       </section>
+      <RelatedLinks url="/download" />
       <CTABand title="Rather we handle it?" text="Send us what you have. A chartered accountant will tell you what's missing and take it from there." />
     </>
   );

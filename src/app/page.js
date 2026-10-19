@@ -14,12 +14,13 @@ import {
 } from "@/components/sections/SiteSections";
 import CTABand from "@/components/ui/CTABand";
 import InsightCard from "@/components/ui/InsightCard";
-import { articles } from "@/data/insights";
+import { articles, insightCategories, articlesIn } from "@/data/insights";
 import { webSiteSchema } from "@/lib/schema";
 import JsonLd from "@/components/seo/JsonLd";
 import { calculators } from "@/data/knowledge-bank";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import BannerImg from "../../public/images/office/office-1.jpeg";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 /* ------------------------------------------------------------------ */
 /* Content                                                             */
@@ -593,14 +594,33 @@ export default function Home() {
             />
 
             {articles.length >= 3 ? (
-              <div className="grid gap-5 md:grid-cols-[1.5fr_1fr] lg:grid-cols-[2fr_1fr]">
-                <ScrollReveal>
-                  <InsightCard a={articles[0]} featured />
+              <>
+                <div className="grid gap-5 md:grid-cols-[1.5fr_1fr] lg:grid-cols-[2fr_1fr]">
+                  <ScrollReveal>
+                    <InsightCard a={articles[0]} featured />
+                  </ScrollReveal>
+                  <ScrollReveal stagger className="flex flex-col gap-5">
+                    {articles.slice(1, 3).map((a) => <InsightCard key={a.slug} a={a} />)}
+                  </ScrollReveal>
+                </div>
+                {/* Six guides, not three: this is the only indexed page that links the articles, so
+                    three of them left the rest with no body link from anywhere Google had been. */}
+                <ScrollReveal stagger className="mt-5 grid gap-5 md:grid-cols-3">
+                  {articles.slice(3, 6).map((a) => <InsightCard key={a.slug} a={a} />)}
                 </ScrollReveal>
-                <ScrollReveal stagger className="flex flex-col gap-5">
-                  {articles.slice(1, 3).map((a) => <InsightCard key={a.slug} a={a} />)}
-                </ScrollReveal>
-              </div>
+                <nav aria-label="Guides by topic" className="mt-8 flex flex-wrap items-center gap-2">
+                  <span className="mr-1 text-sm font-semibold text-brand-navy">Browse by topic:</span>
+                  {insightCategories.filter((c) => articlesIn(c.slug).length).map((c) => (
+                    <Link
+                      key={c.slug}
+                      href={`/insights/category/${c.slug}`}
+                      className="rounded-full border border-brand-line bg-white px-3.5 py-1.5 text-sm text-brand-muted transition-colors hover:border-brand-gold hover:text-brand-navy"
+                    >
+                      {c.title}
+                    </Link>
+                  ))}
+                </nav>
+              </>
             ) : (
               <ScrollReveal stagger className="grid gap-5 md:grid-cols-3">
                 {articles.map((a) => <InsightCard key={a.slug} a={a} />)}
@@ -616,6 +636,7 @@ export default function Home() {
       {/* -- 16. FAQ ------------------------------------------ */}
       <FAQSection faqs={faqs} />
 
+      <RelatedLinks url="/" />
       <CTABand />
     </>
   );

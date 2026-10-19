@@ -12,6 +12,7 @@ import CTABand from "@/components/ui/CTABand";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import ToolRunner from "@/components/tools/ToolRunner";
 import { FAQSection, ToolCard } from "@/components/sections/SiteSections";
+import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const dynamicParams = false;
 export const generateStaticParams = () => calculators.map((c) => ({ slug: c.slug }));
@@ -126,6 +127,7 @@ export default async function CalculatorPage({ params }) {
           </div>
         </section>
       )}
+      <RelatedLinks url={`/knowledge-bank/calculators/${c.slug}`} />
       <CTABand />
     </>
   );

@@ -19,7 +19,9 @@ const ledgerLines =
 function TeamCard({ slug, name, role, credentials = [], years, photo }) {
   return (
     <Link
-      href="/team"
+      // Each partner has their own page. This used to point at the index, which left all five
+      // profile pages with no body link anywhere on the site.
+      href={`/team/${slug}`}
       aria-label={`View ${name}'s profile`}
       className="group relative block w-[72%] shrink-0 snap-start  rounded-3xl focus-visible:outline-none sm:w-[calc((100%-2.5rem)/3)]"
     >

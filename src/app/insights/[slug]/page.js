@@ -14,6 +14,8 @@ import InsightCard, { fmtDate } from "@/components/ui/InsightCard";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 import NewsletterForm from "@/components/forms/NewsletterForm";
 import CTABand from "@/components/ui/CTABand";
+import RelatedLinks from "@/components/ui/RelatedLinks";
+import { anchorFor } from "@/lib/internal-links";
 
 export const dynamicParams = false;
 export const generateStaticParams = () => articles.map((a) => ({ slug: a.slug }));
@@ -52,6 +54,26 @@ export default async function ArticlePage({ params }) {
 
       <div className="container-x grid gap-10 py-14 md:py-20 lg:grid-cols-[1fr_20rem] lg:gap-14">
         <article className="min-w-0 max-w-3xl">
+          {/* A standfirst carrying the in-text link to the service this guide is about. The
+              sidebar box below repeats it, but a link in the body of the opening paragraphs is
+              what actually passes weight to the service page. */}
+          {services.length > 0 && (
+            <p className="mb-8 border-l-4 border-brand-gold bg-brand-mist py-3 pl-4 pr-3 text-sm leading-relaxed text-brand-ink">
+              This guide is general information. If you would rather a chartered accountant handled it, see{" "}
+              <Link href={serviceUrl(services[0])} className="font-semibold text-brand-blue hover:underline">
+                {anchorFor(serviceUrl(services[0]))}
+              </Link>
+              {services[1] && (
+                <>
+                  {" "}or{" "}
+                  <Link href={serviceUrl(services[1])} className="font-semibold text-brand-blue hover:underline">
+                    {anchorFor(serviceUrl(services[1]))}
+                  </Link>
+                </>
+              )}
+              .
+            </p>
+          )}
           <ArticleBody blocks={a.body} />
           {a.faqs.length > 0 && (
             <>
@@ -88,6 +110,7 @@ export default async function ArticlePage({ params }) {
           <div className="mt-5 grid gap-5 md:grid-cols-3">{more.map((m) => <InsightCard key={m.slug} a={m} />)}</div>
         </div></section>
       )}
+      <RelatedLinks url={`/insights/${a.slug}`} />
       <CTABand />
     </>
   );
