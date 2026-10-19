@@ -1,4 +1,11 @@
-// Extra permanent redirects (e.g. old site URLs after launch): { source: "/old", destination: "/new", permanent: true }
+// Structural permanent redirects: URLs whose destination is decided by this site's own routing
+// rather than by the old WordPress site.
+//
+// Old WordPress URLs are NOT here. They live in src/data/legacy-urls.mjs and are answered by
+// src/proxy.js, because Next applies the trailing-slash normalisation before proxy and after
+// these, which turned every old URL Google knows (all of them carry a trailing slash) into a
+// two-hop chain. Keep the two files free of overlap: anything listed here wins, because
+// next.config redirects run before proxy.
 //
 // Note: Next.js emits 308 for `permanent: true`, not 301. Both are permanent for search engines;
 // Next uses 308 because it preserves the request method.
@@ -21,16 +28,13 @@ const redirects = [
 
   // /tools became /knowledge-bank in October 2026. The five original calculators kept their
   // slugs, so each old URL maps to exactly one new one and no link is lost.
+  //
+  // Deliberately NOT reversed: the October 2026 brief asked for /knowledge-bank/calculators/*
+  // to redirect to /tools/*, which is the opposite of the live structure and would loop against
+  // these two rules. /knowledge-bank is the canonical home of the calculators; the duplicate
+  // Google still has indexed at /tools/emi-calculator is resolved by this redirect, not by a new
+  // one in the other direction. See docs/seo-indexing-2026-10.md.
   { source: "/tools", destination: "/knowledge-bank", permanent: true },
   { source: "/tools/:slug", destination: "/knowledge-bank/calculators/:slug", permanent: true },
-
-  // Old WordPress URLs that still pick up impressions in Search Console. /careers is deliberately
-  // absent: the new site has its own /careers page, so that URL already resolves.
-  { source: "/home", destination: "/", permanent: true },
-  { source: "/about-us", destination: "/about", permanent: true },
-  { source: "/our-team", destination: "/team", permanent: true },
-  { source: "/teams/:slug*", destination: "/team", permanent: true },
-  { source: "/contact-us", destination: "/contact", permanent: true },
-  { source: "/services/accounting", destination: "/services/accounting-bookkeeping", permanent: true },
 ];
 export default redirects;

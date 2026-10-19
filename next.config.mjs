@@ -35,6 +35,10 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   trailingSlash: false,
+  // Trailing slashes are canonicalised in src/proxy.js instead. Next normalises them BEFORE proxy
+  // runs, which turned every old WordPress URL into a two-hop chain (/about-us/ -> /about-us ->
+  // /about). With this flag the strip and the legacy lookup happen together, in a single 308.
+  skipTrailingSlashRedirect: true,
   images: { formats: ["image/avif", "image/webp"] },
   async headers() {
     return [{ source: "/:path*", headers: security }];
