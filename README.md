@@ -64,7 +64,8 @@ src/data/        All editable content: firm, services, content/, categories, ind
 src/app/         Routes (App Router), sitemap, robots, manifest, llms.txt, feed.xml, OG images
 src/components/  layout/, ui/, forms/, tools/, seo/
 src/lib/         seo.js (metadata), schema.js (JSON-LD), email.js, validators.js, calculators/
-docs/            launch-checklist, keyword-map, off-page-seo, content-calendar
+docs/            launch-checklist, keyword-map, off-page-seo, content-calendar,
+                 seo-changes-2026-10, seo-indexing-2026-10
 scripts/         seo-audit.mjs, keyword-map.mjs
 ```
 Theme colours are tokens in `src/app/globals.css` (`@theme`). Tailwind v4 has no `tailwind.config.js`.
