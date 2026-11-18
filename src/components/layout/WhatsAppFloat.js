@@ -14,7 +14,7 @@ export default function WhatsAppFloat() {
   const halo = "absolute inset-0 -z-10 animate-ping rounded-full opacity-40 motion-reduce:hidden";
   return (
     // Hidden below md: StickyMobileCTA already offers Call / WhatsApp / Enquire there.
-    <div className="fixed bottom-6 right-6 z-40 hidden flex-col items-end gap-3 md:flex">
+    <nav aria-label="Quick contact" className="fixed bottom-6 right-6 z-40 hidden flex-col items-end gap-3 md:flex">
       {wa && (
         <a href={wa} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp now" className={`${btn} bg-[#25d366] shadow-[#25d366]/40`}>
           <span aria-hidden="true" className={`${halo} bg-[#25d366]`} />
@@ -31,6 +31,6 @@ export default function WhatsAppFloat() {
           <span className={label}>Call now</span>
         </a>
       )}
-    </div>
+    </nav>
   );
 }

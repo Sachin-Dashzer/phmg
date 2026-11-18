@@ -34,7 +34,7 @@ export default function LeadCard({
         <div className="flex items-center gap-2">
           <span className="h-px w-5 bg-brand-gold" />
 
-          <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-brand-gold">
+          <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-brand-gold-dark">
             Enquiry
           </span>
         </div>
@@ -81,7 +81,7 @@ export default function LeadCard({
             <div className="my-2.5 flex items-center gap-2">
               <span className="h-px flex-1 bg-neutral-200" />
 
-              <span className="text-[8px] uppercase tracking-wider text-neutral-400">
+              <span className="text-[8px] uppercase tracking-wider text-neutral-500">
                 Or
               </span>
 
@@ -96,7 +96,7 @@ export default function LeadCard({
                 rounded-md
                 border border-[#25D366]/30
                 bg-[#25D366]/5
-                text-[11px] font-semibold text-[#168b45]
+                text-[11px] font-semibold text-[#0e7a40]
                 transition hover:bg-[#25D366]/10
               "
             >
@@ -109,7 +109,7 @@ export default function LeadCard({
           </>
         )}
 
-        <div className="mt-2 flex items-center justify-center gap-1 text-[9px] text-neutral-400">
+        <div className="mt-2 flex items-center justify-center gap-1 text-[9px] text-neutral-500">
           <ShieldCheck size={11} className="text-brand-gold" />
           <span>Your information is confidential</span>
         </div>

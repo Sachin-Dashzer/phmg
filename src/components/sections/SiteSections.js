@@ -188,7 +188,7 @@ export function WhyChoose({ className = "bg-brand-mist", title = "How we work" }
     <section aria-labelledby="why-title" className={`section ${className}`}>
       <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.8fr] lg:items-start">
         {/* Sticky lives on a plain wrapper: the reveal's transform must not sit on the sticky element. */}
-        <div className="lg:sticky lg:top-28">
+        <div className="lg:sticky lg:top-32">
           <ScrollReveal>
             <div className="section-label section-label-blue mb-4 w-fit">Why PHMG</div>
             <h2 id="why-title" className="font-display text-3xl font-bold leading-tight text-brand-navy md:text-4xl">{title}</h2>
@@ -228,11 +228,13 @@ export function ProcessSteps({ className = "bg-white", label = "How we work", ti
         <div className="relative">
           {/* Connector line sits outside the staggered grid so it isn't animated as a step. */}
           {steps.length <= 5 && <span aria-hidden="true" className="absolute left-6 right-6 top-6 hidden h-px bg-brand-line lg:block" />}
-          <ScrollReveal stagger role="list" className={`relative grid gap-8 md:grid-cols-2 lg:gap-6 ${stepCols[steps.length] || "lg:grid-cols-4"}`}>
+          {/* A real ul/li, not role="list"/role="listitem": ScrollReveal does not forward unknown
+              props, so the role on the container was dropped and left the items orphaned. */}
+          <ScrollReveal stagger as="ul" className={`relative grid gap-8 md:grid-cols-2 lg:gap-6 ${stepCols[steps.length] || "lg:grid-cols-4"}`}>
             {steps.map(({ title, text, time }, i) => {
               const I = stepIcons[i % stepIcons.length];
               return (
-                <div key={title} role="listitem">
+                <li key={title}>
                   <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-gold bg-white text-brand-navy">
                     <I size={20} aria-hidden="true" />
                   </div>
@@ -240,7 +242,7 @@ export function ProcessSteps({ className = "bg-white", label = "How we work", ti
                   <h3 className="mt-px font-semibold">{title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-brand-muted">{text}</p>
                   {time && <p className="mt-2 text-xs font-medium text-brand-blue">{time}</p>}
-                </div>
+                </li>
               );
             })}
           </ScrollReveal>
@@ -367,7 +369,7 @@ export function FAQSection({ faqs, className = "bg-brand-mist", title = "Frequen
     <section aria-labelledby="faq-title" className={`section ${className}`}>
       <div className="container-x grid gap-10 lg:grid-cols-[1fr_1.7fr] lg:gap-16">
         <div>
-          <div className="lg:sticky lg:top-28">
+          <div className="lg:sticky lg:top-32">
             <SectionHeading id="faq-title" label="FAQ" title={title} intro={intro} />
             <div className="relative overflow-hidden rounded-2xl bg-brand-navy p-6 text-white">
               <div aria-hidden="true" className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand-gold/15 blur-2xl" />

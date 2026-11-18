@@ -11,16 +11,28 @@ const PROFILES = [
   { key: "youtube", label: "YouTube", Icon: FaYoutube },
 ];
 
-const pill =
-  "inline-flex items-center justify-center rounded-full border border-current opacity-70 transition-opacity hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
 
-export default function SocialLinks({ className = "" }) {
+const pill = `inline-flex items-center justify-center rounded-full border border-current opacity-70 transition-opacity hover:opacity-100 ${focus}`;
+
+// `compact` is the header utility-bar form: borderless, smaller, and without the WhatsApp pill
+// (the floating CTA already carries that). Order and which profiles exist stay shared, so a URL
+// filled into firm.social still shows up in both places at once.
+const bare = `inline-flex items-center justify-center rounded-md transition-[color,transform] duration-200 ease-[cubic-bezier(.22,.8,.3,1)] hover:-translate-y-px hover:text-brand-gold motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${focus}`;
+
+export default function SocialLinks({ className = "", compact = false, label = "" }) {
   const links = PROFILES.filter((p) => firm.social[p.key]);
-  const whatsapp = waHref();
+  const whatsapp = compact ? "" : waHref();
+
+  // Header and footer both render this. Two <nav> landmarks with the same accessible name are
+  // indistinguishable to a screen reader, so the compact (header) form is a plain labelled list.
+  const Wrap = compact ? "div" : "nav";
+  const navLabel = label || `${firm.name} on social media`;
 
   return (
-    <nav aria-label={`${firm.name} on social media`} className={className}>
-      <ul className="flex flex-wrap items-center gap-2">
+    <Wrap aria-label={compact ? undefined : navLabel} className={className}>
+      <ul aria-label={compact ? navLabel : undefined} className={`flex flex-wrap items-center ${compact ? "gap-0.5" : "gap-2"}`}>
         {links.map(({ key, label, Icon }) => (
           <li key={key}>
             <a
@@ -28,9 +40,9 @@ export default function SocialLinks({ className = "" }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${label} (opens in a new tab)`}
-              className={`${pill} h-10 w-10`}
+              className={compact ? `${bare} h-8 w-8` : `${pill} h-10 w-10`}
             >
-              <Icon aria-hidden="true" className="h-4 w-4" />
+              <Icon aria-hidden="true" className={compact ? "h-3.5 w-3.5" : "h-4 w-4"} />
             </a>
           </li>
         ))}
@@ -48,6 +60,6 @@ export default function SocialLinks({ className = "" }) {
           </li>
         )}
       </ul>
-    </nav>
+    </Wrap>
   );
 }

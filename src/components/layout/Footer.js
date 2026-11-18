@@ -77,7 +77,7 @@ export default function Footer() {
               </address>
             )}
 
-            <SocialLinks className="mt-6" />
+            <SocialLinks label={`Follow ${firm.name}`} className="mt-6" />
 
             <Link
               href="/book-consultation"
@@ -87,7 +87,7 @@ export default function Footer() {
             </Link>
 
             {firm.icaiFrn && (
-              <p className="mt-5 text-xs text-white/40">ICAI Firm Reg. No. {firm.icaiFrn}</p>
+              <p className="mt-5 text-xs text-white/55">ICAI Firm Reg. No. {firm.icaiFrn}</p>
             )}
           </div>
 
@@ -104,7 +104,7 @@ export default function Footer() {
               ))}
               {publishedServices.slice(0, 8).map((s) => (
                 <li key={s.slug}>
-                  <Link href={serviceUrl(s)} className="text-sm text-white/45 transition-colors hover:text-white">
+                  <Link href={serviceUrl(s)} className="text-sm text-white/55 transition-colors hover:text-white">
                     {s.title}
                   </Link>
                 </li>
@@ -160,7 +160,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <p className="mt-4 max-w-4xl text-xs leading-relaxed text-white/35">
+          <p className="mt-4 max-w-4xl text-xs leading-relaxed text-white/55">
             Disclaimer: Content is for general information only and does not constitute professional
             advice or solicitation. Consult a qualified professional before acting.
           </p>

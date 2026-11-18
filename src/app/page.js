@@ -244,7 +244,7 @@ export default function Home() {
             hover:text-brand-gold
           "
               >
-                Learn More
+                About the firm
               </Link>
             </div>
 
@@ -471,7 +471,7 @@ export default function Home() {
         <div className="container-x relative z-10 grid gap-12 lg:grid-cols-12 lg:gap-14">
           {/* Sticky lives on a plain wrapper: the reveal's transform must not sit on the sticky element. */}
           <div className="lg:col-span-4">
-            <div className="lg:sticky lg:top-28">
+            <div className="lg:sticky lg:top-32">
               <ScrollReveal>
                 <div className="section-label section-label-blue mb-4 w-fit">Our services</div>
                 <h2 id="services-title" className="font-display text-3xl font-bold leading-tight text-brand-navy md:text-4xl">

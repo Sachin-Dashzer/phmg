@@ -10,7 +10,10 @@
   --color-brand-teal: #9a7c45;
   --color-brand-teal-dark: #7d6336;
   --color-brand-gold: #b8955a;
-  --color-brand-gold-dark: #9a7c45;
+  /* Darkened from #9a7c45 (3.9:1 on white) so gold text passes WCAG AA on the light
+     backgrounds: 5.7:1 on white, 4.9:1 on brand-cream. --color-brand-gold stays as it is;
+     it is the accent on navy, where it reads at 5.9:1. */
+  --color-brand-gold-dark: #7d6336;
   --color-brand-mist: #f8f5ef;
   --color-brand-cream: #f2ede3;
   --color-brand-line: #e4ddd0;
@@ -21,9 +24,11 @@
   --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
 }
 
-/* scroll-padding keeps anchor targets clear of the fixed header (h-18 / lg:h-22). */
+/* scroll-padding keeps anchor targets clear of the fixed header. Below sm that is the bar alone
+   (h-14); from sm the utility bar (h-9) sits above it, so the total grows by 2.25rem. */
 html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
-@media (min-width: 1024px) { html { scroll-padding-top: 6.5rem; } }
+@media (min-width: 640px) { html { scroll-padding-top: 6.75rem; } }
+@media (min-width: 1024px) { html { scroll-padding-top: 8.5rem; } }
 /* `clip` (not `hidden`) stops decorative absolutes from creating a horizontal
    scrollbar without turning the viewport into a scroll container. */
 html, body { overflow-x: clip; }
@@ -57,8 +62,9 @@ h1, h2, h3, h4 { overflow-wrap: break-word; }
 .btn-primary:hover { background: var(--color-brand-blue-dark); box-shadow: 0 6px 18px rgba(26,50,88,.4); transform: translateY(-1px); }
 .btn-secondary { background: #fff; color: var(--color-brand-blue-dark); border: 1.5px solid var(--color-brand-blue); }
 .btn-secondary:hover { background: #f0e8d8; transform: translateY(-1px); }
-.btn-whatsapp { background: #128c4a; color: #fff; }
-.btn-whatsapp:hover { background: #0e7a40; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(18,140,74,.35); }
+/* #128c4a gave white text only 4.3:1; #0e7a40 is 5.4:1 and still reads as WhatsApp green. */
+.btn-whatsapp { background: #0e7a40; color: #fff; }
+.btn-whatsapp:hover { background: #0b6534; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(18,140,74,.35); }
 .btn-gold {
   background: var(--color-brand-gold); color: var(--color-brand-navy); font-weight: 700;
   box-shadow: 0 2px 8px rgba(184,149,90,.3);

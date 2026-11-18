@@ -89,7 +89,7 @@ export default function LeadForm({
     outline-none
     transition-all
     duration-200
-    placeholder:text-neutral-400
+    placeholder:text-neutral-500
     hover:border-neutral-300
     focus:border-brand-gold
     focus:ring-2
@@ -288,7 +288,7 @@ export default function LeadForm({
               outline-none
               transition-all
               duration-200
-              placeholder:text-neutral-400
+              placeholder:text-neutral-500
               hover:border-neutral-300
               focus:border-brand-gold
               focus:ring-2

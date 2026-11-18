@@ -9,10 +9,13 @@ import {
   X,
   ChevronDown,
   Phone,
+  Mail,
+  MapPin,
   ArrowRight,
 } from "lucide-react";
 
 import LogoImage from "./../../../public/logo.png";
+import SocialLinks from "./SocialLinks";
 import { firm, phoneHref } from "@/data/firm";
 import { mainNav, megaMenu } from "@/data/navigation";
 
@@ -1011,7 +1014,13 @@ export default function Header() {
 
       {/* Header is fixed; inner pages need the space it covers. */}
       {/* Must track the bar's own height classes below, or inner pages jump. */}
-      {!isHome && <div className="h-14 sm:h-16 lg:h-22" aria-hidden="true" />}
+      {!isHome && (
+        <>
+          {/* Utility bar: same breakpoint and height as the real one. */}
+          <div className="hidden h-9 sm:block" aria-hidden="true" />
+          <div className="h-14 sm:h-16 lg:h-22" aria-hidden="true" />
+        </>
+      )}
 
       {/* ===================================================
           HEADER
@@ -1050,6 +1059,122 @@ export default function Header() {
           }
         `}
       >
+        {/* =================================================
+            UTILITY BAR
+
+            Contact on the left, social on the right. Solid
+            charcoal in both header states, so it reads as its
+            own band over the hero instead of a second
+            transparent strip. Hidden below sm, where the
+            logo and menu already fill a 320px row and
+            StickyMobileCTA carries call / WhatsApp.
+            ================================================= */}
+
+        <div
+          className="
+            hidden
+            border-b
+            border-white/10
+            bg-brand-charcoal
+            text-white/70
+            sm:block
+          "
+        >
+          <div
+            className="
+              container-x
+              flex
+              h-9
+              items-center
+              justify-between
+              gap-6
+              text-xs
+            "
+          >
+            <div className="flex min-w-0 items-center">
+              {firm.phone && (
+                <a
+                  href={phoneHref()}
+                  className="
+                    inline-flex
+                    items-center
+                    gap-2
+                    whitespace-nowrap
+                    transition-colors
+                    duration-200
+                    hover:text-brand-gold
+                  "
+                >
+                  <Phone size={13} aria-hidden="true" className="text-brand-gold" />
+                  <span>{firm.phone}</span>
+                </a>
+              )}
+
+              {firm.email && (
+                <a
+                  href={`mailto:${firm.email}`}
+                  className="
+                    hidden
+                    items-center
+                    gap-2
+                    whitespace-nowrap
+                    border-l
+                    border-white/15
+                    pl-5
+                    ml-5
+                    transition-colors
+                    duration-200
+                    hover:text-brand-gold
+                    md:inline-flex
+                  "
+                >
+                  <Mail size={13} aria-hidden="true" className="text-brand-gold" />
+                  <span>{firm.email}</span>
+                </a>
+              )}
+
+              {/* Head office, as a trust signal — the one line most visitors look for. */}
+              <span
+                className="
+                  hidden
+                  min-w-0
+                  items-center
+                  gap-2
+                  border-l
+                  border-white/15
+                  pl-5
+                  ml-5
+                  xl:inline-flex
+                "
+              >
+                <MapPin size={13} aria-hidden="true" className="shrink-0 text-brand-gold" />
+                <span className="truncate">
+                  {firm.address.street}, {firm.address.city}
+                </span>
+              </span>
+            </div>
+
+            <div className="flex shrink-0 items-center gap-3">
+              <span
+                className="
+                  hidden
+                  text-[10px]
+                  font-semibold
+                  tracking-[0.2em]
+                  uppercase
+                  text-white/55
+                  lg:inline
+                "
+              >
+                Follow
+              </span>
+
+              {/* -mr-2 pulls the icon row's own padding back to the container edge. */}
+              <SocialLinks compact className="-mr-2" />
+            </div>
+          </div>
+        </div>
+
         <div
           className="
             container-x
