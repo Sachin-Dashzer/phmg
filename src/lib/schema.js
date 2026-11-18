@@ -1,4 +1,5 @@
 import { firm, offices, hasAddress } from "@/data/firm";
+import { getProfile } from "@/data/team";
 import { cityByOffice } from "@/data/cities";
 import { absUrl, reviewedToISO } from "./seo.js";
 
@@ -89,6 +90,9 @@ export function organizationSchema() {
     "@id": absUrl("/#organization"),
     name: firm.name,
     legalName: firm.legalName,
+    // The names people and assistants actually type. Not marketing variants: these are the
+    // short forms already used on the profiles and in correspondence.
+    alternateName: ["PHMG", "PHMG India", "PHMG and Associates"],
     url: absUrl("/"),
     // Raster logo: Google's structured data guidance expects a crawlable raster image here,
     // not an SVG icon.
@@ -177,9 +181,21 @@ export const serviceSchema = ({ name, description, path, serviceType, audience, 
     dateModified: reviewedToISO(dateModified) || undefined,
   });
 
+// The designations the ICAI itself awards. Only these carry `recognizedBy`: an LLB, MBA or B.Com
+// comes from a university, and naming the ICAI as the awarding body for them would be false.
+const ICAI = "The Institute of Chartered Accountants of India";
+const ICAI_CREDENTIALS = {
+  CA: "Chartered Accountant",
+  FCA: "Fellow Chartered Accountant",
+  DISA: "Diploma in Information Systems Audit",
+};
+
 /** /team: one Person per partner. No ratings, no invented profile URLs. */
-export const personSchema = (p) =>
-  compact({
+export const personSchema = (p) => {
+  // `icaiMembership` and `linkedin` live in the profiles table in team.js and are empty until a
+  // partner supplies them, so neither the identifier nor sameAs is asserted on a guess.
+  const profile = getProfile(p.slug);
+  return compact({
     "@type": "Person",
     "@id": absUrl(`/team#${p.slug}`),
     name: p.name,
@@ -187,14 +203,22 @@ export const personSchema = (p) =>
     worksFor: { "@id": absUrl("/#organization") },
     image: p.photo ? absUrl(p.photo) : undefined,
     knowsAbout: p.focus,
+    sameAs: [profile.linkedin].filter(Boolean),
+    identifier: profile.icaiMembership
+      ? { "@type": "PropertyValue", name: "ICAI membership number", value: profile.icaiMembership }
+      : undefined,
     // `credentials` holds qualifications such as FCA, CA, LLB. Expressed both ways: honorificSuffix
     // for display and hasCredential for the machine-readable claim.
     honorificSuffix: p.credentials?.length ? p.credentials.join(", ") : undefined,
-    hasCredential: p.credentials?.map((c) => ({
-      "@type": "EducationalOccupationalCredential",
-      credentialCategory: c,
-    })),
+    hasCredential: p.credentials?.map((c) =>
+      compact({
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: ICAI_CREDENTIALS[c] || c,
+        recognizedBy: ICAI_CREDENTIALS[c] ? { "@type": "Organization", name: ICAI } : undefined,
+      })
+    ),
   });
+};
 
 export const teamSchema = (team) => ({
   "@context": "https://schema.org",

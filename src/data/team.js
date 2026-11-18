@@ -16,18 +16,19 @@ export const team = [
 // Optional, partner-supplied detail for /team/{slug}. Keyed by team slug.
 // TODO: CLIENT TO CONFIRM — the partners have not supplied these yet. Nothing here is invented.
 //   bio          one or two paragraphs, as an array of strings
-//   icaiMembership  membership number, shown as a plain fact
+//   icaiMembership  membership number, shown as a plain fact and used as the Person identifier
+//   linkedin     the partner's own LinkedIn profile URL, used as Person.sameAs
 //   education    e.g. ["B.Com, Delhi University", "FCA, ICAI"]
 //   languages    e.g. ["English", "Hindi"]
 //   office       an office slug from firm.js, if the partner leads or is based at one
 //   appearsBefore  forums the partner appears before, e.g. ["CIT(A)", "ITAT"]
 //   email        a direct address, only if the firm wants one published
 export const profiles = {
-  "piyush-mishra": { bio: [], icaiMembership: "", education: [], languages: [], office: "", appearsBefore: [], email: "" },
-  "ankit-choudhary": { bio: [], icaiMembership: "", education: [], languages: [], office: "", appearsBefore: [], email: "" },
-  "praveen-thakur": { bio: [], icaiMembership: "", education: [], languages: [], office: "", appearsBefore: [], email: "" },
-  "manish-goel": { bio: [], icaiMembership: "", education: [], languages: [], office: "delhi", appearsBefore: [], email: "" },
-  "mehtaab-qureshi": { bio: [], icaiMembership: "", education: [], languages: [], office: "ludhiana", appearsBefore: [], email: "" },
+  "piyush-mishra": { bio: [], icaiMembership: "", linkedin: "", education: [], languages: [], office: "", appearsBefore: [], email: "" },
+  "ankit-choudhary": { bio: [], icaiMembership: "", linkedin: "", education: [], languages: [], office: "", appearsBefore: [], email: "" },
+  "praveen-thakur": { bio: [], icaiMembership: "", linkedin: "", education: [], languages: [], office: "", appearsBefore: [], email: "" },
+  "manish-goel": { bio: [], icaiMembership: "", linkedin: "", education: [], languages: [], office: "delhi", appearsBefore: [], email: "" },
+  "mehtaab-qureshi": { bio: [], icaiMembership: "", linkedin: "", education: [], languages: [], office: "ludhiana", appearsBefore: [], email: "" },
 };
 
 export const getMember = (slug) => team.find((t) => t.slug === slug);
