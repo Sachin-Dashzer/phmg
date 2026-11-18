@@ -164,7 +164,7 @@ export default async function CityPage({ params }) {
               </div>
             )}
           </div>
-          <div id="lead" className="scroll-mt-28"><div className="lg:sticky lg:top-28"><LeadCard id="city-lead" title={`Speak to a chartered accountant in ${c.name}`} /></div></div>
+          <div id="lead" className="scroll-mt-28"><div className="lg:sticky lg:top-32"><LeadCard id="city-lead" title={`Speak to a chartered accountant in ${c.name}`} /></div></div>
         </div>
       </section>
 

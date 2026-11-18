@@ -84,7 +84,7 @@ export default async function CalculatorPage({ params }) {
           </ScrollReveal>
           {services.length > 0 && (
             <div>
-              <div className="lg:sticky lg:top-28">
+              <div className="lg:sticky lg:top-32">
                 <div className="relative overflow-hidden rounded-2xl bg-brand-navy p-6 text-white">
                   <div aria-hidden="true" className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand-gold/15 blur-2xl" />
                   <p className="relative font-display text-xl font-semibold text-white">Need help with the real numbers?</p>

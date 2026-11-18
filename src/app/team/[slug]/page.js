@@ -209,7 +209,7 @@ export default async function PartnerPage({ params }) {
           </article>
 
           <div id="enquiry" className="scroll-mt-28">
-            <div className="lg:sticky lg:top-28">
+            <div className="lg:sticky lg:top-32">
               <LeadCard id="partner-lead" title={`Send an enquiry to ${p.name}`} />
             </div>
           </div>

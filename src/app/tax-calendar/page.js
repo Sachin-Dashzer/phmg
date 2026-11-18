@@ -70,7 +70,7 @@ export default function TaxCalendar() {
               </span>
             </p>
           </div>
-          <div><div className="lg:sticky lg:top-28"><DueDateLedger /></div></div>
+          <div><div className="lg:sticky lg:top-32"><DueDateLedger /></div></div>
         </div>
       </section>
 

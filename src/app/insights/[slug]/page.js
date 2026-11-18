@@ -86,7 +86,7 @@ export default async function ArticlePage({ params }) {
           </p>
           <div className="mt-10"><NewsletterForm /></div>
         </article>
-        <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
+        <aside className="space-y-6 lg:sticky lg:top-32 lg:self-start">
           <nav aria-label="Table of contents" className="rounded-2xl border border-brand-line bg-brand-mist p-5 text-sm">
             <h2 className="text-xs font-semibold uppercase tracking-widest text-brand-gold-dark">In this article</h2>
             <ul className="mt-4 space-y-1 border-l-2 border-brand-line">

@@ -90,7 +90,7 @@ export default async function CategoryPage({ params }) {
               </div>
             )}
           </div>
-          <div id="lead" className="scroll-mt-28"><div className="lg:sticky lg:top-28"><LeadCard id="category-lead" defaultService={c.title} /></div></div>
+          <div id="lead" className="scroll-mt-28"><div className="lg:sticky lg:top-32"><LeadCard id="category-lead" defaultService={c.title} /></div></div>
         </div>
       </section>
 

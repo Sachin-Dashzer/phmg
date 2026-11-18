@@ -70,7 +70,7 @@ export default async function UtilityPage({ params }) {
             </div>
           </article>
 
-          <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
+          <aside className="space-y-6 lg:sticky lg:top-32 lg:self-start">
             {related.length > 0 && (
               <nav aria-label="Related calculators" className="rounded-2xl border border-brand-line bg-brand-mist p-5">
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-brand-gold-dark">Run the numbers</h2>

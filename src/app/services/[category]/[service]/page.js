@@ -192,7 +192,7 @@ export default async function ServicePage({ params }) {
           </article>
 
           <div id="lead" className="scroll-mt-28">
-            <div className="lg:sticky lg:top-28">
+            <div className="lg:sticky lg:top-32">
               <LeadCard defaultService={cat.title} id="service-lead" title={`Talk to a CA about ${s.title.toLowerCase()}`} />
             </div>
           </div>

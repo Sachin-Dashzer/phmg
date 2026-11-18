@@ -91,7 +91,7 @@ export default async function IndustryPage({ params }) {
               </div>
             )}
           </div>
-          <div id="lead" className="scroll-mt-28"><div className="lg:sticky lg:top-28"><LeadCard id="industry-lead" title={`Talk to a CA about ${i.title}`} /></div></div>
+          <div id="lead" className="scroll-mt-28"><div className="lg:sticky lg:top-32"><LeadCard id="industry-lead" title={`Talk to a CA about ${i.title}`} /></div></div>
         </div>
       </section>
 
