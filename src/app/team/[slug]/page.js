@@ -58,13 +58,16 @@ export async function generateMetadata({ params }) {
   });
 }
 
+// A <dl> may wrap each pair in one <div>, but not two: `dl > div > div > dt` is invalid and
+// leaves the dt without a list parent. The icon therefore sits inside the dt, and the dd is
+// indented by the icon's width plus the gap so it still lines up under the label.
 const Fact = ({ icon: I, label, children }) => (
-  <div className="flex items-start gap-3">
-    <I size={17} className="mt-0.5 shrink-0 text-brand-gold" aria-hidden="true" />
-    <div className="min-w-0">
-      <dt className="text-xs font-semibold uppercase tracking-wide text-brand-muted">{label}</dt>
-      <dd className="mt-0.5 text-sm text-brand-navy">{children}</dd>
-    </div>
+  <div className="min-w-0">
+    <dt className="flex items-center gap-3 text-xs font-semibold uppercase tracking-wide text-brand-muted">
+      <I size={17} className="shrink-0 text-brand-gold" aria-hidden="true" />
+      {label}
+    </dt>
+    <dd className="mt-0.5 pl-[29px] text-sm text-brand-navy">{children}</dd>
   </div>
 );
 

@@ -18,8 +18,10 @@
   --color-brand-cream: #f2ede3;
   --color-brand-line: #e4ddd0;
   --color-brand-muted: #5d6c82;
-  --color-brand-success: #1c8665;
-  --color-brand-danger: #d64545;
+  /* Both are only ever used as text on a light background, and both failed WCAG AA there
+     (#1c8665 was 3.9:1 on brand-cream, #d64545 3.8:1). Darkened to 5.0:1 and 4.7:1. */
+  --color-brand-success: #177355;
+  --color-brand-danger: #c62f2f;
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
 }

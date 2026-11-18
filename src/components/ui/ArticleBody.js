@@ -3,6 +3,12 @@ export const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replac
 // Renders article blocks: ["h2", text] | ["p", text] | ["ul", [items]]
 //   | ["table", { head, rows }] | ["links", [{ href, label, note? }]]
 // `links` exists so pages can cite official sources as real links while the data files stay plain data.
+/** "Table under <nearest preceding h2>", or a plain label where the table comes before any. */
+const tableLabel = (blocks, i) => {
+  for (let j = i - 1; j >= 0; j--) if (blocks[j][0] === "h2") return `Table under ${blocks[j][1]}, scrolls horizontally`;
+  return "Table, scrolls horizontally";
+};
+
 export default function ArticleBody({ blocks }) {
   return (
     <div className="prose-phmg">
@@ -23,11 +29,15 @@ export default function ArticleBody({ blocks }) {
           );
         if (type === "table")
           return (
-            // tabIndex makes the horizontal scroll reachable by keyboard (WCAG 2.1.1).
-            <div key={i} tabIndex={0} role="region" aria-label="Table, scrolls horizontally" className="my-6 overflow-x-auto rounded-2xl border border-brand-line">
+            // tabIndex makes the horizontal scroll reachable by keyboard (WCAG 2.1.1). The label
+            // names the section the table sits under: two tables on one page with the same name
+            // are two landmarks a screen reader cannot tell apart.
+            <div key={i} tabIndex={0} role="region" aria-label={tableLabel(blocks, i)} className="my-6 overflow-x-auto rounded-2xl border border-brand-line">
               <table className="w-full min-w-120 text-left text-sm">
                 <thead className="bg-brand-navy text-white">
-                  <tr>{v.head.map((h, j) => <th key={j} scope="col" className="p-3">{h}</th>)}</tr>
+                  {/* A comparison table's corner cell is deliberately blank. An empty <th> has no
+                      accessible name, so it carries a visually hidden one instead. */}
+                  <tr>{v.head.map((h, j) => <th key={j} scope="col" className="p-3">{h || <span className="sr-only">Row heading</span>}</th>)}</tr>
                 </thead>
                 <tbody>
                   {v.rows.map((r, j) => (
