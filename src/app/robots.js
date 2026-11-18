@@ -28,7 +28,9 @@ export default function robots() {
       { userAgent: "*", allow: "/", disallow },
       ...AI_CRAWLERS.map((userAgent) => ({ userAgent, allow: "/", disallow })),
     ],
+    // No `host`: Google ignores the directive, and Next renders it as
+    // `Host: https://www.phmgindia.com`. It takes a bare hostname, so the URL form is invalid
+    // and Lighthouse fails robots.txt on it.
     sitemap: absUrl("/sitemap.xml"),
-    host: absUrl("/").replace(/\/$/, ""),
   };
 }

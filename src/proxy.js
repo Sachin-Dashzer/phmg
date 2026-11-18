@@ -53,7 +53,10 @@ export default function proxy(request) {
 
   // 2. Theme demo page with no equivalent: 410 Gone, which Google drops faster than a 404.
   //    Checked before the cart params so /woo-product-grid/?add-to-cart=5435 answers in one hop.
-  if (isGone(bare)) {
+  //    `/?p=123` is the WordPress unprettified permalink: the path is "/", so it cannot be a
+  //    gonePattern and is matched on the query instead. Numeric only, so a real `?p=` parameter
+  //    on the home page would still be served.
+  if (isGone(bare) || (bare === "/" && /^\d+$/.test(searchParams.get("p") || ""))) {
     return new NextResponse(gonePage(bare), {
       status: 410,
       headers: { "content-type": "text/html; charset=utf-8", "x-robots-tag": "noindex" },
@@ -76,5 +79,14 @@ export const config = {
   // Skip Next internals, the API routes and anything with a file extension, so assets are never
   // touched. feed.xml and sitemap.xml keep their extension and so never reach the /*/feed rule.
   // Written with [.] rather than an escape so the pattern reads as it is matched.
-  matcher: ["/((?!_next/static|_next/image|api/|.*[.][a-zA-Z0-9]+$).*)"],
+  // The WordPress plumbing paths are listed separately because they carry extensions
+  // (/wp-content/uploads/x.jpg, /xmlrpc.php) and the rule above would skip them.
+  matcher: [
+    "/((?!_next/static|_next/image|api/|.*[.][a-zA-Z0-9]+$).*)",
+    "/xmlrpc.php",
+    "/wp-admin/:path*",
+    "/wp-content/:path*",
+    "/wp-includes/:path*",
+    "/wp-json/:path*",
+  ],
 };

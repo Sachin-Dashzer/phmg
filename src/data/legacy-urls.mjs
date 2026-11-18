@@ -40,6 +40,10 @@ export const legacyRedirects = {
   "/resources": "/knowledge-bank",
   "/blog": "/insights",
 
+  // The one old blog category with a closer match than /insights: it carried the consultancy
+  // posts. Exact entries are checked before the /category/* prefix rule below, so this wins.
+  "/category/consulting": "/services/business-advisory",
+
   // Contact
   "/contact-us": "/contact",
   "/contact-2-2": "/contact",
@@ -74,7 +78,13 @@ export const gonePatterns = [
   /^\/woo-product-/,             // WooCommerce demo grids
   /^\/\d{4}\/\d{2}/,             // date archives: /2019/02, /2021/01
   /^\/.+\/feed$/,                // comment feeds (/feed.xml is a real route and does not match)
+  /^\/feed$/,                    // the site-wide WordPress feed; /feed.xml is the new one
+  // WordPress plumbing. These carry file extensions, so src/proxy.js lists them in its matcher
+  // explicitly — the default matcher skips anything with an extension so assets are never touched.
+  /^\/wp-(admin|content|includes|json)(\/|$)/,
+  /^\/xmlrpc\.php$/,
   /^\/lights-winged-seasons-fish-abundantly-evening$/,
+  /^\/team-you-want-to-work-with-mistakes$/,
   /^\/given-void-great-youre-good-appear-have-i-also-fifth$/,
   /^\/if-the-white-whale-be-raised-it-must-be-in-a-month$/,
   /^\/whale-be-raised-it-must-be-in-a-month$/,
