@@ -77,7 +77,7 @@ export const cities = [
     name: "Delhi",
     officeCity: "delhi",
     branchHead: "manish-goel",
-    nearby: ["Rohini", "Pitampura", "Shalimar Bagh", "Netaji Subhash Place", "Punjabi Bagh", "North-West Delhi"],
+    nearby: ["Rohini", "Pitampura", "Shalimar Bagh", "Prashant Vihar", "Netaji Subhash Place", "Punjabi Bagh", "North-West Delhi"],
     geo: { lat: "", lng: "" }, // TODO: CLIENT TO CONFIRM - coordinates from Google Maps
     mapUrl: "", // TODO: CLIENT TO CONFIRM - Google Maps link; enables the "Get directions" button
     primaryKeyword: "chartered accountant in delhi",

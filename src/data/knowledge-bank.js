@@ -182,7 +182,7 @@ export const calculators = [
     metaTitle: "Loan Tenure Calculator – Number of Instalments",
     metaDescription:
       "Work out how many monthly instalments it takes to clear a loan from the balance, the rate and what you can pay each month, with total interest shown.",
-    intro: "Work out how long a loan takes to clear at a given instalment.",
+    intro: "This loan tenure calculator works out how many monthly instalments it takes to clear a loan, from the outstanding balance, the annual interest rate and the amount you can pay each month. It is the EMI calculation in reverse: you fix the instalment and it returns the term, along with the total interest over that term.",
     explainer: [
       "This is the EMI calculation the other way round. Instead of fixing the term and finding the instalment, it fixes the instalment and finds the term, which is the more useful question when you know what you can afford each month.",
       "There is a floor below which the loan never clears. If the instalment is less than the first month's interest, the balance grows instead of reducing, however long the loan runs. The calculator reports that rather than returning a very large number.",
@@ -192,6 +192,10 @@ export const calculators = [
     faqs: [
       { q: "Why does my loan never clear at a low instalment?", a: "Because the instalment is not covering the interest charged for the month, so nothing is left to reduce the principal. The balance then grows. The instalment has to exceed the first month's interest before any principal is repaid." },
       { q: "How much does paying a bit extra help?", a: "More than most people expect on a long loan, because the extra comes off the principal and stops accruing interest for the rest of the term. Run the calculation at both instalments to compare." },
+      { q: "What is a loan tenure calculator?", a: "It answers the question the EMI calculator does not: given a balance, an interest rate and the instalment you can afford, how many months will the loan run? The EMI calculator fixes the term and returns the instalment; this one fixes the instalment and returns the term." },
+      { q: "What do I need to enter?", a: "Three figures: the outstanding principal, the annual rate of interest the lender charges on reducing balance, and the monthly instalment you intend to pay. The rate is the one in the sanction letter, not the annual percentage rate including fees." },
+      { q: "Does the answer hold if the interest rate changes?", a: "No. A floating-rate loan is recalculated by the lender whenever the benchmark moves, and most lenders adjust the term rather than the instalment. Re-run the calculation at the new rate to see the revised term." },
+      { q: "Is the result the same as the tenure in my loan statement?", a: "It will be close but rarely identical. Lenders compute interest on the exact day count, apply a rest convention and may add fees to the balance, so the calculated term can differ by a month. Treat the result as a planning figure and the lender's amortisation schedule as the authority." },
     ],
     services: ["business-loan-assistance", "project-report"],
   },

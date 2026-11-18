@@ -134,7 +134,7 @@ export default function Home() {
             sm:text-xs
           "
               >
-                Chartered Accountants since 2014
+                PHMG &amp; Associates &middot; Chartered Accountants since 2014
               </p>
             </div>
 

@@ -11,7 +11,7 @@ import { Icon } from "@/components/ui/Icon";
 import { ServiceCard, CategoryCard } from "@/components/ui/ServiceCard";
 import LeadCard from "@/components/forms/LeadCard";
 import CTABand from "@/components/ui/CTABand";
-import { ProcessSteps, WhyChoose, StatsBand } from "@/components/sections/SiteSections";
+import { ProcessSteps, WhyChoose, StatsBand, FAQSection } from "@/components/sections/SiteSections";
 import RelatedLinks from "@/components/ui/RelatedLinks";
 
 export const dynamicParams = false;
@@ -111,6 +111,10 @@ export default async function CategoryPage({ params }) {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* Optional per-category FAQs: set on the category in data/categories.js, absent
+          elsewhere. FAQAccordion emits the FAQPage schema, so none is added here. */}
+      <FAQSection faqs={c.faqs} className="bg-brand-mist" title={`${c.title} questions`} intro="The questions that come up most often on this practice area." />
 
       <RelatedLinks url={`/services/${c.slug}`} />
       <CTABand />
