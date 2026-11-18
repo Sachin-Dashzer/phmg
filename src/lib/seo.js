@@ -12,7 +12,11 @@ export const absUrl = (path = "/") => new URL(path, SITE_URL).toString();
  */
 const MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 export const reviewedToISO = (value, fallback = "") => {
-  const m = /^([a-z]+)\s+(\d{4})$/i.exec(String(value || "").trim());
+  const v = String(value || "").trim();
+  // Already an ISO date: pass it through. lastReviewed is usually a month name, but the
+  // service-in-city pages carry a full review date and would otherwise fall back silently.
+  if (/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
+  const m = /^([a-z]+)\s+(\d{4})$/i.exec(v);
   const month = m ? MONTHS.indexOf(m[1].toLowerCase()) : -1;
   if (month < 0) return fallback;
   return new Date(Date.UTC(Number(m[2]), month, 1)).toISOString().slice(0, 10);

@@ -16,6 +16,7 @@ import { cities } from "../data/cities.js";
 import { articles, articlesIn, insightCategories } from "../data/insights.js";
 import { calculators, utilities } from "../data/knowledge-bank.js";
 import { team } from "../data/team.js";
+import { cityServices } from "../data/city-services.js";
 
 // The same list src/app/sitemap.js builds, kept in the same order of sections.
 const sitemapPaths = [
@@ -26,6 +27,7 @@ const sitemapPaths = [
   ...publishedServices.map(serviceUrl),
   ...industries.map((i) => `/industries/${i.slug}`),
   ...cities.map((c) => `/ca-in-${c.slug}`),
+  ...cityServices.map((p) => `/${p.slug}`),
   ...insightCategories.filter((c) => articlesIn(c.slug).length).map((c) => `/insights/category/${c.slug}`),
   ...articles.map((a) => `/insights/${a.slug}`),
   ...calculators.map((c) => `/knowledge-bank/calculators/${c.slug}`),

@@ -25,6 +25,7 @@ import { industries } from "../data/industries.js";
 import { cities } from "../data/cities.js";
 import { articles, articlesIn, insightCategories } from "../data/insights.js";
 import { calculators, utilities } from "../data/knowledge-bank.js";
+import { cityServices } from "../data/city-services.js";
 
 /* ------------------------------------------------------------------ */
 /* Lookups                                                            */
@@ -95,6 +96,9 @@ export function anchorFor(url) {
   const city = cities.find((c) => `/ca-in-${c.slug}` === url);
   if (city) return `chartered accountants in ${city.name}`;
 
+  const cs = cityServices.find((p) => `/${p.slug}` === url);
+  if (cs) return cs.h1.toLowerCase();
+
   const a = articles.find((x) => `/insights/${x.slug}` === url);
   if (a) return a.title;
 
@@ -138,6 +142,18 @@ const allHubs = () => categories.filter((c) => servicesIn(c.slug).length).map((c
 const allCities = () => cities.map((c) => `/ca-in-${c.slug}`);
 const allCalculators = () => calculators.map((c) => `/knowledge-bank/calculators/${c.slug}`);
 const allUtilities = () => utilities.map((u) => `/knowledge-bank/utilities/${u.slug}`);
+/** The service-in-city landing pages handled from a given office. */
+const cityServicesForOffice = (officeSlug) =>
+  cityServices.filter((p) => p.officeSlug === officeSlug).map((p) => `/${p.slug}`);
+
+/** The service-in-city landing pages whose parent is a given service slug. */
+const cityServicesForService = (slug) =>
+  cityServices.filter((p) => p.parentService === slug).map((p) => `/${p.slug}`);
+
+/** The service-in-city landing pages under a given practice hub. */
+const cityServicesForHub = (hub) =>
+  cityServices.filter((p) => hubOf(p.parentService) === `/services/${hub}`).map((p) => `/${p.slug}`);
+
 const allInsightCategories = () => insightCategories.filter((c) => articlesIn(c.slug).length).map((c) => `/insights/category/${c.slug}`);
 
 // Pages Google has already indexed. Linking back to one of these from every page is the point of
@@ -151,6 +167,9 @@ const ENTRY_BLOCKS = {
     "/industries",
     ...industries.map((i) => `/industries/${i.slug}`),
     "/locations",
+    // The service-in-city pages are new, so the home page is the only indexed page that can
+    // introduce the ones handled from Noida; the Delhi pair is also reached from /ca-in-delhi.
+    ...cityServices.map((p) => `/${p.slug}`),
     "/tax-calendar",
     "/download",
     "/faq",
@@ -226,6 +245,7 @@ export function relatedFor(url) {
       out.push(
         hubOf(service.slug),
         ...servicesIn(service.category).filter((s) => s.slug !== service.slug).slice(0, 3).map(serviceUrl),
+        ...cityServicesForService(service.slug),
         ...guidesForService(service.slug).slice(0, 3),
         ...industriesForService(service.slug).slice(0, 2),
         "/book-consultation",
@@ -235,11 +255,11 @@ export function relatedFor(url) {
     } else if (hub) {
       // The hub page already renders its own sub-service grid, so this adds the reading around it.
       const guides = [...new Set(servicesIn(hub.slug).flatMap((s) => guidesForService(s.slug)))];
-      out.push(...guides.slice(0, 4), "/industries", "/pricing", "/book-consultation", "/ca-in-delhi");
+      out.push(...cityServicesForHub(hub.slug), ...guides.slice(0, 4), "/industries", "/pricing", "/book-consultation", "/ca-in-delhi");
     } else if (industry) {
       out.push(...(INDUSTRY_EXTRAS[industry.slug] || []), "/industries", "/contact", "/book-consultation");
     } else if (city) {
-      out.push(...allHubs(), ...allCities(), "/locations", "/book-consultation", "/tax-calendar");
+      out.push(...cityServicesForOffice(city.officeCity), ...allHubs(), ...allCities(), "/locations", "/book-consultation", "/tax-calendar");
     } else if (article) {
       out.push(
         ...(article.services || []).map(svc),

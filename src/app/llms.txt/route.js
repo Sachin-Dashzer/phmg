@@ -2,6 +2,7 @@ import { firm, offices, waHref } from "@/data/firm";
 import { categories } from "@/data/categories";
 import { publishedServices, serviceUrl, servicesIn } from "@/data/services";
 import { cities } from "@/data/cities";
+import { cityServices } from "@/data/city-services";
 import { team } from "@/data/team";
 import { articles } from "@/data/insights";
 import { calculators, utilities } from "@/data/knowledge-bank";
@@ -75,6 +76,9 @@ export function GET() {
     "## Locations",
     ...cities.map((c) => link(c.title, `/ca-in-${c.slug}`, c.metaDescription)),
     link("All locations", "/locations", "the four offices and how remote work is handled"),
+    "",
+    "### A service at a particular office",
+    ...cityServices.map((p) => link(p.h1, `/${p.slug}`, p.metaDescription)),
     "",
     "## Services by practice area",
     ...categories.flatMap((c) => [

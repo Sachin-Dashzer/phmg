@@ -6,6 +6,7 @@ import { cities } from "@/data/cities";
 import { articles, insightCategories, articlesIn } from "@/data/insights";
 import { calculators, utilities } from "@/data/knowledge-bank";
 import { publishedServices, servicesIn, serviceUrl } from "@/data/services";
+import { cityServices, cityServiceReviewed } from "@/data/city-services";
 
 // `new Date()` on every URL told search engines the whole site changes on every deploy, which
 // makes lastModified worthless as a signal. Each entry now carries a real date: the service's
@@ -25,6 +26,7 @@ export default function sitemap() {
     ...publishedServices.map((s) => [serviceUrl(s), fromReviewed(s.lastReviewed)]),
     ...industries.map((i) => [`/industries/${i.slug}`, STATIC_REVIEWED]),
     ...cities.map((c) => [`/ca-in-${c.slug}`, c.updatedAt || STATIC_REVIEWED]),
+    ...cityServices.map((p) => [`/${p.slug}`, cityServiceReviewed]),
     ...insightCategories.filter((c) => articlesIn(c.slug).length).map((c) => [`/insights/category/${c.slug}`, STATIC_REVIEWED]),
     ...articles.map((a) => [`/insights/${a.slug}`, a.updatedAt]),
     ...calculators.map((c) => [`/knowledge-bank/calculators/${c.slug}`, STATIC_REVIEWED]),

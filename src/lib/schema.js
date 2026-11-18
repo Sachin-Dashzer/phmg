@@ -163,7 +163,10 @@ export const cityOfficeSchema = (office) => ({
 });
 
 // No price or offer: the firm publishes no fees, so none is asserted here.
-export const serviceSchema = ({ name, description, path, serviceType, audience, dateModified }) =>
+// `officeSlug` narrows the service to one branch: provider becomes that office's node and
+// areaServed becomes that city alone. A service-in-city landing page passes it; an ordinary
+// service page does not, and keeps the firm-wide provider and the full area.
+export const serviceSchema = ({ name, description, path, serviceType, audience, dateModified, officeSlug, areaServed }) =>
   compact({
     "@context": "https://schema.org",
     "@type": "Service",
@@ -171,11 +174,13 @@ export const serviceSchema = ({ name, description, path, serviceType, audience, 
     description,
     serviceType: serviceType || name,
     url: absUrl(path),
-    provider: { "@id": absUrl("/#organization") },
-    areaServed: [
-      { "@type": "Country", name: "India" },
-      ...offices.map((o) => ({ "@type": "City", name: o.city })),
-    ],
+    provider: { "@id": absUrl(officeSlug ? `/#office-${officeSlug}` : "/#organization") },
+    areaServed: areaServed
+      ? [{ "@type": "City", name: areaServed }]
+      : [
+          { "@type": "Country", name: "India" },
+          ...offices.map((o) => ({ "@type": "City", name: o.city })),
+        ],
     audience: audience ? { "@type": "Audience", audienceType: audience } : undefined,
     // lastReviewed arrives as a month name; structured data needs an ISO date.
     dateModified: reviewedToISO(dateModified) || undefined,
