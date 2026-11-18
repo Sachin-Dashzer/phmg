@@ -44,7 +44,9 @@ export function CategoryCard({ category: c, items = [], className = "" }) {
       )}
 
       <div className="mt-auto flex items-center justify-between pt-6">
-        <span className="text-xs text-neutral-400">
+        {/* brand-ink, not neutral-400: this card also renders on the gold-tinted hub background,
+            where neutral-400 is 1.6:1. */}
+        <span className="text-xs text-brand-ink">
           {items.length > 0 ? `${items.length} ${items.length === 1 ? "service" : "services"}` : ""}
         </span>
         <span aria-hidden="true" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue">

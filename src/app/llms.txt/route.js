@@ -2,7 +2,7 @@ import { firm, offices, waHref } from "@/data/firm";
 import { categories } from "@/data/categories";
 import { publishedServices, serviceUrl, servicesIn } from "@/data/services";
 import { cities } from "@/data/cities";
-import { cityServices } from "@/data/city-services";
+import { cityServices, cityServiceReviewed } from "@/data/city-services";
 import { team } from "@/data/team";
 import { articles } from "@/data/insights";
 import { calculators, utilities } from "@/data/knowledge-bank";
@@ -19,6 +19,7 @@ const lastUpdated = () =>
     ...articles.map((a) => a.updatedAt),
     ...cities.map((c) => c.updatedAt),
     ...publishedServices.map((s) => reviewedToISO(s.lastReviewed)),
+    cityServiceReviewed,
   ].filter(Boolean).sort().at(-1);
 
 export function GET() {
