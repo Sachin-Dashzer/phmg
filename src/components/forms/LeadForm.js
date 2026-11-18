@@ -55,8 +55,12 @@ export default function LeadForm({
         );
       }
 
+      // Fires only here, after the API has answered OK: a validation failure or a rejected
+      // submission never reaches this line. No personal data in the parameters — the service is
+      // the picked category, not anything the visitor typed about themselves.
       track("generate_lead", {
-        form_id: id,
+        form_name: id,
+        page_location: window.location.href,
         service: data0.get("service") || undefined,
       });
 
