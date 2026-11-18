@@ -55,3 +55,18 @@ All values live in `src/data/*`. Search for `TODO: CLIENT TO CONFIRM`.
 
 ## 6. Ongoing
 See `docs/content-calendar.md`: quarterly content review, Budget-time updates to `taxSlabs.js`, monthly due-date check.
+
+## IndexNow (after every deploy)
+
+```
+npm run indexnow -- --dry-run   # list what changed, send nothing
+npm run indexnow                # submit to api.indexnow.org, then record the snapshot
+```
+
+It reads `https://www.phmgindia.com/sitemap.xml`, compares each URL's `lastmod` against
+`.indexnow-cache.json` (git-ignored, so the snapshot is per machine) and submits only the URLs
+whose date moved. The first run on a machine records the snapshot and submits nothing.
+
+The key is served at `/4e30b3e5bbcf8d3ddedff5a24401d35f.txt` and the script reads it from
+`public/` unless `INDEXNOW_KEY` is set. Bing, Copilot, Yandex and Seznam consume IndexNow;
+Google does not, so Search Console and the sitemap stay the route there.

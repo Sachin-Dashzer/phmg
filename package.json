@@ -9,7 +9,8 @@
     "lint": "eslint",
     "analyze": "next experimental-analyze",
     "check:seo": "node scripts/seo-audit.mjs",
-    "test": "node --test \"src/lib/**/*.test.js\""
+    "test": "node --test \"src/lib/**/*.test.js\"",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.50.0",
