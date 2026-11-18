@@ -5,10 +5,21 @@ import { cities } from "@/data/cities";
 import { team } from "@/data/team";
 import { articles } from "@/data/insights";
 import { calculators, utilities } from "@/data/knowledge-bank";
-import { absUrl } from "@/lib/seo";
+import { absUrl, reviewedToISO } from "@/lib/seo";
+import { getProfile } from "@/data/team";
 
 // Plain-text site summary for AI crawlers (llmstxt.org format). Generated from the same data the
 // pages render from, so it cannot drift from the site. /llms-full.txt carries the page content.
+// The newest real content date on the site, not the build date: a date that moves on every
+// deploy tells a crawler nothing, and claiming the firm facts were reviewed today when they were
+// not is simply false.
+const lastUpdated = () =>
+  [
+    ...articles.map((a) => a.updatedAt),
+    ...cities.map((c) => c.updatedAt),
+    ...publishedServices.map((s) => reviewedToISO(s.lastReviewed)),
+  ].filter(Boolean).sort().at(-1);
+
 export function GET() {
   const link = (title, path, note) => `- [${title}](${absUrl(path)})${note ? `: ${note}` : ""}`;
   // Labelled profiles, so an assistant can tell the firm's own accounts from accounts using its name.
@@ -35,6 +46,7 @@ export function GET() {
     `- Telephone: ${firm.phone}`,
     `- Email: ${firm.email}`,
     `- Website: ${absUrl("/")}`,
+    `- Last updated: ${lastUpdated()}`,
     ...(firm.icaiFrn ? [`- ICAI Firm Registration Number: ${firm.icaiFrn}`] : []),
     "",
     "### Official profiles",
@@ -48,7 +60,12 @@ export function GET() {
     ...offices.map((o) => `- ${o.city}${o.head ? " (head office)" : ""}: ${o.address}`),
     "",
     "### Partners and branch heads",
-    ...team.map((p) => `- ${p.name}, ${p.role}${p.credentials?.length ? ` (${p.credentials.join(", ")})` : ""}: ${p.focus.join(", ")}`),
+    ...team.map((p) => {
+      // The membership number is empty until a partner supplies it; the line simply omits it.
+      const icai = getProfile(p.slug).icaiMembership;
+      const quals = p.credentials?.length ? ` (${p.credentials.join(", ")}${icai ? `; ICAI membership no. ${icai}` : ""})` : icai ? ` (ICAI membership no. ${icai})` : "";
+      return `- ${p.name}, ${p.role}${quals}: ${p.focus.join(", ")}`;
+    }),
     "",
     "### About this content",
     "- Chartered accountants in India are regulated by the Institute of Chartered Accountants of India, whose Code of Ethics restricts advertising and solicitation. Pages on this site are written as general information and avoid superlatives, comparisons, guarantees and testimonials.",

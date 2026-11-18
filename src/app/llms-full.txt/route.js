@@ -3,7 +3,7 @@ import { publishedServices, serviceUrl } from "@/data/services";
 import { getCategory } from "@/data/categories";
 import { cities } from "@/data/cities";
 import { team } from "@/data/team";
-import { absUrl } from "@/lib/seo";
+import { absUrl, reviewedToISO } from "@/lib/seo";
 
 // The plain-text content of every published service page and city page, each section headed by its
 // URL so a model can cite the right page. Generated from the same data the pages render from, so it
@@ -13,6 +13,11 @@ import { absUrl } from "@/lib/seo";
 // already linked from /llms.txt and have their own crawlable pages.
 
 const rule = "=".repeat(78);
+
+// The newest real content date across the pages in this file, not the build date.
+const lastUpdated = () =>
+  [...cities.map((c) => c.updatedAt), ...publishedServices.map((s) => reviewedToISO(s.lastReviewed))]
+    .filter(Boolean).sort().at(-1);
 
 const bullets = (items) => items.map((t) => `- ${t}`).join("\n");
 
@@ -129,7 +134,7 @@ export function GET() {
     "",
     "> This file contains the plain-text content of every published service page and city page, each headed by its URL. Content is general information and not professional advice. Section references are to the Income-tax Act, 1961 unless stated; the Income-tax Act, 2025 replaced it from 1 April 2026. Chartered accountants in India are regulated by the Institute of Chartered Accountants of India.",
     "",
-    `> Generated from the site's own data. ${publishedServices.length} service pages and ${cities.length} city pages.`,
+    `> Generated from the site's own data. ${publishedServices.length} service pages and ${cities.length} city pages. Last updated: ${lastUpdated()}.`,
     "",
     "",
     "# Service pages",
