@@ -96,16 +96,6 @@ h1, h2, h3, h4 { overflow-wrap: break-word; }
 .input:focus { border-color: var(--color-brand-blue); box-shadow: 0 0 0 3px rgba(26,50,88,.1); outline: none; }
 
 /* -- Typography helpers -------------------------- */
-.gradient-text {
-  background: linear-gradient(135deg, #d4b07a 0%, var(--color-brand-gold) 50%, #d4b07a 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.gradient-text-blue {
-  background: linear-gradient(135deg, #8fa3c7 0%, var(--color-brand-blue) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
 .section-label {
   display: inline-flex; align-items: center; gap: .4rem;
   padding: .3rem .9rem; border-radius: 9999px;

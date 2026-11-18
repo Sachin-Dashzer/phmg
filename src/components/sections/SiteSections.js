@@ -137,7 +137,7 @@ export function StatsBand() {
       <ScrollReveal stagger className={`container-x grid grid-cols-2 gap-8 py-12 ${statCols[stats.length]}`}>
         {stats.map(([v, l]) => (
           <div key={l} className="text-center">
-            <p className="font-display text-3xl font-bold gradient-text md:text-4xl">{v}</p>
+            <p className="font-display text-3xl font-bold text-brand-gold md:text-4xl">{v}</p>
             <p className="mt-px text-sm text-white/60">{l}</p>
           </div>
         ))}
